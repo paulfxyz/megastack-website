@@ -245,9 +245,9 @@ body::after{content:'';position:fixed;inset:0;z-index:9998;pointer-events:none;o
 
 .hero-hl{
   font-family:var(--display);font-weight:600;
-  font-size:clamp(1.1rem,0.75rem+2vw,2.4rem);
-  line-height:1.18;letter-spacing:-0.015em;
-  max-width:860px;margin-bottom:14px;color:var(--text)
+  font-size:clamp(1.9rem,0.8rem+4.2vw,4.8rem);
+  line-height:1.12;letter-spacing:-0.025em;
+  max-width:960px;margin-bottom:18px;color:var(--text)
 }
 .hero-hl .r{color:var(--acid)}
 .hero-hl .b{color:var(--ice)}
@@ -1521,7 +1521,54 @@ window.goStep=function(n,skipValidate){
   [1,2,3].forEach(i=>{const d=document.getElementById('s'+i);if(!d)return;d.style.background=i<n?'rgba(229,0,10,0.3)':(i===n?'var(--acid)':'var(--border)')});
 };
 
-window.submitBooking=function(){setTimeout(()=>{showPanel('done')},400)};
+window.submitBooking=async function(){
+  const btn=document.querySelector('#panel-3 .btn-acid');
+  const origTxt=btn.textContent;
+  btn.textContent='Sending…';btn.disabled=true;
+
+  const name   = document.getElementById('inp-name').value.trim();
+  const org    = document.getElementById('inp-org').value.trim();
+  const email  = document.getElementById('inp-email').value.trim();
+  const signal = document.getElementById('inp-signal').value.trim();
+  const ctx    = document.getElementById('inp-context').value.trim();
+  const day    = selectedDay || '—';
+  const plat   = document.getElementById('inp-platform').value || 'Not specified';
+
+  const body = `New megastack.sh booking
+
+Name: ${name}
+Org: ${org||'—'}
+Email: ${email}
+Signal/Matrix: ${signal||'—'}
+Preferred day: ${day}
+Call platform: ${plat}
+
+Context:
+${ctx||'—'}`;
+
+  try {
+    const res = await fetch('https://api.resend.com/emails', {
+      method:'POST',
+      headers:{
+        'Content-Type':'application/json',
+        'Authorization':'Bearer RESEND_KEY_REDACTED'
+      },
+      body: JSON.stringify({
+        from: 'lead@megastack.sh',
+        to:   ['hello@paulfleury.com'],
+        reply_to: email,
+        subject: `📡 New booking — ${name}${org?' ('+org+')':''} — ${day}`,
+        text: body
+      })
+    });
+    if(!res.ok){ const e=await res.json(); throw new Error(e.message||res.status); }
+    showPanel('done');
+  } catch(err){
+    console.error('Resend error:', err);
+    btn.textContent='Error — try again';btn.disabled=false;
+    setTimeout(()=>{btn.textContent=origTxt;},2500);
+  }
+};
 
 /* Day grid builder */
 function buildDayGrid(){
