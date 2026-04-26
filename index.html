@@ -1619,26 +1619,81 @@ new IntersectionObserver(e=>{rC.classList.toggle('on',!e[0].isIntersecting)},{th
 /* ── 3. HERO WORDMARK GLITCH ── */
 const hw=document.querySelector('.hero-word');
 if(hw){
-  const final='MEGA<span style="color:var(--text-3)">STACK</span><span class="dot">.</span>SH';
-  const raw='MEGASTACK.SH';
-  const SC='ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#@!?%$&*';
-  function doScramble(){
-    let it=0;
-    if(hw._si)clearInterval(hw._si);
-    hw._si=setInterval(()=>{
-      let html='';
-      raw.split('').forEach((ch,i)=>{
-        if(i>=8&&i<=12) return; // handled via innerHTML
-        html+=i<it?ch:SC[Math.floor(Math.random()*SC.length)];
-      });
-      hw.innerHTML=html;
-      it+=0.4;
-      if(it>=raw.length+1){clearInterval(hw._si);hw.innerHTML=final}
-    },40);
+  const SC='ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#@!?%$';
+
+  // Final rendered state
+  const FINAL='MEGA<span style="color:var(--text-3)">STACK</span><span class="dot" style="color:var(--acid)">.</span><span style="font-size:0.55em;letter-spacing:-0.01em;vertical-align:0.08em">SH</span>';
+
+  // Animation phases: each phase has a target string + how long to hold (ms)
+  const PHASES = [
+    { text:'MGSTCK',     hold:180 },  // compressed random-ish start
+    { text:'MEGASTACK',  hold:320 },  // full name, no suffix
+    { text:'MEGASTACK.SH', hold:0 }, // final — then render FINAL html
+  ];
+
+  function renderPhase(str){
+    // Build the styled version matching the phase
+    if(str==='MEGASTACK.SH'){
+      hw.innerHTML=FINAL; return;
+    }
+    // For intermediate phases, just monochrome text
+    hw.textContent=str;
   }
-  if(document.fonts)document.fonts.ready.then(()=>setTimeout(doScramble,400));
-  else setTimeout(doScramble,700);
-  hw.addEventListener('mouseenter',doScramble);
+
+  function scrambleTo(target, duration, cb){
+    // Animate from current visible chars to target
+    const orig=hw.textContent.replace(/[^A-Z0-9.]/g,'') || 'MGSTCK';
+    const tLen=target.length;
+    let it=0;
+    const speed=Math.max(18, Math.round(duration/tLen/2.2));
+    if(hw._si) clearInterval(hw._si);
+    hw._si=setInterval(()=>{
+      let out='';
+      for(let i=0;i<tLen;i++){
+        if(i<it) out+=target[i];
+        else if(target[i]==='.') out+='.';
+        else out+=SC[Math.floor(Math.random()*SC.length)];
+      }
+      hw.textContent=out;
+      it+=0.6;
+      if(it>=tLen+1){
+        clearInterval(hw._si);
+        renderPhase(target);
+        if(cb) cb();
+      }
+    },speed);
+  }
+
+  function runSequence(loop){
+    // Phase 0: MGSTCK
+    hw.textContent='MGSTCK';
+    setTimeout(()=>{
+      // Phase 1: scramble to MEGASTACK
+      scrambleTo('MEGASTACK', 420, ()=>{
+        setTimeout(()=>{
+          // Phase 2: scramble to MEGASTACK.SH (final)
+          scrambleTo('MEGASTACK.SH', 320, ()=>{
+            if(loop){
+              // Auto-loop every 6 seconds
+              hw._loopTimer=setTimeout(()=>runSequence(true), 6000);
+            }
+          });
+        }, PHASES[1].hold);
+      });
+    }, PHASES[0].hold);
+  }
+
+  // Kick off on font load
+  function start(){ runSequence(true); }
+  if(document.fonts) document.fonts.ready.then(()=>setTimeout(start,300));
+  else setTimeout(start,600);
+
+  // Mouseover — restart immediately
+  hw.addEventListener('mouseenter',()=>{
+    clearTimeout(hw._loopTimer);
+    if(hw._si) clearInterval(hw._si);
+    runSequence(true);
+  });
 }
 
 /* ── 4. OMNIPRESENT CHAR FLICKER ── */
