@@ -1582,51 +1582,45 @@ window.goStep=function(n,skipValidate){
 window.submitBooking=async function(){
   const btn=document.querySelector('#panel-3 .btn-acid');
   const origTxt=btn.textContent;
-  btn.textContent='Sending…';btn.disabled=true;
+  btn.textContent='Sending\u2026';btn.disabled=true;
 
   const name   = document.getElementById('inp-name').value.trim();
   const org    = document.getElementById('inp-org').value.trim();
   const email  = document.getElementById('inp-email').value.trim();
   const signal = document.getElementById('inp-signal').value.trim();
   const ctx    = document.getElementById('inp-context').value.trim();
-  const day    = selectedDay || '—';
+  const day    = selectedDay || '\u2014';
   const plat   = document.getElementById('inp-platform').value || 'Not specified';
 
-  const body = `New megastack.sh booking
-
-Name: ${name}
-Org: ${org||'—'}
-Email: ${email}
-Signal/Matrix: ${signal||'—'}
-Preferred day: ${day}
-Call platform: ${plat}
-
-Context:
-${ctx||'—'}`;
+  const htmlBody = '<h2>New megastack.sh booking</h2><table style="font-family:monospace"><tr><td>Name</td><td><b>'+name+'</b></td></tr><tr><td>Org</td><td>'+(org||'\u2014')+'</td></tr><tr><td>Email</td><td>'+email+'</td></tr><tr><td>Signal/Matrix</td><td>'+(signal||'\u2014')+'</td></tr><tr><td>Preferred day</td><td><b style="color:#E5000A">'+day+'</b></td></tr><tr><td>Platform</td><td>'+plat+'</td></tr></table><h3>Context</h3><p>'+(ctx||'\u2014')+'</p>';
+  const textBody = 'New megastack.sh booking\n\nName: '+name+'\nOrg: '+(org||'\u2014')+'\nEmail: '+email+'\nSignal/Matrix: '+(signal||'\u2014')+'\nPreferred day: '+day+'\nCall platform: '+plat+'\n\nContext:\n'+(ctx||'\u2014');
 
   try {
     const res = await fetch('https://api.resend.com/emails', {
-      method:'POST',
-      headers:{
-        'Content-Type':'application/json',
-        'Authorization':'Bearer RESEND_KEY_REDACTED'
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer RESEND_KEY_REDACTED'
       },
       body: JSON.stringify({
         from: 'lead@megastack.sh',
-        to:   ['hello@paulfleury.com'],
-        reply_to: email,
-        subject: `📡 New booking — ${name}${org?' ('+org+')':''} — ${day}`,
-        text: body
+        to: ['hello@paulfleury.com'],
+        reply_to: email || 'lead@megastack.sh',
+        subject: '\u{1F4E1} New booking \u2014 '+name+(org?' ('+org+')':'')+' \u2014 '+day,
+        html: htmlBody,
+        text: textBody
       })
     });
-    if(!res.ok){ const e=await res.json(); throw new Error(e.message||res.status); }
+    const data = await res.json().catch(()=>({}));
+    if(!res.ok) throw new Error(data.message || data.name || res.status);
     showPanel('done');
   } catch(err){
     console.error('Resend error:', err);
-    btn.textContent='Error — try again';btn.disabled=false;
-    setTimeout(()=>{btn.textContent=origTxt;},2500);
+    btn.textContent='Error \u2014 try again';
+    btn.disabled=false;
+    setTimeout(()=>{btn.textContent=origTxt;},3000);
   }
-};
+}};
 
 /* Day grid builder */
 function buildDayGrid(){
@@ -1635,7 +1629,7 @@ function buildDayGrid(){
   const today=new Date();
   const DAYS=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
   const MONTHS=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-  let count=0,offset=1;
+  let count=0,offset=4;
   while(count<10){
     const d=new Date(today);
     d.setDate(today.getDate()+offset);
