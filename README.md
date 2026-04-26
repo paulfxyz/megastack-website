@@ -158,6 +158,7 @@ This project follows [Semantic Versioning](https://semver.org/):
 | `v1.2.0` | 2026-04-26 | Extended toolbox (OpenVAS, Trivy, Falco, Semgrep, Gitleaks, ZAP), team hierarchy, package section |
 | `v1.3.0` | 2026-04-26 | Resend email integration, larger hero headline, favicon/OG assets, README |
 | `v1.4.0` | 2026-04-26 | Authelia added (L6), 10 core tools, GitHub banner, full media kit (32 assets), brand guidelines |
+| `v1.5.0` | 2026-04-26 | Light/dark theme, language modal (25 langs), WIP modal, LinkedIn+X banners, media kit v1.4.0 (32 files, 7.8MB) |
 
 ---
 
