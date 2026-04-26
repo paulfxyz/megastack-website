@@ -1,0 +1,1576 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>megastack.sh — End-to-End Open Source Security Stack</title>
+  <meta name="description" content="We deploy a full open-source security stack on your own infrastructure. WireGuard, encrypted file hosting, hardened comms, 2FA — end to end.">
+  <meta name="theme-color" content="#E5000A">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://api.fontshare.com">
+  <link href="https://api.fontshare.com/v2/css?f[]=clash-display@500,600,700&display=swap" rel="stylesheet">
+
+  <style>
+/* ══════════════════════════════════════════
+   TOKENS
+══════════════════════════════════════════ */
+:root {
+  --bg:        #000000;
+  --s1:        #050505;
+  --s2:        #0a0a0a;
+  --s3:        #101010;
+  --border:    #1a1a1a;
+  --border-hi: #272727;
+
+  --text:   #F0EDE8;
+  --text-2: #B2AEA8;
+  --text-3: #726E68;
+  --text-4: #3A3733;
+
+  --acid:      #E5000A;
+  --acid-dim:  #B50008;
+  --acid-glow: rgba(229,0,10,0.20);
+  --acid-soft: rgba(229,0,10,0.07);
+  --ice:       #00C8FF;
+  --ice-glow:  rgba(0,200,255,0.13);
+  --ice-soft:  rgba(0,200,255,0.05);
+  --gold:      #F5A623;
+  --gold-soft: rgba(245,166,35,0.08);
+
+  --display: 'Clash Display', sans-serif;
+  --grotesk: 'Space Grotesk', system-ui, sans-serif;
+  --mono:    'JetBrains Mono', monospace;
+
+  --hero:  clamp(2.6rem, 1.2rem + 8vw, 9rem);
+  --t5xl:  clamp(2.2rem, 1.5rem + 4vw, 5rem);
+  --t4xl:  clamp(1.8rem, 1.3rem + 2.6vw, 3.8rem);
+  --t3xl:  clamp(1.4rem, 1.1rem + 1.6vw, 2.8rem);
+  --t2xl:  clamp(1.15rem, 0.95rem + 1vw, 2rem);
+  --txl:   clamp(1rem, 0.88rem + 0.5vw, 1.45rem);
+  --tlg:   clamp(0.9375rem, 0.875rem + 0.3vw, 1.2rem);
+  --tmd:   clamp(0.9rem, 0.855rem + 0.25vw, 1.075rem);
+  --tbase: clamp(0.875rem, 0.84rem + 0.2vw, 1rem);
+  --tsm:   clamp(0.8125rem, 0.785rem + 0.16vw, 0.9375rem);
+  --txs:   clamp(0.75rem, 0.73rem + 0.1vw, 0.8125rem);
+  --t2xs:  clamp(0.6875rem, 0.67rem + 0.09vw, 0.75rem);
+
+  --r1: 3px; --r2: 6px; --r3: 10px;
+  --ease: cubic-bezier(0.16,1,0.3,1);
+  --fast: 140ms; --mid: 300ms; --slow: 500ms;
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:64px}
+body{
+  background:var(--bg); color:var(--text);
+  font-family:var(--grotesk); font-size:var(--tbase); line-height:1.65;
+  overflow-x:hidden; -webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none}
+img,svg{display:block}
+ul{list-style:none}
+button{cursor:pointer;border:none;background:none;font:inherit}
+
+/* CRT + grain */
+body::before{content:'';position:fixed;inset:0;z-index:9999;pointer-events:none;
+  background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,0.016) 2px,rgba(0,0,0,0.016) 4px)}
+body::after{content:'';position:fixed;inset:0;z-index:9998;pointer-events:none;opacity:0.013;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size:200px 200px}
+
+/* canvas layers */
+#cv-matrix{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:0.18}
+#cv-radar{position:fixed;inset:0;z-index:2;pointer-events:none;opacity:0;transition:opacity 0.9s}
+#cv-radar.on{opacity:0.4}
+
+/* ══════════════════════════════════════════
+   NAV
+══════════════════════════════════════════ */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:300;
+  height:60px;display:flex;align-items:center;
+  padding:0 clamp(1rem,4vw,2.5rem);
+  background:rgba(0,0,0,0.93);backdrop-filter:blur(20px);
+  border-bottom:1px solid rgba(229,0,10,0.07);
+}
+.nav-logo{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.nav-logo-mark{width:28px;height:28px;flex-shrink:0}
+.nav-logo-text{
+  font-family:var(--mono);font-size:var(--txs);font-weight:700;
+  letter-spacing:0.1em;text-transform:uppercase;color:var(--acid)
+}
+.nav-logo-text .dot{color:var(--text-3)}
+.nav-links{
+  display:flex;align-items:center;gap:clamp(0.8rem,2vw,2rem);margin:0 auto;
+}
+.nav-links a{
+  font-family:var(--grotesk);font-size:var(--txs);font-weight:500;
+  letter-spacing:0.03em;color:var(--text-3);
+  transition:color var(--fast) var(--ease);white-space:nowrap;
+}
+.nav-links a:hover{color:var(--text)}
+.nav-right{display:flex;align-items:center;gap:8px;flex-shrink:0}
+.nav-burger{display:none;flex-direction:column;justify-content:center;gap:5px;width:36px;height:36px;padding:4px}
+.nav-burger span{display:block;height:1.5px;background:var(--text-2);transition:all var(--mid) var(--ease)}
+.nav-burger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.nav-burger.open span:nth-child(2){opacity:0}
+.nav-burger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+.nav-mobile{display:none;position:fixed;top:60px;left:0;right:0;z-index:299;
+  background:rgba(0,0,0,0.97);border-bottom:1px solid var(--border);
+  padding:20px clamp(1rem,4vw,2.5rem) 28px;flex-direction:column;gap:1px;
+  backdrop-filter:blur(20px)}
+.nav-mobile.open{display:flex}
+.nav-mobile a{
+  font-family:var(--grotesk);font-size:var(--tmd);font-weight:500;
+  color:var(--text-2);padding:13px 0;border-bottom:1px solid var(--border);
+  transition:color var(--fast) var(--ease)
+}
+.nav-mobile a:last-of-type{border-bottom:none}
+.nav-mobile a:hover{color:var(--acid)}
+.nav-mobile-btns{display:flex;gap:8px;margin-top:16px}
+.nav-mobile-btns .btn{flex:1;justify-content:center}
+
+/* ══════════════════════════════════════════
+   BUTTONS
+══════════════════════════════════════════ */
+.btn{
+  display:inline-flex;align-items:center;gap:7px;
+  font-family:var(--grotesk);font-size:var(--txs);font-weight:600;
+  letter-spacing:0.02em;padding:9px 20px;border-radius:var(--r1);
+  transition:all var(--fast) var(--ease);white-space:nowrap;cursor:pointer
+}
+.btn-acid{background:var(--acid);color:#fff;border:1px solid var(--acid)}
+.btn-acid:hover{background:#ff0a14;box-shadow:0 0 28px var(--acid-glow)}
+.btn-outline{border:1px solid var(--border-hi);color:var(--text-2)}
+.btn-outline:hover{border-color:var(--acid);color:var(--acid)}
+.btn-ghost{border:1px solid transparent;color:var(--text-3)}
+.btn-ghost:hover{color:var(--text)}
+.btn-lg{font-size:var(--tsm);padding:13px 28px}
+.btn-xl{font-size:var(--tbase);padding:16px 40px;font-weight:700}
+
+/* ══════════════════════════════════════════
+   LAYOUT
+══════════════════════════════════════════ */
+.wrap  {max-width:980px; margin:0 auto;padding:0 clamp(1rem,4vw,2.5rem)}
+.wrap-w{max-width:1200px;margin:0 auto;padding:0 clamp(1rem,4vw,2.5rem)}
+.wrap-n{max-width:680px; margin:0 auto;padding:0 clamp(1rem,4vw,2.5rem)}
+
+.lbl{
+  font-family:var(--mono);font-size:var(--t2xs);font-weight:600;
+  letter-spacing:0.18em;text-transform:uppercase;color:var(--acid);
+  display:flex;align-items:center;gap:10px;margin-bottom:16px
+}
+.lbl::before{content:'';display:block;width:16px;height:1px;background:var(--acid);flex-shrink:0}
+.lbl.center{justify-content:center}
+.lbl.center::before{display:none}
+.lbl.center::after{content:'';display:block;width:16px;height:1px;background:currentColor;flex-shrink:0}
+.lbl.ice{color:var(--ice)}.lbl.ice::before{background:var(--ice)}
+.lbl.gold{color:var(--gold)}.lbl.gold::before{background:var(--gold)}
+
+.section   {padding:clamp(64px,8vw,108px) 0}
+.section-sm{padding:clamp(44px,6vw,72px) 0}
+.section-title{
+  font-family:var(--display);font-size:var(--t4xl);font-weight:700;
+  line-height:1.05;letter-spacing:-0.02em;margin-bottom:16px
+}
+.section-body{font-size:var(--tmd);color:var(--text-2);line-height:1.75}
+
+.divider{border:none;border-top:1px solid var(--border);margin:0}
+
+.fade-in{opacity:0;transform:translateY(12px);transition:opacity 0.5s var(--ease),transform 0.5s var(--ease)}
+.fade-in.on{opacity:1;transform:none}
+
+/* ══════════════════════════════════════════
+   HERO
+══════════════════════════════════════════ */
+.hero{
+  position:relative;min-height:100svh;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:100px clamp(1rem,4vw,2.5rem) 80px;overflow:hidden
+}
+.hero-grid{
+  position:absolute;inset:0;z-index:3;pointer-events:none;
+  background-image:
+    linear-gradient(rgba(229,0,10,0.025) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(229,0,10,0.025) 1px,transparent 1px);
+  background-size:60px 60px;
+  mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black 10%,transparent 100%)
+}
+.hero-scan{
+  position:absolute;left:0;right:0;height:2px;z-index:4;pointer-events:none;
+  background:linear-gradient(90deg,transparent,var(--acid) 30%,rgba(229,0,10,0.25) 70%,transparent);
+  animation:scan 9s linear infinite;opacity:0
+}
+@keyframes scan{0%{top:-2px;opacity:0}3%{opacity:0.4}97%{opacity:0.4}100%{top:100%;opacity:0}}
+
+.hero-content{position:relative;z-index:10;display:flex;flex-direction:column;align-items:center}
+
+.badge{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--mono);font-size:var(--t2xs);font-weight:600;
+  letter-spacing:0.12em;text-transform:uppercase;color:var(--acid);
+  border:1px solid rgba(229,0,10,0.28);padding:7px 16px;border-radius:var(--r1);
+  margin-bottom:28px;background:rgba(229,0,10,0.04);cursor:default;
+  transition:all var(--fast) var(--ease)
+}
+.badge:hover{border-color:var(--acid);background:rgba(229,0,10,0.1)}
+.badge-dot{width:6px;height:6px;border-radius:50%;background:var(--acid);animation:blink 1.4s ease-in-out infinite;flex-shrink:0}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.1}}
+
+.hero-word{
+  font-family:var(--display);font-size:var(--hero);font-weight:700;
+  line-height:0.88;letter-spacing:-0.035em;color:var(--text);
+  margin-bottom:18px;user-select:none;position:relative
+}
+.hero-word .dot{color:var(--acid)}
+.hero-word::before,.hero-word::after{
+  content:attr(data-text);position:absolute;inset:0;
+  font-family:var(--display);font-size:inherit;font-weight:700;
+  line-height:inherit;letter-spacing:inherit;opacity:0;pointer-events:none
+}
+.hero-word::before{color:var(--acid);clip-path:polygon(0 15%,100% 15%,100% 35%,0 35%);animation:g1 5s infinite step-start}
+.hero-word::after{color:var(--ice);clip-path:polygon(0 58%,100% 58%,100% 78%,0 78%);animation:g2 5s infinite step-start}
+@keyframes g1{0%,88%,100%{opacity:0;transform:translate(0)}89%{opacity:0.7;transform:translate(-3px,1px)}90%{opacity:0}92%{opacity:0.6;transform:translate(4px,-1px)}93%{opacity:0}95%{opacity:0.8;transform:translate(-2px,2px)}96%{opacity:0}}
+@keyframes g2{0%,90%,100%{opacity:0;transform:translate(0)}91%{opacity:0.6;transform:translate(3px,-1px)}92%{opacity:0}94%{opacity:0.7;transform:translate(-4px,1px)}95%{opacity:0}}
+
+.hero-sub{
+  font-family:var(--mono);font-size:var(--txs);font-weight:500;
+  letter-spacing:0.18em;text-transform:uppercase;color:var(--text-3);
+  display:flex;align-items:center;gap:14px;margin-bottom:22px
+}
+.hero-sub span{opacity:0.2}
+
+.hero-hl{
+  font-family:var(--display);font-weight:600;
+  font-size:clamp(1.1rem,0.75rem+2vw,2.4rem);
+  line-height:1.18;letter-spacing:-0.015em;
+  max-width:860px;margin-bottom:14px;color:var(--text)
+}
+.hero-hl .r{color:var(--acid)}
+.hero-hl .b{color:var(--ice)}
+
+.hero-desc{
+  font-size:var(--tmd);color:var(--text-2);
+  max-width:520px;margin-bottom:30px;line-height:1.72
+}
+
+.hero-ctas{display:flex;align-items:center;gap:12px;flex-wrap:wrap;justify-content:center;margin-bottom:38px}
+
+.hero-pills{
+  display:flex;align-items:center;gap:clamp(8px,1.5vw,18px);flex-wrap:wrap;justify-content:center
+}
+.pill{
+  display:flex;align-items:center;gap:7px;
+  font-family:var(--mono);font-size:var(--t2xs);font-weight:600;
+  letter-spacing:0.07em;text-transform:uppercase;color:var(--text-4);
+  padding:6px 12px;border:1px solid var(--border);border-radius:var(--r1);
+  background:var(--s1)
+}
+.pill .pv{color:var(--ice)}
+.pill .pa{color:var(--acid)}
+
+.scroll-hint{
+  position:absolute;bottom:26px;left:50%;transform:translateX(-50%);
+  z-index:10;display:flex;flex-direction:column;align-items:center;gap:6px;
+  font-family:var(--mono);font-size:var(--t2xs);color:var(--text-4);
+  letter-spacing:0.1em;text-transform:uppercase;pointer-events:none
+}
+.scroll-line{width:1px;height:28px;background:linear-gradient(to bottom,var(--acid),transparent);animation:sp 2s ease-in-out infinite}
+@keyframes sp{0%,100%{opacity:0.3}50%{opacity:0.9}}
+
+/* ══════════════════════════════════════════
+   STRIPE
+══════════════════════════════════════════ */
+.stripe{
+  background:repeating-linear-gradient(-45deg,rgba(229,0,10,0.03),rgba(229,0,10,0.03) 10px,transparent 10px,transparent 20px);
+  border-top:1px solid rgba(229,0,10,0.12);border-bottom:1px solid rgba(229,0,10,0.12);
+  padding:12px 24px;text-align:center
+}
+.stripe p{
+  font-family:var(--grotesk);font-size:var(--tsm);font-weight:600;
+  letter-spacing:0.05em;color:var(--acid);
+  display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap
+}
+
+/* ══════════════════════════════════════════
+   APPROACH — 3 steps
+══════════════════════════════════════════ */
+.approach-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:1px;background:var(--border);
+  border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;
+  margin-top:48px
+}
+.approach-card{
+  background:var(--bg);padding:clamp(28px,4vw,44px) clamp(20px,3vw,32px);
+  position:relative;overflow:hidden;
+  transition:background var(--fast) var(--ease)
+}
+.approach-card:hover{background:var(--s3)}
+.approach-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  opacity:0;transition:opacity var(--fast) var(--ease)
+}
+.approach-card:nth-child(1)::before{background:var(--acid)}
+.approach-card:nth-child(2)::before{background:var(--ice)}
+.approach-card:nth-child(3)::before{background:var(--gold)}
+.approach-card:hover::before{opacity:1}
+.approach-num{
+  font-family:var(--mono);font-size:clamp(2.5rem,4vw,4rem);font-weight:700;
+  color:var(--border-hi);line-height:1;margin-bottom:20px;letter-spacing:-0.04em
+}
+.approach-title{
+  font-family:var(--display);font-size:var(--txl);font-weight:700;
+  letter-spacing:-0.01em;margin-bottom:10px
+}
+.approach-card:nth-child(1) .approach-title{color:var(--acid)}
+.approach-card:nth-child(2) .approach-title{color:var(--ice)}
+.approach-card:nth-child(3) .approach-title{color:var(--gold)}
+.approach-desc{font-size:var(--tsm);color:var(--text-2);line-height:1.7}
+
+/* ══════════════════════════════════════════
+   STACK — 8 tools
+══════════════════════════════════════════ */
+.stack-section{background:var(--bg);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.stack-grid{
+  display:grid;grid-template-columns:repeat(2,1fr);
+  gap:1px;background:var(--border);margin-top:56px
+}
+.stack-card{
+  background:var(--bg);
+  padding:clamp(26px,3.5vw,40px) clamp(22px,3vw,36px);
+  display:grid;grid-template-columns:48px 1fr;gap:20px;align-items:start;
+  transition:background var(--fast) var(--ease);position:relative;overflow:hidden
+}
+.stack-card::after{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 50% 60% at 0% 50%,var(--acid-soft),transparent);
+  opacity:0;transition:opacity var(--fast) var(--ease)
+}
+.stack-card:hover{background:var(--s2)}
+.stack-card:hover::after{opacity:1}
+.stack-icon{
+  width:48px;height:48px;border-radius:var(--r2);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.3rem;flex-shrink:0;position:relative;z-index:1;
+  border:1px solid var(--border)
+}
+.stack-content{position:relative;z-index:1}
+.stack-name{
+  font-family:var(--display);font-size:var(--tlg);font-weight:700;
+  letter-spacing:-0.01em;margin-bottom:5px
+}
+.stack-tag{
+  font-family:var(--mono);font-size:var(--t2xs);font-weight:600;
+  letter-spacing:0.1em;text-transform:uppercase;margin-bottom:10px;display:block
+}
+.stack-desc{font-size:var(--tsm);color:var(--text-2);line-height:1.65;margin-bottom:10px}
+.stack-gh{
+  display:inline-flex;align-items:center;gap:5px;
+  font-family:var(--mono);font-size:var(--t2xs);font-weight:600;
+  letter-spacing:0.06em;text-transform:uppercase;color:var(--text-4);
+  transition:color var(--fast) var(--ease)
+}
+.stack-gh:hover{color:var(--acid)}
+
+/* color variants for icons */
+.ic-red  {background:rgba(229,0,10,0.07);  color:var(--acid)}
+.ic-ice  {background:rgba(0,200,255,0.07); color:var(--ice)}
+.ic-gold {background:rgba(245,166,35,0.07);color:var(--gold)}
+.ic-pur  {background:rgba(168,85,247,0.07);color:#A855F7}
+.ic-grn  {background:rgba(34,197,94,0.07); color:#22C55E}
+.ic-wht  {background:rgba(240,237,232,0.07);color:var(--text-2)}
+.ic-sky  {background:rgba(56,189,248,0.07);color:#38BDF8}
+.ic-org  {background:rgba(251,146,60,0.07);color:#FB923C}
+
+/* ══════════════════════════════════════════
+   SECURITY LAYERS — visual stack diagram
+══════════════════════════════════════════ */
+.layers-section{background:var(--bg);border-top:1px solid var(--border)}
+.layers-list{margin-top:52px;display:flex;flex-direction:column;gap:1px}
+.layer-row{
+  display:grid;grid-template-columns:60px 1fr auto;
+  align-items:center;gap:24px;
+  background:var(--bg);border:1px solid var(--border);
+  border-radius:var(--r2);padding:clamp(14px,2vw,20px) clamp(16px,2.5vw,28px);
+  transition:all var(--fast) var(--ease);position:relative;overflow:hidden
+}
+.layer-row::before{
+  content:'';position:absolute;left:0;top:0;bottom:0;width:3px;
+  background:var(--acid);opacity:0;transition:opacity var(--fast) var(--ease)
+}
+.layer-row:hover{background:var(--s2);border-color:var(--border-hi)}
+.layer-row:hover::before{opacity:1}
+.layer-num{
+  font-family:var(--mono);font-size:var(--t2xs);font-weight:700;
+  color:var(--acid);letter-spacing:0.08em;text-align:center
+}
+.layer-body{}
+.layer-name{
+  font-family:var(--grotesk);font-size:var(--tmd);font-weight:700;
+  margin-bottom:3px
+}
+.layer-desc{font-size:var(--tsm);color:var(--text-2);line-height:1.5}
+.layer-badge{
+  font-family:var(--mono);font-size:var(--t2xs);font-weight:600;
+  letter-spacing:0.07em;text-transform:uppercase;
+  padding:5px 10px;border-radius:var(--r1);white-space:nowrap;flex-shrink:0
+}
+.lb-vpn  {background:rgba(229,0,10,0.08);  color:var(--acid);  border:1px solid rgba(229,0,10,0.2)}
+.lb-fs   {background:rgba(0,200,255,0.07); color:var(--ice);   border:1px solid rgba(0,200,255,0.18)}
+.lb-fw   {background:rgba(245,166,35,0.07);color:var(--gold);  border:1px solid rgba(245,166,35,0.18)}
+.lb-pm   {background:rgba(168,85,247,0.07);color:#A855F7;      border:1px solid rgba(168,85,247,0.18)}
+.lb-msg  {background:rgba(34,197,94,0.07); color:#22C55E;      border:1px solid rgba(34,197,94,0.18)}
+.lb-2fa  {background:rgba(251,146,60,0.07);color:#FB923C;      border:1px solid rgba(251,146,60,0.18)}
+.lb-sync {background:rgba(56,189,248,0.07);color:#38BDF8;      border:1px solid rgba(56,189,248,0.18)}
+.lb-upd  {background:rgba(240,237,232,0.07);color:var(--text-3);border:1px solid rgba(240,237,232,0.1)}
+
+/* ══════════════════════════════════════════
+   WHO IS IT FOR
+══════════════════════════════════════════ */
+.for-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:18px;margin-top:48px
+}
+.for-card{
+  background:var(--s1);border:1px solid var(--border);border-radius:var(--r2);
+  padding:clamp(20px,3vw,32px);transition:all var(--fast) var(--ease)
+}
+.for-card:hover{border-color:var(--acid);background:var(--s2)}
+.for-icon{font-size:1.8rem;margin-bottom:16px}
+.for-title{
+  font-family:var(--display);font-size:var(--txl);font-weight:700;
+  letter-spacing:-0.01em;margin-bottom:8px
+}
+.for-desc{font-size:var(--tsm);color:var(--text-2);line-height:1.65}
+
+/* ══════════════════════════════════════════
+   TEAM
+══════════════════════════════════════════ */
+.team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.team-card{
+  background:var(--s1);border:1px solid var(--border);border-radius:var(--r2);
+  padding:clamp(22px,3vw,34px);position:relative;overflow:hidden;
+  transition:border-color var(--fast) var(--ease),box-shadow var(--fast) var(--ease)
+}
+.team-card:hover{border-color:rgba(229,0,10,0.3);box-shadow:0 0 32px var(--acid-soft)}
+.team-av{
+  width:52px;height:52px;border-radius:var(--r1);
+  background:var(--s3);display:flex;align-items:center;justify-content:center;
+  font-family:var(--mono);font-size:var(--tlg);font-weight:700;color:var(--acid);
+  border:1px solid rgba(229,0,10,0.18);margin-bottom:20px
+}
+.team-name  {font-family:var(--display);font-size:var(--tlg);font-weight:600;margin-bottom:3px}
+.team-handle{
+  font-family:var(--mono);font-size:var(--t2xs);color:var(--acid);
+  margin-bottom:13px;letter-spacing:0.06em
+}
+.team-handle a{color:inherit;transition:opacity var(--fast) var(--ease)}
+.team-handle a:hover{opacity:0.7}
+.team-role  {font-size:var(--tsm);color:var(--text-2);line-height:1.62;margin-bottom:18px}
+.team-tags  {display:flex;flex-wrap:wrap;gap:6px}
+.tag{
+  font-family:var(--mono);font-size:var(--t2xs);font-weight:600;
+  letter-spacing:0.05em;text-transform:uppercase;padding:4px 9px;
+  border-radius:var(--r1);border:1px solid var(--border);color:var(--text-3)
+}
+.tag.r{border-color:rgba(229,0,10,0.2);color:rgba(229,0,10,0.6)}
+.tag.b{border-color:rgba(34,197,94,0.2);color:rgba(34,197,94,0.7)}
+
+/* ══════════════════════════════════════════
+   CTA BAND
+══════════════════════════════════════════ */
+.cta-band{
+  background:var(--bg);border-top:1px solid var(--border);
+  padding:clamp(68px,9vw,110px) 0;text-align:center;position:relative;overflow:hidden
+}
+.cta-band::before{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(ellipse 60% 80% at 50% 110%,rgba(229,0,10,0.06),transparent)
+}
+.cta-title{
+  font-family:var(--display);font-size:var(--t4xl);font-weight:700;
+  letter-spacing:-0.02em;line-height:1.05;margin-bottom:14px;position:relative
+}
+.cta-sub{font-size:var(--tmd);color:var(--text-2);margin-bottom:34px;max-width:460px;margin-left:auto;margin-right:auto}
+.cta-btns{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap}
+
+/* ══════════════════════════════════════════
+   FOOTER
+══════════════════════════════════════════ */
+.footer{border-top:1px solid var(--border);padding:clamp(28px,4vw,44px) 0}
+.footer-inner{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.footer-brand{font-family:var(--mono);font-size:var(--t2xs);font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-3)}
+.footer-brand span{color:var(--acid)}
+.footer-links{display:flex;align-items:center;gap:clamp(10px,2vw,20px);flex-wrap:wrap}
+.footer-links a{font-size:var(--tsm);color:var(--text-3);transition:color var(--fast) var(--ease)}
+.footer-links a:hover{color:var(--acid)}
+.footer-copy{margin-top:20px;padding-top:20px;border-top:1px solid var(--border);font-size:var(--tsm);color:var(--text-4);text-align:center}
+
+/* ══════════════════════════════════════════
+   MODAL
+══════════════════════════════════════════ */
+.modal-backdrop{
+  position:fixed;inset:0;z-index:1000;
+  background:rgba(0,0,0,0.92);backdrop-filter:blur(14px);
+  display:flex;align-items:center;justify-content:center;padding:16px;
+  opacity:0;pointer-events:none;transition:opacity var(--mid) var(--ease)
+}
+.modal-backdrop.open{opacity:1;pointer-events:all}
+.modal{
+  background:var(--s1);border:1px solid var(--border-hi);
+  border-radius:var(--r3);width:100%;max-width:600px;max-height:94dvh;overflow-y:auto;
+  transform:translateY(16px) scale(0.97);transition:transform var(--mid) var(--ease)
+}
+.modal-backdrop.open .modal{transform:none}
+.modal-head{
+  padding:clamp(20px,3vw,30px) clamp(20px,3vw,36px);border-bottom:1px solid var(--border);
+  display:flex;align-items:flex-start;justify-content:space-between;gap:16px
+}
+.modal-sup{font-family:var(--mono);font-size:var(--t2xs);font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--acid);margin-bottom:5px}
+.modal-title{font-family:var(--display);font-size:var(--t2xl);font-weight:700;letter-spacing:-0.02em}
+.modal-close{
+  width:34px;height:34px;flex-shrink:0;display:flex;align-items:center;justify-content:center;
+  border:1px solid var(--border);border-radius:var(--r1);color:var(--text-3);
+  transition:all var(--fast) var(--ease);cursor:pointer;background:none;font-size:var(--tsm)
+}
+.modal-close:hover{border-color:var(--acid);color:var(--acid)}
+.modal-body{padding:clamp(20px,3vw,32px) clamp(20px,3vw,36px) clamp(24px,3vw,38px)}
+
+.form-group{margin-bottom:18px}
+.form-label{
+  font-family:var(--grotesk);font-size:var(--t2xs);font-weight:700;
+  letter-spacing:0.07em;text-transform:uppercase;color:var(--text-3);
+  display:block;margin-bottom:7px
+}
+.form-input{
+  width:100%;background:var(--s2);border:1px solid var(--border-hi);
+  border-radius:var(--r1);padding:12px 15px;color:var(--text);
+  font-family:var(--grotesk);font-size:var(--tsm);
+  transition:border-color var(--fast) var(--ease);outline:none
+}
+.form-input:focus{border-color:var(--acid);box-shadow:0 0 0 2px rgba(229,0,10,0.1)}
+.form-input::placeholder{color:var(--text-4)}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.form-hint{font-size:var(--t2xs);color:var(--text-4);margin-top:6px;line-height:1.5}
+
+/* day picker */
+.day-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-top:8px}
+@media(max-width:500px){.day-grid{grid-template-columns:repeat(3,1fr)}}
+.day-btn{
+  display:flex;flex-direction:column;align-items:center;gap:2px;
+  padding:10px 6px;border:1px solid var(--border-hi);border-radius:var(--r1);
+  background:var(--s2);cursor:pointer;transition:all var(--fast) var(--ease)
+}
+.day-btn:hover{border-color:var(--acid);background:var(--acid-soft)}
+.day-btn.selected{border-color:var(--acid);background:var(--acid-soft);color:var(--acid)}
+.day-btn .dow{font-family:var(--mono);font-size:var(--t2xs);font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-4)}
+.day-btn.selected .dow{color:var(--acid)}
+.day-btn .dom{font-family:var(--display);font-size:var(--txl);font-weight:700;color:var(--text);line-height:1}
+.day-btn.selected .dom{color:var(--acid)}
+.day-btn .mon{font-family:var(--mono);font-size:var(--t2xs);color:var(--text-3)}
+
+.modal-steps{display:flex;gap:5px;margin-bottom:26px}
+.step-dot{flex:1;height:3px;border-radius:2px;background:var(--border);transition:background var(--mid) var(--ease)}
+.step-dot.active{background:var(--acid)}
+.step-dot.done{background:rgba(229,0,10,0.3)}
+
+.modal-footer{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:28px;padding-top:22px;border-top:1px solid var(--border)}
+
+.success-icon{width:64px;height:64px;border-radius:50%;background:rgba(229,0,10,0.07);border:1px solid rgba(229,0,10,0.22);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:1.9rem}
+
+/* ══════════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════════ */
+@media(max-width:900px){
+  .nav-links{display:none}
+  .nav-burger{display:flex}
+  .approach-grid{grid-template-columns:1fr}
+  .stack-grid{grid-template-columns:1fr}
+  .for-grid{grid-template-columns:1fr 1fr}
+  .team-grid{grid-template-columns:1fr 1fr}
+  .layer-row{grid-template-columns:40px 1fr auto}
+}
+@media(max-width:640px){
+  .for-grid{grid-template-columns:1fr}
+  .team-grid{grid-template-columns:1fr}
+  .form-row{grid-template-columns:1fr}
+  .layer-row{grid-template-columns:1fr;gap:10px}
+  .layer-num{display:none}
+  .layer-badge{align-self:flex-start}
+  .hero-sub .sep{display:none}
+  .stack-card{grid-template-columns:1fr}
+  .stack-icon{width:40px;height:40px;font-size:1.1rem}
+  .nav-right .btn-outline{display:none}
+}
+@media(hover:none){
+  .approach-card:hover::before,.stack-card:hover::after,.for-card:hover{all:unset}
+}
+  
+/* ── extended tool cards ── */
+.xtool-card{background:var(--bg);padding:clamp(22px,3vw,34px) clamp(18px,2.5vw,28px);transition:background var(--fast) var(--ease)}
+.xtool-card:hover{background:var(--s2)}
+.xtool-top{display:flex;align-items:flex-start;gap:14px;margin-bottom:12px}
+.xtool-icon{font-size:1.5rem;flex-shrink:0;margin-top:2px}
+.xtool-name{font-family:var(--display);font-size:var(--tlg);font-weight:700;letter-spacing:-0.01em;margin-bottom:3px}
+.xtool-cat{font-family:var(--mono);font-size:var(--t2xs);font-weight:600;letter-spacing:0.08em;text-transform:uppercase}
+.xtool-desc{font-size:var(--tsm);color:var(--text-2);line-height:1.65;margin-bottom:10px}
+/* pill cloud */
+.xtag{
+  font-family:var(--mono);font-size:var(--t2xs);font-weight:600;letter-spacing:0.06em;
+  padding:6px 13px;border-radius:var(--r1);
+  border:1px solid color-mix(in srgb,var(--xc) 30%,transparent);
+  color:var(--xc);background:color-mix(in srgb,var(--xc) 7%,transparent);
+  transition:all var(--fast) var(--ease)
+}
+.xtag:hover{background:color-mix(in srgb,var(--xc) 14%,transparent)}
+@media(max-width:900px){#xtool-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:640px){#xtool-grid{grid-template-columns:1fr}}
+@media(max-width:640px){#package-grid{grid-template-columns:1fr}}
+@media(max-width:640px){#package .wrap > div:first-of-type + div{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<canvas id="cv-matrix"></canvas>
+<canvas id="cv-radar"></canvas>
+
+<!-- ─── NAV ─── -->
+<nav class="nav" id="main-nav">
+  <a href="/" class="nav-logo">
+    <!-- Logo mark: stacked shield with M letterform -->
+    <svg class="nav-logo-mark" viewBox="0 0 28 28" fill="none" aria-label="megastack.sh">
+      <rect width="28" height="28" rx="2" fill="rgba(229,0,10,0.08)" stroke="rgba(229,0,10,0.25)" stroke-width="1"/>
+      <path d="M14 4L5 8V14C5 18.8 9 23.2 14 24.5C19 23.2 23 18.8 23 14V8L14 4Z" stroke="#E5000A" stroke-width="1.4" fill="none"/>
+      <path d="M9 10L9 18M9 10L14 14L19 10M19 10L19 18" stroke="#E5000A" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <span class="nav-logo-text">MEGASTACK<span class="dot">.SH</span></span>
+  </a>
+  <nav class="nav-links" aria-label="Primary">
+    <a href="#stack">Stack</a>
+    <a href="#approach">How it works</a>
+    <a href="#for">Who's it for</a>
+    <a href="#toolbox">Toolbox</a>
+    <a href="#package">Package</a>
+    <a href="#team">Team</a>
+    <a href="#faq">FAQ</a>
+  </nav>
+  <div class="nav-right">
+    <a href="https://github.com/megastack-sh" target="_blank" rel="noopener" class="btn btn-outline">GitHub</a>
+    <button class="btn btn-acid" onclick="openModal()">Book a call</button>
+    <button class="nav-burger" id="nav-burger" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="nav-mobile" id="nav-mobile" aria-hidden="true">
+  <a href="#stack" onclick="closeMobile()">Stack</a>
+  <a href="#approach" onclick="closeMobile()">How it works</a>
+  <a href="#for" onclick="closeMobile()">Who's it for</a>
+  <a href="#toolbox" onclick="closeMobile()">Toolbox</a>
+  <a href="#package" onclick="closeMobile()">Package</a>
+  <a href="#team" onclick="closeMobile()">Team</a>
+  <a href="#faq" onclick="closeMobile()">FAQ</a>
+  <div class="nav-mobile-btns">
+    <a href="https://github.com/megastack-sh" target="_blank" rel="noopener" class="btn btn-outline">GitHub</a>
+    <button class="btn btn-acid" onclick="openModal();closeMobile()">Book a call</button>
+  </div>
+</div>
+
+<!-- ─── HERO ─── -->
+<section class="hero" id="home">
+  <div class="hero-grid"></div>
+  <div class="hero-scan"></div>
+  <div class="hero-content">
+    <div class="badge"><div class="badge-dot"></div>Open Source · Self-Hosted · End-to-End</div>
+    <h1 class="hero-word" data-text="MEGASTACK.SH">MEGA<span style="color:var(--text-3)">STACK</span><span class="dot">.</span>SH</h1>
+    <p class="hero-sub"><span class="sep">──────</span>Security infrastructure, no black boxes<span class="sep">──────</span></p>
+    <p class="hero-hl">
+      <span class="r">Your servers.</span> Your keys.<br>
+      Your comms. <span class="b">Your stack.</span>
+    </p>
+    <p class="hero-desc">
+      We deploy a complete, battle-hardened open-source security stack on infrastructure you own.
+      VPN, encrypted storage, secure messaging, 2FA, sync and auto-updates — configured together, working as one.
+    </p>
+    <div class="hero-ctas">
+      <button class="btn btn-acid btn-xl" onclick="openModal()">Book a secure call →</button>
+      <a href="#stack" class="btn btn-outline btn-lg">See the stack ↓</a>
+    </div>
+    <div class="hero-pills">
+      <div class="pill"><span class="pv">9</span> open-source tools</div>
+      <div class="pill"><span class="pa">0</span> cloud dependencies</div>
+      <div class="pill"><span class="pv">100%</span> auditable</div>
+      <div class="pill"><span class="pa">∞</span> yours</div>
+    </div>
+  </div>
+  <div class="scroll-hint"><div class="scroll-line"></div>Scroll</div>
+</section>
+
+<!-- ─── STRIPE ─── -->
+<div class="stripe">
+  <p><span>⚡</span>Everything runs on your servers — we never touch your data after deployment<span>⚡</span></p>
+</div>
+
+<!-- ─── APPROACH ─── -->
+<section class="section" id="approach" style="border-top:1px solid var(--border)">
+  <div class="wrap">
+    <div class="lbl">How it works</div>
+    <h2 class="section-title">Three steps.<br><span style="color:var(--acid)">Total sovereignty.</span></h2>
+    <p class="section-body" style="max-width:500px">No SaaS. No vendor lock-in. No trust required — just code you can read and infrastructure you control.</p>
+    <div class="approach-grid">
+      <div class="approach-card fade-in">
+        <div class="approach-num">01</div>
+        <div class="approach-title">Assess</div>
+        <p class="approach-desc">We spend 60 minutes on a secure call mapping your threat model, your existing infrastructure and your team's operational habits. No two stacks are identical.</p>
+      </div>
+      <div class="approach-card fade-in">
+        <div class="approach-num">02</div>
+        <div class="approach-title">Deploy</div>
+        <p class="approach-desc">We provision every component on servers you already own or control. Hardened defaults, firewall policies, integration between layers — fully automated, fully open source.</p>
+      </div>
+      <div class="approach-card fade-in">
+        <div class="approach-num">03</div>
+        <div class="approach-title">Handoff</div>
+        <p class="approach-desc">You get full documentation, admin access and topgrade running on every device. We leave — your stack keeps running without us. Optionally, retain us for quarterly audits.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── STACK ─── -->
+<section class="section stack-section" id="stack">
+  <div class="wrap-w">
+    <div style="text-align:center;padding-bottom:8px">
+      <div class="lbl center">The Stack</div>
+      <h2 class="section-title">Nine tools. One coherent fortress.</h2>
+      <p class="section-body" style="max-width:560px;margin:0 auto">
+        Every component is open source, auditable and connected to the others.
+        No black boxes. No subscription traps. No calling home.
+      </p>
+    </div>
+    <div class="stack-grid">
+
+      <!-- 1. WireGuard -->
+      <div class="stack-card fade-in">
+        <div class="stack-icon ic-red">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 2L3 6V11C3 15.4 6.6 19.6 11 21C15.4 19.6 19 15.4 19 11V6L11 2Z" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M8 11L10 13L14 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="stack-content">
+          <div class="stack-name">WireGuard</div>
+          <span class="stack-tag" style="color:var(--acid)">Layer 1 — VPN Backbone</span>
+          <p class="stack-desc">The backbone of your entire stack. All other services tunnel through it. Modern cryptography, kernel-level performance, and a codebase small enough to actually audit. Every device, every server, one mesh.</p>
+          <a href="https://github.com/WireGuard/wireguard-linux" target="_blank" rel="noopener" class="stack-gh">
+            <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+            WireGuard/wireguard-linux
+          </a>
+        </div>
+      </div>
+
+      <!-- 2. Hoodik -->
+      <div class="stack-card fade-in">
+        <div class="stack-icon ic-ice">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="3" y="5" width="16" height="13" rx="2" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M7 5V4C7 2.9 7.9 2 9 2H13C14.1 2 15 2.9 15 4V5" stroke="currentColor" stroke-width="1.5"/><circle cx="11" cy="12" r="2" stroke="currentColor" stroke-width="1.3" fill="none"/></svg>
+        </div>
+        <div class="stack-content">
+          <div class="stack-name">Hoodik</div>
+          <span class="stack-tag" style="color:var(--ice)">Layer 2 — Encrypted File Hosting</span>
+          <p class="stack-desc">End-to-end encrypted file storage on your own server. Store SSH keys, certificates, credentials and sensitive documents. Accessible only over WireGuard — invisible to the outside world.</p>
+          <a href="https://github.com/hudikhq/hoodik" target="_blank" rel="noopener" class="stack-gh">
+            <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+            hudikhq/hoodik
+          </a>
+        </div>
+      </div>
+
+      <!-- 3. Firewall -->
+      <div class="stack-card fade-in">
+        <div class="stack-icon ic-gold">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="2" y="4" width="18" height="3" rx="1" stroke="currentColor" stroke-width="1.4" fill="none"/><rect x="2" y="9.5" width="18" height="3" rx="1" stroke="currentColor" stroke-width="1.4" fill="none"/><rect x="2" y="15" width="18" height="3" rx="1" stroke="currentColor" stroke-width="1.4" fill="none"/><circle cx="6" cy="5.5" r="1" fill="currentColor"/><circle cx="6" cy="11" r="1" fill="currentColor"/><circle cx="6" cy="16.5" r="1" fill="currentColor"/></svg>
+        </div>
+        <div class="stack-content">
+          <div class="stack-name">Hardened Firewall</div>
+          <span class="stack-tag" style="color:var(--gold)">Layer 3 — Network Policy</span>
+          <p class="stack-desc">Custom nftables / iptables policies that ensure Hoodik, Matrix and all internal services are unreachable unless you're inside the WireGuard mesh. Deny-all defaults. Principle of least privilege, applied.</p>
+          <a href="https://github.com/megastack-sh/firewall-templates" target="_blank" rel="noopener" class="stack-gh">
+            <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+            megastack-sh/firewall-templates
+          </a>
+        </div>
+      </div>
+
+      <!-- 4. Notion / PM -->
+      <div class="stack-card fade-in">
+        <div class="stack-icon ic-pur">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="3" y="3" width="16" height="16" rx="2" stroke="currentColor" stroke-width="1.4" fill="none"/><path d="M7 7H15M7 11H13M7 15H11" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+        </div>
+        <div class="stack-content">
+          <div class="stack-name">Access Management Templates</div>
+          <span class="stack-tag" style="color:#A855F7">Layer 4 — Secure Operations</span>
+          <p class="stack-desc">Production-ready Notion templates (and Plane.so equivalents) for tracking access grants, SSH key rotation, incident logs and VPN peer lists. All references point inside your WireGuard + Hoodik environment.</p>
+          <a href="https://github.com/megastack-sh/access-templates" target="_blank" rel="noopener" class="stack-gh">
+            <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+            megastack-sh/access-templates
+          </a>
+        </div>
+      </div>
+
+      <!-- 5. Matrix + Element -->
+      <div class="stack-card fade-in">
+        <div class="stack-icon ic-grn">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="3" y="4" width="16" height="12" rx="2" stroke="currentColor" stroke-width="1.4" fill="none"/><path d="M7 18L11 14L15 18" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M7 9H15M7 12H11" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+        </div>
+        <div class="stack-content">
+          <div class="stack-name">Matrix + Element</div>
+          <span class="stack-tag" style="color:#22C55E">Layer 5 — Secure Communications</span>
+          <p class="stack-desc">Self-hosted Matrix.org homeserver, federated only within your mesh. Use Element.io as your client for end-to-end encrypted team messaging, voice and file sharing. Zero metadata leakage to third-party servers.</p>
+          <a href="https://github.com/element-hq/synapse" target="_blank" rel="noopener" class="stack-gh">
+            <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+            element-hq/synapse
+          </a>
+        </div>
+      </div>
+
+      <!-- 6. 2FA -->
+      <div class="stack-card fade-in">
+        <div class="stack-icon ic-org">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="1.4" fill="none"/><path d="M11 7V11L14 13" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><circle cx="11" cy="11" r="1.5" fill="currentColor"/></svg>
+        </div>
+        <div class="stack-content">
+          <div class="stack-name">2FA Token Server</div>
+          <span class="stack-tag" style="color:#FB923C">Layer 6 — Authentication</span>
+          <p class="stack-desc">A self-hosted TOTP server (Authelia or Lldap + oath-toolkit) so your 2FA tokens never flow through Google Authenticator or Authy. Hardware key support (YubiKey / FIDO2) optional. Runs entirely inside your mesh.</p>
+          <a href="https://github.com/authelia/authelia" target="_blank" rel="noopener" class="stack-gh">
+            <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+            authelia/authelia
+          </a>
+        </div>
+      </div>
+
+      <!-- 7. Resilio -->
+      <div class="stack-card fade-in">
+        <div class="stack-icon ic-sky">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="4" stroke="currentColor" stroke-width="1.4" fill="none"/><path d="M11 4V2M11 20V18M4 11H2M20 11H18" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M6.3 6.3L4.9 4.9M17.1 17.1L15.7 15.7M15.7 6.3L17.1 4.9M4.9 17.1L6.3 15.7" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+        </div>
+        <div class="stack-content">
+          <div class="stack-name">Resilio Sync</div>
+          <span class="stack-tag" style="color:#38BDF8">Layer 7 — P2P File Sync</span>
+          <p class="stack-desc">BitTorrent-based file sync across all your devices and servers. No central server, no third-party storage. Files replicate peer-to-peer, encrypted in transit. Works seamlessly through the WireGuard tunnel.</p>
+          <a href="https://github.com/megastack-sh/resilio-config" target="_blank" rel="noopener" class="stack-gh">
+            <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+            megastack-sh/resilio-config
+          </a>
+        </div>
+      </div>
+
+      <!-- 8. topgrade -->
+      <div class="stack-card fade-in">
+        <div class="stack-icon ic-wht">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 3V19M11 3L7 7M11 3L15 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 15L3 17M17 15L19 17" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><rect x="4" y="17" width="14" height="2" rx="1" fill="currentColor" opacity="0.3"/></svg>
+        </div>
+        <div class="stack-content">
+          <div class="stack-name">topgrade</div>
+          <span class="stack-tag" style="color:var(--text-2)">Layer 8 — Universal Updates</span>
+          <p class="stack-desc">A single command that updates everything — Homebrew, apt, pip, cargo, snap, firmware, App Store apps — on every Mac, Windows machine and Linux server in your fleet. Custom fork with your stack's packages pre-configured.</p>
+          <a href="https://github.com/paulfxyz/topgrade" target="_blank" rel="noopener" class="stack-gh">
+            <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+            paulfxyz/topgrade
+          </a>
+        </div>
+      </div>
+
+      <!-- 9. Wasabi Wallet -->
+      <div class="stack-card fade-in">
+        <div class="stack-icon" style="background:rgba(245,166,35,0.08);color:#F5A623;border:1px solid var(--border)">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="1.4" fill="none"/><path d="M8 9C8 7.9 9.3 7 11 7C12.7 7 14 7.9 14 9C14 10.5 12.5 11 11 11.5C9.5 12 8 12.5 8 14" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><circle cx="11" cy="15.5" r="0.75" fill="currentColor"/></svg>
+        </div>
+        <div class="stack-content">
+          <div class="stack-name">Wasabi Wallet</div>
+          <span class="stack-tag" style="color:#F5A623">Layer 9 — Bitcoin Privacy Reserve</span>
+          <p class="stack-desc">Custom Wasabi Wallet setup for your Bitcoin reserve. Built-in CoinJoin for transaction privacy, Tor routing by default, and full-node support via your own Bitcoin Core. Non-custodial, open source — your keys never leave your machine, your transactions don't fingerprint you.</p>
+          <a href="https://github.com/WalletWasabi/WalletWasabi" target="_blank" rel="noopener" class="stack-gh">
+            <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+            WalletWasabi/WalletWasabi
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── EXTENDED TOOLBOX ─── -->
+<section class="section" id="toolbox" style="border-top:1px solid var(--border)">
+  <div class="wrap-w">
+    <div style="text-align:center;margin-bottom:8px">
+      <div class="lbl center">Extended Toolbox</div>
+      <h2 class="section-title">Beyond the core stack.</h2>
+      <p class="section-body" style="max-width:580px;margin:0 auto">
+        Depending on your threat model we layer in additional open-source tools for vulnerability scanning, runtime monitoring, code analysis and intrusion detection. Every engagement is scoped — you only get what you need.
+      </p>
+    </div>
+
+    <!-- Tool pill cloud -->
+    <div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:40px 0 52px">
+      <span class="xtag" style="--xc:#E5000A">Nmap</span>
+      <span class="xtag" style="--xc:#22C55E">OpenVAS / Greenbone</span>
+      <span class="xtag" style="--xc:#00C8FF">Trivy</span>
+      <span class="xtag" style="--xc:#F5A623">Falco</span>
+      <span class="xtag" style="--xc:#A855F7">Semgrep</span>
+      <span class="xtag" style="--xc:#FB923C">Gitleaks</span>
+      <span class="xtag" style="--xc:#38BDF8">OWASP ZAP</span>
+      <span class="xtag" style="--xc:#22C55E">Wazuh</span>
+      <span class="xtag" style="--xc:#E5000A">Snort</span>
+      <span class="xtag" style="--xc:#00C8FF">Suricata</span>
+      <span class="xtag" style="--xc:#F5A623">ClamAV</span>
+      <span class="xtag" style="--xc:#A855F7">Fail2Ban</span>
+      <span class="xtag" style="--xc:#FB923C">Lynis</span>
+      <span class="xtag" style="--xc:#38BDF8">OSSEC</span>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border)" id="xtool-grid">
+
+      <div class="xtool-card fade-in">
+        <div class="xtool-top"><span class="xtool-icon" style="color:#22C55E">🔍</span><div><div class="xtool-name">OpenVAS / Greenbone</div><div class="xtool-cat" style="color:#22C55E">Vulnerability Scanning</div></div></div>
+        <p class="xtool-desc">Comprehensive vulnerability scanning with daily-updated checks across broad protocol ranges and compliance frameworks. Authenticated scanning catches misconfigurations before exploitation. Integrates with ticketing systems for streamlined remediation.</p>
+        <a href="https://github.com/greenbone/openvas-scanner" target="_blank" rel="noopener" class="stack-gh">
+          <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+          greenbone/openvas-scanner
+        </a>
+      </div>
+
+      <div class="xtool-card fade-in">
+        <div class="xtool-top"><span class="xtool-icon" style="color:#00C8FF">📦</span><div><div class="xtool-name">Trivy</div><div class="xtool-cat" style="color:#00C8FF">Container &amp; Cloud Security</div></div></div>
+        <p class="xtool-desc">Versatile scanner covering containers, Kubernetes, IaC templates and cloud configurations in a single tool. Identifies vulnerabilities and misconfigurations before they reach production — integrated directly into CI/CD pipelines.</p>
+        <a href="https://github.com/aquasecurity/trivy" target="_blank" rel="noopener" class="stack-gh">
+          <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+          aquasecurity/trivy
+        </a>
+      </div>
+
+      <div class="xtool-card fade-in">
+        <div class="xtool-top"><span class="xtool-icon" style="color:#F5A623">⚡</span><div><div class="xtool-name">Falco</div><div class="xtool-cat" style="color:#F5A623">Runtime Security</div></div></div>
+        <p class="xtool-desc">Taps directly into Linux kernel events to detect anomalies in real time — unexpected network connections, container privilege escalations, suspicious file access. Catches what static scanning misses: threats already inside the perimeter.</p>
+        <a href="https://github.com/falcosecurity/falco" target="_blank" rel="noopener" class="stack-gh">
+          <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+          falcosecurity/falco
+        </a>
+      </div>
+
+      <div class="xtool-card fade-in">
+        <div class="xtool-top"><span class="xtool-icon" style="color:#A855F7">🧬</span><div><div class="xtool-name">Semgrep</div><div class="xtool-cat" style="color:#A855F7">Static Code Analysis</div></div></div>
+        <p class="xtool-desc">Rapid multi-language static analysis with custom rule support to enforce organisation-specific security patterns. Runs in CI — catches insecure coding patterns, injection vectors and dangerous function calls before any code ships.</p>
+        <a href="https://github.com/semgrep/semgrep" target="_blank" rel="noopener" class="stack-gh">
+          <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+          semgrep/semgrep
+        </a>
+      </div>
+
+      <div class="xtool-card fade-in">
+        <div class="xtool-top"><span class="xtool-icon" style="color:#FB923C">🔑</span><div><div class="xtool-name">Gitleaks</div><div class="xtool-cat" style="color:#FB923C">Secret Detection</div></div></div>
+        <p class="xtool-desc">Scans your entire git history for exposed API keys, credentials, tokens and secrets before they reach production — or finds the ones already there. Hooks into pre-commit and CI. The easiest breach vector, closed.</p>
+        <a href="https://github.com/gitleaks/gitleaks" target="_blank" rel="noopener" class="stack-gh">
+          <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+          gitleaks/gitleaks
+        </a>
+      </div>
+
+      <div class="xtool-card fade-in">
+        <div class="xtool-top"><span class="xtool-icon" style="color:#38BDF8">🕸️</span><div><div class="xtool-name">OWASP ZAP</div><div class="xtool-cat" style="color:#38BDF8">Web App Security Testing</div></div></div>
+        <p class="xtool-desc">The most mature open-source web application security scanner. Automated detection of SQL injection, XSS, broken authentication and dozens more OWASP Top 10 vulnerabilities. Active and passive scanning, with CI integration.</p>
+        <a href="https://github.com/zaproxy/zaproxy" target="_blank" rel="noopener" class="stack-gh">
+          <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+          zaproxy/zaproxy
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── LAYER DIAGRAM ─── -->
+<section class="section layers-section" id="layers">
+  <div class="wrap">
+    <div class="lbl ice">Architecture</div>
+    <h2 class="section-title">Layers that protect each other.</h2>
+    <p class="section-body" style="max-width:540px">Each tool is locked behind the one before it. Breach one layer and you still face the next. This is defence in depth, not a feature list.</p>
+    <div class="layers-list">
+      <div class="layer-row fade-in"><div class="layer-num">L1</div><div class="layer-body"><div class="layer-name">WireGuard VPN Mesh</div><div class="layer-desc">All traffic encrypted in transit. Devices off-mesh cannot reach any internal service.</div></div><span class="layer-badge lb-vpn">VPN</span></div>
+      <div class="layer-row fade-in"><div class="layer-num">L2</div><div class="layer-body"><div class="layer-name">Hoodik Encrypted Storage</div><div class="layer-desc">SSH keys, secrets, certs — stored E2E encrypted, served only inside the WireGuard tunnel.</div></div><span class="layer-badge lb-fs">File Storage</span></div>
+      <div class="layer-row fade-in"><div class="layer-num">L3</div><div class="layer-body"><div class="layer-name">Hardened Firewall Policies</div><div class="layer-desc">Deny-all rules with explicit allows only for peers inside the VPN mesh.</div></div><span class="layer-badge lb-fw">Firewall</span></div>
+      <div class="layer-row fade-in"><div class="layer-num">L4</div><div class="layer-body"><div class="layer-name">Access Management Templates</div><div class="layer-desc">Operational playbooks for key rotation, peer onboarding and incident response.</div></div><span class="layer-badge lb-pm">Ops</span></div>
+      <div class="layer-row fade-in"><div class="layer-num">L5</div><div class="layer-body"><div class="layer-name">Matrix + Element Messaging</div><div class="layer-desc">Self-hosted homeserver, federated only within your mesh. E2E encrypted comms, zero third-party metadata.</div></div><span class="layer-badge lb-msg">Comms</span></div>
+      <div class="layer-row fade-in"><div class="layer-num">L6</div><div class="layer-body"><div class="layer-name">Self-Hosted 2FA Server</div><div class="layer-desc">TOTP generation on your infrastructure. Your codes, your keys, your hardware tokens.</div></div><span class="layer-badge lb-2fa">2FA</span></div>
+      <div class="layer-row fade-in"><div class="layer-num">L7</div><div class="layer-body"><div class="layer-name">Resilio P2P File Sync</div><div class="layer-desc">BitTorrent-based sync across devices — no cloud, no central node, no data leaving your perimeter.</div></div><span class="layer-badge lb-sync">Sync</span></div>
+      <div class="layer-row fade-in"><div class="layer-num">L8</div><div class="layer-body"><div class="layer-name">topgrade Fleet Updates</div><div class="layer-desc">Every device in your fleet stays patched. One command, all platforms — Windows, Mac, Linux.</div></div><span class="layer-badge lb-upd">Updates</span></div>
+      <div class="layer-row fade-in"><div class="layer-num">L9</div><div class="layer-body"><div class="layer-name">Wasabi Wallet — Bitcoin Reserve</div><div class="layer-desc">CoinJoin privacy, Tor routing and full-node support. Your Bitcoin, your keys, untrackable on-chain.</div></div><span class="layer-badge" style="background:rgba(245,166,35,0.07);color:#F5A623;border:1px solid rgba(245,166,35,0.18)">BTC</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── WHO ─── -->
+<section class="section" id="for" style="border-top:1px solid var(--border)">
+  <div class="wrap">
+    <div style="text-align:center;margin-bottom:8px">
+      <div class="lbl center">Who it's for</div>
+      <h2 class="section-title">Not a consumer product.</h2>
+      <p class="section-body" style="max-width:480px;margin:0 auto">Built for operators, executives and builders who understand that trust is a liability.</p>
+    </div>
+    <div class="for-grid">
+      <div class="for-card fade-in"><div class="for-icon">🏢</div><div class="for-title">Corporations</div><p class="for-desc">Protect internal tooling, remote access and executive comms from supply-chain attacks, insider threats and state-level surveillance. No vendor in the loop.</p></div>
+      <div class="for-card fade-in"><div class="for-icon">🏛️</div><div class="for-title">Organizations &amp; NGOs</div><p class="for-desc">Journalists, activists and legal teams operating in high-risk environments. Your comms and documents stay inside infrastructure you physically control.</p></div>
+      <div class="for-card fade-in"><div class="for-icon">👤</div><div class="for-title">High-Value Individuals</div><p class="for-desc">Founders, researchers, investors and anyone whose personal or professional data is a target. Own your entire digital perimeter end to end.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── TEAM ─── -->
+<section class="section" id="team" style="border-top:1px solid var(--border)">
+  <div class="wrap">
+    <div style="text-align:center;margin-bottom:52px">
+      <div class="lbl center">Team</div>
+      <h2 class="section-title">Three hackers.<br><span style="color:var(--acid)">One former black-hat.</span></h2>
+      <p class="section-body" style="max-width:500px;margin:0 auto">We've been on both sides. That's why we know exactly what a real attacker goes after — and how to close those doors.</p>
+    </div>
+
+    <!-- Founder -->
+    <div style="margin-bottom:18px">
+      <div style="font-family:var(--mono);font-size:var(--t2xs);font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--acid);margin-bottom:14px;display:flex;align-items:center;gap:10px"><span style="display:block;width:16px;height:1px;background:var(--acid)"></span>Founder & CEO</div>
+      <div style="max-width:420px">
+        <article class="team-card fade-in" style="border-color:rgba(229,0,10,0.2);background:var(--s1)">
+          <div style="display:flex;align-items:center;gap:6px;margin-bottom:16px">
+            <div class="team-av" style="margin-bottom:0">PF</div>
+            <div style="margin-left:4px">
+              <div class="team-name" style="margin-bottom:1px">Paul Fleury</div>
+              <div class="team-handle"><a href="https://linkedin.com/in/paulfleury" target="_blank" rel="noopener">paulfxyz</a></div>
+            </div>
+          </div>
+          <div class="team-role">Serial Internet entrepreneur behind Mercury.sh, Mang.sh, proxy.sh and Openline.com. Leads client strategy, deployment operations and product vision. The one who picks up the phone when you need your stack secured.</div>
+          <div class="team-tags" style="margin-top:14px">
+            <span class="tag" style="border-color:rgba(229,0,10,0.25);color:var(--acid)">Founder &amp; CEO</span>
+            <span class="tag">Product</span>
+            <span class="tag b">White Hat</span>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <!-- Advisors -->
+    <div style="margin-bottom:32px">
+      <div style="font-family:var(--mono);font-size:var(--t2xs);font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-3);margin-bottom:14px;display:flex;align-items:center;gap:10px"><span style="display:block;width:16px;height:1px;background:var(--text-3)"></span>Main Advisors</div>
+      <div class="team-grid">
+        <article class="team-card fade-in">
+          <div class="team-av" style="color:#22C55E;border-color:rgba(34,197,94,0.2)">CD</div>
+          <div class="team-name">Clément Domingo</div>
+          <div class="team-handle"><a href="https://linkedin.com/in/clementdomingo" target="_blank" rel="noopener">SaxX</a></div>
+          <div class="team-role">Security Advisor &amp; Offensive Security Expert. Pentests the full stack, designs threat models and hunts for backdoors before adversaries do. Two decades breaking things professionally.</div>
+          <div class="team-tags">
+            <span class="tag">Offensive Sec</span>
+            <span class="tag">Pentesting</span>
+            <span class="tag b">White Hat</span>
+          </div>
+        </article>
+        <article class="team-card fade-in">
+          <div class="team-av" style="color:var(--text-3);border-color:rgba(240,237,232,0.1)">SR</div>
+          <div class="team-name">Sébastien Raoult</div>
+          <div class="team-handle"><a href="https://en.wikipedia.org/wiki/ShinyHunters" target="_blank" rel="noopener">ShinyHunters</a></div>
+          <div class="team-role">Security Advisor &amp; Breach Intelligence. Former ShinyHunters — one of the most sophisticated intrusion operations in history. Brings adversarial intuition no textbook can teach.</div>
+          <div class="team-tags">
+            <span class="tag">Breach Intel</span>
+            <span class="tag">Red Team</span>
+            <span class="tag r">Former Black Hat</span>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <!-- Collective -->
+    <div class="fade-in" style="border:1px solid var(--border);border-radius:var(--r2);background:var(--s1);padding:clamp(22px,3vw,34px);position:relative;overflow:hidden">
+      <div style="position:absolute;right:24px;top:50%;transform:translateY(-50%);font-size:3.5rem;opacity:0.04;font-family:var(--mono);font-weight:700;pointer-events:none">~$</div>
+      <div style="font-family:var(--mono);font-size:var(--t2xs);font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-4);margin-bottom:12px">Deployment Collective</div>
+      <h3 style="font-family:var(--display);font-size:var(--t2xl);font-weight:700;letter-spacing:-0.02em;margin-bottom:10px">A dozen sysops &amp; hackers.<br><span style="color:var(--acid)">Distributed worldwide.</span></h3>
+      <p style="font-size:var(--tmd);color:var(--text-2);line-height:1.75;max-width:640px;margin-bottom:18px">Behind our core team is a vetted collective of sysadmins, network engineers and security researchers spread across multiple countries. They handle on-site deployments, emergency hardening and client-side training — in your timezone, in your language, under the same NDA.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:8px">
+        <span style="font-family:var(--mono);font-size:var(--t2xs);padding:5px 11px;border:1px solid var(--border);border-radius:var(--r1);color:var(--text-3)">🌍 Europe</span>
+        <span style="font-family:var(--mono);font-size:var(--t2xs);padding:5px 11px;border:1px solid var(--border);border-radius:var(--r1);color:var(--text-3)">🌎 Americas</span>
+        <span style="font-family:var(--mono);font-size:var(--t2xs);padding:5px 11px;border:1px solid var(--border);border-radius:var(--r1);color:var(--text-3)">🌏 Asia-Pacific</span>
+        <span style="font-family:var(--mono);font-size:var(--t2xs);padding:5px 11px;border:1px solid var(--border);border-radius:var(--r1);color:var(--text-3)">🔐 Always under NDA</span>
+        <span style="font-family:var(--mono);font-size:var(--t2xs);padding:5px 11px;border:1px solid var(--border);border-radius:var(--r1);color:var(--text-3)">📡 Remote &amp; on-site</span>
+      </div>
+    </div>
+
+    <p style="text-align:center;font-family:var(--mono);font-size:var(--t2xs);color:var(--text-4);margin-top:28px;line-height:1.7">
+      All engagements are covered by NDA. All communications happen over the megastack.sh stack itself.
+    </p>
+  </div>
+</section>
+
+<!-- ─── FAQ ─── -->
+<section class="section-sm" id="faq" style="border-top:1px solid var(--border)">
+  <div class="wrap-n">
+    <div style="text-align:center;margin-bottom:40px">
+      <div class="lbl center">FAQ</div>
+      <h2 class="section-title">Questions worth asking.</h2>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden" id="faq-list">
+      <div class="faq-item"><button class="faq-q" aria-expanded="false"><span>How long does a full deployment take?</span><svg class="faq-arrow" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="faq-ans"><div class="faq-ans-inner">Most deployments complete in 1–3 days depending on the number of servers and devices. The assessment call takes 60 minutes. After that, our automated provisioning scripts handle the bulk of the work — you just need root SSH access to your servers.</div></div></div>
+      <div class="faq-item"><button class="faq-q" aria-expanded="false"><span>Do I need to own servers already?</span><svg class="faq-arrow" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="faq-ans"><div class="faq-ans-inner">No. We can help you provision bare-metal or VPS servers from providers like Hetzner, OVHcloud or Vultr — all under your own accounts. The key principle: you hold the credentials, we never do.</div></div></div>
+      <div class="faq-item"><button class="faq-q" aria-expanded="false"><span>What happens after the deployment?</span><svg class="faq-arrow" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="faq-ans"><div class="faq-ans-inner">You receive full documentation, admin credentials and a working topgrade configuration. The stack runs without us. Optionally, you can retain us for quarterly security audits, stack updates or expansion deployments.</div></div></div>
+      <div class="faq-item"><button class="faq-q" aria-expanded="false"><span>Is everything really open source?</span><svg class="faq-arrow" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="faq-ans"><div class="faq-ans-inner">Yes. WireGuard, Hoodik, Matrix/Synapse, Authelia, Resilio and topgrade are all open source and on GitHub. Our firewall templates and access management templates are also open source under MIT. You can audit every line before we touch your infrastructure.</div></div></div>
+      <div class="faq-item"><button class="faq-q" aria-expanded="false"><span>How is the call conducted securely?</span><svg class="faq-arrow" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="faq-ans"><div class="faq-ans-inner">Initial contact calls use Signal or a client-preferred encrypted video platform. After onboarding, all communication moves to your own Matrix homeserver. We do not discuss client details over email, Slack, Zoom or any third-party platform.</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CTA ─── -->
+<!-- ─── PACKAGE ─── -->
+<section class="section" id="package" style="border-top:1px solid var(--border)">
+  <div class="wrap">
+    <div style="text-align:center;margin-bottom:52px">
+      <div class="lbl center">All-in-One Package</div>
+      <h2 class="section-title">Corporate-grade security.<br><span style="color:var(--acid)">Startup-friendly pricing.</span></h2>
+      <p class="section-body" style="max-width:560px;margin:0 auto">
+        The full megastack — deployed across your infrastructure, documented and handed over to you. Priced for solo entrepreneurs and small teams, not Fortune 500 budgets.
+      </p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;margin-bottom:28px">
+      <!-- What's included -->
+      <div style="background:var(--bg);padding:clamp(28px,4vw,44px) clamp(22px,3vw,36px)">
+        <div style="font-family:var(--mono);font-size:var(--t2xs);font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--acid);margin-bottom:20px">What you get</div>
+        <ul style="display:flex;flex-direction:column;gap:12px">
+          <li style="display:flex;align-items:flex-start;gap:10px;font-size:var(--tsm);color:var(--text-2)"><span style="color:var(--acid);font-weight:700;flex-shrink:0">→</span>Full stack deployment across all your servers &amp; devices</li>
+          <li style="display:flex;align-items:flex-start;gap:10px;font-size:var(--tsm);color:var(--text-2)"><span style="color:var(--acid);font-weight:700;flex-shrink:0">→</span>Custom configuration scoped to your threat model</li>
+          <li style="display:flex;align-items:flex-start;gap:10px;font-size:var(--tsm);color:var(--text-2)"><span style="color:var(--acid);font-weight:700;flex-shrink:0">→</span>Hardened firewall policies, VPN mesh &amp; access templates</li>
+          <li style="display:flex;align-items:flex-start;gap:10px;font-size:var(--tsm);color:var(--text-2)"><span style="color:var(--acid);font-weight:700;flex-shrink:0">→</span>Extended tooling where needed (Wazuh, Falco, OpenVAS…)</li>
+          <li style="display:flex;align-items:flex-start;gap:10px;font-size:var(--tsm);color:var(--text-2)"><span style="color:var(--acid);font-weight:700;flex-shrink:0">→</span>Full documentation &amp; admin handover</li>
+          <li style="display:flex;align-items:flex-start;gap:10px;font-size:var(--tsm);color:var(--text-2)"><span style="color:var(--acid);font-weight:700;flex-shrink:0">→</span>Remote video-based training for your team (optional)</li>
+          <li style="display:flex;align-items:flex-start;gap:10px;font-size:var(--tsm);color:var(--text-2)"><span style="color:var(--acid);font-weight:700;flex-shrink:0">→</span>topgrade configured on every device for ongoing updates</li>
+        </ul>
+      </div>
+      <!-- Pricing philosophy -->
+      <div style="background:var(--s1);padding:clamp(28px,4vw,44px) clamp(22px,3vw,36px);display:flex;flex-direction:column;justify-content:space-between">
+        <div>
+          <div style="font-family:var(--mono);font-size:var(--t2xs);font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-3);margin-bottom:20px">Pricing philosophy</div>
+          <p style="font-size:var(--tmd);color:var(--text-2);line-height:1.75;margin-bottom:18px">We built this for the freelancer with sensitive client data, the 5-person startup with trade secrets, and the journalist who can't afford to be compromised. Not just for companies with a six-figure security budget.</p>
+          <p style="font-size:var(--tmd);color:var(--text-2);line-height:1.75;margin-bottom:24px">Every engagement is quoted transparently after the assessment call — no surprises, no lock-in. You own everything when we leave.</p>
+        </div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <span style="font-family:var(--mono);font-size:var(--t2xs);padding:6px 12px;border:1px solid rgba(229,0,10,0.2);border-radius:var(--r1);color:var(--acid);background:var(--acid-soft)">Solo entrepreneurs</span>
+          <span style="font-family:var(--mono);font-size:var(--t2xs);padding:6px 12px;border:1px solid rgba(229,0,10,0.2);border-radius:var(--r1);color:var(--acid);background:var(--acid-soft)">Small &amp; mid-size teams</span>
+          <span style="font-family:var(--mono);font-size:var(--t2xs);padding:6px 12px;border:1px solid rgba(229,0,10,0.2);border-radius:var(--r1);color:var(--acid);background:var(--acid-soft)">High-value individuals</span>
+          <span style="font-family:var(--mono);font-size:var(--t2xs);padding:6px 12px;border:1px solid rgba(229,0,10,0.2);border-radius:var(--r1);color:var(--acid);background:var(--acid-soft)">Corporate-level security</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Training callout -->
+    <div class="fade-in" style="background:var(--s1);border:1px solid var(--border);border-left:3px solid var(--ice);border-radius:var(--r2);padding:clamp(18px,2.5vw,28px) clamp(20px,3vw,32px);display:flex;align-items:flex-start;gap:18px">
+      <span style="font-size:1.6rem;flex-shrink:0">🎥</span>
+      <div>
+        <div style="font-family:var(--grotesk);font-size:var(--tmd);font-weight:700;color:var(--text);margin-bottom:6px">Custom remote video training</div>
+        <p style="font-size:var(--tsm);color:var(--text-2);line-height:1.7">After deployment, we offer live video sessions with your team — covering day-to-day operations, incident response drills, and secure workflow practices. Recorded, documented and kept inside your own Matrix server. Training is optional but highly recommended for teams new to self-hosted security.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band" id="contact">
+  <div class="wrap-n" style="position:relative;z-index:1">
+    <div class="lbl center" style="margin-bottom:20px">Get started</div>
+    <h2 class="cta-title">Ready to own<br><span style="color:var(--acid)">your stack?</span></h2>
+    <p class="cta-sub">Book a 60-minute secure assessment call. We'll map your threat model and scope the deployment. No commitment required.</p>
+    <div class="cta-btns">
+      <a href="https://github.com/megastack-sh" target="_blank" rel="noopener" class="btn btn-outline btn-xl">View on GitHub</a>
+      <button class="btn btn-acid btn-xl" onclick="openModal()">Book a secure call →</button>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-inner">
+      <div class="footer-brand"><span>MEGASTACK.SH</span> — End-to-End Security Stack</div>
+      <div class="footer-links">
+        <a href="https://github.com/megastack-sh" target="_blank" rel="noopener">GitHub</a>
+        <a href="mailto:hi@megastack.sh">hi@megastack.sh</a>
+        <a href="#stack">Stack</a>
+        <a href="#team">Team</a>
+      </div>
+    </div>
+    <div class="footer-copy">© 2026 megastack.sh · MIT License · All tools remain open source · Bitcoin reserve layer included</div>
+  </div>
+</footer>
+
+<!-- ─── MODAL: BOOK A CALL ─── -->
+<div class="modal-backdrop" id="modal-cta" role="dialog" aria-modal="true" aria-labelledby="modal-cta-title">
+  <div class="modal">
+    <div class="modal-head">
+      <div>
+        <div class="modal-sup">Secure Assessment</div>
+        <h2 class="modal-title" id="modal-cta-title">Book your call</h2>
+      </div>
+      <button class="modal-close" onclick="closeModal()" aria-label="Close">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-steps">
+        <div class="step-dot active" id="s1"></div>
+        <div class="step-dot" id="s2"></div>
+        <div class="step-dot" id="s3"></div>
+      </div>
+
+      <!-- Panel 1: Contact details -->
+      <div id="panel-1">
+        <p style="font-size:var(--tmd);color:var(--text-2);margin-bottom:24px;line-height:1.7">Tell us who you are and how to reach you. All communication after this stays on encrypted channels of your choice.</p>
+        <div class="form-row">
+          <div class="form-group" style="margin-bottom:0">
+            <label class="form-label" for="inp-name">Full name</label>
+            <input class="form-input" type="text" id="inp-name" placeholder="Jane Smith" autocomplete="name">
+          </div>
+          <div class="form-group" style="margin-bottom:0">
+            <label class="form-label" for="inp-org">Organisation</label>
+            <input class="form-input" type="text" id="inp-org" placeholder="Acme Corp (optional)">
+          </div>
+        </div>
+        <div class="form-group" style="margin-top:14px">
+          <label class="form-label" for="inp-email">Email</label>
+          <input class="form-input" type="email" id="inp-email" placeholder="you@example.com" autocomplete="email">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="inp-signal">Signal / Telegram / Matrix <span style="color:var(--text-4);font-weight:400;letter-spacing:0;text-transform:none">— optional but preferred</span></label>
+          <input class="form-input" type="text" id="inp-signal" placeholder="+1 555 000 0000 or @you:matrix.org">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="inp-context">What do you need to protect?</label>
+          <textarea class="form-input" id="inp-context" rows="3" placeholder="Brief description of your setup, team size, threat concerns…" style="resize:vertical;min-height:80px"></textarea>
+        </div>
+        <div class="modal-footer">
+          <div style="font-size:var(--tsm);color:var(--text-4)">Step 1 of 3</div>
+          <button class="btn btn-acid" onclick="goStep(2)">Choose a day →</button>
+        </div>
+      </div>
+
+      <!-- Panel 2: Day picker -->
+      <div id="panel-2" style="display:none">
+        <p style="font-size:var(--tmd);color:var(--text-2);margin-bottom:8px;line-height:1.7">Pick your preferred day. Calls happen in the <strong style="color:var(--text)">afternoon GMT</strong> — we'll confirm the exact time by secure message.</p>
+        <p style="font-family:var(--mono);font-size:var(--t2xs);color:var(--text-4);margin-bottom:20px;letter-spacing:0.05em">NEXT 2 WEEKS — SELECT ONE</p>
+        <div class="day-grid" id="day-grid">
+          <!-- populated by JS -->
+        </div>
+        <div class="form-group" style="margin-top:20px">
+          <label class="form-label">Preferred call platform</label>
+          <select class="form-input" id="inp-platform" style="cursor:pointer">
+            <option value="">Select a platform…</option>
+            <option>Signal video call</option>
+            <option>Matrix / Element</option>
+            <option>Jitsi (self-hosted)</option>
+            <option>Wire</option>
+            <option>Other (specify in notes)</option>
+          </select>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-outline" onclick="goStep(1)">← Back</button>
+          <button class="btn btn-acid" onclick="goStep(3)" id="step2-next" disabled>Review →</button>
+        </div>
+      </div>
+
+      <!-- Panel 3: Review -->
+      <div id="panel-3" style="display:none">
+        <div style="background:var(--s2);border:1px solid var(--border);border-radius:var(--r2);padding:20px 22px;margin-bottom:22px">
+          <div style="font-family:var(--mono);font-size:var(--t2xs);color:var(--text-4);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:14px">Booking summary</div>
+          <div style="display:flex;flex-direction:column;gap:11px">
+            <div style="display:flex;justify-content:space-between;font-size:var(--tsm)"><span style="color:var(--text-3)">Name</span><span id="rv-name" style="color:var(--text)">—</span></div>
+            <div style="display:flex;justify-content:space-between;font-size:var(--tsm)"><span style="color:var(--text-3)">Contact</span><span id="rv-contact" style="color:var(--text)">—</span></div>
+            <div style="display:flex;justify-content:space-between;font-size:var(--tsm)"><span style="color:var(--text-3)">Preferred day</span><span id="rv-day" style="color:var(--acid)">—</span></div>
+            <div style="display:flex;justify-content:space-between;font-size:var(--tsm)"><span style="color:var(--text-3)">Time</span><span style="color:var(--text-2)">Afternoon GMT · exact time by message</span></div>
+            <div style="display:flex;justify-content:space-between;font-size:var(--tsm)"><span style="color:var(--text-3)">Platform</span><span id="rv-platform" style="color:var(--text-2)">—</span></div>
+          </div>
+        </div>
+        <p style="font-size:var(--tsm);color:var(--text-3);line-height:1.7;margin-bottom:6px">
+          By submitting you agree that your contact details are used solely to schedule this call. We don't store them on any third-party platform — they go directly into our self-hosted CRM inside our own megastack.
+        </p>
+        <div class="modal-footer">
+          <button class="btn btn-outline" onclick="goStep(2)">← Back</button>
+          <button class="btn btn-acid btn-lg" onclick="submitBooking()">Confirm booking 🔐</button>
+        </div>
+      </div>
+
+      <!-- Panel done -->
+      <div id="panel-done" style="display:none;text-align:center;padding:20px 0 8px">
+        <div class="success-icon">🔐</div>
+        <h3 style="font-family:var(--display);font-size:var(--t2xl);font-weight:700;margin-bottom:10px">Call booked</h3>
+        <p style="font-size:var(--tmd);color:var(--text-2);margin-bottom:28px;line-height:1.7">We'll reach out via your preferred secure channel to confirm the exact time. Expect contact within 24 hours on business days.</p>
+        <button class="btn btn-acid btn-lg" onclick="closeModal()">Got it →</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     JAVASCRIPT
+══════════════════════════════════════════ -->
+<script>
+(function(){
+'use strict';
+
+/* ── 1. MATRIX RAIN ── */
+const mC=document.getElementById('cv-matrix'),mX=mC.getContext('2d');
+let mW,mH;
+function mResize(){mW=mC.width=innerWidth;mH=mC.height=innerHeight}
+mResize();addEventListener('resize',mResize,{passive:true});
+const MC='01アイウエオカキクサシスタチツナニ█▓▒░│╡║╝└┬├─┼╞═╬!@#$%?/\\';
+let streams=[];
+function initS(){
+  streams=[];
+  const cols=Math.floor(mW/18);
+  for(let i=0;i<cols;i++){
+    streams.push({x:i*18+Math.random()*8,y:Math.random()*-mH,speed:0.22+Math.random()*0.42,len:8+Math.floor(Math.random()*18),ice:i>cols*0.6,alpha:0.05+Math.random()*0.08});
+  }
+}
+initS();addEventListener('resize',initS,{passive:true});
+let mF=0;
+function mLoop(){
+  mX.clearRect(0,0,mW,mH);mF++;
+  const t=Date.now();
+  streams.forEach(s=>{
+    s.y+=s.speed;
+    if(s.y>mH+200){s.y=-100-Math.random()*400;s.x=Math.random()*mW;s.speed=0.22+Math.random()*0.42}
+    for(let i=0;i<s.len;i++){
+      const cy=s.y-i*16;if(cy<-16||cy>mH+16)continue;
+      const a=i===0?s.alpha*3.5:s.alpha*(1-i/s.len)*0.88;if(a<0.004)continue;
+      const isHead=i===0&&mF%6===0;
+      mX.fillStyle=s.ice
+        ?(isHead?`rgba(200,245,255,${Math.min(a*4,1)})`:`rgba(0,200,255,${a})`)
+        :(isHead?`rgba(255,100,80,${Math.min(a*4,1)})`:`rgba(229,0,10,${a})`);
+      mX.font=`11px 'JetBrains Mono',monospace`;
+      mX.fillText(MC[Math.floor((t/58+i*9+s.x*3)%MC.length)],s.x,cy);
+    }
+  });
+  requestAnimationFrame(mLoop);
+}
+mLoop();
+
+/* ── 2. RADAR ── */
+const rC=document.getElementById('cv-radar'),rX=rC.getContext('2d');
+let rW,rH,rA=0;
+function rResize(){rW=rC.width=innerWidth;rH=rC.height=innerHeight}
+rResize();addEventListener('resize',rResize,{passive:true});
+const rdots=Array.from({length:18},()=>({r:0.1+Math.random()*0.38,a:Math.random()*Math.PI*2,sz:1.5+Math.random()*2.5}));
+function rLoop(){
+  rX.clearRect(0,0,rW,rH);
+  const cx=rW<700?rW*0.5:rW*0.82,cy=rH*0.5,R=Math.min(rW,rH)*0.2;
+  [0.25,0.5,0.75,1].forEach(f=>{rX.beginPath();rX.arc(cx,cy,R*f,0,Math.PI*2);rX.strokeStyle='rgba(229,0,10,0.09)';rX.lineWidth=1;rX.stroke()});
+  rX.strokeStyle='rgba(229,0,10,0.05)';rX.lineWidth=1;
+  rX.beginPath();rX.moveTo(cx-R,cy);rX.lineTo(cx+R,cy);rX.stroke();
+  rX.beginPath();rX.moveTo(cx,cy-R);rX.lineTo(cx,cy+R);rX.stroke();
+  rA=(rA+0.007)%(Math.PI*2);
+  rX.save();rX.beginPath();rX.moveTo(cx,cy);rX.arc(cx,cy,R,rA-Math.PI*0.5,rA);rX.closePath();
+  const g=rX.createRadialGradient(cx,cy,0,cx,cy,R);g.addColorStop(0,'rgba(229,0,10,0)');g.addColorStop(1,'rgba(229,0,10,0.09)');
+  rX.fillStyle=g;rX.fill();rX.restore();
+  rX.save();rX.beginPath();rX.moveTo(cx,cy);rX.lineTo(cx+Math.cos(rA)*R,cy+Math.sin(rA)*R);
+  rX.strokeStyle='rgba(229,0,10,0.55)';rX.lineWidth=1.5;rX.stroke();rX.restore();
+  rdots.forEach(d=>{
+    const dx=cx+Math.cos(d.a)*R*d.r,dy=cy+Math.sin(d.a)*R*d.r;
+    const diff=((rA-d.a)%(Math.PI*2)+Math.PI*2)%(Math.PI*2);
+    const fade=Math.max(0,1-diff/(Math.PI*0.8));if(fade<0.02)return;
+    rX.beginPath();rX.arc(dx,dy,d.sz,0,Math.PI*2);rX.fillStyle=`rgba(229,0,10,${fade*0.75})`;rX.fill();
+    if(fade>0.5){rX.beginPath();rX.arc(dx,dy,d.sz*3,0,Math.PI*2);rX.strokeStyle=`rgba(229,0,10,${fade*0.15})`;rX.lineWidth=1;rX.stroke()}
+  });
+  rX.beginPath();rX.arc(cx,cy,R,0,Math.PI*2);rX.strokeStyle='rgba(229,0,10,0.18)';rX.lineWidth=1.5;rX.stroke();
+  requestAnimationFrame(rLoop);
+}
+rLoop();
+new IntersectionObserver(e=>{rC.classList.toggle('on',!e[0].isIntersecting)},{threshold:0.2}).observe(document.getElementById('home'));
+
+/* ── 3. HERO WORDMARK GLITCH ── */
+const hw=document.querySelector('.hero-word');
+if(hw){
+  const final='MEGA<span style="color:var(--text-3)">STACK</span><span class="dot">.</span>SH';
+  const raw='MEGASTACK.SH';
+  const SC='ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#@!?%$&*';
+  function doScramble(){
+    let it=0;
+    if(hw._si)clearInterval(hw._si);
+    hw._si=setInterval(()=>{
+      let html='';
+      raw.split('').forEach((ch,i)=>{
+        if(i>=8&&i<=12) return; // handled via innerHTML
+        html+=i<it?ch:SC[Math.floor(Math.random()*SC.length)];
+      });
+      hw.innerHTML=html;
+      it+=0.4;
+      if(it>=raw.length+1){clearInterval(hw._si);hw.innerHTML=final}
+    },40);
+  }
+  if(document.fonts)document.fonts.ready.then(()=>setTimeout(doScramble,400));
+  else setTimeout(doScramble,700);
+  hw.addEventListener('mouseenter',doScramble);
+}
+
+/* ── 4. OMNIPRESENT CHAR FLICKER ── */
+const GC='01ABXZ#@!?░▒█╬═';
+const fp=[];
+function harvest(root){
+  const w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{
+    acceptNode(n){
+      const p=n.parentElement;if(!p)return NodeFilter.FILTER_REJECT;
+      const t=p.tagName.toLowerCase();
+      if(!['h1','h2','h3','h4','p','div','span','li','blockquote'].includes(t))return NodeFilter.FILTER_REJECT;
+      if(p.closest('button,a,input,select,textarea,script,style,.form-input,.modal-sup,.stack-gh,.faq-q'))return NodeFilter.FILTER_REJECT;
+      if(n.textContent.trim().length<2)return NodeFilter.FILTER_REJECT;
+      return NodeFilter.FILTER_ACCEPT;
+    }
+  });
+  let nd;
+  while((nd=w.nextNode())){
+    const txt=nd.textContent;
+    const el=[];
+    for(let i=0;i<txt.length;i++)if(txt[i]&&txt[i].trim())el.push(i);
+    if(el.length>=1)fp.push({node:nd,orig:txt,el});
+  }
+}
+function flicker(){
+  if(!fp.length)return;
+  const count=2+Math.floor(Math.random()*3);
+  for(let k=0;k<count;k++){
+    const e=fp[Math.floor(Math.random()*fp.length)];
+    if(!e.node.isConnected||e.node._flk)continue;
+    const nSwap=1+Math.floor(Math.random()*4);
+    const picks=new Set();
+    for(let i=0;i<nSwap;i++)picks.add(e.el[Math.floor(Math.random()*e.el.length)]);
+    const ch=e.orig.split('');
+    picks.forEach(i=>{ch[i]=GC[Math.floor(Math.random()*GC.length)]});
+    e.node._flk=true;e.node.textContent=ch.join('');
+    setTimeout(()=>{e.node.textContent=e.orig;e.node._flk=false},40+Math.random()*60);
+  }
+}
+setTimeout(()=>{
+  harvest(document.body);
+  (function loop(){flicker();setTimeout(loop,40+Math.random()*70)})();
+},1300);
+
+/* ── 5. FADE IN ── */
+const fo=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');fo.unobserve(e.target)}})},{threshold:0.07});
+document.querySelectorAll('.fade-in').forEach(el=>fo.observe(el));
+
+/* ── 6. FAQ ── */
+document.querySelectorAll('.faq-q').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const item=btn.closest('.faq-item'),open=item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(i=>{i.classList.remove('open');i.querySelector('.faq-q').setAttribute('aria-expanded','false')});
+    if(!open){item.classList.add('open');btn.setAttribute('aria-expanded','true')}
+  });
+});
+
+/* ── 7. NAV MOBILE ── */
+const burger=document.getElementById('nav-burger'),nmenu=document.getElementById('nav-mobile');
+window.closeMobile=()=>{burger.classList.remove('open');nmenu.classList.remove('open');burger.setAttribute('aria-expanded','false');nmenu.setAttribute('aria-hidden','true');document.body.style.overflow=''};
+burger.addEventListener('click',()=>{
+  const open=nmenu.classList.contains('open');
+  if(open)closeMobile();
+  else{burger.classList.add('open');nmenu.classList.add('open');burger.setAttribute('aria-expanded','true');nmenu.setAttribute('aria-hidden','false');document.body.style.overflow='hidden'}
+});
+
+/* ── 8. NAV ACTIVE ── */
+document.querySelectorAll('section[id]').forEach(s=>{
+  new IntersectionObserver(entries=>{if(entries[0].isIntersecting)document.querySelectorAll('.nav-links a').forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+s.id))},{rootMargin:'-30% 0px -60% 0px'}).observe(s);
+});
+
+/* ── 9. MODAL ── */
+let selectedDay=null;
+
+window.openModal=()=>{
+  document.getElementById('modal-cta').classList.add('open');
+  document.body.style.overflow='hidden';
+  buildDayGrid();
+  goStep(1,true);
+};
+window.closeModal=()=>{
+  document.getElementById('modal-cta').classList.remove('open');
+  document.body.style.overflow='';
+};
+document.getElementById('modal-cta').addEventListener('click',e=>{if(e.target===e.currentTarget)closeModal()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+
+function showPanel(id){
+  ['1','2','3','done'].forEach(i=>{const p=document.getElementById('panel-'+i);if(p)p.style.display=i===id?'':'none'});
+}
+
+window.goStep=function(n,skipValidate){
+  if(!skipValidate&&n===2){
+    const name=document.getElementById('inp-name').value.trim();
+    const email=document.getElementById('inp-email').value.trim();
+    if(!name||!email||!email.includes('@')){
+      document.getElementById(name?'inp-email':'inp-name').focus();return;
+    }
+  }
+  if(n===3){
+    if(!selectedDay){return}
+    const plat=document.getElementById('inp-platform').value;
+    document.getElementById('rv-name').textContent=document.getElementById('inp-name').value||'—';
+    document.getElementById('rv-contact').textContent=document.getElementById('inp-email').value||'—';
+    document.getElementById('rv-day').textContent=selectedDay||'—';
+    document.getElementById('rv-platform').textContent=plat||'Not specified';
+  }
+  showPanel(String(n));
+  [1,2,3].forEach(i=>{const d=document.getElementById('s'+i);if(!d)return;d.style.background=i<n?'rgba(229,0,10,0.3)':(i===n?'var(--acid)':'var(--border)')});
+};
+
+window.submitBooking=function(){setTimeout(()=>{showPanel('done')},400)};
+
+/* Day grid builder */
+function buildDayGrid(){
+  const grid=document.getElementById('day-grid');
+  grid.innerHTML='';
+  const today=new Date();
+  const DAYS=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  const MONTHS=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  let count=0,offset=1;
+  while(count<10){
+    const d=new Date(today);
+    d.setDate(today.getDate()+offset);
+    offset++;
+    const dow=d.getDay();
+    if(dow===0||dow===6)continue; // skip weekends
+    const btn=document.createElement('button');
+    btn.className='day-btn';
+    const label=`${DAYS[dow]} ${d.getDate()} ${MONTHS[d.getMonth()]}`;
+    btn.innerHTML=`<span class="dow">${DAYS[dow]}</span><span class="dom">${d.getDate()}</span><span class="mon">${MONTHS[d.getMonth()]}</span>`;
+    btn.addEventListener('click',()=>{
+      grid.querySelectorAll('.day-btn').forEach(b=>b.classList.remove('selected'));
+      btn.classList.add('selected');
+      selectedDay=label;
+      document.getElementById('step2-next').disabled=false;
+    });
+    grid.appendChild(btn);
+    count++;
+  }
+}
+
+})();
+</script>
+
+<!-- FAQ styles -->
+<style>
+.faq-item{background:var(--bg)}
+.faq-q{
+  display:flex;align-items:center;justify-content:space-between;gap:24px;
+  padding:clamp(14px,2vw,20px) clamp(16px,3vw,28px);
+  font-family:var(--grotesk);font-size:var(--tmd);font-weight:600;
+  color:var(--text);cursor:pointer;transition:background var(--fast) var(--ease);
+  text-align:left;width:100%
+}
+.faq-q:hover{background:var(--s2)}
+.faq-arrow{flex-shrink:0;width:14px;height:14px;color:var(--acid);transition:transform var(--mid) var(--ease)}
+.faq-item.open .faq-arrow{transform:rotate(180deg)}
+.faq-ans{max-height:0;overflow:hidden;transition:max-height 0.4s var(--ease)}
+.faq-item.open .faq-ans{max-height:300px}
+.faq-ans-inner{padding:0 clamp(16px,3vw,28px) 20px;font-size:var(--tmd);color:var(--text-2);line-height:1.75;border-top:1px solid var(--border);padding-top:16px}
+</style>
+</body>
+</html>
