@@ -698,15 +698,22 @@ body::after{content:'';position:fixed;inset:0;z-index:9998;pointer-events:none;o
   --ice:#007BA8;--ice-glow:rgba(0,123,168,0.12);--ice-soft:rgba(0,123,168,0.07);
   --gold:#B07D10;--gold-soft:rgba(176,125,16,0.08);
 }
-/* Smooth transitions for theme switch */
-*,*::before,*::after{transition-property:background-color,border-color,color,box-shadow;transition-duration:0.22s;transition-timing-function:ease}
-canvas,.hero-word,.badge-dot,.scroll-line,.hero-scan,.fade-in,.modal,.modal-backdrop{all:revert}
-.fade-in{opacity:0;transform:translateY(12px);transition:opacity 0.5s var(--ease),transform 0.5s var(--ease)}
-.fade-in.on{opacity:1;transform:none}
-.modal-backdrop{position:fixed;top:0;left:0;right:0;bottom:0;z-index:10000;background:rgba(0,0,0,0.92);backdrop-filter:blur(14px);display:flex;align-items:center;justify-content:center;padding:16px;opacity:0;pointer-events:none;transition:opacity 0.3s ease;visibility:hidden}
-.modal-backdrop.open{opacity:1;pointer-events:all;visibility:visible}
-.modal{background:var(--s1);border:1px solid var(--border-hi);border-radius:var(--r3);width:100%;max-width:600px;max-height:94dvh;overflow-y:auto;transform:translateY(16px) scale(0.97);transition:transform 0.3s var(--ease)}
-.modal-backdrop.open .modal{transform:none}
+/* Smooth colour transitions for theme switch — targeted only */
+body, .nav, .hero, section, footer, article,
+.approach-card, .stack-card, .xtool-card, .for-card, .team-card, .layer-row,
+.off-card, .client-card, .faq-item, .faq-q, .btn, .lang-card, .badge,
+.pill, .tag, .modal, .modal-head, .modal-body, .form-input, .day-btn,
+.lbl, .section-title, .section-body, h1, h2, h3, h4, p, a, span, li,
+.stack-gh, .xtool-name, .xtool-cat, .approach-num, .approach-title,
+.team-name, .team-handle, .team-role, .layer-name, .layer-desc,
+.for-title, .for-desc, .hero-hl, .hero-desc, .hero-sub,
+.footer-brand, .footer-links, .footer-copy, .stripe p,
+.price-summary, .price-row, .form-label, .day-btn .dow, .day-btn .dom, .day-btn .mon {
+  transition: background-color 0.22s ease, border-color 0.22s ease, color 0.22s ease, box-shadow 0.22s ease !important;
+}
+/* Never transition these */
+canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
+.hero-word::before, .hero-word::after, @keyframes { transition: none !important; }
 [data-theme="light"] #cv-matrix{opacity:0.05}
 [data-theme="light"] #cv-radar.on{opacity:0.12}
 [data-theme="light"] .nav{background:rgba(245,244,240,0.95);border-bottom-color:rgba(204,0,8,0.07)}
@@ -732,6 +739,12 @@ canvas,.hero-word,.badge-dot,.scroll-line,.hero-scan,.fade-in,.modal,.modal-back
 .lang-flag{display:flex;align-items:center;justify-content:center;width:24px;height:18px}
 .lang-name{font-family:var(--grotesk);font-size:var(--t2xs);font-weight:600;color:var(--text-2)}
 .lang-native{font-family:var(--grotesk);font-size:0.62rem;color:var(--text-4)}
+
+/* WIP modal animations */
+@keyframes wip-spin   { to { transform: rotate(360deg); } }
+@keyframes wip-pulse  { 0%,100%{opacity:1;r:5} 50%{opacity:0.5;r:4} }
+@keyframes wip-ripple { 0%{r:5;opacity:0.7} 100%{r:22;opacity:0} }
+@keyframes wip-blink  { 0%,100%{opacity:0.6} 50%{opacity:0.15} }
 </style>
 </head>
 <body>
@@ -1346,6 +1359,69 @@ canvas,.hero-word,.badge-dot,.scroll-line,.hero-scan,.fade-in,.modal,.modal-back
 </footer>
 
 
+
+<!-- WIP LANGUAGE MODAL -->
+<div class="modal-backdrop" id="modal-wip" role="dialog" aria-modal="true">
+  <div class="modal" style="max-width:420px;text-align:center">
+    <div class="modal-head" style="justify-content:flex-end;border-bottom:none;padding-bottom:8px">
+      <button class="modal-close" onclick="closeWip()">&#x2715;</button>
+    </div>
+    <div class="modal-body" style="padding-top:0;padding-bottom:36px">
+
+      <!-- Animated icon -->
+      <div style="position:relative;width:100px;height:100px;margin:0 auto 24px">
+        <svg viewBox="0 0 100 100" width="100" height="100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Globe circle -->
+          <circle cx="50" cy="50" r="36" stroke="var(--acid)" stroke-width="2.5" opacity="0.18"/>
+          <!-- Spinning orbit ring -->
+          <circle cx="50" cy="50" r="36" stroke="var(--acid)" stroke-width="2.5"
+            stroke-dasharray="56 170" stroke-linecap="round"
+            style="transform-origin:50px 50px;animation:wip-spin 2.4s linear infinite"/>
+          <!-- Globe meridians -->
+          <ellipse cx="50" cy="50" rx="18" ry="36" stroke="var(--acid)" stroke-width="1.5" opacity="0.3"/>
+          <line x1="14" y1="50" x2="86" y2="50" stroke="var(--acid)" stroke-width="1.5" opacity="0.3"/>
+          <line x1="50" y1="14" x2="50" y2="86" stroke="var(--acid)" stroke-width="1.5" opacity="0.3"/>
+          <!-- Center dot pulse -->
+          <circle cx="50" cy="50" r="5" fill="var(--acid)" style="animation:wip-pulse 1.6s ease-in-out infinite"/>
+          <circle cx="50" cy="50" r="5" fill="none" stroke="var(--acid)" stroke-width="2"
+            style="animation:wip-ripple 1.6s ease-out infinite"/>
+          <!-- Construction marks -->
+          <text x="50" y="22" text-anchor="middle" font-family="monospace" font-size="10" fill="var(--acid)" opacity="0.6"
+            style="animation:wip-blink 1.2s ease-in-out infinite">01</text>
+          <text x="80" y="54" text-anchor="middle" font-family="monospace" font-size="10" fill="var(--acid)" opacity="0.6"
+            style="animation:wip-blink 1.2s ease-in-out infinite 0.4s">10</text>
+          <text x="50" y="84" text-anchor="middle" font-family="monospace" font-size="10" fill="var(--acid)" opacity="0.6"
+            style="animation:wip-blink 1.2s ease-in-out infinite 0.8s">01</text>
+          <text x="20" y="54" text-anchor="middle" font-family="monospace" font-size="10" fill="var(--acid)" opacity="0.6"
+            style="animation:wip-blink 1.2s ease-in-out infinite 1.2s">10</text>
+        </svg>
+      </div>
+
+      <!-- Flag + language name -->
+      <div id="wip-flag" style="font-size:2.2rem;margin-bottom:8px;line-height:1"></div>
+
+      <h3 style="font-family:var(--display);font-size:var(--t2xl);font-weight:700;letter-spacing:-0.02em;margin-bottom:10px">
+        Coming soon
+      </h3>
+      <p style="font-size:var(--tmd);color:var(--text-2);line-height:1.72;margin-bottom:6px">
+        <strong id="wip-lang-name" style="color:var(--text)">This language</strong> is in the translation pipeline.
+      </p>
+      <p style="font-size:var(--tsm);color:var(--text-3);line-height:1.65;margin-bottom:26px">
+        We're localising every word of the megastack.sh stack — security terminology included. Want to help? Reach out.
+      </p>
+
+      <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+        <a href="mailto:hi@megastack.sh?subject=Translation%20contribution" class="btn btn-outline btn-lg">Contribute &#8594;</a>
+        <button class="btn btn-acid btn-lg" onclick="closeWip()">Stay in English</button>
+      </div>
+
+      <p style="font-family:var(--mono);font-size:var(--t2xs);color:var(--text-4);margin-top:20px">
+        hi@megastack.sh
+      </p>
+    </div>
+  </div>
+</div>
+
 <!-- LANGUAGE MODAL -->
 <div class="modal-backdrop lang-modal" id="modal-lang" role="dialog" aria-modal="true">
   <div class="modal" style="max-width:680px">
@@ -1884,13 +1960,20 @@ function buildLangGrid() {
       '<span class="lang-name">' + l.n + '</span>' +
       '<span class="lang-native">' + l.nat + '</span>';
     card.addEventListener('click', function() {
-      _curLang = l.c;
-      localStorage.setItem('ms-lang', l.c);
-      var el = document.getElementById('current-lang');
-      if(el) el.textContent = l.c;
-      grid.querySelectorAll('.lang-card').forEach(function(x){ x.classList.remove('active'); });
-      card.classList.add('active');
-      setTimeout(closeLangModal, 280);
+      if(l.c === 'EN') {
+        // English is live — apply and close
+        _curLang = 'EN';
+        localStorage.setItem('ms-lang', 'EN');
+        var el = document.getElementById('current-lang');
+        if(el) el.textContent = 'EN';
+        grid.querySelectorAll('.lang-card').forEach(function(x){ x.classList.remove('active'); });
+        card.classList.add('active');
+        setTimeout(closeLangModal, 280);
+      } else {
+        // Show WIP modal
+        closeLangModal();
+        setTimeout(function() { showWip(l.n, l.f); }, 200);
+      }
     });
     grid.appendChild(card);
   });
@@ -1914,5 +1997,22 @@ document.getElementById('modal-lang').addEventListener('click', function(e){
   var s = localStorage.getItem('ms-lang');
   if(s) { _curLang = s; var el = document.getElementById('current-lang'); if(el) el.textContent = s; }
 })();
+
+/* WIP language modal */
+window.showWip = function(langName, flagCode) {
+  var flagEl = document.getElementById('wip-flag');
+  var nameEl = document.getElementById('wip-lang-name');
+  if(flagEl) flagEl.innerHTML = '<img src="https://flagcdn.com/40x30/' + flagCode.toLowerCase() + '.png" width="40" height="30" alt="" style="border-radius:3px">';
+  if(nameEl) nameEl.textContent = langName;
+  var m = document.getElementById('modal-wip');
+  if(m) { m.classList.add('open'); document.body.style.overflow = 'hidden'; }
+};
+window.closeWip = function() {
+  var m = document.getElementById('modal-wip');
+  if(m) { m.classList.remove('open'); document.body.style.overflow = ''; }
+};
+document.getElementById('modal-wip').addEventListener('click', function(e){
+  if(e.target === document.getElementById('modal-wip')) closeWip();
+});
 
 </script>
