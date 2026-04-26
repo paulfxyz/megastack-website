@@ -153,10 +153,11 @@ This project follows [Semantic Versioning](https://semver.org/):
 
 | Version | Date | Changes |
 |---------|------|---------|
-| `v1.0.0` | 2026-04-26 | Initial launch — full landing page, 9-layer stack, booking modal |
+| `v1.0.0` | 2026-04-26 | Initial launch — full landing page, 10-layer stack, booking modal |
 | `v1.1.0` | 2026-04-26 | Wasabi Wallet layer added (L9) |
 | `v1.2.0` | 2026-04-26 | Extended toolbox (OpenVAS, Trivy, Falco, Semgrep, Gitleaks, ZAP), team hierarchy, package section |
 | `v1.3.0` | 2026-04-26 | Resend email integration, larger hero headline, favicon/OG assets, README |
+| `v1.4.0` | 2026-04-26 | Authelia added (L6), 10 core tools, GitHub banner, full media kit (32 assets), brand guidelines |
 
 ---
 
