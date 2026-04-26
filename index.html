@@ -217,7 +217,8 @@ body::after{content:'';position:fixed;inset:0;z-index:9998;pointer-events:none;o
 .hero{
   position:relative;min-height:100svh;
   display:flex;flex-direction:column;align-items:center;justify-content:center;
-  text-align:center;padding:100px clamp(1rem,4vw,2.5rem) 80px;overflow:hidden
+  text-align:center;padding:100px clamp(1rem,4vw,2.5rem) 80px;overflow:hidden;
+  z-index:0
 }
 .hero-grid{
   position:absolute;inset:0;z-index:3;pointer-events:none;
@@ -542,12 +543,16 @@ body::after{content:'';position:fixed;inset:0;z-index:9998;pointer-events:none;o
    MODAL
 ══════════════════════════════════════════ */
 .modal-backdrop{
-  position:fixed;inset:0;z-index:1000;
+  position:fixed;top:0;left:0;right:0;bottom:0;z-index:10000;
   background:rgba(0,0,0,0.92);backdrop-filter:blur(14px);
   display:flex;align-items:center;justify-content:center;padding:16px;
-  opacity:0;pointer-events:none;transition:opacity var(--mid) var(--ease)
+  opacity:0;pointer-events:none;
+  transition:opacity 0.3s ease;
+  visibility:hidden
 }
-.modal-backdrop.open{opacity:1;pointer-events:all}
+.modal-backdrop.open{
+  opacity:1;pointer-events:all;visibility:visible
+}
 .modal{
   background:var(--s1);border:1px solid var(--border-hi);
   border-radius:var(--r3);width:100%;max-width:600px;max-height:94dvh;overflow-y:auto;
@@ -1540,63 +1545,123 @@ document.querySelectorAll('section[id]').forEach(s=>{
 });
 
 /* ── 9. MODAL ── */
-let selectedDay=null;
+let selectedDay = null;
 
-window.openModal=()=>{
-  document.getElementById('modal-cta').classList.add('open');
-  document.body.style.overflow='hidden';
+window.openModal = function() {
+  const backdrop = document.getElementById('modal-cta');
+  backdrop.classList.add('open');
+  document.body.style.overflow = 'hidden';
   buildDayGrid();
-  goStep(1,true);
+  _showPanel('1');
+  _updateSteps(1);
 };
-window.closeModal=()=>{
-  document.getElementById('modal-cta').classList.remove('open');
-  document.body.style.overflow='';
-};
-document.getElementById('modal-cta').addEventListener('click',e=>{if(e.target===e.currentTarget)closeModal()});
-document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
 
-function showPanel(id){
-  ['1','2','3','done'].forEach(i=>{const p=document.getElementById('panel-'+i);if(p)p.style.display=i===id?'':'none'});
+window.closeModal = function() {
+  const backdrop = document.getElementById('modal-cta');
+  backdrop.classList.remove('open');
+  document.body.style.overflow = '';
+  // Reset after animation
+  setTimeout(function() {
+    _showPanel('1');
+    _updateSteps(1);
+    selectedDay = null;
+    document.querySelectorAll('.day-btn').forEach(function(b){ b.classList.remove('selected'); });
+    var nextBtn = document.getElementById('step2-next');
+    if(nextBtn) nextBtn.disabled = true;
+    var dg = document.getElementById('day-grid');
+    if(dg) dg.style.outline = '';
+    ['inp-name','inp-email','inp-org','inp-signal','inp-context'].forEach(function(id) {
+      var el = document.getElementById(id);
+      if(el) { el.value = ''; el.style.borderColor = ''; }
+    });
+    var plat = document.getElementById('inp-platform');
+    if(plat) plat.selectedIndex = 0;
+    // Hide done panel, show step indicators again
+    var done = document.getElementById('panel-done');
+    if(done) done.style.display = 'none';
+    document.querySelector('.modal-steps').style.display = '';
+  }, 350);
+};
+
+function _showPanel(id) {
+  ['1','2','3','done'].forEach(function(i) {
+    var p = document.getElementById('panel-' + i);
+    if(p) p.style.display = (i === id) ? '' : 'none';
+  });
+  // Hide step dots on done
+  var stepsEl = document.querySelector('.modal-steps');
+  if(stepsEl) stepsEl.style.display = (id === 'done') ? 'none' : '';
 }
 
-window.goStep=function(n,skipValidate){
-  if(!skipValidate&&n===2){
-    const name=document.getElementById('inp-name').value.trim();
-    const email=document.getElementById('inp-email').value.trim();
-    if(!name||!email||!email.includes('@')){
-      document.getElementById(name?'inp-email':'inp-name').focus();return;
+function _updateSteps(n) {
+  [1,2,3].forEach(function(i) {
+    var d = document.getElementById('s' + i);
+    if(!d) return;
+    d.style.background = i < n ? 'rgba(229,0,10,0.3)' : (i === n ? 'var(--acid)' : 'var(--border)');
+  });
+}
+
+window.goStep = function(n, skipValidate) {
+  if(!skipValidate && n === 2) {
+    var name = document.getElementById('inp-name').value.trim();
+    var email = document.getElementById('inp-email').value.trim();
+    if(!name) {
+      var el = document.getElementById('inp-name');
+      el.style.borderColor = 'var(--acid)'; el.focus(); return;
+    }
+    if(!email || !email.includes('@')) {
+      var el2 = document.getElementById('inp-email');
+      el2.style.borderColor = 'var(--acid)'; el2.focus(); return;
     }
   }
-  if(n===3){
-    if(!selectedDay){return}
-    const plat=document.getElementById('inp-platform').value;
-    document.getElementById('rv-name').textContent=document.getElementById('inp-name').value||'—';
-    document.getElementById('rv-contact').textContent=document.getElementById('inp-email').value||'—';
-    document.getElementById('rv-day').textContent=selectedDay||'—';
-    document.getElementById('rv-platform').textContent=plat||'Not specified';
+  if(n === 3) {
+    if(!selectedDay) {
+      var dg = document.getElementById('day-grid');
+      if(dg) { dg.style.outline = '1px solid var(--acid)'; dg.style.borderRadius = '4px'; }
+      return;
+    }
+    var plat = document.getElementById('inp-platform').value || 'Not specified';
+    document.getElementById('rv-name').textContent = document.getElementById('inp-name').value || '—';
+    document.getElementById('rv-contact').textContent = document.getElementById('inp-email').value || '—';
+    document.getElementById('rv-day').textContent = selectedDay;
+    document.getElementById('rv-platform').textContent = plat;
   }
-  showPanel(String(n));
-  [1,2,3].forEach(i=>{const d=document.getElementById('s'+i);if(!d)return;d.style.background=i<n?'rgba(229,0,10,0.3)':(i===n?'var(--acid)':'var(--border)')});
+  _showPanel(String(n));
+  _updateSteps(n);
 };
 
-window.submitBooking=async function(){
-  const btn=document.querySelector('#panel-3 .btn-acid');
-  const origTxt=btn.textContent;
-  btn.textContent='Sending\u2026';btn.disabled=true;
+window.submitBooking = async function() {
+  var btn = document.querySelector('#panel-3 .btn-acid');
+  var origTxt = btn.textContent;
+  btn.textContent = 'Sending…';
+  btn.disabled = true;
 
-  const name   = document.getElementById('inp-name').value.trim();
-  const org    = document.getElementById('inp-org').value.trim();
-  const email  = document.getElementById('inp-email').value.trim();
-  const signal = document.getElementById('inp-signal').value.trim();
-  const ctx    = document.getElementById('inp-context').value.trim();
-  const day    = selectedDay || '\u2014';
-  const plat   = document.getElementById('inp-platform').value || 'Not specified';
+  var name    = document.getElementById('inp-name').value.trim();
+  var org     = document.getElementById('inp-org').value.trim();
+  var email   = document.getElementById('inp-email').value.trim();
+  var signal  = document.getElementById('inp-signal').value.trim();
+  var ctx     = document.getElementById('inp-context').value.trim();
+  var day     = selectedDay || '—';
+  var plat    = document.getElementById('inp-platform').value || 'Not specified';
 
-  const htmlBody = '<h2>New megastack.sh booking</h2><table style="font-family:monospace"><tr><td>Name</td><td><b>'+name+'</b></td></tr><tr><td>Org</td><td>'+(org||'\u2014')+'</td></tr><tr><td>Email</td><td>'+email+'</td></tr><tr><td>Signal/Matrix</td><td>'+(signal||'\u2014')+'</td></tr><tr><td>Preferred day</td><td><b style="color:#E5000A">'+day+'</b></td></tr><tr><td>Platform</td><td>'+plat+'</td></tr></table><h3>Context</h3><p>'+(ctx||'\u2014')+'</p>';
-  const textBody = 'New megastack.sh booking\n\nName: '+name+'\nOrg: '+(org||'\u2014')+'\nEmail: '+email+'\nSignal/Matrix: '+(signal||'\u2014')+'\nPreferred day: '+day+'\nCall platform: '+plat+'\n\nContext:\n'+(ctx||'\u2014');
+  var htmlBody = '<h2 style="color:#E5000A">New megastack.sh booking</h2>' +
+    '<table style="font-family:sans-serif;border-collapse:collapse;font-size:14px">' +
+    '<tr><td style="padding:6px 16px 6px 0;color:#888;font-weight:600">Name</td><td style="padding:6px 0"><strong>' + name + '</strong></td></tr>' +
+    '<tr><td style="padding:6px 16px 6px 0;color:#888;font-weight:600">Organisation</td><td style="padding:6px 0">' + (org||'—') + '</td></tr>' +
+    '<tr><td style="padding:6px 16px 6px 0;color:#888;font-weight:600">Email</td><td style="padding:6px 0">' + email + '</td></tr>' +
+    '<tr><td style="padding:6px 16px 6px 0;color:#888;font-weight:600">Signal / Matrix</td><td style="padding:6px 0">' + (signal||'—') + '</td></tr>' +
+    '<tr><td style="padding:6px 16px 6px 0;color:#888;font-weight:600">Preferred day</td><td style="padding:6px 0"><strong style="color:#E5000A">' + day + '</strong></td></tr>' +
+    '<tr><td style="padding:6px 16px 6px 0;color:#888;font-weight:600">Call platform</td><td style="padding:6px 0">' + plat + '</td></tr>' +
+    '</table>' +
+    '<h3 style="margin-top:20px">Context</h3><p style="font-size:14px;color:#444">' + (ctx||'—') + '</p>';
+
+  var textBody = 'New megastack.sh booking\n\n' +
+    'Name: ' + name + '\nOrg: ' + (org||'—') + '\nEmail: ' + email +
+    '\nSignal/Matrix: ' + (signal||'—') + '\nPreferred day: ' + day +
+    '\nCall platform: ' + plat + '\n\nContext:\n' + (ctx||'—');
 
   try {
-    const res = await fetch('https://api.resend.com/emails', {
+    var res = await fetch('https://api.resend.com/emails', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -1606,46 +1671,66 @@ window.submitBooking=async function(){
         from: 'lead@megastack.sh',
         to: ['hello@paulfleury.com'],
         reply_to: email || 'lead@megastack.sh',
-        subject: '\u{1F4E1} New booking \u2014 '+name+(org?' ('+org+')':'')+' \u2014 '+day,
+        subject: '[megastack.sh] New booking — ' + name + (org ? ' (' + org + ')' : '') + ' — ' + day,
         html: htmlBody,
         text: textBody
       })
     });
-    const data = await res.json().catch(()=>({}));
-    if(!res.ok) throw new Error(data.message || data.name || res.status);
-    showPanel('done');
-  } catch(err){
+    var data = {};
+    try { data = await res.json(); } catch(e) {}
+    if(!res.ok) throw new Error(data.message || data.name || ('HTTP ' + res.status));
+    _showPanel('done');
+  } catch(err) {
     console.error('Resend error:', err);
-    btn.textContent='Error \u2014 try again';
-    btn.disabled=false;
-    setTimeout(()=>{btn.textContent=origTxt;},3000);
+    btn.textContent = 'Error — try again';
+    btn.disabled = false;
+    setTimeout(function(){ btn.textContent = origTxt; }, 3000);
   }
-}};
+};
 
-/* Day grid builder */
-function buildDayGrid(){
-  const grid=document.getElementById('day-grid');
-  grid.innerHTML='';
-  const today=new Date();
-  const DAYS=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
-  const MONTHS=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-  let count=0,offset=4;
-  while(count<10){
-    const d=new Date(today);
-    d.setDate(today.getDate()+offset);
+// Backdrop click to close
+document.getElementById('modal-cta').addEventListener('click', function(e) {
+  if(e.target === document.getElementById('modal-cta')) window.closeModal();
+});
+document.addEventListener('keydown', function(e) { if(e.key === 'Escape') window.closeModal(); });
+
+
+/* ── Day grid builder ── */
+function buildDayGrid() {
+  var grid = document.getElementById('day-grid');
+  if(!grid) return;
+  grid.innerHTML = '';
+  selectedDay = null;
+  var nextBtn = document.getElementById('step2-next');
+  if(nextBtn) nextBtn.disabled = true;
+
+  var today = new Date();
+  var DAYS   = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  var MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  var count = 0, offset = 4;
+
+  while(count < 10) {
+    var d = new Date(today);
+    d.setDate(today.getDate() + offset);
     offset++;
-    const dow=d.getDay();
-    if(dow===0||dow===6)continue; // skip weekends
-    const btn=document.createElement('button');
-    btn.className='day-btn';
-    const label=`${DAYS[dow]} ${d.getDate()} ${MONTHS[d.getMonth()]}`;
-    btn.innerHTML=`<span class="dow">${DAYS[dow]}</span><span class="dom">${d.getDate()}</span><span class="mon">${MONTHS[d.getMonth()]}</span>`;
-    btn.addEventListener('click',()=>{
-      grid.querySelectorAll('.day-btn').forEach(b=>b.classList.remove('selected'));
-      btn.classList.add('selected');
-      selectedDay=label;
-      document.getElementById('step2-next').disabled=false;
-    });
+    var dow = d.getDay();
+    if(dow === 0 || dow === 6) continue; // skip weekends
+    var label = DAYS[dow] + ' ' + d.getDate() + ' ' + MONTHS[d.getMonth()];
+    var btn = document.createElement('button');
+    btn.className = 'day-btn';
+    btn.innerHTML = '<span class="dow">' + DAYS[dow] + '</span>' +
+                    '<span class="dom">' + d.getDate() + '</span>' +
+                    '<span class="mon">' + MONTHS[d.getMonth()] + '</span>';
+    btn.addEventListener('click', (function(lbl, b) {
+      return function() {
+        grid.querySelectorAll('.day-btn').forEach(function(x){ x.classList.remove('selected'); });
+        b.classList.add('selected');
+        selectedDay = lbl;
+        grid.style.outline = '';
+        var nb = document.getElementById('step2-next');
+        if(nb) nb.disabled = false;
+      };
+    })(label, btn));
     grid.appendChild(btn);
     count++;
   }
@@ -1653,23 +1738,3 @@ function buildDayGrid(){
 
 })();
 </script>
-
-<!-- FAQ styles -->
-<style>
-.faq-item{background:var(--bg)}
-.faq-q{
-  display:flex;align-items:center;justify-content:space-between;gap:24px;
-  padding:clamp(14px,2vw,20px) clamp(16px,3vw,28px);
-  font-family:var(--grotesk);font-size:var(--tmd);font-weight:600;
-  color:var(--text);cursor:pointer;transition:background var(--fast) var(--ease);
-  text-align:left;width:100%
-}
-.faq-q:hover{background:var(--s2)}
-.faq-arrow{flex-shrink:0;width:14px;height:14px;color:var(--acid);transition:transform var(--mid) var(--ease)}
-.faq-item.open .faq-arrow{transform:rotate(180deg)}
-.faq-ans{max-height:0;overflow:hidden;transition:max-height 0.4s var(--ease)}
-.faq-item.open .faq-ans{max-height:300px}
-.faq-ans-inner{padding:0 clamp(16px,3vw,28px) 20px;font-size:var(--tmd);color:var(--text-2);line-height:1.75;border-top:1px solid var(--border);padding-top:16px}
-</style>
-</body>
-</html>
