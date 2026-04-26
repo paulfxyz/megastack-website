@@ -7,6 +7,34 @@
   <meta name="description" content="We deploy a full open-source security stack on your own infrastructure. WireGuard, encrypted file hosting, hardened comms, 2FA — end to end.">
   <meta name="theme-color" content="#E5000A">
 
+  <!-- Favicons & Icons -->
+  <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="48x48" href="/assets/favicon-48x48.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+  <link rel="manifest" href="/assets/site.webmanifest">
+  <meta name="msapplication-TileImage" content="/assets/mstile-150x150.png">
+  <meta name="msapplication-TileColor" content="#000000">
+
+  <!-- Open Graph / Social -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://megastack.sh/">
+  <meta property="og:title" content="megastack.sh — End-to-End Open Source Security Stack">
+  <meta property="og:description" content="We deploy a full open-source security stack on infrastructure you own. WireGuard, encrypted storage, secure messaging, 2FA, sync and auto-updates — configured together, working as one.">
+  <meta property="og:image" content="https://megastack.sh/assets/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="megastack.sh">
+
+  <!-- Twitter / X Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@paulfxyz">
+  <meta name="twitter:title" content="megastack.sh — End-to-End Open Source Security Stack">
+  <meta name="twitter:description" content="Your servers. Your keys. Your comms. Your stack. Corporate-grade security at startup-friendly pricing.">
+  <meta name="twitter:image" content="https://megastack.sh/assets/og-image.png">
+
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -245,9 +273,9 @@ body::after{content:'';position:fixed;inset:0;z-index:9998;pointer-events:none;o
 
 .hero-hl{
   font-family:var(--display);font-weight:600;
-  font-size:clamp(1.9rem,0.8rem+4.2vw,4.8rem);
-  line-height:1.12;letter-spacing:-0.025em;
-  max-width:960px;margin-bottom:18px;color:var(--text)
+  font-size:clamp(2.8rem,1.2rem+7vw,8rem);
+  line-height:1.05;letter-spacing:-0.03em;
+  max-width:1100px;margin-bottom:24px;color:var(--text)
 }
 .hero-hl .r{color:var(--acid)}
 .hero-hl .b{color:var(--ice)}
@@ -701,7 +729,8 @@ body::after{content:'';position:fixed;inset:0;z-index:9998;pointer-events:none;o
       <a href="#stack" class="btn btn-outline btn-lg">See the stack ↓</a>
     </div>
     <div class="hero-pills">
-      <div class="pill"><span class="pv">9</span> open-source tools</div>
+      <div class="pill"><span class="pv">10</span> open-source tools</div>
+      <div class="pill"><span class="pv">Authelia</span> 2FA</div>
       <div class="pill"><span class="pa">0</span> cloud dependencies</div>
       <div class="pill"><span class="pv">100%</span> auditable</div>
       <div class="pill"><span class="pa">∞</span> yours</div>
@@ -746,7 +775,7 @@ body::after{content:'';position:fixed;inset:0;z-index:9998;pointer-events:none;o
   <div class="wrap-w">
     <div style="text-align:center;padding-bottom:8px">
       <div class="lbl center">The Stack</div>
-      <h2 class="section-title">Nine tools. One coherent fortress.</h2>
+      <h2 class="section-title">Ten tools. One coherent fortress.</h2>
       <p class="section-body" style="max-width:560px;margin:0 auto">
         Every component is open source, auditable and connected to the others.
         No black boxes. No subscription traps. No calling home.

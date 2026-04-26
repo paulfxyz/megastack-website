@@ -1,0 +1,62 @@
+MEGASTACK.SH — BRAND GUIDELINES
+================================
+
+PRIMARY COLORS
+--------------
+Red (Primary):       #E5000A   rgb(229, 0, 10)
+Black (Background):  #000000   rgb(0, 0, 0)
+White (Text):        #F0EDE8   rgb(240, 237, 232)
+Ice Blue (Accent):   #00C8FF   rgb(0, 200, 255)
+Gold (BTC layer):    #F5A623   rgb(245, 166, 35)
+
+TYPOGRAPHY
+----------
+Display / Headlines: Clash Display (500, 600, 700) — api.fontshare.com
+Body / UI:           Space Grotesk (300–700)        — Google Fonts
+Code / Labels:       JetBrains Mono (400–700)       — Google Fonts
+
+LOGO USAGE
+----------
+• Use logo-black on dark backgrounds (preferred)
+• Use logo-white on light backgrounds
+• Use logo-transparent when compositing over imagery
+• Minimum size: 32px (favicon only), 128px all other uses
+• Clear space: minimum 0.5× logo height on all sides
+• Do NOT recolor, rotate, stretch or add drop shadows
+
+LOGO FILES
+----------
+logos/megastack-logo-black-{2500|1024|512|256|128}.png   Dark backgrounds
+logos/megastack-logo-white-{2500|1024|512}.png            Light backgrounds
+logos/megastack-logo-transparent-{2500|1024|512}.png      Compositing
+
+BANNERS & SOCIAL
+----------------
+banners/megastack-github-banner-1280x640.png
+social/megastack-og-image-1200x630.png
+social/megastack-twitter-header-1500x500.png
+social/megastack-linkedin-banner-1584x396.png
+
+FAVICONS
+--------
+favicons/favicon.ico                    Multi-size (16/32/48)
+favicons/apple-touch-icon.png           iOS home screen (180×180)
+favicons/android-chrome-192x192.png
+favicons/android-chrome-512x512.png
+favicons/mstile-150x150.png             Windows tile
+favicons/site.webmanifest               PWA manifest
+
+VOICE & TONE
+------------
+• Direct. Technical. No fluff.
+• We assume the reader is smart.
+• No corporate speak. No buzzwords.
+• "Your servers. Your keys. Your stack." — own it.
+
+CONTACT
+-------
+Website:  https://megastack.sh
+Email:    hi@megastack.sh
+GitHub:   https://github.com/paulfxyz/megastack-website
+
+© 2026 megastack.sh — All rights reserved
