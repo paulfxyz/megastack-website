@@ -687,6 +687,51 @@ body::after{content:'';position:fixed;inset:0;z-index:9998;pointer-events:none;o
   font-size: var(--tmd); color: var(--text-2); line-height: 1.75;
   border-top: 1px solid var(--border); padding-top: 18px;
 }
+
+/* ── LIGHT THEME ── */
+[data-theme="light"] {
+  --bg:#F5F4F0;--s1:#EDEBE6;--s2:#E4E1DB;--s3:#D8D5CE;
+  --border:#D0CCC4;--border-hi:#B8B3AA;
+  --text:#111110;--text-2:#3D3B37;--text-3:#6B6760;--text-4:#9E9A93;
+  --acid:#CC0008;--acid-dim:#A30006;
+  --acid-glow:rgba(204,0,8,0.18);--acid-soft:rgba(204,0,8,0.07);
+  --ice:#007BA8;--ice-glow:rgba(0,123,168,0.12);--ice-soft:rgba(0,123,168,0.07);
+  --gold:#B07D10;--gold-soft:rgba(176,125,16,0.08);
+}
+/* Smooth transitions for theme switch */
+*,*::before,*::after{transition-property:background-color,border-color,color,box-shadow;transition-duration:0.22s;transition-timing-function:ease}
+canvas,.hero-word,.badge-dot,.scroll-line,.hero-scan,.fade-in,.modal,.modal-backdrop{all:revert}
+.fade-in{opacity:0;transform:translateY(12px);transition:opacity 0.5s var(--ease),transform 0.5s var(--ease)}
+.fade-in.on{opacity:1;transform:none}
+.modal-backdrop{position:fixed;top:0;left:0;right:0;bottom:0;z-index:10000;background:rgba(0,0,0,0.92);backdrop-filter:blur(14px);display:flex;align-items:center;justify-content:center;padding:16px;opacity:0;pointer-events:none;transition:opacity 0.3s ease;visibility:hidden}
+.modal-backdrop.open{opacity:1;pointer-events:all;visibility:visible}
+.modal{background:var(--s1);border:1px solid var(--border-hi);border-radius:var(--r3);width:100%;max-width:600px;max-height:94dvh;overflow-y:auto;transform:translateY(16px) scale(0.97);transition:transform 0.3s var(--ease)}
+.modal-backdrop.open .modal{transform:none}
+[data-theme="light"] #cv-matrix{opacity:0.05}
+[data-theme="light"] #cv-radar.on{opacity:0.12}
+[data-theme="light"] .nav{background:rgba(245,244,240,0.95);border-bottom-color:rgba(204,0,8,0.07)}
+[data-theme="light"] .hero-grid{background-image:linear-gradient(rgba(204,0,8,0.035) 1px,transparent 1px),linear-gradient(90deg,rgba(204,0,8,0.035) 1px,transparent 1px)}
+
+/* ── THEME TOGGLE ── */
+.theme-toggle{width:34px;height:34px;display:flex;align-items:center;justify-content:center;border:1px solid var(--border-hi);border-radius:var(--r1);color:var(--text-3);background:none;cursor:pointer;flex-shrink:0}
+.theme-toggle:hover{border-color:var(--acid);color:var(--acid)}
+.icon-dark{display:block}.icon-light{display:none}
+[data-theme="light"] .icon-dark{display:none}[data-theme="light"] .icon-light{display:block}
+
+/* ── LANG BUTTON ── */
+.lang-btn{display:flex;align-items:center;gap:5px;font-family:var(--mono);font-size:var(--t2xs);font-weight:600;letter-spacing:0.06em;text-transform:uppercase;border:1px solid var(--border-hi);border-radius:var(--r1);color:var(--text-3);background:none;cursor:pointer;padding:8px 10px;flex-shrink:0}
+.lang-btn:hover{border-color:var(--acid);color:var(--acid)}
+
+/* ── LANG MODAL ── */
+.lang-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:4px}
+@media(max-width:640px){.lang-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:380px){.lang-grid{grid-template-columns:repeat(2,1fr)}}
+.lang-card{display:flex;flex-direction:column;align-items:center;gap:5px;padding:13px 6px;border:1px solid var(--border);border-radius:var(--r2);background:var(--s1);cursor:pointer;text-align:center}
+.lang-card:hover,.lang-card.active{border-color:var(--acid);background:var(--acid-soft)}
+.lang-card.active .lang-name{color:var(--acid)}
+.lang-flag{display:flex;align-items:center;justify-content:center;width:24px;height:18px}
+.lang-name{font-family:var(--grotesk);font-size:var(--t2xs);font-weight:600;color:var(--text-2)}
+.lang-native{font-family:var(--grotesk);font-size:0.62rem;color:var(--text-4)}
 </style>
 </head>
 <body>
@@ -715,6 +760,14 @@ body::after{content:'';position:fixed;inset:0;z-index:9998;pointer-events:none;o
     <a href="#faq">FAQ</a>
   </nav>
   <div class="nav-right">
+    <button class="lang-btn" onclick="openLangModal()" aria-label="Language">
+      <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.4"/><path d="M8 1c0 0 3 3.5 3 7s-3 7-3 7-3-3.5-3-7 3-7 3-7z" stroke="currentColor" stroke-width="1.4"/><path d="M1.5 8h13" stroke="currentColor" stroke-width="1.4"/></svg>
+      <span id="current-lang">EN</span>
+    </button>
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+      <svg class="icon-dark" width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M14 10.5A6.5 6.5 0 015.5 2a6.5 6.5 0 108.5 8.5z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
+      <svg class="icon-light" width="14" height="14" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="3" stroke="currentColor" stroke-width="1.4"/><path d="M8 1v2M8 13v2M1 8h2M13 8h2M3.1 3.1l1.4 1.4M11.5 11.5l1.4 1.4M3.1 12.9l1.4-1.4M11.5 4.5l1.4-1.4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+    </button>
     <a href="https://github.com/megastack-sh" target="_blank" rel="noopener" class="btn btn-outline">GitHub</a>
     <button class="btn btn-acid" onclick="openModal()">Book a call</button>
     <button class="nav-burger" id="nav-burger" aria-label="Menu" aria-expanded="false">
@@ -1292,6 +1345,23 @@ body::after{content:'';position:fixed;inset:0;z-index:9998;pointer-events:none;o
   </div>
 </footer>
 
+
+<!-- LANGUAGE MODAL -->
+<div class="modal-backdrop lang-modal" id="modal-lang" role="dialog" aria-modal="true">
+  <div class="modal" style="max-width:680px">
+    <div class="modal-head">
+      <div><div class="modal-sup">Localisation</div><h2 class="modal-title">Select language</h2></div>
+      <button class="modal-close" onclick="closeLangModal()">&#x2715;</button>
+    </div>
+    <div class="modal-body">
+      <div class="lang-grid" id="lang-grid"></div>
+      <p style="font-family:var(--mono);font-size:var(--t2xs);color:var(--text-4);text-align:center;margin-top:20px;line-height:1.7">
+        Full translations coming soon. Contact <a href="mailto:hi@megastack.sh" style="color:var(--acid)">hi@megastack.sh</a> to contribute.
+      </p>
+    </div>
+  </div>
+</div>
+
 <!-- ─── MODAL: BOOK A CALL ─── -->
 <div class="modal-backdrop" id="modal-cta" role="dialog" aria-modal="true" aria-labelledby="modal-cta-title">
   <div class="modal">
@@ -1753,4 +1823,96 @@ function buildDayGrid() {
 }
 
 })();
+
+/* THEME TOGGLE */
+(function(){
+  var s = localStorage.getItem('ms-theme') || 'dark';
+  document.documentElement.setAttribute('data-theme', s);
+})();
+window.toggleTheme = function() {
+  var h = document.documentElement;
+  var n = h.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+  h.setAttribute('data-theme', n);
+  localStorage.setItem('ms-theme', n);
+};
+
+/* LANGUAGE MODAL */
+var LANGS = [
+  {c:'EN',f:'gb',n:'English',nat:'English'},
+  {c:'FR',f:'fr',n:'Fran\u00e7ais',nat:'French'},
+  {c:'ES',f:'es',n:'Espa\u00f1ol',nat:'Spanish'},
+  {c:'DE',f:'de',n:'Deutsch',nat:'German'},
+  {c:'IT',f:'it',n:'Italiano',nat:'Italian'},
+  {c:'PT',f:'pt',n:'Portugu\u00eas',nat:'Portuguese'},
+  {c:'NL',f:'nl',n:'Nederlands',nat:'Dutch'},
+  {c:'PL',f:'pl',n:'Polski',nat:'Polish'},
+  {c:'RU',f:'ru',n:'\u0420\u0443\u0441\u0441\u043a\u0438\u0439',nat:'Russian'},
+  {c:'UK',f:'ua',n:'\u0423\u043a\u0440\u0430\u0457\u043d\u0441\u044c\u043a\u0430',nat:'Ukrainian'},
+  {c:'ZH',f:'cn',n:'\u4e2d\u6587',nat:'Chinese'},
+  {c:'JA',f:'jp',n:'\u65e5\u672c\u8a9e',nat:'Japanese'},
+  {c:'KO',f:'kr',n:'\ud55c\uad6d\uc5b4',nat:'Korean'},
+  {c:'AR',f:'sa',n:'\u0627\u0644\u0639\u0631\u0628\u064a\u0629',nat:'Arabic'},
+  {c:'TR',f:'tr',n:'T\u00fcrk\u00e7e',nat:'Turkish'},
+  {c:'HI',f:'in',n:'\u0939\u093f\u0928\u094d\u0926\u0940',nat:'Hindi'},
+  {c:'ID',f:'id',n:'Bahasa ID',nat:'Indonesian'},
+  {c:'VI',f:'vn',n:'Ti\u1ebfng Vi\u1ec7t',nat:'Vietnamese'},
+  {c:'TH',f:'th',n:'\u0e20\u0e32\u0e29\u0e32\u0e44\u0e17\u0e22',nat:'Thai'},
+  {c:'SV',f:'se',n:'Svenska',nat:'Swedish'},
+  {c:'NO',f:'no',n:'Norsk',nat:'Norwegian'},
+  {c:'DA',f:'dk',n:'Dansk',nat:'Danish'},
+  {c:'FI',f:'fi',n:'Suomi',nat:'Finnish'},
+  {c:'HE',f:'il',n:'\u05e2\u05d1\u05e8\u05d9\u05ea',nat:'Hebrew'},
+  {c:'FA',f:'ir',n:'\u0641\u0627\u0631\u0633\u06cc',nat:'Persian'},
+];
+
+var _curLang = localStorage.getItem('ms-lang') || 'EN';
+
+function _flagImg(code) {
+  // Use flagcdn.com for reliable flag images
+  return '<img src="https://flagcdn.com/24x18/' + code.toLowerCase() + '.png" width="24" height="18" alt="" style="border-radius:2px;flex-shrink:0">';
+}
+
+function buildLangGrid() {
+  var grid = document.getElementById('lang-grid');
+  if(!grid) return;
+  grid.innerHTML = '';
+  LANGS.forEach(function(l) {
+    var card = document.createElement('button');
+    card.className = 'lang-card' + (l.c === _curLang ? ' active' : '');
+    card.innerHTML =
+      '<span class="lang-flag">' + _flagImg(l.f) + '</span>' +
+      '<span class="lang-name">' + l.n + '</span>' +
+      '<span class="lang-native">' + l.nat + '</span>';
+    card.addEventListener('click', function() {
+      _curLang = l.c;
+      localStorage.setItem('ms-lang', l.c);
+      var el = document.getElementById('current-lang');
+      if(el) el.textContent = l.c;
+      grid.querySelectorAll('.lang-card').forEach(function(x){ x.classList.remove('active'); });
+      card.classList.add('active');
+      setTimeout(closeLangModal, 280);
+    });
+    grid.appendChild(card);
+  });
+}
+
+window.openLangModal = function() {
+  buildLangGrid();
+  var m = document.getElementById('modal-lang');
+  if(m) { m.classList.add('open'); document.body.style.overflow = 'hidden'; }
+};
+window.closeLangModal = function() {
+  var m = document.getElementById('modal-lang');
+  if(m) { m.classList.remove('open'); document.body.style.overflow = ''; }
+};
+document.getElementById('modal-lang').addEventListener('click', function(e){
+  if(e.target === document.getElementById('modal-lang')) closeLangModal();
+});
+
+// Restore lang on load
+(function(){
+  var s = localStorage.getItem('ms-lang');
+  if(s) { _curLang = s; var el = document.getElementById('current-lang'); if(el) el.textContent = s; }
+})();
+
 </script>
