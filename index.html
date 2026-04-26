@@ -883,8 +883,8 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
         <div class="stack-content">
           <div class="stack-name">WireGuard</div>
           <span class="stack-tag" style="color:var(--acid)">Layer 1 — VPN Backbone</span>
-          <p class="stack-desc">The backbone of your entire stack. All other services tunnel through it. Modern cryptography, kernel-level performance, and a codebase small enough to actually audit. Every device, every server, one mesh.</p>
-          <a href="https://github.com/WireGuard/wireguard-linux" target="_blank" rel="noopener" class="stack-gh">
+          <p class="stack-desc">The backbone everything else runs through. Kernel-level performance, mathematically sound cryptography, and a codebase so lean you can actually read it. Every device, every server, one encrypted mesh — built to last.</p>
+          <a href="https://github.com/WireGuard/wireguard-tools" target="_blank" rel="noopener" class="stack-gh">
             <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
             WireGuard/wireguard-linux
           </a>
@@ -899,7 +899,7 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
         <div class="stack-content">
           <div class="stack-name">Hoodik</div>
           <span class="stack-tag" style="color:var(--ice)">Layer 2 — Encrypted File Hosting</span>
-          <p class="stack-desc">End-to-end encrypted file storage on your own server. Store SSH keys, certificates, credentials and sensitive documents. Accessible only over WireGuard — invisible to the outside world.</p>
+          <p class="stack-desc">End-to-end encrypted file storage on your own server. SSH keys, certificates, credentials, sensitive documents — locked and accessible only inside the WireGuard mesh. To the outside world, it does not exist.</p>
           <a href="https://github.com/hudikhq/hoodik" target="_blank" rel="noopener" class="stack-gh">
             <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
             hudikhq/hoodik
@@ -915,8 +915,8 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
         <div class="stack-content">
           <div class="stack-name">Hardened Firewall</div>
           <span class="stack-tag" style="color:var(--gold)">Layer 3 — Network Policy</span>
-          <p class="stack-desc">Custom nftables / iptables policies that ensure Hoodik, Matrix and all internal services are unreachable unless you're inside the WireGuard mesh. Deny-all defaults. Principle of least privilege, applied.</p>
-          <a href="https://github.com/megastack-sh/firewall-templates" target="_blank" rel="noopener" class="stack-gh">
+          <p class="stack-desc">Custom nftables policies enforcing a single rule: if you are not inside the mesh, you see nothing. Deny-all defaults. Every exception is explicit, documented and auditable. Least privilege at the network layer.</p>
+          <a href="#" onclick="openPrivateModal();return false;" target="_blank" rel="noopener" class="stack-gh">
             <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
             megastack-sh/firewall-templates
           </a>
@@ -931,8 +931,8 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
         <div class="stack-content">
           <div class="stack-name">Access Management Templates</div>
           <span class="stack-tag" style="color:#A855F7">Layer 4 — Secure Operations</span>
-          <p class="stack-desc">Production-ready Notion templates (and Plane.so equivalents) for tracking access grants, SSH key rotation, incident logs and VPN peer lists. All references point inside your WireGuard + Hoodik environment.</p>
-          <a href="https://github.com/megastack-sh/access-templates" target="_blank" rel="noopener" class="stack-gh">
+          <p class="stack-desc">Operational playbooks for running a secure infrastructure: key rotation schedules, peer onboarding checklists, incident timelines, access revocation flows. Everything links back into your own environment — nothing lives on a third-party platform.</p>
+          <a href="#" onclick="openPrivateModal();return false;" target="_blank" rel="noopener" class="stack-gh">
             <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
             megastack-sh/access-templates
           </a>
@@ -947,7 +947,7 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
         <div class="stack-content">
           <div class="stack-name">Matrix + Element</div>
           <span class="stack-tag" style="color:#22C55E">Layer 5 — Secure Communications</span>
-          <p class="stack-desc">Self-hosted Matrix.org homeserver, federated only within your mesh. Use Element.io as your client for end-to-end encrypted team messaging, voice and file sharing. Zero metadata leakage to third-party servers.</p>
+          <p class="stack-desc">Self-hosted Matrix homeserver, federated only within your WireGuard mesh. E2E encrypted messaging, voice calls and file transfer via Element — with zero metadata touching any external server. Your comms, fully owned.</p>
           <a href="https://github.com/element-hq/synapse" target="_blank" rel="noopener" class="stack-gh">
             <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
             element-hq/synapse
@@ -963,7 +963,7 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
         <div class="stack-content">
           <div class="stack-name">2FA Token Server</div>
           <span class="stack-tag" style="color:#FB923C">Layer 6 — Authentication</span>
-          <p class="stack-desc">A self-hosted TOTP server (Authelia or Lldap + oath-toolkit) so your 2FA tokens never flow through Google Authenticator or Authy. Hardware key support (YubiKey / FIDO2) optional. Runs entirely inside your mesh.</p>
+          <p class="stack-desc">Your 2FA tokens should never pass through Google, Authy or any third party. Authelia gives you a self-hosted authentication gateway with TOTP, hardware key support (YubiKey, FIDO2) and SSO — running entirely inside your mesh.</p>
           <a href="https://github.com/authelia/authelia" target="_blank" rel="noopener" class="stack-gh">
             <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
             authelia/authelia
@@ -979,8 +979,8 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
         <div class="stack-content">
           <div class="stack-name">Resilio Sync</div>
           <span class="stack-tag" style="color:#38BDF8">Layer 7 — P2P File Sync</span>
-          <p class="stack-desc">BitTorrent-based file sync across all your devices and servers. No central server, no third-party storage. Files replicate peer-to-peer, encrypted in transit. Works seamlessly through the WireGuard tunnel.</p>
-          <a href="https://github.com/megastack-sh/resilio-config" target="_blank" rel="noopener" class="stack-gh">
+          <p class="stack-desc">BitTorrent-based sync with no central server and no cloud dependency. Files move peer-to-peer between your devices, encrypted in transit, routed through the WireGuard tunnel. Fast, private, decentralised by design.</p>
+          <a href="#" onclick="openPrivateModal();return false;" target="_blank" rel="noopener" class="stack-gh">
             <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
             megastack-sh/resilio-config
           </a>
@@ -995,8 +995,8 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
         <div class="stack-content">
           <div class="stack-name">topgrade</div>
           <span class="stack-tag" style="color:var(--text-2)">Layer 8 — Universal Updates</span>
-          <p class="stack-desc">A single command that updates everything — Homebrew, apt, pip, cargo, snap, firmware, App Store apps — on every Mac, Windows machine and Linux server in your fleet. Custom fork with your stack's packages pre-configured.</p>
-          <a href="https://github.com/paulfxyz/topgrade" target="_blank" rel="noopener" class="stack-gh">
+          <p class="stack-desc">One command. Every package manager, every platform — Homebrew, apt, pip, cargo, winget, firmware — updated across your entire fleet simultaneously. The only maintenance task that actually stays done.</p>
+          <a href="https://github.com/topgrade-rs/topgrade" target="_blank" rel="noopener" class="stack-gh">
             <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
             paulfxyz/topgrade
           </a>
@@ -1011,7 +1011,7 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
         <div class="stack-content">
           <div class="stack-name">Wasabi Wallet</div>
           <span class="stack-tag" style="color:#F5A623">Layer 9 — Bitcoin Privacy Reserve</span>
-          <p class="stack-desc">Custom Wasabi Wallet setup for your Bitcoin reserve. Built-in CoinJoin for transaction privacy, Tor routing by default, and full-node support via your own Bitcoin Core. Non-custodial, open source — your keys never leave your machine, your transactions don't fingerprint you.</p>
+          <p class="stack-desc">Non-custodial Bitcoin infrastructure for your reserve. CoinJoin breaks transaction traceability, Tor routes your network traffic, your own Bitcoin Core node removes any third-party trust. Your keys, your coins — untrackable by design.</p>
           <a href="https://github.com/WalletWasabi/WalletWasabi" target="_blank" rel="noopener" class="stack-gh">
             <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
             WalletWasabi/WalletWasabi
@@ -1169,7 +1169,7 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
               <div class="team-handle"><a href="https://linkedin.com/in/paulfleury" target="_blank" rel="noopener">paulfxyz</a></div>
             </div>
           </div>
-          <div class="team-role">Serial Internet entrepreneur behind Openline.com, CleanIP.legal and Asymptote.ventures. Leads client strategy, deployment operations and product vision. The one who picks up the phone when you need your stack secured.</div>
+          <div class="team-role">Founder of Openline.com, CleanIP.legal and Asymptote.ventures. He built internet companies before most people had broadband. Now he builds the infrastructure layer that keeps them safe. First call, last line of defence.</div>
           <div class="team-tags" style="margin-top:14px">
             <span class="tag" style="border-color:rgba(229,0,10,0.25);color:var(--acid)">Founder &amp; CEO</span>
             <span class="tag">Product</span>
@@ -1187,7 +1187,7 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
           <div class="team-av" style="color:#22C55E;border-color:rgba(34,197,94,0.2)">CD</div>
           <div class="team-name">Clément Domingo</div>
           <div class="team-handle"><a href="https://linkedin.com/in/clementdomingo" target="_blank" rel="noopener">SaxX</a></div>
-          <div class="team-role">Security Advisor &amp; Offensive Security Expert. Pentests the full stack, designs threat models and hunts for backdoors before adversaries do. Two decades breaking things professionally.</div>
+          <div class="team-role">Offensive security expert who has spent two decades finding holes before the bad guys do. Designs the threat models, runs the pentests, reads the reports nobody else wants to read — then fixes what he finds.</div>
           <div class="team-tags">
             <span class="tag">Offensive Sec</span>
             <span class="tag">Pentesting</span>
@@ -1198,7 +1198,7 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
           <div class="team-av" style="color:var(--text-3);border-color:rgba(240,237,232,0.1)">SR</div>
           <div class="team-name">Sébastien Raoult</div>
           <div class="team-handle"><a href="https://en.wikipedia.org/wiki/ShinyHunters" target="_blank" rel="noopener">ShinyHunters</a></div>
-          <div class="team-role">Security Advisor &amp; Breach Intelligence. Inspired the ShinyHunters — one of the most sophisticated intrusion operations in history. Brings adversarial intuition no textbook can teach.</div>
+          <div class="team-role">Breach intelligence advisor who understands intrusion operations from the inside out. The adversarial instinct he brings to every engagement cannot be replicated in a classroom. If there is a way in, he already knows it.</div>
           <div class="team-tags">
             <span class="tag">Breach Intel</span>
             <span class="tag">Red Team</span>
@@ -1209,7 +1209,7 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
           <div class="team-av" style="color:var(--ice);border-color:rgba(0,200,255,0.2)">RC</div>
           <div class="team-name">Roni Carta</div>
           <div class="team-handle"><a href="https://linkedin.com/in/roni-carta" target="_blank" rel="noopener">Lupin</a></div>
-          <div class="team-role">Security Advisor &amp; World Champion Penetration Tester. Brings elite-level offensive skills and a competition-proven methodology to harden every layer of the megastack against the most sophisticated real-world attacks.</div>
+          <div class="team-role">World Champion penetration tester. Competition-proven, methodologically precise, and relentlessly thorough. He does not stop at the first breach — he maps every path an attacker could take, then closes them all.</div>
           <div class="team-tags">
             <span class="tag">World Champion</span>
             <span class="tag">Pentesting</span>
@@ -1441,6 +1441,30 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
       <p style="font-family:var(--mono);font-size:var(--t2xs);color:var(--text-4);text-align:center;margin-top:20px;line-height:1.7">
         Full translations coming soon. Contact <a href="mailto:hi@megastack.sh" style="color:var(--acid)">hi@megastack.sh</a> to contribute.
       </p>
+    </div>
+  </div>
+</div>
+
+
+<!-- PRIVATE RESOURCE MODAL -->
+<div class="modal-backdrop" id="modal-private" role="dialog" aria-modal="true">
+  <div class="modal" style="max-width:440px;text-align:center">
+    <div class="modal-head" style="justify-content:flex-end;border-bottom:none;padding-bottom:8px">
+      <button class="modal-close" onclick="closePrivateModal()">&#x2715;</button>
+    </div>
+    <div class="modal-body" style="padding-top:0;padding-bottom:36px">
+      <div style="width:72px;height:72px;margin:0 auto 22px;background:var(--acid-soft);border:1px solid rgba(229,0,10,0.2);border-radius:50%;display:flex;align-items:center;justify-content:center">
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+          <rect x="5" y="12" width="18" height="13" rx="2" stroke="var(--acid)" stroke-width="1.6" fill="none"/>
+          <path d="M9 12V9a5 5 0 0110 0v3" stroke="var(--acid)" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+          <circle cx="14" cy="18.5" r="1.8" fill="var(--acid)"/>
+        </svg>
+      </div>
+      <h3 style="font-family:var(--display);font-size:var(--t2xl);font-weight:700;letter-spacing:-0.02em;margin-bottom:10px">Private resource</h3>
+      <p style="font-size:var(--tmd);color:var(--text-2);line-height:1.72;margin-bottom:6px">This component is part of the megastack private configuration layer.</p>
+      <p style="font-size:var(--tsm);color:var(--text-3);line-height:1.65;margin-bottom:28px">Templates, scripts and configuration files are shared exclusively with clients during deployment. Contact us for access or a detailed walkthrough.</p>
+      <button class="btn btn-acid btn-lg" style="width:100%;justify-content:center" onclick="closePrivateModal();openModal()">Book a secure call &rarr;</button>
+      <button onclick="closePrivateModal()" style="display:block;margin:14px auto 0;font-family:var(--grotesk);font-size:var(--t2xs);color:var(--text-4);background:none;border:none;cursor:pointer;text-decoration:underline">Close</button>
     </div>
   </div>
 </div>
@@ -2075,6 +2099,19 @@ window.closeWip = function() {
 };
 document.getElementById('modal-wip').addEventListener('click', function(e){
   if(e.target === document.getElementById('modal-wip')) closeWip();
+});
+
+/* Private resource modal */
+window.openPrivateModal = function() {
+  var m = document.getElementById('modal-private');
+  if(m) { m.classList.add('open'); document.body.style.overflow='hidden'; }
+};
+window.closePrivateModal = function() {
+  var m = document.getElementById('modal-private');
+  if(m) { m.classList.remove('open'); document.body.style.overflow=''; }
+};
+document.getElementById('modal-private').addEventListener('click', function(e){
+  if(e.target===document.getElementById('modal-private')) closePrivateModal();
 });
 
 </script>
