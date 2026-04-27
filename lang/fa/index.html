@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>megastack.sh — پشته امنیتی متن‌باز از ابتدا تا انتها</title>
-  <meta name="description" content="ما یک استک امنیتی متن‌باز کامل و آبدیده را روی زیرساختی که خودت مالکش هستی مستقر می‌کنیم. VPN، ذخیره‌سازی رمزنگاری‌شده، پیام‌رسانی امن، 2FA، همگام‌سازی و به‌روز">
+  <meta name="description" content="We deploy a full open-source security stack on your own infrastructure. WireGuard, encrypted file hosting, hardened comms, 2FA — end to end.">
   <meta name="theme-color" content="#E5000A">
   <link rel="canonical" href="https://megastack.sh/fa/">
   <link rel="alternate" hreflang="en" href="https://megastack.sh/">
@@ -57,7 +57,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@paulfxyz">
   <meta name="twitter:title" content="megastack.sh — پشته امنیتی متن‌باز از ابتدا تا انتها">
-  <meta name="twitter:description" content="سرورهای تو. کلیدهای تو. ارتباطات تو. استک تو. Corporate-grade security at startup-friendly pricing.">
+  <meta name="twitter:description" content="Your servers. Your keys. Your comms. Your stack. Corporate-grade security at startup-friendly pricing.">
   <meta name="twitter:image" content="https://megastack.sh/assets/og-image.png">
 
 
@@ -75,7 +75,7 @@
   --bg:        #000000;
   --s1:        #050505;
   --s2:        #0a0a0a;
-  --s3:        #1۰۱۰۱0;
+  --s3:        #101010;
   --border:    #1a1a1a;
   --border-hi: #272727;
 
@@ -130,8 +130,8 @@ button{cursor:pointer;border:none;background:none;font:inherit}
 
 /* CRT + grain */
 body::before{content:'';position:fixed;inset:0;z-index:9999;pointer-events:none;
-  background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,0.۰۱6) 2px,rgba(0,0,0,0.۰۱6) 4px)}
-body::after{content:'';position:fixed;inset:0;z-index:9998;pointer-events:none;opacity:0.۰۱3;
+  background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,0.016) 2px,rgba(0,0,0,0.016) 4px)}
+body::after{content:'';position:fixed;inset:0;z-index:9998;pointer-events:none;opacity:0.013;
   background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   background-size:200px 200px}
 
@@ -162,7 +162,7 @@ body::after{content:'';position:fixed;inset:0;z-index:9998;pointer-events:none;o
 }
 .nav-links a{
   font-family:var(--grotesk);font-size:var(--txs);font-weight:500;
-  letter-spacing:0.۰۳em;color:var(--text-3);
+  letter-spacing:0.03em;color:var(--text-3);
   transition:color var(--fast) var(--ease);white-space:nowrap;
 }
 .nav-links a:hover{color:var(--text)}
@@ -193,7 +193,7 @@ body::after{content:'';position:fixed;inset:0;z-index:9998;pointer-events:none;o
 .btn{
   display:inline-flex;align-items:center;gap:7px;
   font-family:var(--grotesk);font-size:var(--txs);font-weight:600;
-  letter-spacing:0.۰۲em;padding:9px 20px;border-radius:var(--r1);
+  letter-spacing:0.02em;padding:9px 20px;border-radius:var(--r1);
   transition:all var(--fast) var(--ease);white-space:nowrap;cursor:pointer
 }
 .btn-acid{background:var(--acid);color:#fff;border:1px solid var(--acid)}
@@ -228,7 +228,7 @@ body::after{content:'';position:fixed;inset:0;z-index:9998;pointer-events:none;o
 .section-sm{padding:clamp(44px,6vw,72px) 0}
 .section-title{
   font-family:var(--display);font-size:var(--t4xl);font-weight:700;
-  line-height:1.05;letter-spacing:-0.۰۲em;margin-bottom:16px
+  line-height:1.05;letter-spacing:-0.02em;margin-bottom:16px
 }
 .section-body{font-size:var(--tmd);color:var(--text-2);line-height:1.75}
 
@@ -249,8 +249,8 @@ body::after{content:'';position:fixed;inset:0;z-index:9998;pointer-events:none;o
 .hero-grid{
   position:absolute;inset:0;z-index:3;pointer-events:none;
   background-image:
-    linear-gradient(rgba(229,0,10,0.۰۲5) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(229,0,10,0.۰۲5) 1px,transparent 1px);
+    linear-gradient(rgba(229,0,10,0.025) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(229,0,10,0.025) 1px,transparent 1px);
   background-size:60px 60px;
   mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black 10%,transparent 100%)
 }
@@ -277,7 +277,7 @@ body::after{content:'';position:fixed;inset:0;z-index:9998;pointer-events:none;o
 
 .hero-word{
   font-family:var(--display);font-size:var(--hero);font-weight:700;
-  line-height:0.88;letter-spacing:-0.۰۳5em;color:var(--text);
+  line-height:0.88;letter-spacing:-0.035em;color:var(--text);
   margin-bottom:18px;user-select:none;position:relative
 }
 .hero-word .dot{color:var(--acid)}
@@ -301,7 +301,7 @@ body::after{content:'';position:fixed;inset:0;z-index:9998;pointer-events:none;o
 .hero-hl{
   font-family:var(--display);font-weight:600;
   font-size:clamp(1.5rem, 0.8rem + 2.8vw, 3.6rem);
-  line-height:1.2;letter-spacing:-0.۰۲em;
+  line-height:1.2;letter-spacing:-0.02em;
   max-width:860px;margin-bottom:24px;color:var(--text)
 }
 .hero-hl .r{color:var(--acid)}
@@ -340,7 +340,7 @@ body::after{content:'';position:fixed;inset:0;z-index:9998;pointer-events:none;o
    STRIPE
 ══════════════════════════════════════════ */
 .stripe{
-  background:repeating-linear-gradient(-45deg,rgba(229,0,10,0.۰۳),rgba(229,0,10,0.۰۳) 10px,transparent 10px,transparent 20px);
+  background:repeating-linear-gradient(-45deg,rgba(229,0,10,0.03),rgba(229,0,10,0.03) 10px,transparent 10px,transparent 20px);
   border-top:1px solid rgba(229,0,10,0.12);border-bottom:1px solid rgba(229,0,10,0.12);
   padding:12px 24px;text-align:center
 }
@@ -379,7 +379,7 @@ body::after{content:'';position:fixed;inset:0;z-index:9998;pointer-events:none;o
 }
 .approach-title{
   font-family:var(--display);font-size:var(--txl);font-weight:700;
-  letter-spacing:-0.۰۱em;margin-bottom:10px
+  letter-spacing:-0.01em;margin-bottom:10px
 }
 .approach-card:nth-child(1) .approach-title{color:var(--acid)}
 .approach-card:nth-child(2) .approach-title{color:var(--ice)}
@@ -416,7 +416,7 @@ body::after{content:'';position:fixed;inset:0;z-index:9998;pointer-events:none;o
 .stack-content{position:relative;z-index:1}
 .stack-name{
   font-family:var(--display);font-size:var(--tlg);font-weight:700;
-  letter-spacing:-0.۰۱em;margin-bottom:5px
+  letter-spacing:-0.01em;margin-bottom:5px
 }
 .stack-tag{
   font-family:var(--mono);font-size:var(--t2xs);font-weight:600;
@@ -498,7 +498,7 @@ body::after{content:'';position:fixed;inset:0;z-index:9998;pointer-events:none;o
 .for-icon{font-size:1.8rem;margin-bottom:16px}
 .for-title{
   font-family:var(--display);font-size:var(--txl);font-weight:700;
-  letter-spacing:-0.۰۱em;margin-bottom:8px
+  letter-spacing:-0.01em;margin-bottom:8px
 }
 .for-desc{font-size:var(--tsm);color:var(--text-2);line-height:1.65}
 
@@ -548,7 +548,7 @@ body::after{content:'';position:fixed;inset:0;z-index:9998;pointer-events:none;o
 }
 .cta-title{
   font-family:var(--display);font-size:var(--t4xl);font-weight:700;
-  letter-spacing:-0.۰۲em;line-height:1.05;margin-bottom:14px;position:relative
+  letter-spacing:-0.02em;line-height:1.05;margin-bottom:14px;position:relative
 }
 .cta-sub{font-size:var(--tmd);color:var(--text-2);margin-bottom:34px;max-width:460px;margin-left:auto;margin-right:auto}
 .cta-btns{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap}
@@ -590,7 +590,7 @@ body::after{content:'';position:fixed;inset:0;z-index:9998;pointer-events:none;o
   display:flex;align-items:flex-start;justify-content:space-between;gap:16px
 }
 .modal-sup{font-family:var(--mono);font-size:var(--t2xs);font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--acid);margin-bottom:5px}
-.modal-title{font-family:var(--display);font-size:var(--t2xl);font-weight:700;letter-spacing:-0.۰۲em}
+.modal-title{font-family:var(--display);font-size:var(--t2xl);font-weight:700;letter-spacing:-0.02em}
 .modal-close{
   width:34px;height:34px;flex-shrink:0;display:flex;align-items:center;justify-content:center;
   border:1px solid var(--border);border-radius:var(--r1);color:var(--text-3);
@@ -674,7 +674,7 @@ body::after{content:'';position:fixed;inset:0;z-index:9998;pointer-events:none;o
 .xtool-card:hover{background:var(--s2)}
 .xtool-top{display:flex;align-items:flex-start;gap:14px;margin-bottom:12px}
 .xtool-icon{font-size:1.5rem;flex-shrink:0;margin-top:2px}
-.xtool-name{font-family:var(--display);font-size:var(--tlg);font-weight:700;letter-spacing:-0.۰۱em;margin-bottom:3px}
+.xtool-name{font-family:var(--display);font-size:var(--tlg);font-weight:700;letter-spacing:-0.01em;margin-bottom:3px}
 .xtool-cat{font-family:var(--mono);font-size:var(--t2xs);font-weight:600;letter-spacing:0.08em;text-transform:uppercase}
 .xtool-desc{font-size:var(--tsm);color:var(--text-2);line-height:1.65;margin-bottom:10px}
 /* pill cloud */
@@ -691,7 +691,7 @@ body::after{content:'';position:fixed;inset:0;z-index:9998;pointer-events:none;o
 @media(max-width:640px){#package-grid{grid-template-columns:1fr}}
 @media(max-width:640px){#package .wrap > div:first-of-type + div{grid-template-columns:1fr}}
 
-/* ── سؤالات متداول ── */
+/* ── FAQ ── */
 .faq-item { background: var(--bg); }
 .faq-q {
   display:flex; align-items:center; justify-content:space-between; gap:24px;
@@ -743,7 +743,7 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
 [data-theme="light"] #cv-matrix{opacity:0.05}
 [data-theme="light"] #cv-radar.on{opacity:0.12}
 [data-theme="light"] .nav{background:rgba(245,244,240,0.95);border-bottom-color:rgba(204,0,8,0.07)}
-[data-theme="light"] .hero-grid{background-image:linear-gradient(rgba(204,0,8,0.۰۳5) 1px,transparent 1px),linear-gradient(90deg,rgba(204,0,8,0.۰۳5) 1px,transparent 1px)}
+[data-theme="light"] .hero-grid{background-image:linear-gradient(rgba(204,0,8,0.035) 1px,transparent 1px),linear-gradient(90deg,rgba(204,0,8,0.035) 1px,transparent 1px)}
 
 /* ── THEME TOGGLE ── */
 .theme-toggle{display:inline-flex;align-items:center;justify-content:center;height:41.4375px;width:44px;border:1px solid var(--border-hi);border-radius:var(--r1);color:var(--text-3);background:none;cursor:pointer;flex-shrink:0;box-sizing:border-box}
@@ -752,7 +752,7 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
 [data-theme="light"] .icon-dark{display:none}[data-theme="light"] .icon-light{display:block}
 
 /* ── LANG BUTTON ── */
-.lang-btn{display:inline-flex;align-items:center;gap:6px;font-family:var(--grotesk);font-size:var(--txs);font-weight:600;letter-spacing:0.۰۲em;border:1px solid var(--border-hi);border-radius:var(--r1);color:var(--text-3);background:none;cursor:pointer;padding:9px 16px;flex-shrink:0}
+.lang-btn{display:inline-flex;align-items:center;gap:6px;font-family:var(--grotesk);font-size:var(--txs);font-weight:600;letter-spacing:0.02em;border:1px solid var(--border-hi);border-radius:var(--r1);color:var(--text-3);background:none;cursor:pointer;padding:9px 16px;flex-shrink:0}
 .lang-btn:hover{border-color:var(--acid);color:var(--acid)}
 
 /* ── LANG MODAL ── */
@@ -773,17 +773,18 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
 @keyframes wip-blink  { 0%,100%{opacity:0.6} 50%{opacity:0.15} }
 
 /* RTL overrides */
+[dir="rtl"] body { text-align: right; }
+[dir="rtl"] .lbl { flex-direction: row-reverse; }
 [dir="rtl"] .lbl::before { display:none; }
-[dir="rtl"] .lbl::after  { content:''; display:block; width:16px; height:1px; background:currentColor; flex-shrink:0; }
-[dir="rtl"] .tl-item { direction: rtl; }
-[dir="rtl"] .nav-links { direction: rtl; }
-[dir="rtl"] .hero-content { direction: rtl; }
-[dir="rtl"] .wrap, [dir="rtl"] .wrap-w, [dir="rtl"] .wrap-n { direction: rtl; text-align: right; }
-[dir="rtl"] .section-title, [dir="rtl"] .hero-hl, [dir="rtl"] .cta-title { text-align: right; }
-[dir="rtl"] .approach-card, [dir="rtl"] .stack-card, [dir="rtl"] .xtool-card { text-align: right; }
-[dir="rtl"] .team-card, [dir="rtl"] .for-card, [dir="rtl"] .layer-row { text-align: right; direction: rtl; }
-[dir="rtl"] .layer-row { grid-template-columns: auto 1fr auto; }
-[dir="rtl"] .day-grid { direction: rtl; }
+[dir="rtl"] .lbl::after { content:''; display:block; width:16px; height:1px; background:currentColor; flex-shrink:0; }
+[dir="rtl"] .hero-sub { flex-direction: row-reverse; }
+[dir="rtl"] .hero-pills { flex-direction: row-reverse; }
+[dir="rtl"] .nav-links { flex-direction: row-reverse; }
+[dir="rtl"] .wrap, [dir="rtl"] .wrap-w, [dir="rtl"] .wrap-n { direction: rtl; }
+[dir="rtl"] .stack-card { grid-template-columns: 1fr 48px; }
+[dir="rtl"] .layer-row { direction: rtl; }
+[dir="rtl"] .modal-head { flex-direction: row-reverse; }
+[dir="rtl"] .form-label { text-align: right; }
 </style>
 </head>
 <body>
@@ -817,7 +818,7 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
       <span id="current-lang">EN</span>
     </button>
     <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
-      <svg class="icon-dark" width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M14 10.5A6.5 6.5 0 ۰۱5.5 2a6.5 6.5 0 108.5 8.5z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
+      <svg class="icon-dark" width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M14 10.5A6.5 6.5 0 015.5 2a6.5 6.5 0 108.5 8.5z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
       <svg class="icon-light" width="14" height="14" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="3" stroke="currentColor" stroke-width="1.4"/><path d="M8 1v2M8 13v2M1 8h2M13 8h2M3.1 3.1l1.4 1.4M11.5 11.5l1.4 1.4M3.1 12.9l1.4-1.4M11.5 4.5l1.4-1.4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
 
     </button>
@@ -853,21 +854,20 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
       ارتباطات تو. <span class="b">استک تو.</span>
     </p>
     <p class="hero-desc">
-      We deploy a complete, battle-hardened open-source security stack on infrastructure you own.
-      VPN, encrypted storage, secure messaging, 2FA, sync and auto-updates — configured together, working as one.
+      ما یک استک امنیتی متن‌باز کامل و آبدیده را روی زیرساختی که خودت مالکش هستی مستقر می‌کنیم. VPN، ذخیره‌سازی رمزنگاری‌شده، پیام‌رسانی امن، 2FA، همگام‌سازی و به‌روزرسانی خودکار — همه کنار هم تنظیم‌شده و به‌عنوان یک واحد کار می‌کنند.
     </p>
     <div class="hero-ctas" style="flex-direction:column;align-items:center;gap:14px">
       <button class="btn btn-acid btn-xl" onclick="openModal()">رزرو تماس امن →</button>
-      <a href="#stack" style="font-family:var(--grotesk);font-size:var(--tsm);color:var(--text-3);text-decoration:none;letter-spacing:0.۰۲em;transition:color var(--fast) var(--ease)" onmouseover="this.style.color='var(--text)'" onmouseout="this.style.color='var(--text-3)'">استک را ببین ↓</a>
+      <a href="#stack" style="font-family:var(--grotesk);font-size:var(--tsm);color:var(--text-3);text-decoration:none;letter-spacing:0.02em;transition:color var(--fast) var(--ease)" onmouseover="this.style.color='var(--text)'" onmouseout="this.style.color='var(--text-3)'">استک را ببین ↓</a>
     </div>
     <div class="hero-pills">
-      <div class="pill"><span class="pv">9</span> open-source tools</div>
-      <div class="pill"><span class="pa">0</span> cloud dependencies</div>
-      <div class="pill"><span class="pv">100%</span> auditable</div>
-      <div class="pill"><span class="pa">∞</span> yours</div>
+      <div class="pill"><span class="pv">9</span> ۹ ابزار متن‌باز</div>
+      <div class="pill"><span class="pa">0</span> ۰ وابستگی ابری</div>
+      <div class="pill"><span class="pv">100%</span> ۱۰۰٪ قابل ممیزی</div>
+      <div class="pill"><span class="pa">∞</span> مال تو</div>
     </div>
   </div>
-  <div class="scroll-hint"><div class="scroll-line"></div>Scroll</div>
+  <div class="scroll-hint"><div class="scroll-line"></div>استک را ببین</div>
 </section>
 
 <!-- ─── STRIPE ─── -->
@@ -883,17 +883,17 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
     <p class="section-body" style="max-width:500px">بدون SaaS. بدون قفل به ونداور. بدون نیاز به اعتماد — فقط کدی که می‌توانی بخوانی و زیرساختی که خودت کنترلش می‌کنی.</p>
     <div class="approach-grid">
       <div class="approach-card fade-in">
-        <div class="approach-num">۰۱</div>
+        <div class="approach-num">01</div>
         <div class="approach-title">ارزیابی</div>
         <p class="approach-desc">۶۰ دقیقه در یک تماس امن می‌گذرانیم تا مدل تهدید، زیرساخت موجود و عادت‌های عملیاتی تیمت را ترسیم کنیم. هیچ دو استکی شبیه هم نیستند.</p>
       </div>
       <div class="approach-card fade-in">
-        <div class="approach-num">۰۲</div>
+        <div class="approach-num">02</div>
         <div class="approach-title">استقرار</div>
         <p class="approach-desc">هر کامپوننت را روی سرورهایی که خودت مالک یا کنترل‌کننده‌اش هستی پیاده می‌کنیم. تنظیمات پیش‌فرض سفت‌وسخت، سیاست‌های فایروال، یکپارچه‌سازی بین لایه‌ها — کاملاً خودکار، کاملاً متن‌باز.</p>
       </div>
       <div class="approach-card fade-in">
-        <div class="approach-num">۰۳</div>
+        <div class="approach-num">03</div>
         <div class="approach-title">تحویل</div>
         <p class="approach-desc">مستندات کامل، دسترسی ادمین و topgrade روی هر دستگاه را می‌گیری. ما می‌رویم — استک تو بدون ما به کار ادامه می‌دهد. اختیاری: می‌توانی ما را برای ممیزی‌های فصلی نگه داری.</p>
       </div>
@@ -905,7 +905,7 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
 <section class="section stack-section" id="stack">
   <div class="wrap-w">
     <div style="text-align:center;padding-bottom:8px">
-      <div class="lbl center">The استک</div>
+      <div class="lbl center">استک</div>
       <h2 class="section-title">نُه ابزار.<br><span style="color:var(--acid)">یک قلعه منسجم.</span></h2>
       <p class="section-body" style="max-width:560px;margin:0 auto">
         Every component is open source, auditable and connected to the others.
@@ -924,7 +924,7 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
           <span class="stack-tag" style="color:var(--acid)">لایه ۱ — ستون فقرات VPN</span>
           <p class="stack-desc">ستون فقراتی که همه چیز از آن عبور می‌کند. عملکرد در سطح کرنل، رمزنگاری از نظر ریاضی محکم، و کدی آن‌قدر لاغر که واقعاً می‌توانی بخوانی‌اش. هر دستگاه، هر سرور، یک شبکه رمزنگاری‌شده — ساخته‌شده برای ماندن.</p>
           <a href="https://github.com/WireGuard/wireguard-tools" target="_blank" rel="noopener" class="stack-gh">
-            <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.۰۱-.82-.۰۱-1.49-2.۰۱.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.۰۱-.53.63-.۰۱ 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.۰۲.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.۰۱ 1.93-.۰۱ 2.2 0 .21.15.46.55.38A8.۰۱3 8.۰۱3 0 0۰۱6 8c0-4.42-3.58-8-8-8z"/></svg>
+            <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
             WireGuard/wireguard-linux
           </a>
         </div>
@@ -940,7 +940,7 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
           <span class="stack-tag" style="color:var(--ice)">لایه ۲ — هاست فایل رمزنگاری‌شده</span>
           <p class="stack-desc">ذخیره‌سازی فایل با رمزنگاری سرتاسری روی سرور خودت. کلیدهای SSH، گواهی‌ها، اعتبارنامه‌ها، اسناد حساس — قفل‌شده و فقط داخل شبکه WireGuard قابل دسترس. برای دنیای بیرون، اصلاً وجود ندارد.</p>
           <a href="https://github.com/hudikhq/hoodik" target="_blank" rel="noopener" class="stack-gh">
-            <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.۰۱-.82-.۰۱-1.49-2.۰۱.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.۰۱-.53.63-.۰۱ 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.۰۲.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.۰۱ 1.93-.۰۱ 2.2 0 .21.15.46.55.38A8.۰۱3 8.۰۱3 0 0۰۱6 8c0-4.42-3.58-8-8-8z"/></svg>
+            <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
             hudikhq/hoodik
           </a>
         </div>
@@ -956,7 +956,7 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
           <span class="stack-tag" style="color:var(--gold)">لایه ۳ — سیاست شبکه</span>
           <p class="stack-desc">سیاست‌های اختصاصی nftables که یک قانون را اعمال می‌کنند: اگر داخل شبکه نیستی، چیزی نمی‌بینی. پیش‌فرض رد همه چیز. هر استثنا صریح، مستند و قابل ممیزی است. حداقل دسترسی در لایه شبکه.</p>
           <a href="#" onclick="openPrivateModal();return false;" target="_blank" rel="noopener" class="stack-gh">
-            <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.۰۱-.82-.۰۱-1.49-2.۰۱.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.۰۱-.53.63-.۰۱ 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.۰۲.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.۰۱ 1.93-.۰۱ 2.2 0 .21.15.46.55.38A8.۰۱3 8.۰۱3 0 0۰۱6 8c0-4.42-3.58-8-8-8z"/></svg>
+            <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
             megastack-sh/firewall-templates
           </a>
         </div>
@@ -972,7 +972,7 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
           <span class="stack-tag" style="color:#A855F7">لایه ۴ — عملیات امن</span>
           <p class="stack-desc">دفترچه‌های عملیاتی برای اداره یک زیرساخت امن: زمان‌بندی چرخش کلیدها، چک‌لیست‌های افزودن همتا، خط زمانی حوادث، روند لغو دسترسی. همه چیز به محیط خودت برمی‌گردد — هیچ چیز روی پلتفرم شخص ثالث زندگی نمی‌کند.</p>
           <a href="#" onclick="openPrivateModal();return false;" target="_blank" rel="noopener" class="stack-gh">
-            <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.۰۱-.82-.۰۱-1.49-2.۰۱.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.۰۱-.53.63-.۰۱ 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.۰۲.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.۰۱ 1.93-.۰۱ 2.2 0 .21.15.46.55.38A8.۰۱3 8.۰۱3 0 0۰۱6 8c0-4.42-3.58-8-8-8z"/></svg>
+            <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
             megastack-sh/access-templates
           </a>
         </div>
@@ -988,7 +988,7 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
           <span class="stack-tag" style="color:#22C55E">لایه ۵ — ارتباطات امن</span>
           <p class="stack-desc">هوم‌سرور سلف‌هاست Matrix، فقط داخل شبکه WireGuard خودت فدریت شده. پیام‌رسانی رمزنگاری‌شده سرتاسری، تماس صوتی و انتقال فایل از طریق Element — بدون اینکه ذره‌ای متادیتا به سرور بیرونی برسد. ارتباطاتت، کاملاً مال خودت.</p>
           <a href="https://github.com/element-hq/synapse" target="_blank" rel="noopener" class="stack-gh">
-            <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.۰۱-.82-.۰۱-1.49-2.۰۱.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.۰۱-.53.63-.۰۱ 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.۰۲.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.۰۱ 1.93-.۰۱ 2.2 0 .21.15.46.55.38A8.۰۱3 8.۰۱3 0 0۰۱6 8c0-4.42-3.58-8-8-8z"/></svg>
+            <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
             element-hq/synapse
           </a>
         </div>
@@ -1004,7 +1004,7 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
           <span class="stack-tag" style="color:#FB923C">لایه ۶ — احراز هویت</span>
           <p class="stack-desc">توکن‌های 2FA تو نباید هرگز از Google یا Authy یا هیچ شخص ثالثی عبور کنند. Authelia یک گیت‌وی احراز هویت سلف‌هاست با TOTP، پشتیبانی از کلید سخت‌افزاری (YubiKey، FIDO2) و SSO به تو می‌دهد — کاملاً داخل شبکه‌ات اجرا می‌شود.</p>
           <a href="https://github.com/authelia/authelia" target="_blank" rel="noopener" class="stack-gh">
-            <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.۰۱-.82-.۰۱-1.49-2.۰۱.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.۰۱-.53.63-.۰۱ 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.۰۲.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.۰۱ 1.93-.۰۱ 2.2 0 .21.15.46.55.38A8.۰۱3 8.۰۱3 0 0۰۱6 8c0-4.42-3.58-8-8-8z"/></svg>
+            <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
             authelia/authelia
           </a>
         </div>
@@ -1020,7 +1020,7 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
           <span class="stack-tag" style="color:#38BDF8">لایه ۷ — همگام‌سازی فایل P2P</span>
           <p class="stack-desc">همگام‌سازی مبتنی بر BitTorrent بدون سرور مرکزی و بدون وابستگی به ابر. فایل‌ها همتا به همتا بین دستگاه‌هایت جابه‌جا می‌شوند، در حین انتقال رمزنگاری‌شده، از طریق تونل WireGuard مسیریابی می‌شوند. سریع، خصوصی، در طراحی غیرمتمرکز.</p>
           <a href="#" onclick="openPrivateModal();return false;" target="_blank" rel="noopener" class="stack-gh">
-            <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.۰۱-.82-.۰۱-1.49-2.۰۱.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.۰۱-.53.63-.۰۱ 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.۰۲.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.۰۱ 1.93-.۰۱ 2.2 0 .21.15.46.55.38A8.۰۱3 8.۰۱3 0 0۰۱6 8c0-4.42-3.58-8-8-8z"/></svg>
+            <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
             megastack-sh/resilio-config
           </a>
         </div>
@@ -1036,7 +1036,7 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
           <span class="stack-tag" style="color:var(--text-2)">لایه ۸ — به‌روزرسانی همگانی</span>
           <p class="stack-desc">یک دستور. هر مدیر بسته، هر پلتفرم — Homebrew، apt، pip، cargo، winget، فریم‌ور — همه به‌طور همزمان روی کل ناوگانت به‌روز می‌شوند. تنها وظیفه نگهداری که واقعاً انجام‌شده باقی می‌ماند.</p>
           <a href="https://github.com/topgrade-rs/topgrade" target="_blank" rel="noopener" class="stack-gh">
-            <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.۰۱-.82-.۰۱-1.49-2.۰۱.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.۰۱-.53.63-.۰۱ 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.۰۲.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.۰۱ 1.93-.۰۱ 2.2 0 .21.15.46.55.38A8.۰۱3 8.۰۱3 0 0۰۱6 8c0-4.42-3.58-8-8-8z"/></svg>
+            <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
             paulfxyz/topgrade
           </a>
         </div>
@@ -1052,7 +1052,7 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
           <span class="stack-tag" style="color:#F5A623">لایه ۹ — ذخیره حریم خصوصی بیت‌کوین</span>
           <p class="stack-desc">زیرساخت بیت‌کوین بدون حضانت برای ذخیره‌ات. CoinJoin قابلیت ردیابی تراکنش‌ها را می‌شکند، Tor ترافیک شبکه‌ات را مسیریابی می‌کند، نود Bitcoin Core خودت اعتماد به شخص ثالث را حذف می‌کند. کلیدهای تو، سکه‌های تو — در طراحی غیرقابل ردیابی.</p>
           <a href="https://github.com/WalletWasabi/WalletWasabi" target="_blank" rel="noopener" class="stack-gh">
-            <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.۰۱-.82-.۰۱-1.49-2.۰۱.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.۰۱-.53.63-.۰۱ 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.۰۲.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.۰۱ 1.93-.۰۱ 2.2 0 .21.15.46.55.38A8.۰۱3 8.۰۱3 0 0۰۱6 8c0-4.42-3.58-8-8-8z"/></svg>
+            <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
             WalletWasabi/WalletWasabi
           </a>
         </div>
@@ -1066,10 +1066,10 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
 <section class="section" id="toolbox" style="border-top:1px solid var(--border)">
   <div class="wrap-w">
     <div style="text-align:center;margin-bottom:8px">
-      <div class="lbl center">Extended جعبه‌ابزار</div>
+      <div class="lbl center">جعبه‌ابزار توسعه‌یافته</div>
       <h2 class="section-title">فراتر از استک اصلی.</h2>
       <p class="section-body" style="max-width:580px;margin:0 auto">
-        بسته به مدل تهدیدت، ابزارهای متن‌باز اضافی برای اسکن آسیب‌پذیری، مانیتورینگ زمان اجرا، تحلیل کد و تشخیص نفوذ اضافه می‌کنیم. هر پروژه دامنه مشخصی دارد — فقط چیزی را می‌گیری که نیاز داری.
+        Depending on your threat model we layer in additional open-source tools for vulnerability scanning, runtime monitoring, code analysis and intrusion detection. Every engagement is scoped — you only get what you need.
       </p>
     </div>
 
@@ -1094,55 +1094,55 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
     <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border)" id="xtool-grid">
 
       <div class="xtool-card fade-in">
-        <div class="xtool-top"><span class="xtool-icon" style="color:#22C55E">🔍</span><div><div class="xtool-name">OpenVAS / Greenbone</div><div class="xtool-cat" style="color:#22C55E">اسکن آسیب‌پذیری</div></div></div>
-        <p class="xtool-desc">اسکن جامع آسیب‌پذیری با چک‌های روزانه به‌روز در دامنه گسترده پروتکل‌ها و چارچوب‌های انطباق. اسکن احرازشده پیکربندی‌های اشتباه را قبل از سوءاستفاده می‌گیرد. با سیستم‌های تیکتینگ یکپارچه می‌شود تا اصلاح روان‌تر باشد.</p>
+        <div class="xtool-top"><span class="xtool-icon" style="color:#22C55E">🔍</span><div><div class="xtool-name">OpenVAS / Greenbone</div><div class="xtool-cat" style="color:#22C55E">Vulnerability Scanning</div></div></div>
+        <p class="xtool-desc">Comprehensive vulnerability scanning with daily-updated checks across broad protocol ranges and compliance frameworks. Authenticated scanning catches misconfigurations before exploitation. Integrates with ticketing systems for streamlined remediation.</p>
         <a href="https://github.com/greenbone/openvas-scanner" target="_blank" rel="noopener" class="stack-gh">
-          <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.۰۱-.82-.۰۱-1.49-2.۰۱.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.۰۱-.53.63-.۰۱ 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.۰۲.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.۰۱ 1.93-.۰۱ 2.2 0 .21.15.46.55.38A8.۰۱3 8.۰۱3 0 0۰۱6 8c0-4.42-3.58-8-8-8z"/></svg>
+          <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
           greenbone/openvas-scanner
         </a>
       </div>
 
       <div class="xtool-card fade-in">
         <div class="xtool-top"><span class="xtool-icon" style="color:#00C8FF">📦</span><div><div class="xtool-name">Trivy</div><div class="xtool-cat" style="color:#00C8FF">Container &amp; Cloud Security</div></div></div>
-        <p class="xtool-desc">اسکنر چندکاره که کانتینرها، Kubernetes، قالب‌های IaC و پیکربندی‌های ابری را در یک ابزار پوشش می‌دهد. آسیب‌پذیری‌ها و پیکربندی‌های اشتباه را قبل از رسیدن به پروداکشن شناسایی می‌کند — مستقیم در پایپ‌لاین‌های CI/CD یکپارچه می‌شود.</p>
+        <p class="xtool-desc">Versatile scanner covering containers, Kubernetes, IaC templates and cloud configurations in a single tool. Identifies vulnerabilities and misconfigurations before they reach production — integrated directly into CI/CD pipelines.</p>
         <a href="https://github.com/aquasecurity/trivy" target="_blank" rel="noopener" class="stack-gh">
-          <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.۰۱-.82-.۰۱-1.49-2.۰۱.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.۰۱-.53.63-.۰۱ 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.۰۲.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.۰۱ 1.93-.۰۱ 2.2 0 .21.15.46.55.38A8.۰۱3 8.۰۱3 0 0۰۱6 8c0-4.42-3.58-8-8-8z"/></svg>
+          <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
           aquasecurity/trivy
         </a>
       </div>
 
       <div class="xtool-card fade-in">
-        <div class="xtool-top"><span class="xtool-icon" style="color:#F5A623">⚡</span><div><div class="xtool-name">Falco</div><div class="xtool-cat" style="color:#F5A623">امنیت زمان اجرا</div></div></div>
-        <p class="xtool-desc">مستقیم به رویدادهای کرنل لینوکس وصل می‌شود تا ناهنجاری‌ها را در لحظه شناسایی کند — اتصالات شبکه غیرمنتظره، افزایش امتیاز در کانتینر، دسترسی مشکوک به فایل. چیزی را می‌گیرد که اسکن استاتیک از دست می‌دهد: تهدیداتی که قبلاً وارد محیط شده‌اند.</p>
+        <div class="xtool-top"><span class="xtool-icon" style="color:#F5A623">⚡</span><div><div class="xtool-name">Falco</div><div class="xtool-cat" style="color:#F5A623">Runtime Security</div></div></div>
+        <p class="xtool-desc">Taps directly into Linux kernel events to detect anomalies in real time — unexpected network connections, container privilege escalations, suspicious file access. Catches what static scanning misses: threats already inside the perimeter.</p>
         <a href="https://github.com/falcosecurity/falco" target="_blank" rel="noopener" class="stack-gh">
-          <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.۰۱-.82-.۰۱-1.49-2.۰۱.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.۰۱-.53.63-.۰۱ 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.۰۲.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.۰۱ 1.93-.۰۱ 2.2 0 .21.15.46.55.38A8.۰۱3 8.۰۱3 0 0۰۱6 8c0-4.42-3.58-8-8-8z"/></svg>
+          <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
           falcosecurity/falco
         </a>
       </div>
 
       <div class="xtool-card fade-in">
-        <div class="xtool-top"><span class="xtool-icon" style="color:#A855F7">🧬</span><div><div class="xtool-name">Semgrep</div><div class="xtool-cat" style="color:#A855F7">تحلیل استاتیک کد</div></div></div>
-        <p class="xtool-desc">تحلیل استاتیک سریع چندزبانه با پشتیبانی از قواعد سفارشی برای اعمال الگوهای امنیتی خاص سازمان. در CI اجرا می‌شود — الگوهای کدنویسی ناامن، بردارهای تزریق و فراخوانی توابع خطرناک را قبل از انتشار هر کدی می‌گیرد.</p>
+        <div class="xtool-top"><span class="xtool-icon" style="color:#A855F7">🧬</span><div><div class="xtool-name">Semgrep</div><div class="xtool-cat" style="color:#A855F7">Static Code Analysis</div></div></div>
+        <p class="xtool-desc">Rapid multi-language static analysis with custom rule support to enforce organisation-specific security patterns. Runs in CI — catches insecure coding patterns, injection vectors and dangerous function calls before any code ships.</p>
         <a href="https://github.com/semgrep/semgrep" target="_blank" rel="noopener" class="stack-gh">
-          <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.۰۱-.82-.۰۱-1.49-2.۰۱.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.۰۱-.53.63-.۰۱ 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.۰۲.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.۰۱ 1.93-.۰۱ 2.2 0 .21.15.46.55.38A8.۰۱3 8.۰۱3 0 0۰۱6 8c0-4.42-3.58-8-8-8z"/></svg>
+          <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
           semgrep/semgrep
         </a>
       </div>
 
       <div class="xtool-card fade-in">
-        <div class="xtool-top"><span class="xtool-icon" style="color:#FB923C">🔑</span><div><div class="xtool-name">Gitleaks</div><div class="xtool-cat" style="color:#FB923C">تشخیص اسرار</div></div></div>
-        <p class="xtool-desc">کل تاریخچه گیت تو را برای کلیدهای API افشاشده، اعتبارنامه‌ها، توکن‌ها و اسرار اسکن می‌کند قبل از اینکه به پروداکشن برسند — یا آن‌هایی را که از قبل آنجا هستند پیدا می‌کند. به pre-commit و CI متصل می‌شود. ساده‌ترین بردار نفوذ، بسته شد.</p>
+        <div class="xtool-top"><span class="xtool-icon" style="color:#FB923C">🔑</span><div><div class="xtool-name">Gitleaks</div><div class="xtool-cat" style="color:#FB923C">Secret Detection</div></div></div>
+        <p class="xtool-desc">Scans your entire git history for exposed API keys, credentials, tokens and secrets before they reach production — or finds the ones already there. Hooks into pre-commit and CI. The easiest breach vector, closed.</p>
         <a href="https://github.com/gitleaks/gitleaks" target="_blank" rel="noopener" class="stack-gh">
-          <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.۰۱-.82-.۰۱-1.49-2.۰۱.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.۰۱-.53.63-.۰۱ 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.۰۲.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.۰۱ 1.93-.۰۱ 2.2 0 .21.15.46.55.38A8.۰۱3 8.۰۱3 0 0۰۱6 8c0-4.42-3.58-8-8-8z"/></svg>
+          <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
           gitleaks/gitleaks
         </a>
       </div>
 
       <div class="xtool-card fade-in">
-        <div class="xtool-top"><span class="xtool-icon" style="color:#38BDF8">🕸️</span><div><div class="xtool-name">OWASP ZAP</div><div class="xtool-cat" style="color:#38BDF8">تست امنیت اپلیکیشن وب</div></div></div>
-        <p class="xtool-desc">بالغ‌ترین اسکنر امنیت اپلیکیشن وب متن‌باز. تشخیص خودکار تزریق SQL، XSS، احراز هویت شکسته و ده‌ها آسیب‌پذیری دیگر OWASP Top 10. اسکن فعال و غیرفعال، با یکپارچگی CI.</p>
+        <div class="xtool-top"><span class="xtool-icon" style="color:#38BDF8">🕸️</span><div><div class="xtool-name">OWASP ZAP</div><div class="xtool-cat" style="color:#38BDF8">Web App Security Testing</div></div></div>
+        <p class="xtool-desc">The most mature open-source web application security scanner. Automated detection of SQL injection, XSS, broken authentication and dozens more OWASP Top 10 vulnerabilities. Active and passive scanning, with CI integration.</p>
         <a href="https://github.com/zaproxy/zaproxy" target="_blank" rel="noopener" class="stack-gh">
-          <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.۰۱-.82-.۰۱-1.49-2.۰۱.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.۰۱-.53.63-.۰۱ 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.۰۲.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.۰۱ 1.93-.۰۱ 2.2 0 .21.15.46.55.38A8.۰۱3 8.۰۱3 0 0۰۱6 8c0-4.42-3.58-8-8-8z"/></svg>
+          <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
           zaproxy/zaproxy
         </a>
       </div>
@@ -1251,7 +1251,7 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
           <div class="team-role">Breach intelligence advisor who understands intrusion operations from the inside out. The adversarial instinct he brings cannot be taught in a classroom. If there’s a way in, he already knows it.</div>
           <div class="team-tags">
             <span class="tag">Breach Intel</span>
-            <span class="tag">Red تیم</span>
+            <span class="tag">Red Team</span>
             <span class="tag r">Former Black Hat</span>
           </div>
         </article>
@@ -1272,8 +1272,8 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
     <!-- Collective -->
     <div class="fade-in" style="border:1px solid var(--border);border-radius:var(--r2);background:var(--s1);padding:clamp(22px,3vw,34px);position:relative;overflow:hidden">
       <div style="position:absolute;right:24px;top:50%;transform:translateY(-50%);font-size:3.5rem;opacity:0.04;font-family:var(--mono);font-weight:700;pointer-events:none">~$</div>
-      <div style="font-family:var(--mono);font-size:var(--t2xs);font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-4);margin-bottom:12px">استقرارment Collective</div>
-      <h3 style="font-family:var(--display);font-size:var(--t2xl);font-weight:700;letter-spacing:-0.۰۲em;margin-bottom:10px">A dozen sysops &amp; hackers.<br><span style="color:var(--acid)">Distributed worldwide.</span></h3>
+      <div style="font-family:var(--mono);font-size:var(--t2xs);font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-4);margin-bottom:12px">Deployment Collective</div>
+      <h3 style="font-family:var(--display);font-size:var(--t2xl);font-weight:700;letter-spacing:-0.02em;margin-bottom:10px">A dozen sysops &amp; hackers.<br><span style="color:var(--acid)">Distributed worldwide.</span></h3>
       <p style="font-size:var(--tmd);color:var(--text-2);line-height:1.75;max-width:640px;margin-bottom:18px">Behind our core team is a vetted collective of sysadmins, network engineers and security researchers spread across multiple countries. They handle on-site deployments, emergency hardening and client-side training — in your timezone, in your language, under the same NDA.</p>
       <div style="display:flex;flex-wrap:wrap;gap:8px">
         <span style="font-family:var(--mono);font-size:var(--t2xs);padding:5px 11px;border:1px solid var(--border);border-radius:var(--r1);color:var(--text-3)">🌍 Europe</span>
@@ -1290,7 +1290,7 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
   </div>
 </section>
 
-<!-- ─── سؤالات متداول ─── -->
+<!-- ─── FAQ ─── -->
 <section class="section-sm" id="faq" style="border-top:1px solid var(--border)">
   <div class="wrap-n">
     <div style="text-align:center;margin-bottom:40px">
@@ -1312,7 +1312,7 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
 <section class="section" id="package" style="border-top:1px solid var(--border)">
   <div class="wrap">
     <div style="text-align:center;margin-bottom:52px">
-      <div class="lbl center">All-in-One پکیج</div>
+      <div class="lbl center">پکیج همه‌کاره</div>
       <h2 class="section-title">امنیت در سطح شرکتی.<br><span style="color:var(--acid)">قیمت‌گذاری دوستدار استارتاپ.</span></h2>
       <p class="section-body" style="max-width:560px;margin:0 auto">
         کل megastack — مستقر در زیرساخت تو، مستندسازی‌شده و تحویل داده‌شده. قیمت‌گذاری برای کارآفرینان تنها و تیم‌های کوچک، نه بودجه‌های Fortune 500.
@@ -1322,23 +1322,23 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;margin-bottom:28px">
       <!-- What's included -->
       <div style="background:var(--bg);padding:clamp(28px,4vw,44px) clamp(22px,3vw,36px)">
-        <div style="font-family:var(--mono);font-size:var(--t2xs);font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--acid);margin-bottom:20px">چیزی که می‌گیری</div>
+        <div style="font-family:var(--mono);font-size:var(--t2xs);font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--acid);margin-bottom:20px">What you get</div>
         <ul style="display:flex;flex-direction:column;gap:12px">
-          <li style="display:flex;align-items:flex-start;gap:10px;font-size:var(--tsm);color:var(--text-2)"><span style="color:var(--acid);font-weight:700;flex-shrink:0">→</span>Full stack deployment across all your servers &amp; devices</li>
+          <li style="display:flex;align-items:flex-start;gap:10px;font-size:var(--tsm);color:var(--text-2)"><span style="color:var(--acid);font-weight:700;flex-shrink:0">→</span>استقرار کامل استک روی همه سرورها و دستگاه‌هایت</li>
           <li style="display:flex;align-items:flex-start;gap:10px;font-size:var(--tsm);color:var(--text-2)"><span style="color:var(--acid);font-weight:700;flex-shrink:0">→</span>پیکربندی سفارشی متناسب با مدل تهدیدت</li>
-          <li style="display:flex;align-items:flex-start;gap:10px;font-size:var(--tsm);color:var(--text-2)"><span style="color:var(--acid);font-weight:700;flex-shrink:0">→</span>Hardened firewall policies, VPN mesh &amp; access templates</li>
+          <li style="display:flex;align-items:flex-start;gap:10px;font-size:var(--tsm);color:var(--text-2)"><span style="color:var(--acid);font-weight:700;flex-shrink:0">→</span>سیاست‌های فایروال سفت‌وسخت، شبکه VPN و قالب‌های دسترسی</li>
           <li style="display:flex;align-items:flex-start;gap:10px;font-size:var(--tsm);color:var(--text-2)"><span style="color:var(--acid);font-weight:700;flex-shrink:0">→</span>ابزار توسعه‌یافته در صورت نیاز (Wazuh، Falco، OpenVAS…)</li>
-          <li style="display:flex;align-items:flex-start;gap:10px;font-size:var(--tsm);color:var(--text-2)"><span style="color:var(--acid);font-weight:700;flex-shrink:0">→</span>Full documentation &amp; admin handover</li>
+          <li style="display:flex;align-items:flex-start;gap:10px;font-size:var(--tsm);color:var(--text-2)"><span style="color:var(--acid);font-weight:700;flex-shrink:0">→</span>مستندات کامل و تحویل ادمین</li>
           <li style="display:flex;align-items:flex-start;gap:10px;font-size:var(--tsm);color:var(--text-2)"><span style="color:var(--acid);font-weight:700;flex-shrink:0">→</span>آموزش ویدیویی از راه دور برای تیمت (اختیاری)</li>
           <li style="display:flex;align-items:flex-start;gap:10px;font-size:var(--tsm);color:var(--text-2)"><span style="color:var(--acid);font-weight:700;flex-shrink:0">→</span>topgrade پیکربندی‌شده روی هر دستگاه برای به‌روزرسانی‌های مداوم</li>
         </ul>
       </div>
-      <!-- فلسفه قیمت‌گذاری -->
+      <!-- Pricing philosophy -->
       <div style="background:var(--s1);padding:clamp(28px,4vw,44px) clamp(22px,3vw,36px);display:flex;flex-direction:column;justify-content:space-between">
         <div>
-          <div style="font-family:var(--mono);font-size:var(--t2xs);font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-3);margin-bottom:20px">فلسفه قیمت‌گذاری</div>
-          <p style="font-size:var(--tmd);color:var(--text-2);line-height:1.75;margin-bottom:18px">این را برای فریلنسری ساختیم که داده‌های حساس مشتری دارد، استارتاپ ۵نفره‌ای با اسرار تجاری، و روزنامه‌نگاری که نمی‌تواند هزینه به خطر افتادنش را بپردازد. نه فقط برای شرکت‌هایی با بودجه امنیتی شش‌رقمی.</p>
-          <p style="font-size:var(--tmd);color:var(--text-2);line-height:1.75;margin-bottom:24px">هر پروژه بعد از تماس ارزیابی به‌طور شفاف قیمت‌گذاری می‌شود — بدون سورپرایز، بدون قفل. وقتی می‌رویم همه چیز مال توست.</p>
+          <div style="font-family:var(--mono);font-size:var(--t2xs);font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-3);margin-bottom:20px">Pricing philosophy</div>
+          <p style="font-size:var(--tmd);color:var(--text-2);line-height:1.75;margin-bottom:18px">We built this for the freelancer with sensitive client data, the 5-person startup with trade secrets, and the journalist who can't afford to be compromised. Not just for companies with a six-figure security budget.</p>
+          <p style="font-size:var(--tmd);color:var(--text-2);line-height:1.75;margin-bottom:24px">Every engagement is quoted transparently after the assessment call — no surprises, no lock-in. You own everything when we leave.</p>
         </div>
         <div style="display:flex;gap:10px;flex-wrap:wrap">
           <span style="font-family:var(--mono);font-size:var(--t2xs);padding:6px 12px;border:1px solid rgba(229,0,10,0.2);border-radius:var(--r1);color:var(--acid);background:var(--acid-soft)">Solo entrepreneurs</span>
@@ -1354,7 +1354,7 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
       <span style="font-size:1.6rem;flex-shrink:0">🎥</span>
       <div>
         <div style="font-family:var(--grotesk);font-size:var(--tmd);font-weight:700;color:var(--text);margin-bottom:6px">آموزش ویدیویی سفارشی از راه دور</div>
-        <p style="font-size:var(--tsm);color:var(--text-2);line-height:1.7">بعد از استقرار، جلسات ویدیویی زنده با تیمت ارائه می‌دهیم — پوشش عملیات روزانه، تمرین واکنش به حوادث و رویه‌های جریان کاری امن. ضبط‌شده، مستندسازی‌شده و درون سرور Matrix خودت نگه‌داری‌شده. آموزش اختیاری است اما برای تیم‌های تازه‌وارد در امنیت سلف‌هاست به‌شدت توصیه می‌شود.</p>
+        <p style="font-size:var(--tsm);color:var(--text-2);line-height:1.7">After deployment, we offer live video sessions with your team — covering day-to-day operations, incident response drills, and secure workflow practices. Recorded, documented and kept inside your own Matrix server. Training is optional but highly recommended for teams new to self-hosted security.</p>
       </div>
     </div>
   </div>
@@ -1377,7 +1377,7 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
     <div style="display:grid;grid-template-columns:1fr auto;gap:32px;align-items:center;flex-wrap:wrap">
       <div>
         <div class="lbl" style="margin-bottom:14px">برند</div>
-        <h2 style="font-family:var(--display);font-size:var(--t3xl);font-weight:700;letter-spacing:-0.۰۲em;margin-bottom:10px">مدیا کیت</h2>
+        <h2 style="font-family:var(--display);font-size:var(--t3xl);font-weight:700;letter-spacing:-0.02em;margin-bottom:10px">مدیا کیت</h2>
         <p style="font-size:var(--tmd);color:var(--text-2);line-height:1.72;max-width:520px">
           All logos, banners and brand assets in one download — black, white &amp; transparent variants, favicons, Open Graph image, Twitter header, LinkedIn cover and brand guidelines.
         </p>
@@ -1391,7 +1391,7 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
       <div style="flex-shrink:0">
         <a href="/assets/megastack-media-kit-v1.4.0.zip" download class="btn btn-acid btn-lg" style="display:inline-flex;align-items:center;gap:10px;white-space:nowrap">
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2v8M5 7l3 3 3-3M2 12h12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          Download مدیا کیت
+          Download Media Kit
         </a>
         <p style="font-family:var(--mono);font-size:var(--t2xs);color:var(--text-4);text-align:center;margin-top:10px">.zip · 4.4 MB</p>
       </div>
@@ -1403,15 +1403,15 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
 <footer class="footer">
   <div class="wrap">
     <div class="footer-inner">
-      <div class="footer-brand"><span>MEGASTACK.SH</span> — End-to-End Security استک</div>
+      <div class="footer-brand"><span>MEGASTACK.SH</span> — End-to-End Security Stack</div>
       <div class="footer-links">
         <a href="mailto:hi@megastack.sh">hi@megastack.sh</a>
-        <a href="/assets/megastack-media-kit-v1.4.0.zip" download>مدیا کیت</a>
+        <a href="/assets/megastack-media-kit-v1.4.0.zip" download>Media Kit</a>
         <a href="#stack">استک</a>
         <a href="#team">تیم</a>
       </div>
     </div>
-    <div class="footer-copy">© 2۰۲6 megastack.sh · MIT License · All tools remain open source · Bitcoin reserve layer included</div>
+    <div class="footer-copy">© ۲۰۲۶ megastack.sh · لایسنس MIT · همه ابزارها متن‌باز باقی می‌مانند · Bitcoin reserve layer included</div>
   </div>
 </footer>
 
@@ -1444,11 +1444,11 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
             style="animation:wip-ripple 1.6s ease-out infinite"/>
           <!-- Construction marks -->
           <text x="50" y="22" text-anchor="middle" font-family="monospace" font-size="10" fill="var(--acid)" opacity="0.6"
-            style="animation:wip-blink 1.2s ease-in-out infinite">۰۱</text>
+            style="animation:wip-blink 1.2s ease-in-out infinite">01</text>
           <text x="80" y="54" text-anchor="middle" font-family="monospace" font-size="10" fill="var(--acid)" opacity="0.6"
             style="animation:wip-blink 1.2s ease-in-out infinite 0.4s">10</text>
           <text x="50" y="84" text-anchor="middle" font-family="monospace" font-size="10" fill="var(--acid)" opacity="0.6"
-            style="animation:wip-blink 1.2s ease-in-out infinite 0.8s">۰۱</text>
+            style="animation:wip-blink 1.2s ease-in-out infinite 0.8s">01</text>
           <text x="20" y="54" text-anchor="middle" font-family="monospace" font-size="10" fill="var(--acid)" opacity="0.6"
             style="animation:wip-blink 1.2s ease-in-out infinite 1.2s">10</text>
         </svg>
@@ -1457,7 +1457,7 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
       <!-- Flag + language name -->
       <div id="wip-flag" style="font-size:2.2rem;margin:0 auto 8px;line-height:1;display:flex;justify-content:center"></div>
 
-      <h3 style="font-family:var(--display);font-size:var(--t2xl);font-weight:700;letter-spacing:-0.۰۲em;margin-bottom:10px">
+      <h3 style="font-family:var(--display);font-size:var(--t2xl);font-weight:700;letter-spacing:-0.02em;margin-bottom:10px">
         Coming soon
       </h3>
       <p style="font-size:var(--tmd);color:var(--text-2);line-height:1.72;margin-bottom:6px">
@@ -1506,14 +1506,14 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
       <div style="width:72px;height:72px;margin:0 auto 22px;background:var(--acid-soft);border:1px solid rgba(229,0,10,0.2);border-radius:50%;display:flex;align-items:center;justify-content:center">
         <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
           <rect x="5" y="12" width="18" height="13" rx="2" stroke="var(--acid)" stroke-width="1.6" fill="none"/>
-          <path d="M9 12V9a5 5 0 ۰۱10 0v3" stroke="var(--acid)" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+          <path d="M9 12V9a5 5 0 0110 0v3" stroke="var(--acid)" stroke-width="1.6" stroke-linecap="round" fill="none"/>
           <circle cx="14" cy="18.5" r="1.8" fill="var(--acid)"/>
         </svg>
       </div>
-      <h3 style="font-family:var(--display);font-size:var(--t2xl);font-weight:700;letter-spacing:-0.۰۲em;margin-bottom:10px">Private resource</h3>
-      <p style="font-size:var(--tmd);color:var(--text-2);line-height:1.72;margin-bottom:6px">گام  از ۳</p>
+      <h3 style="font-family:var(--display);font-size:var(--t2xl);font-weight:700;letter-spacing:-0.02em;margin-bottom:10px">Private resource</h3>
+      <p style="font-size:var(--tmd);color:var(--text-2);line-height:1.72;margin-bottom:6px">This component is part of the megastack private configuration layer.</p>
       <p style="font-size:var(--tsm);color:var(--text-3);line-height:1.65;margin-bottom:28px">Templates, scripts and configuration files are shared exclusively with clients during deployment. Contact us for access or a detailed walkthrough.</p>
-      <button class="btn btn-acid btn-lg" style="width:100%;justify-content:center" onclick="closePrivateModal();openModal()">رزرو تماس امن &rarr;</button>
+      <button class="btn btn-acid btn-lg" style="width:100%;justify-content:center" onclick="closePrivateModal();openModal()">Book a secure call &rarr;</button>
       <button onclick="closePrivateModal()" style="display:block;margin:14px auto 0;font-family:var(--grotesk);font-size:var(--t2xs);color:var(--text-4);background:none;border:none;cursor:pointer;text-decoration:underline">Close</button>
     </div>
   </div>
@@ -1524,7 +1524,7 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
   <div class="modal">
     <div class="modal-head">
       <div>
-        <div class="modal-sup">Secure ارزیابیment</div>
+        <div class="modal-sup">ارزیابی امن</div>
         <h2 class="modal-title" id="modal-cta-title">تماست را رزرو کن</h2>
       </div>
       <button class="modal-close" onclick="closeModal()" aria-label="Close">✕</button>
@@ -1550,7 +1550,7 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
           </div>
         </div>
         <div class="form-group" style="margin-top:14px">
-          <label class="form-label" for="inp-email">ایمیل</label>
+          <label class="form-label" for="inp-email">Email</label>
           <input class="form-input" type="email" id="inp-email" placeholder="you@example.com" autocomplete="email">
         </div>
         <div class="form-group">
@@ -1562,14 +1562,14 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
           <textarea class="form-input" id="inp-context" rows="3" placeholder="توصیف کوتاه از راه‌اندازی، اندازه تیم، نگرانی‌های تهدیدی…" style="resize:vertical;min-height:80px"></textarea>
         </div>
         <div class="modal-footer">
-          <div style="font-size:var(--tsm);color:var(--text-4)">مرحله 1 از ۳</div>
+          <div style="font-size:var(--tsm);color:var(--text-4)">گام 1 از ۳</div>
           <button class="btn btn-acid" onclick="goStep(2)">یک روز انتخاب کن →</button>
         </div>
       </div>
 
       <!-- Panel 2: Day picker -->
       <div id="panel-2" style="display:none">
-        <p style="font-size:var(--tmd);color:var(--text-2);margin-bottom:8px;line-height:1.7">روز مورد نظر خود را انتخاب کنید. تماس‌ها <strong style="color:var(--text)">بعد از ظهر GMT</strong> برگزار می‌شوند — زمان دقیق از طریق پیام امن تأیید می‌شود.</p>
+        <p style="font-size:var(--tmd);color:var(--text-2);margin-bottom:8px;line-height:1.7">روز ترجیحی‌ات را انتخاب کن. تماس‌ها بعدازظهر به وقت GMT انجام می‌شوند — ساعت دقیق را با پیام امن تأیید می‌کنیم.</p>
         <p style="font-family:var(--mono);font-size:var(--t2xs);color:var(--text-4);margin-bottom:20px;letter-spacing:0.05em">۲ هفته آینده — یکی را انتخاب کن</p>
         <div class="day-grid" id="day-grid">
           <!-- populated by JS -->
@@ -1577,7 +1577,7 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
         <div class="form-group" style="margin-top:20px">
           <label class="form-label">پلتفرم تماس ترجیحی</label>
           <select class="form-input" id="inp-platform" style="cursor:pointer">
-            <option value="">Select a platform…</option>
+            <option value="">پلتفرم تماس ترجیحی…</option>
             <option>Signal video call</option>
             <option>Matrix / Element</option>
             <option>Jitsi (self-hosted)</option>
@@ -1636,7 +1636,7 @@ const mC=document.getElementById('cv-matrix'),mX=mC.getContext('2d');
 let mW,mH;
 function mResize(){mW=mC.width=innerWidth;mH=mC.height=innerHeight}
 mResize();addEventListener('resize',mResize,{passive:true});
-const MC='۰۱アイウエオカキクサシスタチツナニ█▓▒░│╡║╝└┬├─┼╞═╬!@#$%?/\\';
+const MC='01アイウエオカキクサシスタチツナニ█▓▒░│╡║╝└┬├─┼╞═╬!@#$%?/\\';
 let streams=[];
 function initS(){
   streams=[];
@@ -1690,7 +1690,7 @@ function rLoop(){
   rdots.forEach(d=>{
     const dx=cx+Math.cos(d.a)*R*d.r,dy=cy+Math.sin(d.a)*R*d.r;
     const diff=((rA-d.a)%(Math.PI*2)+Math.PI*2)%(Math.PI*2);
-    const fade=Math.max(0,1-diff/(Math.PI*0.8));if(fade<0.۰۲)return;
+    const fade=Math.max(0,1-diff/(Math.PI*0.8));if(fade<0.02)return;
     rX.beginPath();rX.arc(dx,dy,d.sz,0,Math.PI*2);rX.fillStyle=`rgba(229,0,10,${fade*0.75})`;rX.fill();
     if(fade>0.5){rX.beginPath();rX.arc(dx,dy,d.sz*3,0,Math.PI*2);rX.strokeStyle=`rgba(229,0,10,${fade*0.15})`;rX.lineWidth=1;rX.stroke()}
   });
@@ -1703,10 +1703,10 @@ new IntersectionObserver(e=>{rC.classList.toggle('on',!e[0].isIntersecting)},{th
 /* ── 3. HERO WORDMARK GLITCH ── */
 const hw=document.querySelector('.hero-word');
 if(hw){
-  const SC='ABCDEFGHIJKLMNOPQRSTUVWXYZ۰۱23456789#@!?%$';
+  const SC='ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#@!?%$';
 
   // Final rendered state
-  const FINAL='MEGA<span style="color:var(--text-3)">STACK</span><span class="dot" style="color:var(--acid)">.</span><span style="font-size:0.55em;letter-spacing:-0.۰۱em;vertical-align:0.08em">SH</span>';
+  const FINAL='MEGA<span style="color:var(--text-3)">STACK</span><span class="dot" style="color:var(--acid)">.</span><span style="font-size:0.55em;letter-spacing:-0.01em;vertical-align:0.08em">SH</span>';
 
   // Animation phases: each phase has a target string + how long to hold (ms)
   const PHASES = [
@@ -1781,7 +1781,7 @@ if(hw){
 }
 
 /* ── 4. OMNIPRESENT CHAR FLICKER ── */
-const GC='۰۱ABXZ#@!?░▒█╬═';
+const GC='01ABXZ#@!?░▒█╬═';
 const fp=[];
 function harvest(root){
   const w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{
@@ -1826,7 +1826,7 @@ setTimeout(()=>{
 const fo=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');fo.unobserve(e.target)}})},{threshold:0.07});
 document.querySelectorAll('.fade-in').forEach(el=>fo.observe(el));
 
-/* ── 6. سؤالات متداول ── */
+/* ── 6. FAQ ── */
 document.querySelectorAll('.faq-q').forEach(btn=>{
   btn.addEventListener('click',()=>{
     const item=btn.closest('.faq-item'),open=item.classList.contains('open');
@@ -1952,8 +1952,8 @@ window.submitBooking = async function() {
   var htmlBody = '<h2 style="color:#E5000A">New megastack.sh booking</h2>' +
     '<table style="font-family:sans-serif;border-collapse:collapse;font-size:14px">' +
     '<tr><td style="padding:6px 16px 6px 0;color:#888;font-weight:600">Name</td><td style="padding:6px 0"><strong>' + name + '</strong></td></tr>' +
-    '<tr><td style="padding:6px 16px 6px 0;color:#888;font-weight:600">سازمان</td><td style="padding:6px 0">' + (org||'—') + '</td></tr>' +
-    '<tr><td style="padding:6px 16px 6px 0;color:#888;font-weight:600">ایمیل</td><td style="padding:6px 0">' + email + '</td></tr>' +
+    '<tr><td style="padding:6px 16px 6px 0;color:#888;font-weight:600">Organisation</td><td style="padding:6px 0">' + (org||'—') + '</td></tr>' +
+    '<tr><td style="padding:6px 16px 6px 0;color:#888;font-weight:600">Email</td><td style="padding:6px 0">' + email + '</td></tr>' +
     '<tr><td style="padding:6px 16px 6px 0;color:#888;font-weight:600">Signal / Matrix</td><td style="padding:6px 0">' + (signal||'—') + '</td></tr>' +
     '<tr><td style="padding:6px 16px 6px 0;color:#888;font-weight:600">Preferred day</td><td style="padding:6px 0"><strong style="color:#E5000A">' + day + '</strong></td></tr>' +
     '<tr><td style="padding:6px 16px 6px 0;color:#888;font-weight:600">Call platform</td><td style="padding:6px 0">' + plat + '</td></tr>' +
@@ -1961,7 +1961,7 @@ window.submitBooking = async function() {
     '<h3 style="margin-top:20px">Context</h3><p style="font-size:14px;color:#444">' + (ctx||'—') + '</p>';
 
   var textBody = 'New megastack.sh booking\n\n' +
-    'Name: ' + name + '\nOrg: ' + (org||'—') + '\nایمیل: ' + email +
+    'Name: ' + name + '\nOrg: ' + (org||'—') + '\nEmail: ' + email +
     '\nSignal/Matrix: ' + (signal||'—') + '\nPreferred day: ' + day +
     '\nCall platform: ' + plat + '\n\nContext:\n' + (ctx||'—');
 
@@ -2129,9 +2129,8 @@ document.getElementById('modal-lang').addEventListener('click', function(e){
 
 // Restore lang on load
 (function(){
-  _curLang = 'FA';
-  localStorage.setItem('ms-lang','FA');
-  var el = document.getElementById('current-lang'); if(el) el.textContent = 'FA';
+  var s = localStorage.getItem('ms-lang');
+  if(s) { _curLang = s; var el = document.getElementById('current-lang'); if(el) el.textContent = s; }
 })();
 
 /* WIP language modal */

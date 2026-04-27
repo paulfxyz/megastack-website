@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>megastack.sh — حزمة أمان مفتوحة المصدر من البداية إلى النهاية</title>
-  <meta name="description" content="ننشر حزمة أمنية مفتوحة المصدر متكاملة ومُحكمة على بنية تحتية تملكها أنت. VPN، تخزين مُشفّر، مراسلة آمنة، 2FA، مزامنة وتحديثات تلقائية — مُهيّأة معاً وتعمل ككيان">
+  <meta name="description" content="We deploy a full open-source security stack on your own infrastructure. WireGuard, encrypted file hosting, hardened comms, 2FA — end to end.">
   <meta name="theme-color" content="#E5000A">
   <link rel="canonical" href="https://megastack.sh/ar/">
   <link rel="alternate" hreflang="en" href="https://megastack.sh/">
@@ -57,7 +57,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@paulfxyz">
   <meta name="twitter:title" content="megastack.sh — حزمة أمان مفتوحة المصدر من البداية إلى النهاية">
-  <meta name="twitter:description" content="خوادمك. مفاتيحك. اتصالاتك. حزمتك. Corporate-grade security at startup-friendly pricing.">
+  <meta name="twitter:description" content="Your servers. Your keys. Your comms. Your stack. Corporate-grade security at startup-friendly pricing.">
   <meta name="twitter:image" content="https://megastack.sh/assets/og-image.png">
 
 
@@ -691,7 +691,7 @@ body::after{content:'';position:fixed;inset:0;z-index:9998;pointer-events:none;o
 @media(max-width:640px){#package-grid{grid-template-columns:1fr}}
 @media(max-width:640px){#package .wrap > div:first-of-type + div{grid-template-columns:1fr}}
 
-/* ── الأسئلة الشائعة ── */
+/* ── FAQ ── */
 .faq-item { background: var(--bg); }
 .faq-q {
   display:flex; align-items:center; justify-content:space-between; gap:24px;
@@ -773,17 +773,18 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
 @keyframes wip-blink  { 0%,100%{opacity:0.6} 50%{opacity:0.15} }
 
 /* RTL overrides */
+[dir="rtl"] body { text-align: right; }
+[dir="rtl"] .lbl { flex-direction: row-reverse; }
 [dir="rtl"] .lbl::before { display:none; }
-[dir="rtl"] .lbl::after  { content:''; display:block; width:16px; height:1px; background:currentColor; flex-shrink:0; }
-[dir="rtl"] .tl-item { direction: rtl; }
-[dir="rtl"] .nav-links { direction: rtl; }
-[dir="rtl"] .hero-content { direction: rtl; }
-[dir="rtl"] .wrap, [dir="rtl"] .wrap-w, [dir="rtl"] .wrap-n { direction: rtl; text-align: right; }
-[dir="rtl"] .section-title, [dir="rtl"] .hero-hl, [dir="rtl"] .cta-title { text-align: right; }
-[dir="rtl"] .approach-card, [dir="rtl"] .stack-card, [dir="rtl"] .xtool-card { text-align: right; }
-[dir="rtl"] .team-card, [dir="rtl"] .for-card, [dir="rtl"] .layer-row { text-align: right; direction: rtl; }
-[dir="rtl"] .layer-row { grid-template-columns: auto 1fr auto; }
-[dir="rtl"] .day-grid { direction: rtl; }
+[dir="rtl"] .lbl::after { content:''; display:block; width:16px; height:1px; background:currentColor; flex-shrink:0; }
+[dir="rtl"] .hero-sub { flex-direction: row-reverse; }
+[dir="rtl"] .hero-pills { flex-direction: row-reverse; }
+[dir="rtl"] .nav-links { flex-direction: row-reverse; }
+[dir="rtl"] .wrap, [dir="rtl"] .wrap-w, [dir="rtl"] .wrap-n { direction: rtl; }
+[dir="rtl"] .stack-card { grid-template-columns: 1fr 48px; }
+[dir="rtl"] .layer-row { direction: rtl; }
+[dir="rtl"] .modal-head { flex-direction: row-reverse; }
+[dir="rtl"] .form-label { text-align: right; }
 </style>
 </head>
 <body>
@@ -853,21 +854,20 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
       اتصالاتك. <span class="b">حزمتك.</span>
     </p>
     <p class="hero-desc">
-      We deploy a complete, battle-hardened open-source security stack on infrastructure you own.
-      VPN, encrypted storage, secure messaging, 2FA, sync and auto-updates — configured together, working as one.
+      ننشر حزمة أمنية مفتوحة المصدر متكاملة ومُحكمة على بنية تحتية تملكها أنت. VPN، تخزين مُشفّر، مراسلة آمنة، 2FA، مزامنة وتحديثات تلقائية — مُهيّأة معاً وتعمل ككيان واحد.
     </p>
     <div class="hero-ctas" style="flex-direction:column;align-items:center;gap:14px">
       <button class="btn btn-acid btn-xl" onclick="openModal()">احجز مكالمة آمنة →</button>
       <a href="#stack" style="font-family:var(--grotesk);font-size:var(--tsm);color:var(--text-3);text-decoration:none;letter-spacing:0.02em;transition:color var(--fast) var(--ease)" onmouseover="this.style.color='var(--text)'" onmouseout="this.style.color='var(--text-3)'">اطّلع على الحزمة ↓</a>
     </div>
     <div class="hero-pills">
-      <div class="pill"><span class="pv">9</span> open-source tools</div>
-      <div class="pill"><span class="pa">0</span> cloud dependencies</div>
-      <div class="pill"><span class="pv">100%</span> auditable</div>
-      <div class="pill"><span class="pa">∞</span> yours</div>
+      <div class="pill"><span class="pv">9</span> أدوات مفتوحة المصدر</div>
+      <div class="pill"><span class="pa">0</span> تبعيات سحابية</div>
+      <div class="pill"><span class="pv">100%</span> قابلة للتدقيق</div>
+      <div class="pill"><span class="pa">∞</span> ملكك</div>
     </div>
   </div>
-  <div class="scroll-hint"><div class="scroll-line"></div>Scroll</div>
+  <div class="scroll-hint"><div class="scroll-line"></div>اطّلع على الحزمة</div>
 </section>
 
 <!-- ─── STRIPE ─── -->
@@ -905,7 +905,7 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
 <section class="section stack-section" id="stack">
   <div class="wrap-w">
     <div style="text-align:center;padding-bottom:8px">
-      <div class="lbl center">The الحزمة</div>
+      <div class="lbl center">الحزمة</div>
       <h2 class="section-title">تسع أدوات.<br><span style="color:var(--acid)">حصن واحد متماسك.</span></h2>
       <p class="section-body" style="max-width:560px;margin:0 auto">
         Every component is open source, auditable and connected to the others.
@@ -1066,10 +1066,10 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
 <section class="section" id="toolbox" style="border-top:1px solid var(--border)">
   <div class="wrap-w">
     <div style="text-align:center;margin-bottom:8px">
-      <div class="lbl center">Extended صندوق الأدوات</div>
+      <div class="lbl center">صندوق أدوات موسّع</div>
       <h2 class="section-title">ما وراء الحزمة الأساسية.</h2>
       <p class="section-body" style="max-width:580px;margin:0 auto">
-        حسب نموذج التهديدات الخاص بك، نضيف طبقات من أدوات مفتوحة المصدر إضافية لفحص الثغرات، ومراقبة وقت التشغيل، وتحليل الكود وكشف التسلل. كل تعاقد محدد النطاق — لا تحصل إلا على ما تحتاجه.
+        Depending on your threat model we layer in additional open-source tools for vulnerability scanning, runtime monitoring, code analysis and intrusion detection. Every engagement is scoped — you only get what you need.
       </p>
     </div>
 
@@ -1094,8 +1094,8 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
     <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border)" id="xtool-grid">
 
       <div class="xtool-card fade-in">
-        <div class="xtool-top"><span class="xtool-icon" style="color:#22C55E">🔍</span><div><div class="xtool-name">OpenVAS / Greenbone</div><div class="xtool-cat" style="color:#22C55E">فحص الثغرات</div></div></div>
-        <p class="xtool-desc">فحص شامل للثغرات مع فحوصات يومية محدّثة عبر نطاقات بروتوكولات واسعة وأطر امتثال. الفحص الموثَّق يكتشف الإعدادات الخاطئة قبل استغلالها. يتكامل مع أنظمة التذاكر لتسهيل المعالجة.</p>
+        <div class="xtool-top"><span class="xtool-icon" style="color:#22C55E">🔍</span><div><div class="xtool-name">OpenVAS / Greenbone</div><div class="xtool-cat" style="color:#22C55E">Vulnerability Scanning</div></div></div>
+        <p class="xtool-desc">Comprehensive vulnerability scanning with daily-updated checks across broad protocol ranges and compliance frameworks. Authenticated scanning catches misconfigurations before exploitation. Integrates with ticketing systems for streamlined remediation.</p>
         <a href="https://github.com/greenbone/openvas-scanner" target="_blank" rel="noopener" class="stack-gh">
           <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
           greenbone/openvas-scanner
@@ -1104,7 +1104,7 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
 
       <div class="xtool-card fade-in">
         <div class="xtool-top"><span class="xtool-icon" style="color:#00C8FF">📦</span><div><div class="xtool-name">Trivy</div><div class="xtool-cat" style="color:#00C8FF">Container &amp; Cloud Security</div></div></div>
-        <p class="xtool-desc">ماسح متعدد الاستخدامات يغطي الحاويات وKubernetes وقوالب IaC وإعدادات السحابة في أداة واحدة. يحدّد الثغرات والإعدادات الخاطئة قبل وصولها للإنتاج — مدمج مباشرة في خطوط CI/CD.</p>
+        <p class="xtool-desc">Versatile scanner covering containers, Kubernetes, IaC templates and cloud configurations in a single tool. Identifies vulnerabilities and misconfigurations before they reach production — integrated directly into CI/CD pipelines.</p>
         <a href="https://github.com/aquasecurity/trivy" target="_blank" rel="noopener" class="stack-gh">
           <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
           aquasecurity/trivy
@@ -1112,8 +1112,8 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
       </div>
 
       <div class="xtool-card fade-in">
-        <div class="xtool-top"><span class="xtool-icon" style="color:#F5A623">⚡</span><div><div class="xtool-name">Falco</div><div class="xtool-cat" style="color:#F5A623">أمن وقت التشغيل</div></div></div>
-        <p class="xtool-desc">يستفيد مباشرة من أحداث نواة لينكس لاكتشاف الشذوذات في الوقت الحقيقي — اتصالات شبكية غير متوقعة، تصعيد صلاحيات في الحاويات، وصول مشبوه للملفات. يلتقط ما يفوت الفحص الثابت: التهديدات التي اخترقت المحيط بالفعل.</p>
+        <div class="xtool-top"><span class="xtool-icon" style="color:#F5A623">⚡</span><div><div class="xtool-name">Falco</div><div class="xtool-cat" style="color:#F5A623">Runtime Security</div></div></div>
+        <p class="xtool-desc">Taps directly into Linux kernel events to detect anomalies in real time — unexpected network connections, container privilege escalations, suspicious file access. Catches what static scanning misses: threats already inside the perimeter.</p>
         <a href="https://github.com/falcosecurity/falco" target="_blank" rel="noopener" class="stack-gh">
           <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
           falcosecurity/falco
@@ -1121,8 +1121,8 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
       </div>
 
       <div class="xtool-card fade-in">
-        <div class="xtool-top"><span class="xtool-icon" style="color:#A855F7">🧬</span><div><div class="xtool-name">Semgrep</div><div class="xtool-cat" style="color:#A855F7">تحليل الكود الثابت</div></div></div>
-        <p class="xtool-desc">تحليل ثابت سريع متعدد اللغات مع دعم قواعد مخصّصة لفرض أنماط أمنية خاصة بمؤسستك. يعمل ضمن CI — يكتشف أنماط البرمجة غير الآمنة، ونواقل الحقن واستدعاءات الدوال الخطرة قبل شحن أي كود.</p>
+        <div class="xtool-top"><span class="xtool-icon" style="color:#A855F7">🧬</span><div><div class="xtool-name">Semgrep</div><div class="xtool-cat" style="color:#A855F7">Static Code Analysis</div></div></div>
+        <p class="xtool-desc">Rapid multi-language static analysis with custom rule support to enforce organisation-specific security patterns. Runs in CI — catches insecure coding patterns, injection vectors and dangerous function calls before any code ships.</p>
         <a href="https://github.com/semgrep/semgrep" target="_blank" rel="noopener" class="stack-gh">
           <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
           semgrep/semgrep
@@ -1130,8 +1130,8 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
       </div>
 
       <div class="xtool-card fade-in">
-        <div class="xtool-top"><span class="xtool-icon" style="color:#FB923C">🔑</span><div><div class="xtool-name">Gitleaks</div><div class="xtool-cat" style="color:#FB923C">كشف الأسرار</div></div></div>
-        <p class="xtool-desc">يفحص سجل git بالكامل بحثاً عن مفاتيح API مكشوفة وبيانات اعتماد ورموز وأسرار قبل وصولها للإنتاج — أو يكتشف الموجود فعلاً. يربط بـ pre-commit وCI. أسهل ناقل اختراق، مغلق.</p>
+        <div class="xtool-top"><span class="xtool-icon" style="color:#FB923C">🔑</span><div><div class="xtool-name">Gitleaks</div><div class="xtool-cat" style="color:#FB923C">Secret Detection</div></div></div>
+        <p class="xtool-desc">Scans your entire git history for exposed API keys, credentials, tokens and secrets before they reach production — or finds the ones already there. Hooks into pre-commit and CI. The easiest breach vector, closed.</p>
         <a href="https://github.com/gitleaks/gitleaks" target="_blank" rel="noopener" class="stack-gh">
           <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
           gitleaks/gitleaks
@@ -1139,8 +1139,8 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
       </div>
 
       <div class="xtool-card fade-in">
-        <div class="xtool-top"><span class="xtool-icon" style="color:#38BDF8">🕸️</span><div><div class="xtool-name">OWASP ZAP</div><div class="xtool-cat" style="color:#38BDF8">اختبار أمن تطبيقات الويب</div></div></div>
-        <p class="xtool-desc">أكثر ماسح أمني لتطبيقات الويب مفتوح المصدر نضجاً. كشف آلي لحقن SQL وXSS والمصادقة المعطوبة وعشرات من ثغرات OWASP Top 10. فحص نشط وسلبي مع تكامل CI.</p>
+        <div class="xtool-top"><span class="xtool-icon" style="color:#38BDF8">🕸️</span><div><div class="xtool-name">OWASP ZAP</div><div class="xtool-cat" style="color:#38BDF8">Web App Security Testing</div></div></div>
+        <p class="xtool-desc">The most mature open-source web application security scanner. Automated detection of SQL injection, XSS, broken authentication and dozens more OWASP Top 10 vulnerabilities. Active and passive scanning, with CI integration.</p>
         <a href="https://github.com/zaproxy/zaproxy" target="_blank" rel="noopener" class="stack-gh">
           <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
           zaproxy/zaproxy
@@ -1251,7 +1251,7 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
           <div class="team-role">Breach intelligence advisor who understands intrusion operations from the inside out. The adversarial instinct he brings cannot be taught in a classroom. If there’s a way in, he already knows it.</div>
           <div class="team-tags">
             <span class="tag">Breach Intel</span>
-            <span class="tag">Red الفريق</span>
+            <span class="tag">Red Team</span>
             <span class="tag r">Former Black Hat</span>
           </div>
         </article>
@@ -1272,7 +1272,7 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
     <!-- Collective -->
     <div class="fade-in" style="border:1px solid var(--border);border-radius:var(--r2);background:var(--s1);padding:clamp(22px,3vw,34px);position:relative;overflow:hidden">
       <div style="position:absolute;right:24px;top:50%;transform:translateY(-50%);font-size:3.5rem;opacity:0.04;font-family:var(--mono);font-weight:700;pointer-events:none">~$</div>
-      <div style="font-family:var(--mono);font-size:var(--t2xs);font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-4);margin-bottom:12px">النشرment Collective</div>
+      <div style="font-family:var(--mono);font-size:var(--t2xs);font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-4);margin-bottom:12px">Deployment Collective</div>
       <h3 style="font-family:var(--display);font-size:var(--t2xl);font-weight:700;letter-spacing:-0.02em;margin-bottom:10px">A dozen sysops &amp; hackers.<br><span style="color:var(--acid)">Distributed worldwide.</span></h3>
       <p style="font-size:var(--tmd);color:var(--text-2);line-height:1.75;max-width:640px;margin-bottom:18px">Behind our core team is a vetted collective of sysadmins, network engineers and security researchers spread across multiple countries. They handle on-site deployments, emergency hardening and client-side training — in your timezone, in your language, under the same NDA.</p>
       <div style="display:flex;flex-wrap:wrap;gap:8px">
@@ -1290,7 +1290,7 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
   </div>
 </section>
 
-<!-- ─── الأسئلة الشائعة ─── -->
+<!-- ─── FAQ ─── -->
 <section class="section-sm" id="faq" style="border-top:1px solid var(--border)">
   <div class="wrap-n">
     <div style="text-align:center;margin-bottom:40px">
@@ -1312,7 +1312,7 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
 <section class="section" id="package" style="border-top:1px solid var(--border)">
   <div class="wrap">
     <div style="text-align:center;margin-bottom:52px">
-      <div class="lbl center">All-in-One الباقة</div>
+      <div class="lbl center">باقة شاملة</div>
       <h2 class="section-title">أمن بمستوى المؤسسات.<br><span style="color:var(--acid)">تسعير صديق للشركات الناشئة.</span></h2>
       <p class="section-body" style="max-width:560px;margin:0 auto">
         حزمة megastack الكاملة — منشورة عبر بنيتك التحتية، موثّقة ومُسلَّمة لك. بسعر مناسب لرواد الأعمال الفرديين والفرق الصغيرة، لا لميزانيات Fortune 500.
@@ -1322,23 +1322,23 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;margin-bottom:28px">
       <!-- What's included -->
       <div style="background:var(--bg);padding:clamp(28px,4vw,44px) clamp(22px,3vw,36px)">
-        <div style="font-family:var(--mono);font-size:var(--t2xs);font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--acid);margin-bottom:20px">ما تحصل عليه</div>
+        <div style="font-family:var(--mono);font-size:var(--t2xs);font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--acid);margin-bottom:20px">What you get</div>
         <ul style="display:flex;flex-direction:column;gap:12px">
-          <li style="display:flex;align-items:flex-start;gap:10px;font-size:var(--tsm);color:var(--text-2)"><span style="color:var(--acid);font-weight:700;flex-shrink:0">→</span>Full stack deployment across all your servers &amp; devices</li>
+          <li style="display:flex;align-items:flex-start;gap:10px;font-size:var(--tsm);color:var(--text-2)"><span style="color:var(--acid);font-weight:700;flex-shrink:0">→</span>نشر الحزمة الكاملة عبر كل خوادمك وأجهزتك</li>
           <li style="display:flex;align-items:flex-start;gap:10px;font-size:var(--tsm);color:var(--text-2)"><span style="color:var(--acid);font-weight:700;flex-shrink:0">→</span>إعداد مخصّص يتناسب مع نموذج التهديدات الخاص بك</li>
-          <li style="display:flex;align-items:flex-start;gap:10px;font-size:var(--tsm);color:var(--text-2)"><span style="color:var(--acid);font-weight:700;flex-shrink:0">→</span>Hardened firewall policies, VPN mesh &amp; access templates</li>
+          <li style="display:flex;align-items:flex-start;gap:10px;font-size:var(--tsm);color:var(--text-2)"><span style="color:var(--acid);font-weight:700;flex-shrink:0">→</span>سياسات جدار حماية محصّنة، وشبكة VPN وقوالب وصول</li>
           <li style="display:flex;align-items:flex-start;gap:10px;font-size:var(--tsm);color:var(--text-2)"><span style="color:var(--acid);font-weight:700;flex-shrink:0">→</span>أدوات إضافية حيثما لزم (Wazuh، Falco، OpenVAS…)</li>
-          <li style="display:flex;align-items:flex-start;gap:10px;font-size:var(--tsm);color:var(--text-2)"><span style="color:var(--acid);font-weight:700;flex-shrink:0">→</span>Full documentation &amp; admin handover</li>
+          <li style="display:flex;align-items:flex-start;gap:10px;font-size:var(--tsm);color:var(--text-2)"><span style="color:var(--acid);font-weight:700;flex-shrink:0">→</span>وثائق كاملة وتسليم إداري</li>
           <li style="display:flex;align-items:flex-start;gap:10px;font-size:var(--tsm);color:var(--text-2)"><span style="color:var(--acid);font-weight:700;flex-shrink:0">→</span>تدريب مرئي عن بُعد لفريقك (اختياري)</li>
           <li style="display:flex;align-items:flex-start;gap:10px;font-size:var(--tsm);color:var(--text-2)"><span style="color:var(--acid);font-weight:700;flex-shrink:0">→</span>topgrade مُهيّأ على كل جهاز للتحديثات المستمرة</li>
         </ul>
       </div>
-      <!-- فلسفة التسعير -->
+      <!-- Pricing philosophy -->
       <div style="background:var(--s1);padding:clamp(28px,4vw,44px) clamp(22px,3vw,36px);display:flex;flex-direction:column;justify-content:space-between">
         <div>
-          <div style="font-family:var(--mono);font-size:var(--t2xs);font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-3);margin-bottom:20px">فلسفة التسعير</div>
-          <p style="font-size:var(--tmd);color:var(--text-2);line-height:1.75;margin-bottom:18px">بنينا هذا للمستقل صاحب بيانات العملاء الحساسة، وللشركة الناشئة المكوّنة من 5 أشخاص بأسرارها التجارية، وللصحفي الذي لا يستطيع تحمّل اختراقه. ليس فقط للشركات بميزانيات أمنية من ست خانات.</p>
-          <p style="font-size:var(--tmd);color:var(--text-2);line-height:1.75;margin-bottom:24px">كل تعاقد يُسعَّر بشفافية بعد مكالمة التقييم — لا مفاجآت، لا ارتباط. تمتلك كل شيء عندما نغادر.</p>
+          <div style="font-family:var(--mono);font-size:var(--t2xs);font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-3);margin-bottom:20px">Pricing philosophy</div>
+          <p style="font-size:var(--tmd);color:var(--text-2);line-height:1.75;margin-bottom:18px">We built this for the freelancer with sensitive client data, the 5-person startup with trade secrets, and the journalist who can't afford to be compromised. Not just for companies with a six-figure security budget.</p>
+          <p style="font-size:var(--tmd);color:var(--text-2);line-height:1.75;margin-bottom:24px">Every engagement is quoted transparently after the assessment call — no surprises, no lock-in. You own everything when we leave.</p>
         </div>
         <div style="display:flex;gap:10px;flex-wrap:wrap">
           <span style="font-family:var(--mono);font-size:var(--t2xs);padding:6px 12px;border:1px solid rgba(229,0,10,0.2);border-radius:var(--r1);color:var(--acid);background:var(--acid-soft)">Solo entrepreneurs</span>
@@ -1354,7 +1354,7 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
       <span style="font-size:1.6rem;flex-shrink:0">🎥</span>
       <div>
         <div style="font-family:var(--grotesk);font-size:var(--tmd);font-weight:700;color:var(--text);margin-bottom:6px">تدريب فيديو مُخصّص عن بُعد</div>
-        <p style="font-size:var(--tsm);color:var(--text-2);line-height:1.7">بعد النشر، نوفّر جلسات فيديو مباشرة مع فريقك — تغطّي العمليات اليومية، تدريبات الاستجابة للحوادث، وممارسات سير العمل الآمن. مُسجّلة وموثّقة ومحفوظة داخل خادم Matrix الخاص بك. التدريب اختياري لكنه موصى به بشدة للفرق الجديدة على الأمن ذاتي الاستضافة.</p>
+        <p style="font-size:var(--tsm);color:var(--text-2);line-height:1.7">After deployment, we offer live video sessions with your team — covering day-to-day operations, incident response drills, and secure workflow practices. Recorded, documented and kept inside your own Matrix server. Training is optional but highly recommended for teams new to self-hosted security.</p>
       </div>
     </div>
   </div>
@@ -1391,7 +1391,7 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
       <div style="flex-shrink:0">
         <a href="/assets/megastack-media-kit-v1.4.0.zip" download class="btn btn-acid btn-lg" style="display:inline-flex;align-items:center;gap:10px;white-space:nowrap">
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2v8M5 7l3 3 3-3M2 12h12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          Download مجموعة الإعلام
+          Download Media Kit
         </a>
         <p style="font-family:var(--mono);font-size:var(--t2xs);color:var(--text-4);text-align:center;margin-top:10px">.zip · 4.4 MB</p>
       </div>
@@ -1403,10 +1403,10 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
 <footer class="footer">
   <div class="wrap">
     <div class="footer-inner">
-      <div class="footer-brand"><span>MEGASTACK.SH</span> — End-to-End Security الحزمة</div>
+      <div class="footer-brand"><span>MEGASTACK.SH</span> — End-to-End Security Stack</div>
       <div class="footer-links">
         <a href="mailto:hi@megastack.sh">hi@megastack.sh</a>
-        <a href="/assets/megastack-media-kit-v1.4.0.zip" download>مجموعة الإعلام</a>
+        <a href="/assets/megastack-media-kit-v1.4.0.zip" download>Media Kit</a>
         <a href="#stack">الحزمة</a>
         <a href="#team">الفريق</a>
       </div>
@@ -1511,9 +1511,9 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
         </svg>
       </div>
       <h3 style="font-family:var(--display);font-size:var(--t2xl);font-weight:700;letter-spacing:-0.02em;margin-bottom:10px">Private resource</h3>
-      <p style="font-size:var(--tmd);color:var(--text-2);line-height:1.72;margin-bottom:6px">الخطوة  من 3</p>
+      <p style="font-size:var(--tmd);color:var(--text-2);line-height:1.72;margin-bottom:6px">This component is part of the megastack private configuration layer.</p>
       <p style="font-size:var(--tsm);color:var(--text-3);line-height:1.65;margin-bottom:28px">Templates, scripts and configuration files are shared exclusively with clients during deployment. Contact us for access or a detailed walkthrough.</p>
-      <button class="btn btn-acid btn-lg" style="width:100%;justify-content:center" onclick="closePrivateModal();openModal()">حجز مكالمة آمنة &rarr;</button>
+      <button class="btn btn-acid btn-lg" style="width:100%;justify-content:center" onclick="closePrivateModal();openModal()">Book a secure call &rarr;</button>
       <button onclick="closePrivateModal()" style="display:block;margin:14px auto 0;font-family:var(--grotesk);font-size:var(--t2xs);color:var(--text-4);background:none;border:none;cursor:pointer;text-decoration:underline">Close</button>
     </div>
   </div>
@@ -1524,7 +1524,7 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
   <div class="modal">
     <div class="modal-head">
       <div>
-        <div class="modal-sup">Secure التقييمment</div>
+        <div class="modal-sup">تقييم آمن</div>
         <h2 class="modal-title" id="modal-cta-title">احجز مكالمتك</h2>
       </div>
       <button class="modal-close" onclick="closeModal()" aria-label="Close">✕</button>
@@ -1550,7 +1550,7 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
           </div>
         </div>
         <div class="form-group" style="margin-top:14px">
-          <label class="form-label" for="inp-email">البريد الإلكتروني</label>
+          <label class="form-label" for="inp-email">Email</label>
           <input class="form-input" type="email" id="inp-email" placeholder="you@example.com" autocomplete="email">
         </div>
         <div class="form-group">
@@ -1569,7 +1569,7 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
 
       <!-- Panel 2: Day picker -->
       <div id="panel-2" style="display:none">
-        <p style="font-size:var(--tmd);color:var(--text-2);margin-bottom:8px;line-height:1.7">اختر يومك المفضل. تُعقد المكالمات <strong style="color:var(--text)">بعد الظهر GMT</strong> — نؤكد الوقت الدقيق عبر رسالة آمنة.</p>
+        <p style="font-size:var(--tmd);color:var(--text-2);margin-bottom:8px;line-height:1.7">اختر يومك المفضّل. المكالمات تتم بعد الظهر بتوقيت GMT — سنؤكد الوقت بالضبط برسالة آمنة.</p>
         <p style="font-family:var(--mono);font-size:var(--t2xs);color:var(--text-4);margin-bottom:20px;letter-spacing:0.05em">الأسبوعان القادمان — اختر يوماً</p>
         <div class="day-grid" id="day-grid">
           <!-- populated by JS -->
@@ -1577,7 +1577,7 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
         <div class="form-group" style="margin-top:20px">
           <label class="form-label">منصة المكالمة المفضّلة</label>
           <select class="form-input" id="inp-platform" style="cursor:pointer">
-            <option value="">Select a platform…</option>
+            <option value="">منصة المكالمة المفضّلة…</option>
             <option>Signal video call</option>
             <option>Matrix / Element</option>
             <option>Jitsi (self-hosted)</option>
@@ -1826,7 +1826,7 @@ setTimeout(()=>{
 const fo=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');fo.unobserve(e.target)}})},{threshold:0.07});
 document.querySelectorAll('.fade-in').forEach(el=>fo.observe(el));
 
-/* ── 6. الأسئلة الشائعة ── */
+/* ── 6. FAQ ── */
 document.querySelectorAll('.faq-q').forEach(btn=>{
   btn.addEventListener('click',()=>{
     const item=btn.closest('.faq-item'),open=item.classList.contains('open');
@@ -1952,8 +1952,8 @@ window.submitBooking = async function() {
   var htmlBody = '<h2 style="color:#E5000A">New megastack.sh booking</h2>' +
     '<table style="font-family:sans-serif;border-collapse:collapse;font-size:14px">' +
     '<tr><td style="padding:6px 16px 6px 0;color:#888;font-weight:600">Name</td><td style="padding:6px 0"><strong>' + name + '</strong></td></tr>' +
-    '<tr><td style="padding:6px 16px 6px 0;color:#888;font-weight:600">المؤسسة</td><td style="padding:6px 0">' + (org||'—') + '</td></tr>' +
-    '<tr><td style="padding:6px 16px 6px 0;color:#888;font-weight:600">البريد الإلكتروني</td><td style="padding:6px 0">' + email + '</td></tr>' +
+    '<tr><td style="padding:6px 16px 6px 0;color:#888;font-weight:600">Organisation</td><td style="padding:6px 0">' + (org||'—') + '</td></tr>' +
+    '<tr><td style="padding:6px 16px 6px 0;color:#888;font-weight:600">Email</td><td style="padding:6px 0">' + email + '</td></tr>' +
     '<tr><td style="padding:6px 16px 6px 0;color:#888;font-weight:600">Signal / Matrix</td><td style="padding:6px 0">' + (signal||'—') + '</td></tr>' +
     '<tr><td style="padding:6px 16px 6px 0;color:#888;font-weight:600">Preferred day</td><td style="padding:6px 0"><strong style="color:#E5000A">' + day + '</strong></td></tr>' +
     '<tr><td style="padding:6px 16px 6px 0;color:#888;font-weight:600">Call platform</td><td style="padding:6px 0">' + plat + '</td></tr>' +
@@ -1961,7 +1961,7 @@ window.submitBooking = async function() {
     '<h3 style="margin-top:20px">Context</h3><p style="font-size:14px;color:#444">' + (ctx||'—') + '</p>';
 
   var textBody = 'New megastack.sh booking\n\n' +
-    'Name: ' + name + '\nOrg: ' + (org||'—') + '\nالبريد الإلكتروني: ' + email +
+    'Name: ' + name + '\nOrg: ' + (org||'—') + '\nEmail: ' + email +
     '\nSignal/Matrix: ' + (signal||'—') + '\nPreferred day: ' + day +
     '\nCall platform: ' + plat + '\n\nContext:\n' + (ctx||'—');
 
@@ -2129,9 +2129,8 @@ document.getElementById('modal-lang').addEventListener('click', function(e){
 
 // Restore lang on load
 (function(){
-  _curLang = 'AR';
-  localStorage.setItem('ms-lang','AR');
-  var el = document.getElementById('current-lang'); if(el) el.textContent = 'AR';
+  var s = localStorage.getItem('ms-lang');
+  if(s) { _curLang = s; var el = document.getElementById('current-lang'); if(el) el.textContent = s; }
 })();
 
 /* WIP language modal */
