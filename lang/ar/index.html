@@ -1,11 +1,37 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="ar" dir="rtl" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>megastack.sh — End-to-End Open Source Security Stack</title>
-  <meta name="description" content="We deploy a full open-source security stack on your own infrastructure. WireGuard, encrypted file hosting, hardened comms, 2FA — end to end.">
+  <title>megastack.sh — حزمة أمان مفتوحة المصدر من البداية إلى النهاية</title>
+  <meta name="description" content="ننشر حزمة أمنية مفتوحة المصدر متكاملة ومُحكمة على بنية تحتية تملكها أنت. VPN، تخزين مُشفّر، مراسلة آمنة، 2FA، مزامنة وتحديثات تلقائية — مُهيّأة معاً وتعمل ككيان">
   <meta name="theme-color" content="#E5000A">
+  <link rel="canonical" href="https://megastack.sh/ar/">
+  <link rel="alternate" hreflang="en" href="https://megastack.sh/">
+  <link rel="alternate" hreflang="fr" href="https://megastack.sh/fr/">
+  <link rel="alternate" hreflang="es" href="https://megastack.sh/es/">
+  <link rel="alternate" hreflang="de" href="https://megastack.sh/de/">
+  <link rel="alternate" hreflang="it" href="https://megastack.sh/it/">
+  <link rel="alternate" hreflang="pt" href="https://megastack.sh/pt/">
+  <link rel="alternate" hreflang="nl" href="https://megastack.sh/nl/">
+  <link rel="alternate" hreflang="pl" href="https://megastack.sh/pl/">
+  <link rel="alternate" hreflang="sv" href="https://megastack.sh/sv/">
+  <link rel="alternate" hreflang="no" href="https://megastack.sh/no/">
+  <link rel="alternate" hreflang="da" href="https://megastack.sh/da/">
+  <link rel="alternate" hreflang="fi" href="https://megastack.sh/fi/">
+  <link rel="alternate" hreflang="ru" href="https://megastack.sh/ru/">
+  <link rel="alternate" hreflang="uk" href="https://megastack.sh/uk/">
+  <link rel="alternate" hreflang="zh" href="https://megastack.sh/zh/">
+  <link rel="alternate" hreflang="ja" href="https://megastack.sh/ja/">
+  <link rel="alternate" hreflang="ko" href="https://megastack.sh/ko/">
+  <link rel="alternate" hreflang="ar" href="https://megastack.sh/ar/">
+  <link rel="alternate" hreflang="fa" href="https://megastack.sh/fa/">
+  <link rel="alternate" hreflang="he" href="https://megastack.sh/he/">
+  <link rel="alternate" hreflang="hi" href="https://megastack.sh/hi/">
+  <link rel="alternate" hreflang="tr" href="https://megastack.sh/tr/">
+  <link rel="alternate" hreflang="id" href="https://megastack.sh/id/">
+  <link rel="alternate" hreflang="vi" href="https://megastack.sh/vi/">
+  <link rel="alternate" hreflang="th" href="https://megastack.sh/th/">
 
   <!-- Favicons & Icons -->
   <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
@@ -19,8 +45,8 @@
 
   <!-- Open Graph / Social -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://megastack.sh/">
-  <meta property="og:title" content="megastack.sh — End-to-End Open Source Security Stack">
+  <meta property="og:url" content="https://megastack.sh/ar/">
+  <meta property="og:title" content="megastack.sh — حزمة أمان مفتوحة المصدر من البداية إلى النهاية">
   <meta property="og:description" content="We deploy a full open-source security stack on infrastructure you own. WireGuard, encrypted storage, secure messaging, 2FA, sync and auto-updates — configured together, working as one.">
   <meta property="og:image" content="https://megastack.sh/assets/og-image.png">
   <meta property="og:image:width" content="1200">
@@ -30,8 +56,8 @@
   <!-- Twitter / X Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@paulfxyz">
-  <meta name="twitter:title" content="megastack.sh — End-to-End Open Source Security Stack">
-  <meta name="twitter:description" content="Your servers. Your keys. Your comms. Your stack. Corporate-grade security at startup-friendly pricing.">
+  <meta name="twitter:title" content="megastack.sh — حزمة أمان مفتوحة المصدر من البداية إلى النهاية">
+  <meta name="twitter:description" content="خوادمك. مفاتيحك. اتصالاتك. حزمتك. Corporate-grade security at startup-friendly pricing.">
   <meta name="twitter:image" content="https://megastack.sh/assets/og-image.png">
 
 
@@ -665,7 +691,7 @@ body::after{content:'';position:fixed;inset:0;z-index:9998;pointer-events:none;o
 @media(max-width:640px){#package-grid{grid-template-columns:1fr}}
 @media(max-width:640px){#package .wrap > div:first-of-type + div{grid-template-columns:1fr}}
 
-/* ── FAQ ── */
+/* ── الأسئلة الشائعة ── */
 .faq-item { background: var(--bg); }
 .faq-q {
   display:flex; align-items:center; justify-content:space-between; gap:24px;
@@ -745,6 +771,19 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
 @keyframes wip-pulse  { 0%,100%{opacity:1;r:5} 50%{opacity:0.5;r:4} }
 @keyframes wip-ripple { 0%{r:5;opacity:0.7} 100%{r:22;opacity:0} }
 @keyframes wip-blink  { 0%,100%{opacity:0.6} 50%{opacity:0.15} }
+
+/* RTL overrides */
+[dir="rtl"] .lbl::before { display:none; }
+[dir="rtl"] .lbl::after  { content:''; display:block; width:16px; height:1px; background:currentColor; flex-shrink:0; }
+[dir="rtl"] .tl-item { direction: rtl; }
+[dir="rtl"] .nav-links { direction: rtl; }
+[dir="rtl"] .hero-content { direction: rtl; }
+[dir="rtl"] .wrap, [dir="rtl"] .wrap-w, [dir="rtl"] .wrap-n { direction: rtl; text-align: right; }
+[dir="rtl"] .section-title, [dir="rtl"] .hero-hl, [dir="rtl"] .cta-title { text-align: right; }
+[dir="rtl"] .approach-card, [dir="rtl"] .stack-card, [dir="rtl"] .xtool-card { text-align: right; }
+[dir="rtl"] .team-card, [dir="rtl"] .for-card, [dir="rtl"] .layer-row { text-align: right; direction: rtl; }
+[dir="rtl"] .layer-row { grid-template-columns: auto 1fr auto; }
+[dir="rtl"] .day-grid { direction: rtl; }
 </style>
 </head>
 <body>
@@ -764,13 +803,13 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
     <span class="nav-logo-text">MEGASTACK<span class="dot">.SH</span></span>
   </a>
   <nav class="nav-links" aria-label="Primary">
-    <a href="#stack">Stack</a>
-    <a href="#approach">How it works</a>
-    <a href="#for">Who's it for</a>
-    <a href="#toolbox">Toolbox</a>
-    <a href="#package">Package</a>
-    <a href="#team">Team</a>
-    <a href="#faq">FAQ</a>
+    <a href="#stack">الحزمة</a>
+    <a href="#approach">كيف تعمل</a>
+    <a href="#for">لمن هي</a>
+    <a href="#toolbox">صندوق الأدوات</a>
+    <a href="#package">الباقة</a>
+    <a href="#team">الفريق</a>
+    <a href="#faq">الأسئلة الشائعة</a>
   </nav>
   <div class="nav-right">
     <button class="lang-btn" onclick="openLangModal()" aria-label="Language">
@@ -782,22 +821,22 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
       <svg class="icon-light" width="14" height="14" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="3" stroke="currentColor" stroke-width="1.4"/><path d="M8 1v2M8 13v2M1 8h2M13 8h2M3.1 3.1l1.4 1.4M11.5 11.5l1.4 1.4M3.1 12.9l1.4-1.4M11.5 4.5l1.4-1.4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
 
     </button>
-    <button class="btn btn-acid" onclick="openModal()">Book a call</button>
+    <button class="btn btn-acid" onclick="openModal()">احجز مكالمة</button>
     <button class="nav-burger" id="nav-burger" aria-label="Menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
   </div>
 </nav>
 <div class="nav-mobile" id="nav-mobile" aria-hidden="true">
-  <a href="#stack" onclick="closeMobile()">Stack</a>
-  <a href="#approach" onclick="closeMobile()">How it works</a>
-  <a href="#for" onclick="closeMobile()">Who's it for</a>
-  <a href="#toolbox" onclick="closeMobile()">Toolbox</a>
-  <a href="#package" onclick="closeMobile()">Package</a>
-  <a href="#team" onclick="closeMobile()">Team</a>
-  <a href="#faq" onclick="closeMobile()">FAQ</a>
+  <a href="#stack" onclick="closeMobile()">الحزمة</a>
+  <a href="#approach" onclick="closeMobile()">كيف تعمل</a>
+  <a href="#for" onclick="closeMobile()">لمن هي</a>
+  <a href="#toolbox" onclick="closeMobile()">صندوق الأدوات</a>
+  <a href="#package" onclick="closeMobile()">الباقة</a>
+  <a href="#team" onclick="closeMobile()">الفريق</a>
+  <a href="#faq" onclick="closeMobile()">الأسئلة الشائعة</a>
   <div class="nav-mobile-btns">
-    <button class="btn btn-acid" style="flex:1;justify-content:center;" onclick="openModal();closeMobile()">Book a secure call →</button>
+    <button class="btn btn-acid" style="flex:1;justify-content:center;" onclick="openModal();closeMobile()">احجز مكالمة آمنة →</button>
   </div>
 </div>
 
@@ -806,20 +845,20 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
   <div class="hero-grid"></div>
   <div class="hero-scan"></div>
   <div class="hero-content">
-    <div class="badge"><div class="badge-dot"></div>Open Source · Self-Hosted · End-to-End</div>
+    <div class="badge"><div class="badge-dot"></div>مفتوحة المصدر · ذاتية الاستضافة · من طرف إلى طرف</div>
     <h1 class="hero-word" data-text="MEGASTACK.SH">MEGA<span style="color:var(--text-3)">STACK</span><span class="dot">.</span>SH</h1>
-    <p class="hero-sub"><span class="sep">──────</span>Security infrastructure, no black boxes<span class="sep">──────</span></p>
+    <p class="hero-sub"><span class="sep">──────</span>بنية أمنية بلا صناديق سوداء<span class="sep">──────</span></p>
     <p class="hero-hl">
-      <span class="r">Your servers.</span> Your keys.<br>
-      Your comms. <span class="b">Your stack.</span>
+      <span class="r">خوادمك.</span> مفاتيحك.<br>
+      اتصالاتك. <span class="b">حزمتك.</span>
     </p>
     <p class="hero-desc">
       We deploy a complete, battle-hardened open-source security stack on infrastructure you own.
       VPN, encrypted storage, secure messaging, 2FA, sync and auto-updates — configured together, working as one.
     </p>
     <div class="hero-ctas" style="flex-direction:column;align-items:center;gap:14px">
-      <button class="btn btn-acid btn-xl" onclick="openModal()">Book a secure call →</button>
-      <a href="#stack" style="font-family:var(--grotesk);font-size:var(--tsm);color:var(--text-3);text-decoration:none;letter-spacing:0.02em;transition:color var(--fast) var(--ease)" onmouseover="this.style.color='var(--text)'" onmouseout="this.style.color='var(--text-3)'">See the stack ↓</a>
+      <button class="btn btn-acid btn-xl" onclick="openModal()">احجز مكالمة آمنة →</button>
+      <a href="#stack" style="font-family:var(--grotesk);font-size:var(--tsm);color:var(--text-3);text-decoration:none;letter-spacing:0.02em;transition:color var(--fast) var(--ease)" onmouseover="this.style.color='var(--text)'" onmouseout="this.style.color='var(--text-3)'">اطّلع على الحزمة ↓</a>
     </div>
     <div class="hero-pills">
       <div class="pill"><span class="pv">9</span> open-source tools</div>
@@ -833,30 +872,30 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
 
 <!-- ─── STRIPE ─── -->
 <div class="stripe">
-  <p><span>⚡</span>Everything runs on your servers — we never touch your data after deployment<span>⚡</span></p>
+  <p><span>⚡</span>كل شيء يعمل على خوادمك — لا نمسّ بياناتك بعد التسليم<span>⚡</span></p>
 </div>
 
 <!-- ─── APPROACH ─── -->
 <section class="section" id="approach" style="border-top:1px solid var(--border)">
   <div class="wrap">
-    <div class="lbl">How it works</div>
-    <h2 class="section-title">Three steps.<br><span style="color:var(--acid)">Total sovereignty.</span></h2>
-    <p class="section-body" style="max-width:500px">No SaaS. No vendor lock-in. No trust required — just code you can read and infrastructure you control.</p>
+    <div class="lbl">كيف تعمل</div>
+    <h2 class="section-title">ثلاث خطوات.<br><span style="color:var(--acid)">سيادة كاملة.</span></h2>
+    <p class="section-body" style="max-width:500px">لا SaaS. لا ارتباط بمزوّد. لا حاجة للثقة — فقط كود يمكنك قراءته وبنية تحتية تتحكم بها.</p>
     <div class="approach-grid">
       <div class="approach-card fade-in">
         <div class="approach-num">01</div>
-        <div class="approach-title">Assess</div>
-        <p class="approach-desc">We spend 60 minutes on a secure call mapping your threat model, your existing infrastructure and your team's operational habits. No two stacks are identical.</p>
+        <div class="approach-title">التقييم</div>
+        <p class="approach-desc">نقضي 60 دقيقة في مكالمة آمنة لرسم نموذج التهديدات الخاص بك، بنيتك التحتية الحالية وعادات فريقك التشغيلية. لا توجد حزمتان متطابقتان.</p>
       </div>
       <div class="approach-card fade-in">
         <div class="approach-num">02</div>
-        <div class="approach-title">Deploy</div>
-        <p class="approach-desc">We provision every component on servers you already own or control. Hardened defaults, firewall policies, integration between layers — fully automated, fully open source.</p>
+        <div class="approach-title">النشر</div>
+        <p class="approach-desc">نُجهّز كل مكوّن على خوادم تملكها أو تتحكم بها فعلاً. إعدادات افتراضية محصّنة، سياسات جدار حماية، وتكامل بين الطبقات — مؤتمتة بالكامل ومفتوحة المصدر بالكامل.</p>
       </div>
       <div class="approach-card fade-in">
         <div class="approach-num">03</div>
-        <div class="approach-title">Handoff</div>
-        <p class="approach-desc">You get full documentation, admin access and topgrade running on every device. We leave — your stack keeps running without us. Optionally, retain us for quarterly audits.</p>
+        <div class="approach-title">التسليم</div>
+        <p class="approach-desc">تحصل على وثائق كاملة وصلاحيات إدارية وtopgrade يعمل على كل جهاز. نغادر — وحزمتك تستمر في العمل بدوننا. اختيارياً، يمكنك الاحتفاظ بنا لإجراء تدقيقات ربع سنوية.</p>
       </div>
     </div>
   </div>
@@ -866,8 +905,8 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
 <section class="section stack-section" id="stack">
   <div class="wrap-w">
     <div style="text-align:center;padding-bottom:8px">
-      <div class="lbl center">The Stack</div>
-      <h2 class="section-title">Nine tools.<br><span style="color:var(--acid)">One coherent fortress.</span></h2>
+      <div class="lbl center">The الحزمة</div>
+      <h2 class="section-title">تسع أدوات.<br><span style="color:var(--acid)">حصن واحد متماسك.</span></h2>
       <p class="section-body" style="max-width:560px;margin:0 auto">
         Every component is open source, auditable and connected to the others.
         No black boxes. No subscription traps. No calling home.
@@ -882,8 +921,8 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
         </div>
         <div class="stack-content">
           <div class="stack-name">WireGuard</div>
-          <span class="stack-tag" style="color:var(--acid)">Layer 1 — VPN Backbone</span>
-          <p class="stack-desc">The backbone everything else runs through. Kernel-level performance, mathematically sound cryptography, and a codebase so lean you can actually read it. Every device, every server, one encrypted mesh — built to last.</p>
+          <span class="stack-tag" style="color:var(--acid)">الطبقة 1 — العمود الفقري لـ VPN</span>
+          <p class="stack-desc">العمود الفقري الذي يمرّ عبره كل شيء آخر. أداء على مستوى النواة، تشفير سليم رياضياً، وقاعدة شيفرة بسيطة لدرجة أن بإمكانك قراءتها فعلاً. كل جهاز، كل خادم، شبكة مُشفّرة واحدة — مبنية لتدوم.</p>
           <a href="https://github.com/WireGuard/wireguard-tools" target="_blank" rel="noopener" class="stack-gh">
             <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
             WireGuard/wireguard-linux
@@ -898,8 +937,8 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
         </div>
         <div class="stack-content">
           <div class="stack-name">Hoodik</div>
-          <span class="stack-tag" style="color:var(--ice)">Layer 2 — Encrypted File Hosting</span>
-          <p class="stack-desc">End-to-end encrypted file storage on your own server. SSH keys, certificates, credentials, sensitive documents — locked and accessible only inside the WireGuard mesh. To the outside world, it does not exist.</p>
+          <span class="stack-tag" style="color:var(--ice)">الطبقة 2 — استضافة ملفات مُشفّرة</span>
+          <p class="stack-desc">تخزين ملفات مُشفّر من طرف إلى طرف على خادمك الخاص. مفاتيح SSH، شهادات، بيانات اعتماد، مستندات حساسة — مُغلقة ومتاحة فقط داخل شبكة WireGuard. بالنسبة للعالم الخارجي، هي غير موجودة.</p>
           <a href="https://github.com/hudikhq/hoodik" target="_blank" rel="noopener" class="stack-gh">
             <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
             hudikhq/hoodik
@@ -914,8 +953,8 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
         </div>
         <div class="stack-content">
           <div class="stack-name">Hardened Firewall</div>
-          <span class="stack-tag" style="color:var(--gold)">Layer 3 — Network Policy</span>
-          <p class="stack-desc">Custom nftables policies enforcing a single rule: if you are not inside the mesh, you see nothing. Deny-all defaults. Every exception is explicit, documented and auditable. Least privilege at the network layer.</p>
+          <span class="stack-tag" style="color:var(--gold)">الطبقة 3 — سياسة الشبكة</span>
+          <p class="stack-desc">سياسات nftables مخصّصة تفرض قاعدة واحدة: إن لم تكن داخل الشبكة، لن ترى شيئاً. رفض كل شيء افتراضياً. كل استثناء صريح وموثّق وقابل للتدقيق. أقل صلاحية ممكنة على مستوى الشبكة.</p>
           <a href="#" onclick="openPrivateModal();return false;" target="_blank" rel="noopener" class="stack-gh">
             <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
             megastack-sh/firewall-templates
@@ -930,8 +969,8 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
         </div>
         <div class="stack-content">
           <div class="stack-name">Access Management Templates</div>
-          <span class="stack-tag" style="color:#A855F7">Layer 4 — Secure Operations</span>
-          <p class="stack-desc">Operational playbooks for running a secure infrastructure: key rotation schedules, peer onboarding checklists, incident timelines, access revocation flows. Everything links back into your own environment — nothing lives on a third-party platform.</p>
+          <span class="stack-tag" style="color:#A855F7">الطبقة 4 — العمليات الآمنة</span>
+          <p class="stack-desc">أدلة تشغيلية لإدارة بنية تحتية آمنة: جداول تدوير المفاتيح، قوائم انضمام النظراء، الجداول الزمنية للحوادث، تدفقات إلغاء الوصول. كل شيء يرتبط مرة أخرى ببيئتك الخاصة — لا شيء يعيش على منصة طرف ثالث.</p>
           <a href="#" onclick="openPrivateModal();return false;" target="_blank" rel="noopener" class="stack-gh">
             <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
             megastack-sh/access-templates
@@ -946,8 +985,8 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
         </div>
         <div class="stack-content">
           <div class="stack-name">Matrix + Element</div>
-          <span class="stack-tag" style="color:#22C55E">Layer 5 — Secure Communications</span>
-          <p class="stack-desc">Self-hosted Matrix homeserver, federated only within your WireGuard mesh. E2E encrypted messaging, voice calls and file transfer via Element — with zero metadata touching any external server. Your comms, fully owned.</p>
+          <span class="stack-tag" style="color:#22C55E">الطبقة 5 — اتصالات آمنة</span>
+          <p class="stack-desc">خادم Matrix ذاتي الاستضافة، يتحد فقط داخل شبكة WireGuard خاصتك. مراسلة مُشفّرة من طرف إلى طرف، مكالمات صوتية ونقل ملفات عبر Element — دون أن تلامس أي بيانات وصفية خادماً خارجياً. اتصالاتك، مملوكة لك بالكامل.</p>
           <a href="https://github.com/element-hq/synapse" target="_blank" rel="noopener" class="stack-gh">
             <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
             element-hq/synapse
@@ -962,8 +1001,8 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
         </div>
         <div class="stack-content">
           <div class="stack-name">2FA Token Server</div>
-          <span class="stack-tag" style="color:#FB923C">Layer 6 — Authentication</span>
-          <p class="stack-desc">Your 2FA tokens should never pass through Google, Authy or any third party. Authelia gives you a self-hosted authentication gateway with TOTP, hardware key support (YubiKey, FIDO2) and SSO — running entirely inside your mesh.</p>
+          <span class="stack-tag" style="color:#FB923C">الطبقة 6 — المصادقة</span>
+          <p class="stack-desc">رموز 2FA الخاصة بك يجب ألّا تمر عبر Google أو Authy أو أي طرف ثالث. Authelia يمنحك بوابة مصادقة ذاتية الاستضافة مع TOTP، ودعم للمفاتيح العتادية (YubiKey، FIDO2) وSSO — تعمل بالكامل داخل شبكتك.</p>
           <a href="https://github.com/authelia/authelia" target="_blank" rel="noopener" class="stack-gh">
             <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
             authelia/authelia
@@ -978,8 +1017,8 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
         </div>
         <div class="stack-content">
           <div class="stack-name">Resilio Sync</div>
-          <span class="stack-tag" style="color:#38BDF8">Layer 7 — P2P File Sync</span>
-          <p class="stack-desc">BitTorrent-based sync with no central server and no cloud dependency. Files move peer-to-peer between your devices, encrypted in transit, routed through the WireGuard tunnel. Fast, private, decentralised by design.</p>
+          <span class="stack-tag" style="color:#38BDF8">الطبقة 7 — مزامنة ملفات نظير لنظير</span>
+          <p class="stack-desc">مزامنة قائمة على BitTorrent بدون خادم مركزي ودون أي اعتماد سحابي. الملفات تنتقل من نظير إلى نظير بين أجهزتك، مُشفّرة أثناء النقل، ومُوجّهة عبر نفق WireGuard. سريعة، خاصة، لامركزية بالتصميم.</p>
           <a href="#" onclick="openPrivateModal();return false;" target="_blank" rel="noopener" class="stack-gh">
             <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
             megastack-sh/resilio-config
@@ -994,8 +1033,8 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
         </div>
         <div class="stack-content">
           <div class="stack-name">topgrade</div>
-          <span class="stack-tag" style="color:var(--text-2)">Layer 8 — Universal Updates</span>
-          <p class="stack-desc">One command. Every package manager, every platform — Homebrew, apt, pip, cargo, winget, firmware — updated across your entire fleet simultaneously. The only maintenance task that actually stays done.</p>
+          <span class="stack-tag" style="color:var(--text-2)">الطبقة 8 — تحديثات شاملة</span>
+          <p class="stack-desc">أمر واحد. كل مدير حزم، كل منصّة — Homebrew، apt، pip، cargo، winget، البرامج الثابتة — تُحدَّث عبر أسطولك بالكامل في وقت واحد. مهمة الصيانة الوحيدة التي تبقى منجزة فعلاً.</p>
           <a href="https://github.com/topgrade-rs/topgrade" target="_blank" rel="noopener" class="stack-gh">
             <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
             paulfxyz/topgrade
@@ -1010,8 +1049,8 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
         </div>
         <div class="stack-content">
           <div class="stack-name">Wasabi Wallet</div>
-          <span class="stack-tag" style="color:#F5A623">Layer 9 — Bitcoin Privacy Reserve</span>
-          <p class="stack-desc">Non-custodial Bitcoin infrastructure for your reserve. CoinJoin breaks transaction traceability, Tor routes your network traffic, your own Bitcoin Core node removes any third-party trust. Your keys, your coins — untrackable by design.</p>
+          <span class="stack-tag" style="color:#F5A623">الطبقة 9 — احتياطي خصوصية البيتكوين</span>
+          <p class="stack-desc">بنية تحتية للبيتكوين بدون وصاية لاحتياطك. CoinJoin يكسر إمكانية تتبع المعاملات، Tor يُوجّه حركة شبكتك، عقدة Bitcoin Core الخاصة بك تُلغي الحاجة للثقة بأي طرف ثالث. مفاتيحك، عملاتك — غير قابلة للتتبع بالتصميم.</p>
           <a href="https://github.com/WalletWasabi/WalletWasabi" target="_blank" rel="noopener" class="stack-gh">
             <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
             WalletWasabi/WalletWasabi
@@ -1027,10 +1066,10 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
 <section class="section" id="toolbox" style="border-top:1px solid var(--border)">
   <div class="wrap-w">
     <div style="text-align:center;margin-bottom:8px">
-      <div class="lbl center">Extended Toolbox</div>
-      <h2 class="section-title">Beyond the core stack.</h2>
+      <div class="lbl center">Extended صندوق الأدوات</div>
+      <h2 class="section-title">ما وراء الحزمة الأساسية.</h2>
       <p class="section-body" style="max-width:580px;margin:0 auto">
-        Depending on your threat model we layer in additional open-source tools for vulnerability scanning, runtime monitoring, code analysis and intrusion detection. Every engagement is scoped — you only get what you need.
+        حسب نموذج التهديدات الخاص بك، نضيف طبقات من أدوات مفتوحة المصدر إضافية لفحص الثغرات، ومراقبة وقت التشغيل، وتحليل الكود وكشف التسلل. كل تعاقد محدد النطاق — لا تحصل إلا على ما تحتاجه.
       </p>
     </div>
 
@@ -1055,8 +1094,8 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
     <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border)" id="xtool-grid">
 
       <div class="xtool-card fade-in">
-        <div class="xtool-top"><span class="xtool-icon" style="color:#22C55E">🔍</span><div><div class="xtool-name">OpenVAS / Greenbone</div><div class="xtool-cat" style="color:#22C55E">Vulnerability Scanning</div></div></div>
-        <p class="xtool-desc">Comprehensive vulnerability scanning with daily-updated checks across broad protocol ranges and compliance frameworks. Authenticated scanning catches misconfigurations before exploitation. Integrates with ticketing systems for streamlined remediation.</p>
+        <div class="xtool-top"><span class="xtool-icon" style="color:#22C55E">🔍</span><div><div class="xtool-name">OpenVAS / Greenbone</div><div class="xtool-cat" style="color:#22C55E">فحص الثغرات</div></div></div>
+        <p class="xtool-desc">فحص شامل للثغرات مع فحوصات يومية محدّثة عبر نطاقات بروتوكولات واسعة وأطر امتثال. الفحص الموثَّق يكتشف الإعدادات الخاطئة قبل استغلالها. يتكامل مع أنظمة التذاكر لتسهيل المعالجة.</p>
         <a href="https://github.com/greenbone/openvas-scanner" target="_blank" rel="noopener" class="stack-gh">
           <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
           greenbone/openvas-scanner
@@ -1065,7 +1104,7 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
 
       <div class="xtool-card fade-in">
         <div class="xtool-top"><span class="xtool-icon" style="color:#00C8FF">📦</span><div><div class="xtool-name">Trivy</div><div class="xtool-cat" style="color:#00C8FF">Container &amp; Cloud Security</div></div></div>
-        <p class="xtool-desc">Versatile scanner covering containers, Kubernetes, IaC templates and cloud configurations in a single tool. Identifies vulnerabilities and misconfigurations before they reach production — integrated directly into CI/CD pipelines.</p>
+        <p class="xtool-desc">ماسح متعدد الاستخدامات يغطي الحاويات وKubernetes وقوالب IaC وإعدادات السحابة في أداة واحدة. يحدّد الثغرات والإعدادات الخاطئة قبل وصولها للإنتاج — مدمج مباشرة في خطوط CI/CD.</p>
         <a href="https://github.com/aquasecurity/trivy" target="_blank" rel="noopener" class="stack-gh">
           <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
           aquasecurity/trivy
@@ -1073,8 +1112,8 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
       </div>
 
       <div class="xtool-card fade-in">
-        <div class="xtool-top"><span class="xtool-icon" style="color:#F5A623">⚡</span><div><div class="xtool-name">Falco</div><div class="xtool-cat" style="color:#F5A623">Runtime Security</div></div></div>
-        <p class="xtool-desc">Taps directly into Linux kernel events to detect anomalies in real time — unexpected network connections, container privilege escalations, suspicious file access. Catches what static scanning misses: threats already inside the perimeter.</p>
+        <div class="xtool-top"><span class="xtool-icon" style="color:#F5A623">⚡</span><div><div class="xtool-name">Falco</div><div class="xtool-cat" style="color:#F5A623">أمن وقت التشغيل</div></div></div>
+        <p class="xtool-desc">يستفيد مباشرة من أحداث نواة لينكس لاكتشاف الشذوذات في الوقت الحقيقي — اتصالات شبكية غير متوقعة، تصعيد صلاحيات في الحاويات، وصول مشبوه للملفات. يلتقط ما يفوت الفحص الثابت: التهديدات التي اخترقت المحيط بالفعل.</p>
         <a href="https://github.com/falcosecurity/falco" target="_blank" rel="noopener" class="stack-gh">
           <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
           falcosecurity/falco
@@ -1082,8 +1121,8 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
       </div>
 
       <div class="xtool-card fade-in">
-        <div class="xtool-top"><span class="xtool-icon" style="color:#A855F7">🧬</span><div><div class="xtool-name">Semgrep</div><div class="xtool-cat" style="color:#A855F7">Static Code Analysis</div></div></div>
-        <p class="xtool-desc">Rapid multi-language static analysis with custom rule support to enforce organisation-specific security patterns. Runs in CI — catches insecure coding patterns, injection vectors and dangerous function calls before any code ships.</p>
+        <div class="xtool-top"><span class="xtool-icon" style="color:#A855F7">🧬</span><div><div class="xtool-name">Semgrep</div><div class="xtool-cat" style="color:#A855F7">تحليل الكود الثابت</div></div></div>
+        <p class="xtool-desc">تحليل ثابت سريع متعدد اللغات مع دعم قواعد مخصّصة لفرض أنماط أمنية خاصة بمؤسستك. يعمل ضمن CI — يكتشف أنماط البرمجة غير الآمنة، ونواقل الحقن واستدعاءات الدوال الخطرة قبل شحن أي كود.</p>
         <a href="https://github.com/semgrep/semgrep" target="_blank" rel="noopener" class="stack-gh">
           <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
           semgrep/semgrep
@@ -1091,8 +1130,8 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
       </div>
 
       <div class="xtool-card fade-in">
-        <div class="xtool-top"><span class="xtool-icon" style="color:#FB923C">🔑</span><div><div class="xtool-name">Gitleaks</div><div class="xtool-cat" style="color:#FB923C">Secret Detection</div></div></div>
-        <p class="xtool-desc">Scans your entire git history for exposed API keys, credentials, tokens and secrets before they reach production — or finds the ones already there. Hooks into pre-commit and CI. The easiest breach vector, closed.</p>
+        <div class="xtool-top"><span class="xtool-icon" style="color:#FB923C">🔑</span><div><div class="xtool-name">Gitleaks</div><div class="xtool-cat" style="color:#FB923C">كشف الأسرار</div></div></div>
+        <p class="xtool-desc">يفحص سجل git بالكامل بحثاً عن مفاتيح API مكشوفة وبيانات اعتماد ورموز وأسرار قبل وصولها للإنتاج — أو يكتشف الموجود فعلاً. يربط بـ pre-commit وCI. أسهل ناقل اختراق، مغلق.</p>
         <a href="https://github.com/gitleaks/gitleaks" target="_blank" rel="noopener" class="stack-gh">
           <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
           gitleaks/gitleaks
@@ -1100,8 +1139,8 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
       </div>
 
       <div class="xtool-card fade-in">
-        <div class="xtool-top"><span class="xtool-icon" style="color:#38BDF8">🕸️</span><div><div class="xtool-name">OWASP ZAP</div><div class="xtool-cat" style="color:#38BDF8">Web App Security Testing</div></div></div>
-        <p class="xtool-desc">The most mature open-source web application security scanner. Automated detection of SQL injection, XSS, broken authentication and dozens more OWASP Top 10 vulnerabilities. Active and passive scanning, with CI integration.</p>
+        <div class="xtool-top"><span class="xtool-icon" style="color:#38BDF8">🕸️</span><div><div class="xtool-name">OWASP ZAP</div><div class="xtool-cat" style="color:#38BDF8">اختبار أمن تطبيقات الويب</div></div></div>
+        <p class="xtool-desc">أكثر ماسح أمني لتطبيقات الويب مفتوح المصدر نضجاً. كشف آلي لحقن SQL وXSS والمصادقة المعطوبة وعشرات من ثغرات OWASP Top 10. فحص نشط وسلبي مع تكامل CI.</p>
         <a href="https://github.com/zaproxy/zaproxy" target="_blank" rel="noopener" class="stack-gh">
           <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
           zaproxy/zaproxy
@@ -1115,9 +1154,9 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
 <!-- ─── LAYER DIAGRAM ─── -->
 <section class="section layers-section" id="layers">
   <div class="wrap">
-    <div class="lbl ice">Architecture</div>
-    <h2 class="section-title">Layers that protect each other.</h2>
-    <p class="section-body" style="max-width:540px">Each tool is locked behind the one before it. Breach one layer and you still face the next. This is defence in depth, not a feature list.</p>
+    <div class="lbl ice">البنية المعمارية</div>
+    <h2 class="section-title">طبقات تحمي بعضها البعض.</h2>
+    <p class="section-body" style="max-width:540px">كل أداة محصّنة خلف التي تسبقها. اخترق طبقة واحدة وستظل تواجه التالية. هذا دفاع متعمق، ليس قائمة ميزات.</p>
     <div class="layers-list">
       <div class="layer-row fade-in"><div class="layer-num">L1</div><div class="layer-body"><div class="layer-name">WireGuard VPN Mesh</div><div class="layer-desc">All traffic encrypted in transit. Devices off-mesh cannot reach any internal service.</div></div><span class="layer-badge lb-vpn">VPN</span></div>
       <div class="layer-row fade-in"><div class="layer-num">L2</div><div class="layer-body"><div class="layer-name">Hoodik Encrypted Storage</div><div class="layer-desc">SSH keys, secrets, certs — stored E2E encrypted, served only inside the WireGuard tunnel.</div></div><span class="layer-badge lb-fs">File Storage</span></div>
@@ -1136,14 +1175,14 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
 <section class="section" id="for" style="border-top:1px solid var(--border)">
   <div class="wrap">
     <div style="text-align:center;margin-bottom:8px">
-      <div class="lbl center">Who it's for</div>
-      <h2 class="section-title">Not a consumer product.</h2>
-      <p class="section-body" style="max-width:480px;margin:0 auto">Built for operators, executives and builders who understand that trust is a liability.</p>
+      <div class="lbl center">لمن هي</div>
+      <h2 class="section-title">ليست منتجاً للمستهلك.</h2>
+      <p class="section-body" style="max-width:480px;margin:0 auto">مبنية للمشغّلين والتنفيذيين والبنّائين الذين يدركون أن الثقة عبء.</p>
     </div>
     <div class="for-grid">
-      <div class="for-card fade-in"><div class="for-icon">🏢</div><div class="for-title">Corporations</div><p class="for-desc">Protect internal tooling, remote access and executive comms from supply-chain attacks, insider threats and state-level surveillance. No vendor in the loop.</p></div>
-      <div class="for-card fade-in"><div class="for-icon">🏛️</div><div class="for-title">Organizations &amp; NGOs</div><p class="for-desc">Journalists, activists and legal teams operating in high-risk environments. Your comms and documents stay inside infrastructure you physically control.</p></div>
-      <div class="for-card fade-in"><div class="for-icon">👤</div><div class="for-title">High-Value Individuals</div><p class="for-desc">Founders, researchers, investors and anyone whose personal or professional data is a target. Own your entire digital perimeter end to end.</p></div>
+      <div class="for-card fade-in"><div class="for-icon">🏢</div><div class="for-title">الشركات</div><p class="for-desc">احمِ أدواتك الداخلية، والوصول عن بُعد، واتصالات التنفيذيين من هجمات سلسلة التوريد، والتهديدات الداخلية، والمراقبة على مستوى الدول. لا مزوّد طرف ثالث في الحلقة.</p></div>
+      <div class="for-card fade-in"><div class="for-icon">🏛️</div><div class="for-title">Organizations &amp; NGOs</div><p class="for-desc">صحفيون، ناشطون، وفرق قانونية تعمل في بيئات عالية الخطورة. اتصالاتك ووثائقك تبقى داخل بنية تحتية تتحكم بها فعلياً.</p></div>
+      <div class="for-card fade-in"><div class="for-icon">👤</div><div class="for-title">الأفراد ذوو القيمة العالية</div><p class="for-desc">مؤسسون، باحثون، مستثمرون وكل من بياناته الشخصية أو المهنية هدف. امتلك محيطك الرقمي بالكامل من البداية إلى النهاية.</p></div>
     </div>
   </div>
 </section>
@@ -1152,14 +1191,14 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
 <section class="section" id="team" style="border-top:1px solid var(--border)">
   <div class="wrap">
     <div style="text-align:center;margin-bottom:52px">
-      <div class="lbl center">Team</div>
-      <h2 class="section-title">One founder.<br>Four hackers.<br><span style="color:var(--acid)">Multiple shades of grey.</span></h2>
-      <p class="section-body" style="max-width:500px;margin:0 auto">We've been on every side. That's why we know exactly what a real attacker goes after — and how to close those doors.</p>
+      <div class="lbl center">الفريق</div>
+      <h2 class="section-title">مؤسس واحد.<br>أربعة هاكرز.<br><span style="color:var(--acid)">درجات متعددة من الرمادي.</span></h2>
+      <p class="section-body" style="max-width:500px;margin:0 auto">كنّا في كل الجهات. لذلك نعرف بالضبط ما يستهدفه المهاجم الحقيقي — وكيف نُغلق تلك الأبواب.</p>
     </div>
 
     <!-- Founder -->
     <div style="margin-bottom:18px">
-      <div style="font-family:var(--mono);font-size:var(--t2xs);font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--acid);margin-bottom:14px;display:flex;align-items:center;gap:10px"><span style="display:block;width:16px;height:1px;background:var(--acid)"></span>Founder & CEO</div>
+      <div style="font-family:var(--mono);font-size:var(--t2xs);font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--acid);margin-bottom:14px;display:flex;align-items:center;gap:10px"><span style="display:block;width:16px;height:1px;background:var(--acid)"></span>المؤسس والرئيس التنفيذي</div>
       <div style="max-width:420px">
         <article class="team-card fade-in" style="border-color:rgba(229,0,10,0.2);background:var(--s1)">
           <div style="display:flex;align-items:center;gap:6px;margin-bottom:16px">
@@ -1169,7 +1208,7 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
               <div class="team-handle"><a href="https://linkedin.com/in/paulfleury" target="_blank" rel="noopener">paulfxyz</a></div>
             </div>
           </div>
-          <div class="team-role">Founder of openline.com, cleanip.legal and asymptote.ventures — been hacking around on the internet since the late 90s as a kid, grew up, turned it into a career, never stopped. First call, last line of defence.</div>
+          <div class="team-role">مؤسس openline.com وcleanip.legal وasymptote.ventures — يعبث بالإنترنت منذ أواخر التسعينيات وهو طفل، كبر، حوّلها إلى مهنة، ولم يتوقف يوماً. أول مكالمة، آخر خط دفاع.</div>
           <div class="team-tags" style="margin-top:14px">
             <span class="tag" style="border-color:rgba(229,0,10,0.25);color:var(--acid)">Founder &amp; CEO</span>
             <span class="tag">Product</span>
@@ -1181,13 +1220,13 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
 
     <!-- Advisors -->
     <div style="margin-bottom:32px">
-      <div style="font-family:var(--mono);font-size:var(--t2xs);font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-3);margin-bottom:14px;display:flex;align-items:center;gap:10px"><span style="display:block;width:16px;height:1px;background:var(--text-3)"></span>Main Advisors</div>
+      <div style="font-family:var(--mono);font-size:var(--t2xs);font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-3);margin-bottom:14px;display:flex;align-items:center;gap:10px"><span style="display:block;width:16px;height:1px;background:var(--text-3)"></span>المستشارون الرئيسيون</div>
       <div class="team-grid" style="grid-template-columns:repeat(2,1fr)">
         <article class="team-card fade-in">
           <div class="team-av" style="color:var(--ice);border-color:rgba(0,200,255,0.2)">BM</div>
           <div class="team-name">Boian Mihailov</div>
           <div class="team-handle"><a href="https://linkedin.com/in/boianmihailov" target="_blank" rel="noopener">b0ian</a></div>
-          <div class="team-role">The architect who built proxy.sh from nothing — and made it disappear cleanly when it had to. knows every corner of a hardened linux stack, every weakness in a vpn mesh, every place an attacker looks first.</div>
+          <div class="team-role">المهندس الذي بنى proxy.sh من الصفر — وأخفاه بنظافة عندما لزم الأمر. يعرف كل زاوية في حزمة لينكس محصّنة، وكل نقطة ضعف في شبكة VPN، وكل مكان ينظر إليه المهاجم أولاً.</div>
           <div class="team-tags">
             <span class="tag">Engineering</span>
             <span class="tag">Infrastructure</span>
@@ -1198,7 +1237,7 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
           <div class="team-av" style="color:#22C55E;border-color:rgba(34,197,94,0.2)">CD</div>
           <div class="team-name">Clément Domingo</div>
           <div class="team-handle"><a href="https://linkedin.com/in/clementdomingo" target="_blank" rel="noopener">SaxX</a></div>
-          <div class="team-role">Offensive security expert. Two decades finding holes before the bad guys do. Runs the pentests, reads the reports nobody else wants to read — then fixes what he finds.</div>
+          <div class="team-role">خبير أمن هجومي. عقدان من إيجاد الثغرات قبل الأشرار. يدير اختبارات الاختراق، يقرأ التقارير التي لا يريد أحد قراءتها — ثم يصلح ما يجده.</div>
           <div class="team-tags">
             <span class="tag">Offensive Sec</span>
             <span class="tag">Pentesting</span>
@@ -1212,7 +1251,7 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
           <div class="team-role">Breach intelligence advisor who understands intrusion operations from the inside out. The adversarial instinct he brings cannot be taught in a classroom. If there’s a way in, he already knows it.</div>
           <div class="team-tags">
             <span class="tag">Breach Intel</span>
-            <span class="tag">Red Team</span>
+            <span class="tag">Red الفريق</span>
             <span class="tag r">Former Black Hat</span>
           </div>
         </article>
@@ -1233,7 +1272,7 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
     <!-- Collective -->
     <div class="fade-in" style="border:1px solid var(--border);border-radius:var(--r2);background:var(--s1);padding:clamp(22px,3vw,34px);position:relative;overflow:hidden">
       <div style="position:absolute;right:24px;top:50%;transform:translateY(-50%);font-size:3.5rem;opacity:0.04;font-family:var(--mono);font-weight:700;pointer-events:none">~$</div>
-      <div style="font-family:var(--mono);font-size:var(--t2xs);font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-4);margin-bottom:12px">Deployment Collective</div>
+      <div style="font-family:var(--mono);font-size:var(--t2xs);font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-4);margin-bottom:12px">النشرment Collective</div>
       <h3 style="font-family:var(--display);font-size:var(--t2xl);font-weight:700;letter-spacing:-0.02em;margin-bottom:10px">A dozen sysops &amp; hackers.<br><span style="color:var(--acid)">Distributed worldwide.</span></h3>
       <p style="font-size:var(--tmd);color:var(--text-2);line-height:1.75;max-width:640px;margin-bottom:18px">Behind our core team is a vetted collective of sysadmins, network engineers and security researchers spread across multiple countries. They handle on-site deployments, emergency hardening and client-side training — in your timezone, in your language, under the same NDA.</p>
       <div style="display:flex;flex-wrap:wrap;gap:8px">
@@ -1246,24 +1285,24 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
     </div>
 
     <p style="text-align:center;font-family:var(--mono);font-size:var(--t2xs);color:var(--text-4);margin-top:28px;line-height:1.7">
-      All engagements are covered by NDA. All communications happen over the megastack.sh stack itself.
+      كل التعاقدات تخضع لاتفاقية عدم إفصاح. كل الاتصالات تتم عبر حزمة megastack.sh نفسها.
     </p>
   </div>
 </section>
 
-<!-- ─── FAQ ─── -->
+<!-- ─── الأسئلة الشائعة ─── -->
 <section class="section-sm" id="faq" style="border-top:1px solid var(--border)">
   <div class="wrap-n">
     <div style="text-align:center;margin-bottom:40px">
-      <div class="lbl center">FAQ</div>
-      <h2 class="section-title">Questions worth asking.</h2>
+      <div class="lbl center">الأسئلة الشائعة</div>
+      <h2 class="section-title">أسئلة تستحق الطرح.</h2>
     </div>
     <div style="display:flex;flex-direction:column;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden" id="faq-list">
-      <div class="faq-item"><button class="faq-q" aria-expanded="false"><span>How long does a full deployment take?</span><svg class="faq-arrow" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="faq-ans"><div class="faq-ans-inner">Most deployments complete in 1–3 days depending on the number of servers and devices. The assessment call takes 60 minutes. After that, our automated provisioning scripts handle the bulk of the work — you just need root SSH access to your servers.</div></div></div>
-      <div class="faq-item"><button class="faq-q" aria-expanded="false"><span>Do I need to own servers already?</span><svg class="faq-arrow" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="faq-ans"><div class="faq-ans-inner">No. We can help you provision bare-metal or VPS servers from providers like Hetzner, OVHcloud or Vultr — all under your own accounts. The key principle: you hold the credentials, we never do.</div></div></div>
-      <div class="faq-item"><button class="faq-q" aria-expanded="false"><span>What happens after the deployment?</span><svg class="faq-arrow" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="faq-ans"><div class="faq-ans-inner">You receive full documentation, admin credentials and a working topgrade configuration. The stack runs without us. Optionally, you can retain us for quarterly security audits, stack updates or expansion deployments.</div></div></div>
-      <div class="faq-item"><button class="faq-q" aria-expanded="false"><span>Is everything really open source?</span><svg class="faq-arrow" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="faq-ans"><div class="faq-ans-inner">Yes. WireGuard, Hoodik, Matrix/Synapse, Authelia, Resilio and topgrade are all open source and on GitHub. Our firewall templates and access management templates are also open source under MIT. You can audit every line before we touch your infrastructure.</div></div></div>
-      <div class="faq-item"><button class="faq-q" aria-expanded="false"><span>How is the call conducted securely?</span><svg class="faq-arrow" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="faq-ans"><div class="faq-ans-inner">Initial contact calls use Signal or a client-preferred encrypted video platform. After onboarding, all communication moves to your own Matrix homeserver. We do not discuss client details over email, Slack, Zoom or any third-party platform.</div></div></div>
+      <div class="faq-item"><button class="faq-q" aria-expanded="false"><span>كم يستغرق النشر الكامل؟</span><svg class="faq-arrow" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="faq-ans"><div class="faq-ans-inner">معظم عمليات النشر تكتمل خلال 1–3 أيام حسب عدد الخوادم والأجهزة. مكالمة التقييم تستغرق 60 دقيقة. بعدها، تتولى نصوصنا الآلية معظم العمل — تحتاج فقط لوصول SSH كـ root إلى خوادمك.</div></div></div>
+      <div class="faq-item"><button class="faq-q" aria-expanded="false"><span>هل أحتاج لامتلاك خوادم مسبقاً؟</span><svg class="faq-arrow" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="faq-ans"><div class="faq-ans-inner">لا. يمكننا مساعدتك في الحصول على خوادم bare-metal أو VPS من مزوّدين مثل Hetzner أو OVHcloud أو Vultr — كلها تحت حساباتك الخاصة. المبدأ الأساسي: أنت تحتفظ ببيانات الاعتماد، نحن لا نفعل أبداً.</div></div></div>
+      <div class="faq-item"><button class="faq-q" aria-expanded="false"><span>ماذا يحدث بعد النشر؟</span><svg class="faq-arrow" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="faq-ans"><div class="faq-ans-inner">تستلم وثائق كاملة، بيانات اعتماد إدارية وإعداد topgrade يعمل. الحزمة تعمل بدوننا. اختيارياً، يمكنك الاحتفاظ بنا لتدقيقات أمنية ربع سنوية، تحديثات للحزمة أو عمليات نشر توسعية.</div></div></div>
+      <div class="faq-item"><button class="faq-q" aria-expanded="false"><span>هل كل شيء حقاً مفتوح المصدر؟</span><svg class="faq-arrow" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="faq-ans"><div class="faq-ans-inner">نعم. WireGuard وHoodik وMatrix/Synapse وAuthelia وResilio وtopgrade كلها مفتوحة المصدر وعلى GitHub. قوالب جدار الحماية وقوالب إدارة الوصول لدينا أيضاً مفتوحة المصدر تحت رخصة MIT. يمكنك تدقيق كل سطر قبل أن نلمس بنيتك التحتية.</div></div></div>
+      <div class="faq-item"><button class="faq-q" aria-expanded="false"><span>كيف تجرى المكالمة بأمان؟</span><svg class="faq-arrow" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="faq-ans"><div class="faq-ans-inner">مكالمات التواصل الأولي تستخدم Signal أو منصة فيديو مُشفّرة يفضّلها العميل. بعد الانضمام، تنتقل كل الاتصالات إلى خادم Matrix الخاص بك. لا نناقش تفاصيل العملاء عبر البريد أو Slack أو Zoom أو أي منصة طرف ثالث.</div></div></div>
     </div>
   </div>
 </section>
@@ -1273,33 +1312,33 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
 <section class="section" id="package" style="border-top:1px solid var(--border)">
   <div class="wrap">
     <div style="text-align:center;margin-bottom:52px">
-      <div class="lbl center">All-in-One Package</div>
-      <h2 class="section-title">Corporate-grade security.<br><span style="color:var(--acid)">Startup-friendly pricing.</span></h2>
+      <div class="lbl center">All-in-One الباقة</div>
+      <h2 class="section-title">أمن بمستوى المؤسسات.<br><span style="color:var(--acid)">تسعير صديق للشركات الناشئة.</span></h2>
       <p class="section-body" style="max-width:560px;margin:0 auto">
-        The full megastack — deployed across your infrastructure, documented and handed over to you. Priced for solo entrepreneurs and small teams, not Fortune 500 budgets.
+        حزمة megastack الكاملة — منشورة عبر بنيتك التحتية، موثّقة ومُسلَّمة لك. بسعر مناسب لرواد الأعمال الفرديين والفرق الصغيرة، لا لميزانيات Fortune 500.
       </p>
     </div>
 
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;margin-bottom:28px">
       <!-- What's included -->
       <div style="background:var(--bg);padding:clamp(28px,4vw,44px) clamp(22px,3vw,36px)">
-        <div style="font-family:var(--mono);font-size:var(--t2xs);font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--acid);margin-bottom:20px">What you get</div>
+        <div style="font-family:var(--mono);font-size:var(--t2xs);font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--acid);margin-bottom:20px">ما تحصل عليه</div>
         <ul style="display:flex;flex-direction:column;gap:12px">
           <li style="display:flex;align-items:flex-start;gap:10px;font-size:var(--tsm);color:var(--text-2)"><span style="color:var(--acid);font-weight:700;flex-shrink:0">→</span>Full stack deployment across all your servers &amp; devices</li>
-          <li style="display:flex;align-items:flex-start;gap:10px;font-size:var(--tsm);color:var(--text-2)"><span style="color:var(--acid);font-weight:700;flex-shrink:0">→</span>Custom configuration scoped to your threat model</li>
+          <li style="display:flex;align-items:flex-start;gap:10px;font-size:var(--tsm);color:var(--text-2)"><span style="color:var(--acid);font-weight:700;flex-shrink:0">→</span>إعداد مخصّص يتناسب مع نموذج التهديدات الخاص بك</li>
           <li style="display:flex;align-items:flex-start;gap:10px;font-size:var(--tsm);color:var(--text-2)"><span style="color:var(--acid);font-weight:700;flex-shrink:0">→</span>Hardened firewall policies, VPN mesh &amp; access templates</li>
-          <li style="display:flex;align-items:flex-start;gap:10px;font-size:var(--tsm);color:var(--text-2)"><span style="color:var(--acid);font-weight:700;flex-shrink:0">→</span>Extended tooling where needed (Wazuh, Falco, OpenVAS…)</li>
+          <li style="display:flex;align-items:flex-start;gap:10px;font-size:var(--tsm);color:var(--text-2)"><span style="color:var(--acid);font-weight:700;flex-shrink:0">→</span>أدوات إضافية حيثما لزم (Wazuh، Falco، OpenVAS…)</li>
           <li style="display:flex;align-items:flex-start;gap:10px;font-size:var(--tsm);color:var(--text-2)"><span style="color:var(--acid);font-weight:700;flex-shrink:0">→</span>Full documentation &amp; admin handover</li>
-          <li style="display:flex;align-items:flex-start;gap:10px;font-size:var(--tsm);color:var(--text-2)"><span style="color:var(--acid);font-weight:700;flex-shrink:0">→</span>Remote video-based training for your team (optional)</li>
-          <li style="display:flex;align-items:flex-start;gap:10px;font-size:var(--tsm);color:var(--text-2)"><span style="color:var(--acid);font-weight:700;flex-shrink:0">→</span>topgrade configured on every device for ongoing updates</li>
+          <li style="display:flex;align-items:flex-start;gap:10px;font-size:var(--tsm);color:var(--text-2)"><span style="color:var(--acid);font-weight:700;flex-shrink:0">→</span>تدريب مرئي عن بُعد لفريقك (اختياري)</li>
+          <li style="display:flex;align-items:flex-start;gap:10px;font-size:var(--tsm);color:var(--text-2)"><span style="color:var(--acid);font-weight:700;flex-shrink:0">→</span>topgrade مُهيّأ على كل جهاز للتحديثات المستمرة</li>
         </ul>
       </div>
-      <!-- Pricing philosophy -->
+      <!-- فلسفة التسعير -->
       <div style="background:var(--s1);padding:clamp(28px,4vw,44px) clamp(22px,3vw,36px);display:flex;flex-direction:column;justify-content:space-between">
         <div>
-          <div style="font-family:var(--mono);font-size:var(--t2xs);font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-3);margin-bottom:20px">Pricing philosophy</div>
-          <p style="font-size:var(--tmd);color:var(--text-2);line-height:1.75;margin-bottom:18px">We built this for the freelancer with sensitive client data, the 5-person startup with trade secrets, and the journalist who can't afford to be compromised. Not just for companies with a six-figure security budget.</p>
-          <p style="font-size:var(--tmd);color:var(--text-2);line-height:1.75;margin-bottom:24px">Every engagement is quoted transparently after the assessment call — no surprises, no lock-in. You own everything when we leave.</p>
+          <div style="font-family:var(--mono);font-size:var(--t2xs);font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-3);margin-bottom:20px">فلسفة التسعير</div>
+          <p style="font-size:var(--tmd);color:var(--text-2);line-height:1.75;margin-bottom:18px">بنينا هذا للمستقل صاحب بيانات العملاء الحساسة، وللشركة الناشئة المكوّنة من 5 أشخاص بأسرارها التجارية، وللصحفي الذي لا يستطيع تحمّل اختراقه. ليس فقط للشركات بميزانيات أمنية من ست خانات.</p>
+          <p style="font-size:var(--tmd);color:var(--text-2);line-height:1.75;margin-bottom:24px">كل تعاقد يُسعَّر بشفافية بعد مكالمة التقييم — لا مفاجآت، لا ارتباط. تمتلك كل شيء عندما نغادر.</p>
         </div>
         <div style="display:flex;gap:10px;flex-wrap:wrap">
           <span style="font-family:var(--mono);font-size:var(--t2xs);padding:6px 12px;border:1px solid rgba(229,0,10,0.2);border-radius:var(--r1);color:var(--acid);background:var(--acid-soft)">Solo entrepreneurs</span>
@@ -1314,8 +1353,8 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
     <div class="fade-in" style="background:var(--s1);border:1px solid var(--border);border-left:3px solid var(--ice);border-radius:var(--r2);padding:clamp(18px,2.5vw,28px) clamp(20px,3vw,32px);display:flex;align-items:flex-start;gap:18px">
       <span style="font-size:1.6rem;flex-shrink:0">🎥</span>
       <div>
-        <div style="font-family:var(--grotesk);font-size:var(--tmd);font-weight:700;color:var(--text);margin-bottom:6px">Custom remote video training</div>
-        <p style="font-size:var(--tsm);color:var(--text-2);line-height:1.7">After deployment, we offer live video sessions with your team — covering day-to-day operations, incident response drills, and secure workflow practices. Recorded, documented and kept inside your own Matrix server. Training is optional but highly recommended for teams new to self-hosted security.</p>
+        <div style="font-family:var(--grotesk);font-size:var(--tmd);font-weight:700;color:var(--text);margin-bottom:6px">تدريب فيديو مُخصّص عن بُعد</div>
+        <p style="font-size:var(--tsm);color:var(--text-2);line-height:1.7">بعد النشر، نوفّر جلسات فيديو مباشرة مع فريقك — تغطّي العمليات اليومية، تدريبات الاستجابة للحوادث، وممارسات سير العمل الآمن. مُسجّلة وموثّقة ومحفوظة داخل خادم Matrix الخاص بك. التدريب اختياري لكنه موصى به بشدة للفرق الجديدة على الأمن ذاتي الاستضافة.</p>
       </div>
     </div>
   </div>
@@ -1323,11 +1362,11 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
 
 <section class="cta-band" id="contact">
   <div class="wrap-n" style="position:relative;z-index:1">
-    <div class="lbl center" style="margin-bottom:20px">Get started</div>
-    <h2 class="cta-title">Ready to own<br><span style="color:var(--acid)">your stack?</span></h2>
-    <p class="cta-sub">Book a 60-minute secure assessment call. We'll map your threat model and scope the deployment. No commitment required.</p>
+    <div class="lbl center" style="margin-bottom:20px">ابدأ الآن</div>
+    <h2 class="cta-title">جاهز لامتلاك<br><span style="color:var(--acid)">حزمتك؟</span></h2>
+    <p class="cta-sub">احجز مكالمة تقييم آمنة مدتها 60 دقيقة. سنرسم نموذج التهديدات الخاص بك ونحدّد نطاق النشر. لا التزام مطلوب.</p>
     <div class="cta-btns">
-      <button class="btn btn-acid btn-xl" onclick="openModal()">Book a secure call →</button>
+      <button class="btn btn-acid btn-xl" onclick="openModal()">احجز مكالمة آمنة →</button>
     </div>
   </div>
 </section>
@@ -1337,8 +1376,8 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
   <div class="wrap">
     <div style="display:grid;grid-template-columns:1fr auto;gap:32px;align-items:center;flex-wrap:wrap">
       <div>
-        <div class="lbl" style="margin-bottom:14px">Brand</div>
-        <h2 style="font-family:var(--display);font-size:var(--t3xl);font-weight:700;letter-spacing:-0.02em;margin-bottom:10px">Media Kit</h2>
+        <div class="lbl" style="margin-bottom:14px">العلامة</div>
+        <h2 style="font-family:var(--display);font-size:var(--t3xl);font-weight:700;letter-spacing:-0.02em;margin-bottom:10px">مجموعة الإعلام</h2>
         <p style="font-size:var(--tmd);color:var(--text-2);line-height:1.72;max-width:520px">
           All logos, banners and brand assets in one download — black, white &amp; transparent variants, favicons, Open Graph image, Twitter header, LinkedIn cover and brand guidelines.
         </p>
@@ -1352,7 +1391,7 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
       <div style="flex-shrink:0">
         <a href="/assets/megastack-media-kit-v1.4.0.zip" download class="btn btn-acid btn-lg" style="display:inline-flex;align-items:center;gap:10px;white-space:nowrap">
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2v8M5 7l3 3 3-3M2 12h12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          Download Media Kit
+          Download مجموعة الإعلام
         </a>
         <p style="font-family:var(--mono);font-size:var(--t2xs);color:var(--text-4);text-align:center;margin-top:10px">.zip · 4.4 MB</p>
       </div>
@@ -1364,15 +1403,15 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
 <footer class="footer">
   <div class="wrap">
     <div class="footer-inner">
-      <div class="footer-brand"><span>MEGASTACK.SH</span> — End-to-End Security Stack</div>
+      <div class="footer-brand"><span>MEGASTACK.SH</span> — End-to-End Security الحزمة</div>
       <div class="footer-links">
         <a href="mailto:hi@megastack.sh">hi@megastack.sh</a>
-        <a href="/assets/megastack-media-kit-v1.4.0.zip" download>Media Kit</a>
-        <a href="#stack">Stack</a>
-        <a href="#team">Team</a>
+        <a href="/assets/megastack-media-kit-v1.4.0.zip" download>مجموعة الإعلام</a>
+        <a href="#stack">الحزمة</a>
+        <a href="#team">الفريق</a>
       </div>
     </div>
-    <div class="footer-copy">© 2026 megastack.sh · MIT License · All tools remain open source · Bitcoin reserve layer included</div>
+    <div class="footer-copy">© 2026 megastack.sh · رخصة MIT · كل الأدوات تبقى مفتوحة المصدر · Bitcoin reserve layer included</div>
   </div>
 </footer>
 
@@ -1472,9 +1511,9 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
         </svg>
       </div>
       <h3 style="font-family:var(--display);font-size:var(--t2xl);font-weight:700;letter-spacing:-0.02em;margin-bottom:10px">Private resource</h3>
-      <p style="font-size:var(--tmd);color:var(--text-2);line-height:1.72;margin-bottom:6px">This component is part of the megastack private configuration layer.</p>
+      <p style="font-size:var(--tmd);color:var(--text-2);line-height:1.72;margin-bottom:6px">الخطوة  من 3</p>
       <p style="font-size:var(--tsm);color:var(--text-3);line-height:1.65;margin-bottom:28px">Templates, scripts and configuration files are shared exclusively with clients during deployment. Contact us for access or a detailed walkthrough.</p>
-      <button class="btn btn-acid btn-lg" style="width:100%;justify-content:center" onclick="closePrivateModal();openModal()">Book a secure call &rarr;</button>
+      <button class="btn btn-acid btn-lg" style="width:100%;justify-content:center" onclick="closePrivateModal();openModal()">حجز مكالمة آمنة &rarr;</button>
       <button onclick="closePrivateModal()" style="display:block;margin:14px auto 0;font-family:var(--grotesk);font-size:var(--t2xs);color:var(--text-4);background:none;border:none;cursor:pointer;text-decoration:underline">Close</button>
     </div>
   </div>
@@ -1485,8 +1524,8 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
   <div class="modal">
     <div class="modal-head">
       <div>
-        <div class="modal-sup">Secure Assessment</div>
-        <h2 class="modal-title" id="modal-cta-title">Book your call</h2>
+        <div class="modal-sup">Secure التقييمment</div>
+        <h2 class="modal-title" id="modal-cta-title">احجز مكالمتك</h2>
       </div>
       <button class="modal-close" onclick="closeModal()" aria-label="Close">✕</button>
     </div>
@@ -1499,44 +1538,44 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
 
       <!-- Panel 1: Contact details -->
       <div id="panel-1">
-        <p style="font-size:var(--tmd);color:var(--text-2);margin-bottom:24px;line-height:1.7">Tell us who you are and how to reach you. All communication after this stays on encrypted channels of your choice.</p>
+        <p style="font-size:var(--tmd);color:var(--text-2);margin-bottom:24px;line-height:1.7">أخبرنا من أنت وكيف نصل إليك. كل الاتصالات بعد ذلك تبقى على قنوات مُشفّرة من اختيارك.</p>
         <div class="form-row">
           <div class="form-group" style="margin-bottom:0">
-            <label class="form-label" for="inp-name">Full name</label>
+            <label class="form-label" for="inp-name">الاسم الكامل</label>
             <input class="form-input" type="text" id="inp-name" placeholder="Jane Smith" autocomplete="name">
           </div>
           <div class="form-group" style="margin-bottom:0">
-            <label class="form-label" for="inp-org">Organisation</label>
+            <label class="form-label" for="inp-org">المؤسسة</label>
             <input class="form-input" type="text" id="inp-org" placeholder="Acme Corp (optional)">
           </div>
         </div>
         <div class="form-group" style="margin-top:14px">
-          <label class="form-label" for="inp-email">Email</label>
+          <label class="form-label" for="inp-email">البريد الإلكتروني</label>
           <input class="form-input" type="email" id="inp-email" placeholder="you@example.com" autocomplete="email">
         </div>
         <div class="form-group">
-          <label class="form-label" for="inp-signal">Signal / Telegram / Matrix <span style="color:var(--text-4);font-weight:400;letter-spacing:0;text-transform:none">— optional but preferred</span></label>
+          <label class="form-label" for="inp-signal">Signal / Telegram / Matrix <span style="color:var(--text-4);font-weight:400;letter-spacing:0;text-transform:none">— اختياري لكن مفضّل</span></label>
           <input class="form-input" type="text" id="inp-signal" placeholder="+1 555 000 0000 or @you:matrix.org">
         </div>
         <div class="form-group">
-          <label class="form-label" for="inp-context">What do you need to protect?</label>
-          <textarea class="form-input" id="inp-context" rows="3" placeholder="Brief description of your setup, team size, threat concerns…" style="resize:vertical;min-height:80px"></textarea>
+          <label class="form-label" for="inp-context">ما الذي تحتاج لحمايته؟</label>
+          <textarea class="form-input" id="inp-context" rows="3" placeholder="وصف موجز لإعدادك، حجم الفريق، مخاوف التهديدات…" style="resize:vertical;min-height:80px"></textarea>
         </div>
         <div class="modal-footer">
           <div style="font-size:var(--tsm);color:var(--text-4)">Step 1 of 3</div>
-          <button class="btn btn-acid" onclick="goStep(2)">Choose a day →</button>
+          <button class="btn btn-acid" onclick="goStep(2)">اختر يوماً →</button>
         </div>
       </div>
 
       <!-- Panel 2: Day picker -->
       <div id="panel-2" style="display:none">
         <p style="font-size:var(--tmd);color:var(--text-2);margin-bottom:8px;line-height:1.7">Pick your preferred day. Calls happen in the <strong style="color:var(--text)">afternoon GMT</strong> — we'll confirm the exact time by secure message.</p>
-        <p style="font-family:var(--mono);font-size:var(--t2xs);color:var(--text-4);margin-bottom:20px;letter-spacing:0.05em">NEXT 2 WEEKS — SELECT ONE</p>
+        <p style="font-family:var(--mono);font-size:var(--t2xs);color:var(--text-4);margin-bottom:20px;letter-spacing:0.05em">الأسبوعان القادمان — اختر يوماً</p>
         <div class="day-grid" id="day-grid">
           <!-- populated by JS -->
         </div>
         <div class="form-group" style="margin-top:20px">
-          <label class="form-label">Preferred call platform</label>
+          <label class="form-label">منصة المكالمة المفضّلة</label>
           <select class="form-input" id="inp-platform" style="cursor:pointer">
             <option value="">Select a platform…</option>
             <option>Signal video call</option>
@@ -1547,8 +1586,8 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
           </select>
         </div>
         <div class="modal-footer">
-          <button class="btn btn-outline" onclick="goStep(1)">← Back</button>
-          <button class="btn btn-acid" onclick="goStep(3)" id="step2-next" disabled>Review →</button>
+          <button class="btn btn-outline" onclick="goStep(1)">← رجوع</button>
+          <button class="btn btn-acid" onclick="goStep(3)" id="step2-next" disabled>مراجعة →</button>
         </div>
       </div>
 
@@ -1568,17 +1607,17 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
           By submitting you agree that your contact details are used solely to schedule this call. We don't store them on any third-party platform — they go directly into our self-hosted CRM inside our own megastack.
         </p>
         <div class="modal-footer">
-          <button class="btn btn-outline" onclick="goStep(2)">← Back</button>
-          <button class="btn btn-acid btn-lg" onclick="submitBooking()">Confirm booking 🔐</button>
+          <button class="btn btn-outline" onclick="goStep(2)">← رجوع</button>
+          <button class="btn btn-acid btn-lg" onclick="submitBooking()">تأكيد الحجز 🔐</button>
         </div>
       </div>
 
       <!-- Panel done -->
       <div id="panel-done" style="display:none;text-align:center;padding:20px 0 8px">
         <div class="success-icon">🔐</div>
-        <h3 style="font-family:var(--display);font-size:var(--t2xl);font-weight:700;margin-bottom:10px">Call booked</h3>
-        <p style="font-size:var(--tmd);color:var(--text-2);margin-bottom:28px;line-height:1.7">We'll reach out via your preferred secure channel to confirm the exact time. Expect contact within 24 hours on business days.</p>
-        <button class="btn btn-acid btn-lg" onclick="closeModal()">Got it →</button>
+        <h3 style="font-family:var(--display);font-size:var(--t2xl);font-weight:700;margin-bottom:10px">تم حجز المكالمة</h3>
+        <p style="font-size:var(--tmd);color:var(--text-2);margin-bottom:28px;line-height:1.7">سنتواصل معك عبر قناتك الآمنة المفضّلة لتأكيد الوقت بالضبط. توقّع التواصل خلال 24 ساعة في أيام العمل.</p>
+        <button class="btn btn-acid btn-lg" onclick="closeModal()">فهمت →</button>
       </div>
     </div>
   </div>
@@ -1787,7 +1826,7 @@ setTimeout(()=>{
 const fo=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');fo.unobserve(e.target)}})},{threshold:0.07});
 document.querySelectorAll('.fade-in').forEach(el=>fo.observe(el));
 
-/* ── 6. FAQ ── */
+/* ── 6. الأسئلة الشائعة ── */
 document.querySelectorAll('.faq-q').forEach(btn=>{
   btn.addEventListener('click',()=>{
     const item=btn.closest('.faq-item'),open=item.classList.contains('open');
@@ -1913,8 +1952,8 @@ window.submitBooking = async function() {
   var htmlBody = '<h2 style="color:#E5000A">New megastack.sh booking</h2>' +
     '<table style="font-family:sans-serif;border-collapse:collapse;font-size:14px">' +
     '<tr><td style="padding:6px 16px 6px 0;color:#888;font-weight:600">Name</td><td style="padding:6px 0"><strong>' + name + '</strong></td></tr>' +
-    '<tr><td style="padding:6px 16px 6px 0;color:#888;font-weight:600">Organisation</td><td style="padding:6px 0">' + (org||'—') + '</td></tr>' +
-    '<tr><td style="padding:6px 16px 6px 0;color:#888;font-weight:600">Email</td><td style="padding:6px 0">' + email + '</td></tr>' +
+    '<tr><td style="padding:6px 16px 6px 0;color:#888;font-weight:600">المؤسسة</td><td style="padding:6px 0">' + (org||'—') + '</td></tr>' +
+    '<tr><td style="padding:6px 16px 6px 0;color:#888;font-weight:600">البريد الإلكتروني</td><td style="padding:6px 0">' + email + '</td></tr>' +
     '<tr><td style="padding:6px 16px 6px 0;color:#888;font-weight:600">Signal / Matrix</td><td style="padding:6px 0">' + (signal||'—') + '</td></tr>' +
     '<tr><td style="padding:6px 16px 6px 0;color:#888;font-weight:600">Preferred day</td><td style="padding:6px 0"><strong style="color:#E5000A">' + day + '</strong></td></tr>' +
     '<tr><td style="padding:6px 16px 6px 0;color:#888;font-weight:600">Call platform</td><td style="padding:6px 0">' + plat + '</td></tr>' +
@@ -1922,7 +1961,7 @@ window.submitBooking = async function() {
     '<h3 style="margin-top:20px">Context</h3><p style="font-size:14px;color:#444">' + (ctx||'—') + '</p>';
 
   var textBody = 'New megastack.sh booking\n\n' +
-    'Name: ' + name + '\nOrg: ' + (org||'—') + '\nEmail: ' + email +
+    'Name: ' + name + '\nOrg: ' + (org||'—') + '\nالبريد الإلكتروني: ' + email +
     '\nSignal/Matrix: ' + (signal||'—') + '\nPreferred day: ' + day +
     '\nCall platform: ' + plat + '\n\nContext:\n' + (ctx||'—');
 
@@ -2090,8 +2129,9 @@ document.getElementById('modal-lang').addEventListener('click', function(e){
 
 // Restore lang on load
 (function(){
-  var s = localStorage.getItem('ms-lang');
-  if(s) { _curLang = s; var el = document.getElementById('current-lang'); if(el) el.textContent = s; }
+  _curLang = 'AR';
+  localStorage.setItem('ms-lang','AR');
+  var el = document.getElementById('current-lang'); if(el) el.textContent = 'AR';
 })();
 
 /* WIP language modal */
