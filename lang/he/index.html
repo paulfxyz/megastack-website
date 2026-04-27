@@ -2107,7 +2107,7 @@ function buildLangGrid() {
       } else {
         // Navigate to the localised page
         closeLangModal();
-        setTimeout(function() { window.location.href = '/' + l.c + '/'; }, 180);
+        setTimeout(function() { window.location.href = '/' + l.c.toLowerCase() + '/'; }, 180);
       }
     });
     grid.appendChild(card);
