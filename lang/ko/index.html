@@ -145,7 +145,7 @@ body::after{content:'';position:fixed;inset:0;z-index:9998;pointer-events:none;o
 ══════════════════════════════════════════ */
 .nav{
   position:fixed;top:0;left:0;right:0;z-index:300;
-  height:60px;display:flex;align-items:center;
+  height:60px;display:flex;align-items:center;justify-content:space-between;
   padding:0 clamp(1rem,4vw,2.5rem);
   background:rgba(0,0,0,0.93);backdrop-filter:blur(20px);
   border-bottom:1px solid rgba(229,0,10,0.07);
@@ -687,6 +687,15 @@ body::after{content:'';position:fixed;inset:0;z-index:9998;pointer-events:none;o
   .for-grid{grid-template-columns:1fr}
   .nav-mobile-utils .lang-btn,.nav-mobile-utils .theme-toggle{font-size:var(--txs);padding:8px 10px}
 }
+/* ── Advisors grid ── */
+.team-grid--advisors{grid-template-columns:repeat(2,1fr)}
+@media(max-width:640px){.team-grid--advisors{grid-template-columns:1fr}}
+/* ── Package split ── */
+.package-split{display:grid;grid-template-columns:1fr 1fr}
+@media(max-width:640px){.package-split{grid-template-columns:1fr}}
+/* ── Media kit row ── */
+.media-kit-row{display:grid;grid-template-columns:1fr auto}
+@media(max-width:640px){.media-kit-row{grid-template-columns:1fr}.media-kit-row > *:last-child{width:100%}.media-kit-row .btn{width:100%;justify-content:center}}
 @media(hover:none){
   .approach-card:hover::before,.stack-card:hover::after,.for-card:hover{all:unset}
 }
@@ -1229,7 +1238,7 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
     <!-- Advisors -->
     <div style="margin-bottom:32px">
       <div style="font-family:var(--mono);font-size:var(--t2xs);font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-3);margin-bottom:14px;display:flex;align-items:center;gap:10px"><span style="display:block;width:16px;height:1px;background:var(--text-3)"></span>메인 어드바이저</div>
-      <div class="team-grid" style="grid-template-columns:repeat(2,1fr)">
+      <div class="team-grid team-grid--advisors">
         <article class="team-card fade-in">
           <div class="team-av" style="color:var(--ice);border-color:rgba(0,200,255,0.2)">BM</div>
           <div class="team-name">Boian Mihailov</div>
@@ -1327,7 +1336,7 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
       </p>
     </div>
 
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;margin-bottom:28px">
+    <div class="package-split" style="gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;margin-bottom:28px">
       <!-- What's included -->
       <div style="background:var(--bg);padding:clamp(28px,4vw,44px) clamp(22px,3vw,36px)">
         <div style="font-family:var(--mono);font-size:var(--t2xs);font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--acid);margin-bottom:20px">받게 되는 것</div>
@@ -1382,7 +1391,7 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
 <!-- ─── MEDIA KIT ─── -->
 <section style="border-top:1px solid var(--border);background:var(--bg);padding:clamp(44px,6vw,72px) 0;">
   <div class="wrap">
-    <div style="display:grid;grid-template-columns:1fr auto;gap:32px;align-items:center;flex-wrap:wrap">
+    <div class="media-kit-row" style="gap:32px;align-items:center">
       <div>
         <div class="lbl" style="margin-bottom:14px">브랜드</div>
         <h2 style="font-family:var(--display);font-size:var(--t3xl);font-weight:700;letter-spacing:-0.02em;margin-bottom:10px">미디어 키트</h2>
