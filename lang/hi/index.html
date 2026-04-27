@@ -2088,7 +2088,8 @@ function buildLangGrid() {
       if(l.c === 'EN') {
         grid.querySelectorAll('.lang-card').forEach(function(x){ x.classList.remove('active'); });
         card.classList.add('active');
-        setTimeout(closeLangModal, 280);
+        closeLangModal();
+        setTimeout(function() { window.location.href = '/'; }, 180);
       } else {
         // Navigate to the localised page
         closeLangModal();
