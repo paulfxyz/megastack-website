@@ -184,7 +184,10 @@ body::after{content:'';position:fixed;inset:0;z-index:9998;pointer-events:none;o
 }
 .nav-mobile a:last-of-type{border-bottom:none}
 .nav-mobile a:hover{color:var(--acid)}
-.nav-mobile-btns{display:flex;gap:8px;margin-top:16px}
+.nav-mobile-divider{height:1px;background:var(--border);margin:4px 0}
+.nav-mobile-utils{display:flex;align-items:center;gap:10px;padding:14px 0 4px}
+.nav-mobile-utils .lang-btn,.nav-mobile-utils .theme-toggle{flex:1;justify-content:center}
+.nav-mobile-btns{display:flex;gap:8px;margin-top:12px}
 .nav-mobile-btns .btn{flex:1;justify-content:center}
 
 /* ══════════════════════════════════════════
@@ -652,18 +655,37 @@ body::after{content:'';position:fixed;inset:0;z-index:9998;pointer-events:none;o
   .for-grid{grid-template-columns:1fr 1fr}
   .team-grid{grid-template-columns:1fr 1fr}
   .layer-row{grid-template-columns:40px 1fr auto}
+  .nav-right .lang-btn,.nav-right .theme-toggle{display:none}
 }
 @media(max-width:640px){
   .for-grid{grid-template-columns:1fr}
-  .team-grid{grid-template-columns:1fr}
+  .team-grid{grid-template-columns:1fr 1fr}
   .form-row{grid-template-columns:1fr}
   .layer-row{grid-template-columns:1fr;gap:10px}
   .layer-num{display:none}
   .layer-badge{align-self:flex-start}
   .hero-sub .sep{display:none}
+  .hero-sub{font-size:var(--txs);letter-spacing:0.04em}
+  .hero-hl{font-size:clamp(1.25rem,5.5vw,2.2rem)}
+  .hero-desc{font-size:var(--tsm)}
   .stack-card{grid-template-columns:1fr}
   .stack-icon{width:40px;height:40px;font-size:1.1rem}
   .nav-right .btn-outline{display:none}
+  .approach-grid{grid-template-columns:1fr}
+  #package-grid{grid-template-columns:1fr}
+  #xtool-grid{grid-template-columns:1fr}
+  .footer-inner{flex-direction:column;align-items:flex-start;gap:14px}
+  .footer-links{gap:12px}
+  section{padding-top:clamp(50px,10vw,90px);padding-bottom:clamp(50px,10vw,90px)}
+  .modal-box{margin:12px;border-radius:var(--r2)}
+  .hero-ctas{flex-direction:column;align-items:stretch;gap:10px}
+  .hero-ctas .btn{justify-content:center;width:100%}
+  .trust-strip{gap:10px 14px}
+}
+@media(max-width:420px){
+  .team-grid{grid-template-columns:1fr}
+  .for-grid{grid-template-columns:1fr}
+  .nav-mobile-utils .lang-btn,.nav-mobile-utils .theme-toggle{font-size:var(--txs);padding:8px 10px}
 }
 @media(hover:none){
   .approach-card:hover::before,.stack-card:hover::after,.for-card:hover{all:unset}
@@ -678,12 +700,13 @@ body::after{content:'';position:fixed;inset:0;z-index:9998;pointer-events:none;o
 .xtool-cat{font-family:var(--mono);font-size:var(--t2xs);font-weight:600;letter-spacing:0.08em;text-transform:uppercase}
 .xtool-desc{font-size:var(--tsm);color:var(--text-2);line-height:1.65;margin-bottom:10px}
 /* pill cloud */
+#xtool-grid{display:grid;grid-template-columns:repeat(3,1fr)}
 .xtag{
   font-family:var(--mono);font-size:var(--t2xs);font-weight:600;letter-spacing:0.06em;
   padding:6px 13px;border-radius:var(--r1);
   border:1px solid color-mix(in srgb,var(--xc) 30%,transparent);
   color:var(--xc);background:color-mix(in srgb,var(--xc) 7%,transparent);
-  transition:all var(--fast) var(--ease)
+  transition:all var(--fast) var(--ease);word-break:break-word
 }
 .xtag:hover{background:color-mix(in srgb,var(--xc) 14%,transparent)}
 @media(max-width:900px){#xtool-grid{grid-template-columns:1fr 1fr}}
@@ -1260,7 +1283,7 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
       <span class="xtag" style="--xc:#38BDF8">OSSEC</span>
     </div>
 
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border)" id="xtool-grid">
+    <div style="gap:1px;background:var(--border)" id="xtool-grid">
 
       <div class="xtool-card fade-in">
         <div class="xtool-top"><span class="xtool-icon" style="color:#22C55E">🔍</span><div><div class="xtool-name">OpenVAS / Greenbone</div><div class="xtool-cat" style="color:#22C55E">فحص الثغرات</div></div></div>
@@ -2269,6 +2292,7 @@ function buildLangGrid() {
       localStorage.setItem('ms-lang', l.c);
       var el = document.getElementById('current-lang');
       if(el) el.textContent = l.c;
+      var elm=document.getElementById('current-lang-mobile');if(elm)elm.textContent=l.c;
       if(l.c === 'EN') {
         grid.querySelectorAll('.lang-card').forEach(function(x){ x.classList.remove('active'); });
         card.classList.add('active');
@@ -2304,6 +2328,7 @@ document.getElementById('modal-lang').addEventListener('click', function(e){
   localStorage.setItem('ms-lang', 'AR');
   var el = document.getElementById('current-lang');
   if(el) el.textContent = 'AR';
+  var elm=document.getElementById('current-lang-mobile');if(elm)elm.textContent='AR';
 })();
 
 /* WIP language modal */
