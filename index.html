@@ -2149,121 +2149,75 @@ document.getElementById('modal-private').addEventListener('click', function(e){
   if(e.target===document.getElementById('modal-private')) closePrivateModal();
 });
 
-/* ══════════════════════════════════════════
-   EASTER EGGS — for the curious ones
-══════════════════════════════════════════ */
+/* EASTER EGGS */
 (function(){
 
-// ── 1. CONSOLE GREETING ──
-var S = [
-  '%c',
-  ' ███╗   ███╗███████╗ ██████╗  █████╗ ███████╗████████╗ █████╗  ██████╗██╗  ██╗ ',
-  ' ████╗ ████║██╔════╝██╔════╝ ██╔══██╗██╔════╝╚══██╔══╝██╔══██╗██╔════╝██║ ██╔╝ ',
-  ' ██╔████╔██║█████╗  ██║  ███╗███████║███████╗   ██║   ███████║██║     █████╔╝  ',
-  ' ██║╚██╔╝██║██╔══╝  ██║   ██║██╔══██║╚════██║   ██║   ██╔══██║██║     ██╔═██╗  ',
-  ' ██║ ╚═╝ ██║███████╗╚██████╔╝██║  ██║███████║   ██║   ██║  ██║╚██████╗██║  ██╗ ',
-  ' ╚═╝     ╚═╝╚══════╝ ╚═════╝ ╚═╝  ╚═╝╚══════╝   ╚═╝   ╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝ ',
-  '',
-  ' megastack.sh — End-to-End Open Source Security Stack',
-  ' ─────────────────────────────────────────────────────',
-  ' You opened the console. Respect.',
-  '',
-  ' If you found a vulnerability: hi@megastack.sh',
-  ' If you want to join: hi@megastack.sh',
-  ' If you just want to say hello: hi@megastack.sh',
-  '',
-  ' github.com/paulfxyz/megastack-website',
-  '',
+/* 1. CONSOLE GREETING */
+var art = [
+  '                                                              ',
+  '   M E G A S T A C K . S H                                  ',
+  '   ------------------------------------------------          ',
+  '   End-to-End Open Source Security Stack                     ',
+  '                                                              ',
+  '   You opened the console. Respect.                          ',
+  '                                                              ',
+  '   Responsible disclosure: hi@megastack.sh                   ',
+  '   GitHub: github.com/paulfxyz/megastack-website             ',
+  '                                                              ',
+  '   One founder. Four hackers.                                ',
+  '   Multiple shades of grey.                                  ',
+  '                                                              ',
 ].join('\n');
+console.log('%c' + art, 'color:#E5000A;font-family:monospace;font-size:11px;line-height:1.5;background:#000000;padding:12px 16px;');
+console.log('%c  hi@megastack.sh  ', 'color:#000;background:#E5000A;font-family:monospace;font-size:12px;font-weight:bold;padding:4px 8px;');
 
-console.log(S, 'color:#E5000A;font-family:monospace;font-size:11px;line-height:1.4;background:#000;padding:8px 0');
-console.log('%c Built by people who have been on both sides. ', 'color:#B2AEA8;font-family:monospace;font-size:11px;background:#000;padding:4px 0');
-console.log('%c One founder. Four hackers. Multiple shades of grey. ', 'color:#E5000A;font-family:monospace;font-size:12px;font-weight:bold;background:#000;padding:4px 0');
-
-// ── 2. KONAMI CODE → unlock secret message ──
-var KONAMI = [38,38,40,40,37,39,37,39,66,65];
-var konamiPos = 0;
-document.addEventListener('keydown', function(e) {
-  if(e.keyCode === KONAMI[konamiPos]) {
-    konamiPos++;
-    if(konamiPos === KONAMI.length) {
-      konamiPos = 0;
-      _showKonami();
-    }
-  } else {
-    konamiPos = 0;
-  }
+/* 2. KONAMI CODE */
+var K=[38,38,40,40,37,39,37,39,66,65], kp=0;
+document.addEventListener('keydown',function(e){
+  if(e.keyCode===K[kp]){kp++;if(kp===K.length){kp=0;_konami();}}else{kp=0;}
 });
-
-function _showKonami() {
-  var div = document.createElement('div');
-  div.style.cssText = 'position:fixed;inset:0;z-index:99999;background:rgba(0,0,0,0.97);display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:monospace;color:#E5000A;text-align:center;cursor:pointer;';
-  div.innerHTML = '<pre style="font-size:clamp(8px,1.2vw,13px);line-height:1.3;color:#E5000A;margin-bottom:28px">' +
-'    __  ___  __  ________________  __________  __  ________
-' +
-'   /  |/  / / / / / ____/  _/ __ \/ ____/ __ \/  |/  /  _/
-' +
-'  / /|_/ / / / / / __/  / // /_/ / /   / / / / /|_/ // /  
-' +
-' / /  / / /_/ / /___/ _// / ____/ /___/ /_/ / /  / // /   
-' +
-'/_/  /_/\____/_____/___/_/_/    \____/\____/_/  /_/___/    
-' +
-'</pre>' +
-'<div style="font-size:clamp(14px,2vw,22px);font-weight:bold;margin-bottom:12px;color:#fff">↑↑↓↓←→←→BA</div>' +
-'<div style="font-size:clamp(12px,1.5vw,16px);color:#B2AEA8;max-width:560px;line-height:1.7;margin-bottom:24px">' +
-'"We shut down proxy.sh in 2019 rather than compromise.<br>' +
-'Some things are worth more than uptime."<br><br>' +
-'<span style="color:#E5000A">— The megastack team</span>' +
-'</div>' +
-'<div style="font-size:11px;color:#3A3733;letter-spacing:0.1em">CLICK ANYWHERE TO DISMISS</div>';
-  div.onclick = function() { document.body.removeChild(div); };
-  document.body.appendChild(div);
-  // Brief matrix burst
-  var c = document.getElementById('cv-matrix');
-  if(c) { var prev = c.style.opacity; c.style.opacity='0.8'; setTimeout(function(){ c.style.opacity=prev; }, 3000); }
+function _konami(){
+  var d=document.createElement('div');
+  d.style.cssText='position:fixed;inset:0;z-index:99999;background:rgba(0,0,0,0.97);display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:monospace;text-align:center;cursor:pointer;';
+  d.innerHTML='<div style="color:#E5000A;font-size:clamp(18px,3vw,36px);font-weight:bold;margin-bottom:20px;letter-spacing:0.1em">[ KONAMI UNLOCKED ]</div>'+
+    '<div style="color:#B2AEA8;font-size:clamp(13px,1.5vw,18px);max-width:560px;line-height:1.8;margin-bottom:24px">'+
+    '"We shut down proxy.sh in 2019<br>rather than compromise.<br><br>'+
+    '<span style="color:#E5000A">Some things are worth more than uptime.</span>"<br><br>'+
+    '<span style="color:#3A3733;font-size:0.85em">— the megastack team</span>'+
+    '</div>'+
+    '<div style="color:#3A3733;font-size:11px;letter-spacing:0.1em;margin-top:12px">click anywhere to dismiss</div>';
+  d.onclick=function(){document.body.removeChild(d);};
+  document.body.appendChild(d);
+  var c=document.getElementById('cv-matrix');
+  if(c){var op=c.style.opacity;c.style.opacity='0.85';setTimeout(function(){c.style.opacity=op;},3000);}
 }
 
-// ── 3. SECRET PAGE SOURCE COMMENT ──
-// Already in the HTML head — search for it ;)
-
-// ── 4. CURSOR TRAIL — red particles on click (subtle) ──
-document.addEventListener('click', function(e) {
-  if(e.target.closest('button, a, input, select, textarea, .modal-backdrop')) return;
-  for(var i=0;i<6;i++){
-    (function(i){
-      var p = document.createElement('div');
-      var angle = (Math.random()*360);
-      var dist = 30+Math.random()*40;
-      p.style.cssText = 'position:fixed;width:4px;height:4px;border-radius:50%;background:#E5000A;pointer-events:none;z-index:9997;left:'+(e.clientX-2)+'px;top:'+(e.clientY-2)+'px;transition:all 0.6s ease-out;opacity:0.9;';
-      document.body.appendChild(p);
-      setTimeout(function(){
-        p.style.transform='translate('+Math.cos(angle*Math.PI/180)*dist+'px,'+Math.sin(angle*Math.PI/180)*dist+'px)';
-        p.style.opacity='0';
-      },10);
-      setTimeout(function(){ if(p.parentNode) p.parentNode.removeChild(p); }, 700);
-    })(i);
-  }
+/* 3. CLICK PARTICLES */
+document.addEventListener('click',function(e){
+  if(e.target.closest('button,a,input,select,textarea,.modal-backdrop')) return;
+  for(var i=0;i<6;i++){(function(){
+    var p=document.createElement('div');
+    var a=Math.random()*360, d=30+Math.random()*40;
+    p.style.cssText='position:fixed;width:4px;height:4px;border-radius:50%;background:#E5000A;pointer-events:none;z-index:9997;left:'+(e.clientX-2)+'px;top:'+(e.clientY-2)+'px;transition:all 0.6s ease-out;opacity:0.9;';
+    document.body.appendChild(p);
+    setTimeout(function(){p.style.transform='translate('+Math.cos(a*Math.PI/180)*d+'px,'+Math.sin(a*Math.PI/180)*d+'px)';p.style.opacity='0';},10);
+    setTimeout(function(){if(p.parentNode)p.parentNode.removeChild(p);},700);
+  })();}
 });
 
-// ── 5. HIDDEN ELEMENT in DOM ── (for the view-source crowd)
-var hidden = document.createElement('div');
-hidden.setAttribute('data-secret', 'aGkgQHBhdWxmeHl6');  // base64: "hi @paulfxyz"
-hidden.setAttribute('aria-hidden', 'true');
-hidden.style.display='none';
-hidden.textContent='If you can read this, you know what to do. hi@megastack.sh';
-document.body.appendChild(hidden);
-
-// ── 6. TITLE BAR FLICKER when tab is hidden ──
-var _origTitle = document.title;
-var _hackTitle = '> you_found_us.sh';
-document.addEventListener('visibilitychange', function(){
-  if(document.hidden){
-    document.title = _hackTitle;
-  } else {
-    document.title = _origTitle;
-  }
+/* 4. TAB TITLE FLICKER */
+var _ot=document.title;
+document.addEventListener('visibilitychange',function(){
+  document.title=document.hidden?'> you_found_us.sh':_ot;
 });
+
+/* 5. HIDDEN DOM ELEMENT */
+var h=document.createElement('div');
+h.setAttribute('data-secret','aGkgQHBhdWxmeHl6');
+h.setAttribute('aria-hidden','true');
+h.style.display='none';
+h.textContent='If you can read this, you know what to do. hi@megastack.sh';
+document.body.appendChild(h);
 
 })();
 
