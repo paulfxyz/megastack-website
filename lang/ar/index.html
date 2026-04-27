@@ -772,19 +772,189 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
 @keyframes wip-ripple { 0%{r:5;opacity:0.7} 100%{r:22;opacity:0} }
 @keyframes wip-blink  { 0%,100%{opacity:0.6} 50%{opacity:0.15} }
 
-/* RTL overrides */
-[dir="rtl"] body { text-align: right; }
+/* ── Comprehensive RTL overrides ── */
+[dir="rtl"] {
+  direction: rtl;
+  text-align: right;
+}
+[dir="rtl"] body { font-family: var(--grotesk); }
+/* Nav */
+[dir="rtl"] .nav { flex-direction: row-reverse; }
+[dir="rtl"] .nav-links { flex-direction: row-reverse; margin: 0 auto; }
+[dir="rtl"] .nav-right { flex-direction: row-reverse; }
+/* Labels */
 [dir="rtl"] .lbl { flex-direction: row-reverse; }
-[dir="rtl"] .lbl::before { display:none; }
-[dir="rtl"] .lbl::after { content:''; display:block; width:16px; height:1px; background:currentColor; flex-shrink:0; }
-[dir="rtl"] .hero-sub { flex-direction: row-reverse; }
+[dir="rtl"] .lbl::before { display: none; }
+[dir="rtl"] .lbl::after { content: ''; display: block; width: 16px; height: 1px; background: currentColor; flex-shrink: 0; }
+[dir="rtl"] .lbl.center::before, [dir="rtl"] .lbl.center::after { display: block; }
+/* Hero */
+[dir="rtl"] .hero-content { direction: rtl; text-align: center; }
+[dir="rtl"] .hero-sub { flex-direction: row-reverse; justify-content: center; }
 [dir="rtl"] .hero-pills { flex-direction: row-reverse; }
-[dir="rtl"] .nav-links { flex-direction: row-reverse; }
-[dir="rtl"] .wrap, [dir="rtl"] .wrap-w, [dir="rtl"] .wrap-n { direction: rtl; }
-[dir="rtl"] .stack-card { grid-template-columns: 1fr 48px; }
+[dir="rtl"] .hero-hl { text-align: center; direction: rtl; }
+[dir="rtl"] .hero-stats { flex-direction: row-reverse; }
+[dir="rtl"] .badge { direction: rtl; }
+/* Section headers */
+[dir="rtl"] .section-title { text-align: right; }
+[dir="rtl"] .section-body { text-align: right; }
+/* Cards */
+[dir="rtl"] .approach-card { text-align: right; }
+[dir="rtl"] .approach-num { text-align: right; }
+[dir="rtl"] .stack-card { grid-template-columns: 1fr 48px; direction: rtl; text-align: right; }
+[dir="rtl"] .stack-icon { order: 2; }
+[dir="rtl"] .stack-content { order: 1; }
+[dir="rtl"] .stack-gh { flex-direction: row-reverse; }
+[dir="rtl"] .stack-tag { text-align: right; }
+[dir="rtl"] .xtool-card { text-align: right; direction: rtl; }
+[dir="rtl"] .xtool-top { flex-direction: row-reverse; text-align: right; }
+[dir="rtl"] .xtool-top > div { text-align: right; }
+/* Layers */
 [dir="rtl"] .layer-row { direction: rtl; }
-[dir="rtl"] .modal-head { flex-direction: row-reverse; }
+[dir="rtl"] .layer-row .layer-badge { margin-left: 0; margin-right: auto; }
+/* Team */
+[dir="rtl"] .team-card { text-align: right; }
+[dir="rtl"] .team-tags { justify-content: flex-end; }
+[dir="rtl"] .for-card { text-align: right; }
+/* FAQ */
+[dir="rtl"] .faq-q { flex-direction: row-reverse; text-align: right; }
+[dir="rtl"] .faq-arrow { transform: rotate(180deg); }
+[dir="rtl"] .faq-item.open .faq-arrow { transform: rotate(0deg); }
+[dir="rtl"] .faq-ans-inner { text-align: right; }
+/* Package */
 [dir="rtl"] .form-label { text-align: right; }
+[dir="rtl"] .form-input { text-align: right; direction: rtl; }
+[dir="rtl"] .modal-head { flex-direction: row-reverse; }
+[dir="rtl"] .modal-body { direction: rtl; text-align: right; }
+[dir="rtl"] .modal-footer { flex-direction: row-reverse; }
+[dir="rtl"] .day-grid { direction: rtl; }
+[dir="rtl"] .day-btn { direction: rtl; }
+[dir="rtl"] .provider-grid { direction: rtl; }
+/* Footer */
+[dir="rtl"] .footer-inner { flex-direction: row-reverse; }
+[dir="rtl"] .footer-links { flex-direction: row-reverse; }
+/* Stripe */
+[dir="rtl"] .stripe p { flex-direction: row-reverse; }
+/* Approach grid */
+[dir="rtl"] .approach-grid { direction: rtl; }
+/* Price summary */
+[dir="rtl"] .price-row { flex-direction: row-reverse; }
+[dir="rtl"] .price-summary { direction: rtl; }
+/* Package items */
+[dir="rtl"] li { text-align: right; }
+[dir="rtl"] li > span:first-child { margin-right: 0; margin-left: 8px; }
+/* Scroll hint */
+[dir="rtl"] .scroll-hint { direction: rtl; }
+/* CTA */
+[dir="rtl"] .cta-title { text-align: center; }
+[dir="rtl"] .cta-sub { text-align: center; }
+[dir="rtl"] .cta-btns { flex-direction: row-reverse; }
+/* For grid */
+[dir="rtl"] .for-grid { direction: rtl; }
+/* Nav mobile */
+[dir="rtl"] .nav-mobile a { text-align: right; }
+[dir="rtl"] .nav-mobile-btns { flex-direction: row-reverse; }
+/* Wrap text alignment */
+[dir="rtl"] .wrap, [dir="rtl"] .wrap-w, [dir="rtl"] .wrap-n { direction: rtl; }
+
+/* ══ COMPREHENSIVE RTL ══ */
+[dir="rtl"], [dir="rtl"] * { box-sizing: border-box; }
+[dir="rtl"] body { direction: rtl; }
+/* Nav — mirror */
+[dir="rtl"] .nav { flex-direction: row-reverse; }
+[dir="rtl"] .nav-right { flex-direction: row-reverse; }
+[dir="rtl"] .nav-links { direction: rtl; }
+[dir="rtl"] .nav-logo { flex-direction: row-reverse; }
+/* Labels */
+[dir="rtl"] .lbl:not(.center) { flex-direction: row-reverse; }
+[dir="rtl"] .lbl:not(.center)::before { display: none; }
+[dir="rtl"] .lbl:not(.center)::after { content: ''; display: block; width: 16px; height: 1px; background: currentColor; flex-shrink: 0; }
+/* Hero — keep centered */
+[dir="rtl"] .hero { direction: rtl; }
+[dir="rtl"] .hero-content { direction: rtl; }
+[dir="rtl"] .hero-hl { direction: rtl; text-align: center; }
+[dir="rtl"] .hero-desc { direction: rtl; text-align: center; }
+[dir="rtl"] .hero-sub { direction: rtl; justify-content: center; }
+[dir="rtl"] .hero-pills { direction: rtl; }
+[dir="rtl"] .badge { direction: rtl; }
+[dir="rtl"] .cmd-bar { direction: rtl; }
+/* Sections */
+[dir="rtl"] .section-title { direction: rtl; text-align: right; }
+[dir="rtl"] .section-body { direction: rtl; text-align: right; }
+[dir="rtl"] .wrap > *, [dir="rtl"] .wrap-w > *, [dir="rtl"] .wrap-n > * { direction: rtl; }
+/* Approach cards */
+[dir="rtl"] .approach-card { text-align: right; direction: rtl; }
+[dir="rtl"] .approach-num { text-align: right; }
+[dir="rtl"] .approach-title { text-align: right; }
+[dir="rtl"] .approach-desc { text-align: right; }
+/* Stack cards — icon RIGHT, text LEFT of icon */
+[dir="rtl"] .stack-card { direction: rtl; text-align: right; }
+[dir="rtl"] .stack-card .stack-icon { order: 1; }
+[dir="rtl"] .stack-card .stack-content { order: 0; text-align: right; }
+[dir="rtl"] .stack-name { text-align: right; }
+[dir="rtl"] .stack-tag { text-align: right; display: block; }
+[dir="rtl"] .stack-desc { text-align: right; direction: rtl; }
+[dir="rtl"] .stack-gh { flex-direction: row-reverse; }
+/* Toolbox */
+[dir="rtl"] .xtool-card { direction: rtl; text-align: right; }
+[dir="rtl"] .xtool-top { flex-direction: row-reverse; }
+[dir="rtl"] .xtool-name { text-align: right; }
+[dir="rtl"] .xtool-cat { text-align: right; }
+[dir="rtl"] .xtool-desc { text-align: right; }
+/* Layers */
+[dir="rtl"] .layers-list { direction: rtl; }
+[dir="rtl"] .layer-row { direction: rtl; }
+[dir="rtl"] .layer-body { text-align: right; }
+[dir="rtl"] .layer-name { text-align: right; }
+[dir="rtl"] .layer-desc { text-align: right; }
+/* Who for-grid */
+[dir="rtl"] .for-card { direction: rtl; text-align: right; }
+[dir="rtl"] .for-title { text-align: right; }
+[dir="rtl"] .for-desc { text-align: right; }
+/* Team */
+[dir="rtl"] .team-card { direction: rtl; text-align: right; }
+[dir="rtl"] .team-name { text-align: right; }
+[dir="rtl"] .team-role { text-align: right; }
+[dir="rtl"] .team-tags { flex-direction: row-reverse; }
+[dir="rtl"] .team-handle { text-align: right; }
+/* FAQ */
+[dir="rtl"] .faq-q { flex-direction: row-reverse; text-align: right; width: 100%; }
+[dir="rtl"] .faq-q span { flex: 1; text-align: right; }
+[dir="rtl"] .faq-arrow { transform: rotate(180deg); flex-shrink: 0; }
+[dir="rtl"] .faq-item.open .faq-arrow { transform: rotate(0deg); }
+[dir="rtl"] .faq-ans-inner { text-align: right; direction: rtl; }
+/* Package */
+[dir="rtl"] .package-grid { direction: rtl; }
+[dir="rtl"] ul li { text-align: right; direction: rtl; }
+[dir="rtl"] ul li > span:first-child { margin-right: 0; margin-left: 10px; }
+/* Modal */
+[dir="rtl"] .modal { direction: rtl; }
+[dir="rtl"] .modal-head { flex-direction: row-reverse; }
+[dir="rtl"] .modal-body { direction: rtl; text-align: right; }
+[dir="rtl"] .modal-footer { flex-direction: row-reverse; }
+[dir="rtl"] .form-label { text-align: right; }
+[dir="rtl"] .form-input { direction: rtl; text-align: right; }
+[dir="rtl"] .form-group { text-align: right; }
+[dir="rtl"] .day-grid { direction: rtl; }
+[dir="rtl"] .modal-sup { text-align: right; }
+[dir="rtl"] .modal-title { text-align: right; }
+[dir="rtl"] .price-row { flex-direction: row-reverse; }
+[dir="rtl"] .price-summary { direction: rtl; }
+/* CTA */
+[dir="rtl"] .cta-title { direction: rtl; text-align: center; }
+[dir="rtl"] .cta-sub { direction: rtl; text-align: center; }
+[dir="rtl"] .install-box { direction: rtl; text-align: right; }
+/* Footer */
+[dir="rtl"] .footer-inner { flex-direction: row-reverse; }
+[dir="rtl"] .footer-links { flex-direction: row-reverse; direction: rtl; }
+[dir="rtl"] .footer-brand { direction: rtl; }
+[dir="rtl"] .footer-copy { direction: rtl; }
+/* Stripe */
+[dir="rtl"] .stripe p { flex-direction: row-reverse; }
+/* Collective / team section labels */
+[dir="rtl"] [style*="display:flex;align-items:center;gap:10px"] { flex-direction: row-reverse; }
+/* Media kit section */
+[dir="rtl"] .media-kit-row { flex-direction: row-reverse; }
+
 </style>
 </head>
 <body>
@@ -815,7 +985,7 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
   <div class="nav-right">
     <button class="lang-btn" onclick="openLangModal()" aria-label="Language">
       <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.4"/><path d="M8 1c0 0 3 3.5 3 7s-3 7-3 7-3-3.5-3-7 3-7 3-7z" stroke="currentColor" stroke-width="1.4"/><path d="M1.5 8h13" stroke="currentColor" stroke-width="1.4"/></svg>
-      <span id="current-lang">EN</span>
+      <span id="current-lang">AR</span>
     </button>
     <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
       <svg class="icon-dark" width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M14 10.5A6.5 6.5 0 015.5 2a6.5 6.5 0 108.5 8.5z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
@@ -908,8 +1078,7 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
       <div class="lbl center">الحزمة</div>
       <h2 class="section-title">تسع أدوات.<br><span style="color:var(--acid)">حصن واحد متماسك.</span></h2>
       <p class="section-body" style="max-width:560px;margin:0 auto">
-        Every component is open source, auditable and connected to the others.
-        No black boxes. No subscription traps. No calling home.
+        كل مكوّن مفتوح المصدر، قابل للتدقيق ومتصل بالباقي. لا صناديق سوداء. لا فخاخ اشتراكات. لا اتصالات خفية بالخارج.
       </p>
     </div>
     <div class="stack-grid">
@@ -1337,8 +1506,8 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
       <div style="background:var(--s1);padding:clamp(28px,4vw,44px) clamp(22px,3vw,36px);display:flex;flex-direction:column;justify-content:space-between">
         <div>
           <div style="font-family:var(--mono);font-size:var(--t2xs);font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-3);margin-bottom:20px">فلسفة التسعير</div>
-          <p style="font-size:var(--tmd);color:var(--text-2);line-height:1.75;margin-bottom:18px">We built this for the freelancer with sensitive client data, the 5-person startup with trade secrets, and the journalist who can't afford to be compromised. Not just for companies with a six-figure security budget.</p>
-          <p style="font-size:var(--tmd);color:var(--text-2);line-height:1.75;margin-bottom:24px">Every engagement is quoted transparently after the assessment call — no surprises, no lock-in. You own everything when we leave.</p>
+          <p style="font-size:var(--tmd);color:var(--text-2);line-height:1.75;margin-bottom:18px">بنينا هذا للمستقل صاحب بيانات العملاء الحساسة، وللشركة الناشئة المكوّنة من 5 أشخاص بأسرارها التجارية، وللصحفي الذي لا يستطيع تحمّل اختراقه. ليس فقط للشركات بميزانيات أمنية من ست خانات.</p>
+          <p style="font-size:var(--tmd);color:var(--text-2);line-height:1.75;margin-bottom:24px">كل تعاقد يُسعَّر بشفافية بعد مكالمة التقييم — لا مفاجآت، لا ارتباط. تمتلك كل شيء عندما نغادر.</p>
         </div>
         <div style="display:flex;gap:10px;flex-wrap:wrap">
           <span style="font-family:var(--mono);font-size:var(--t2xs);padding:6px 12px;border:1px solid rgba(229,0,10,0.2);border-radius:var(--r1);color:var(--acid);background:var(--acid-soft)">Solo entrepreneurs</span>
@@ -2130,10 +2299,10 @@ document.getElementById('modal-lang').addEventListener('click', function(e){
 // Restore lang on load
 (function(){
   // Root EN page — always show EN, clear any previous lang selection
-  _curLang = 'EN';
-  localStorage.setItem('ms-lang', 'EN');
+  _curLang = 'AR';
+  localStorage.setItem('ms-lang', 'AR');
   var el = document.getElementById('current-lang');
-  if(el) el.textContent = 'EN';
+  if(el) el.textContent = 'AR';
 })();
 
 /* WIP language modal */
