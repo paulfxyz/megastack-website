@@ -132,7 +132,8 @@ megastack-website/
 - **Language switcher** — globe icon in nav, navigates to localised URL
 - **Space Grotesk + Clash Display + JetBrains Mono** — full font stack
 - **Pure black surfaces** (`#000000`) with `#E5000A` acid red accent
-- **Mobile-first** — 4 responsive breakpoints (440 / 640 / 900 / 1400px)
+- **Mobile-first** — 4 responsive breakpoints (420 / 640 / 900 / 1400px)
+- **Mobile nav** — hamburger with spring-physics `=` → `×` animation (cubic-bezier overshoot), bars turn `#E5000A` acid red on open; menu panel slides in with fade+translateY; lang + theme switchers live inside the drawer on every language version
 - **RTL-aware** — comprehensive CSS overrides for Arabic, Persian, Hebrew
 
 ### Animations & Effects
@@ -284,6 +285,14 @@ All engagements covered by NDA. All communications over the megastack.sh stack i
 | `v1.4.0` | 2026-04-26 | Roni Carta + Boian bios, 4 hackers, dark/light theme, lang modal |
 | `v1.5.0` | 2026-04-27 | Full i18n — 25 languages, RTL (AR/FA/HE), booking modal translated |
 | `v1.6.0` | 2026-04-27 | Logo fix on lang pages, hacker easter eggs, complete translation pass |
+| `v1.6.1` | 2026-04-27 | Remove all proxy.sh references; Konami quote → Alan Turing |
+| `v1.6.2` | 2026-04-27 | Fix EN redirect from all 24 lang pages |
+| `v1.6.3` | 2026-04-27 | Fix xtool-grid mobile overflow (inline style → CSS class) |
+| `v1.6.4` | 2026-04-27 | Advisors, package split, media kit — stack to 1 col on mobile |
+| `v1.6.5` | 2026-04-27 | Translate missing team bios, tags, collective + training blocks (24 lang) |
+| `v1.6.6` | 2026-04-27 | Fix bio injection — Unicode curly apostrophe mismatch |
+| `v1.6.7` | 2026-04-28 | Mobile nav — lang + theme switchers injected into drawer on all lang pages |
+| `v1.6.8` | 2026-04-28 | Burger spring animation (overshoot cubic-bezier, acid red X, staggered bars), menu slide-in panel |
 
 ---
 
