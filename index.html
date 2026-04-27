@@ -2090,8 +2090,11 @@ document.getElementById('modal-lang').addEventListener('click', function(e){
 
 // Restore lang on load
 (function(){
-  var s = localStorage.getItem('ms-lang');
-  if(s) { _curLang = s; var el = document.getElementById('current-lang'); if(el) el.textContent = s; }
+  // Root EN page — always show EN, clear any previous lang selection
+  _curLang = 'EN';
+  localStorage.setItem('ms-lang', 'EN');
+  var el = document.getElementById('current-lang');
+  if(el) el.textContent = 'EN';
 })();
 
 /* WIP language modal */
