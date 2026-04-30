@@ -293,6 +293,8 @@ All engagements covered by NDA. All communications over the megastack.sh stack i
 | `v1.6.6` | 2026-04-27 | Fix bio injection — Unicode curly apostrophe mismatch |
 | `v1.6.7` | 2026-04-28 | Mobile nav — lang + theme switchers injected into drawer on all lang pages |
 | `v1.6.8` | 2026-04-28 | Burger spring animation (overshoot cubic-bezier, acid red X, staggered bars), menu slide-in panel |
+| `v1.6.9` | 2026-04-30 | Privacy: redact advisor full names, remove all handle links (25 pages) |
+| `v1.7.0` | 2026-04-30 | Fix paulfxyz handle → github.com/paulfxyz on all 25 pages |
 
 ---
 
