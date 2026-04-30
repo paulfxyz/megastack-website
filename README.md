@@ -299,6 +299,7 @@ All engagements covered by NDA. All communications over the megastack.sh stack i
 | `v1.7.0` | 2026-04-30 | Fix paulfxyz handle → github.com/paulfxyz on all 25 pages |
 | `v1.8.0` | 2026-04-30 | Two new advisors (MrJack / navlys__); Main Project Managers; Six hackers; double-click + long-press name reveal; all 25 pages |
 | `v1.8.1` | 2026-04-30 | Shorter bios (no company names); pentest & OSINT audits block; Sylvain Hajri name fix; all 25 pages translated |
+| `v1.8.2` | 2026-04-30 | Paul Fleury bio updated — added mang.sh, mercury.sh, getenki.org (all 25 pages) |
 
 ---
 
