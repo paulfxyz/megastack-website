@@ -297,6 +297,8 @@ All engagements covered by NDA. All communications over the megastack.sh stack i
 | `v1.6.8` | 2026-04-28 | Burger spring animation (overshoot cubic-bezier, acid red X, staggered bars), menu slide-in panel |
 | `v1.6.9` | 2026-04-30 | Privacy: redact advisor full names, remove all handle links (25 pages) |
 | `v1.7.0` | 2026-04-30 | Fix paulfxyz handle → github.com/paulfxyz on all 25 pages |
+| `v1.8.0` | 2026-04-30 | Two new advisors (MrJack / navlys__); Main Project Managers; Six hackers; double-click + long-press name reveal; all 25 pages |
+| `v1.8.1` | 2026-04-30 | Shorter bios (no company names); pentest & OSINT audits block; Sylvain Hajri name fix; all 25 pages translated |
 
 ---
 
