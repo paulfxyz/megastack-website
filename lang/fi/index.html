@@ -2282,6 +2282,78 @@ document.getElementById('modal-lang').addEventListener('click', function(e){
   var elm=document.getElementById('current-lang-mobile');if(elm)elm.textContent='FI';
 })();
 
+/* EASTER EGGS */
+(function(){
+
+/* 1. CONSOLE GREETING */
+var art = [
+  '                                                              ',
+  '   M E G A S T A C K . S H                                  ',
+  '   ------------------------------------------------          ',
+  '   End-to-End Open Source Security Stack                     ',
+  '                                                              ',
+  '   You opened the console. Respect.                          ',
+  '                                                              ',
+  '   Responsible disclosure: hi@megastack.sh                   ',
+  '   GitHub: github.com/paulfxyz/megastack-website             ',
+  '                                                              ',
+  '   One founder. Six hackers.                                ',
+  '   Multiple shades of grey.                                  ',
+  '                                                              ',
+].join('\n');
+console.log('%c' + art, 'color:#E5000A;font-family:monospace;font-size:11px;line-height:1.5;background:#000000;padding:12px 16px;');
+console.log('%c  hi@megastack.sh  ', 'color:#000;background:#E5000A;font-family:monospace;font-size:12px;font-weight:bold;padding:4px 8px;');
+
+/* 2. KONAMI CODE */
+var K=[38,38,40,40,37,39,37,39,66,65], kp=0;
+document.addEventListener('keydown',function(e){
+  if(e.keyCode===K[kp]){kp++;if(kp===K.length){kp=0;_konami();}}else{kp=0;}
+});
+function _konami(){
+  var d=document.createElement('div');
+  d.style.cssText='position:fixed;inset:0;z-index:99999;background:rgba(0,0,0,0.97);display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:monospace;text-align:center;cursor:pointer;';
+  d.innerHTML='<div style="color:#E5000A;font-size:clamp(18px,3vw,36px);font-weight:bold;margin-bottom:20px;letter-spacing:0.1em">[ KONAMI UNLOCKED ]</div>'+
+    '<div style="color:#B2AEA8;font-size:clamp(13px,1.5vw,18px);max-width:560px;line-height:1.8;margin-bottom:24px">'+
+    '\u201cWe can only see a short distance ahead,<br>but we can see plenty there that needs to be done.\u201d<br><br>'+
+    '<span style="color:#E5000A;font-size:0.9em;letter-spacing:0.05em">— Alan Turing</span>'+
+    '</div>'+
+    '<div style="color:#3A3733;font-size:11px;letter-spacing:0.1em;margin-top:12px">click anywhere to dismiss</div>';
+  d.onclick=function(){document.body.removeChild(d);};
+  document.body.appendChild(d);
+  var c=document.getElementById('cv-matrix');
+  if(c){var op=c.style.opacity;c.style.opacity='0.85';setTimeout(function(){c.style.opacity=op;},3000);}
+}
+
+/* 3. CLICK PARTICLES */
+document.addEventListener('click',function(e){
+  if(e.target.closest('button,a,input,select,textarea,.modal-backdrop')) return;
+  for(var i=0;i<6;i++){(function(){
+    var p=document.createElement('div');
+    var a=Math.random()*360, d=30+Math.random()*40;
+    p.style.cssText='position:fixed;width:4px;height:4px;border-radius:50%;background:#E5000A;pointer-events:none;z-index:9997;left:'+(e.clientX-2)+'px;top:'+(e.clientY-2)+'px;transition:all 0.6s ease-out;opacity:0.9;';
+    document.body.appendChild(p);
+    setTimeout(function(){p.style.transform='translate('+Math.cos(a*Math.PI/180)*d+'px,'+Math.sin(a*Math.PI/180)*d+'px)';p.style.opacity='0';},10);
+    setTimeout(function(){if(p.parentNode)p.parentNode.removeChild(p);},700);
+  })();}
+});
+
+/* 4. TAB TITLE FLICKER */
+var _ot=document.title;
+document.addEventListener('visibilitychange',function(){
+  document.title=document.hidden?'> you_found_us.sh':_ot;
+});
+
+/* 5. HIDDEN DOM ELEMENT */
+var h=document.createElement('div');
+h.setAttribute('data-secret','aGkgQHBhdWxmeHl6');
+h.setAttribute('aria-hidden','true');
+h.style.display='none';
+h.textContent='If you can read this, you know what to do. hi@megastack.sh';
+document.body.appendChild(h);
+
+})();
+
+
 /* WIP language modal */
 window.showWip = function(langName, flagCode) {
   var flagEl = document.getElementById('wip-flag');
