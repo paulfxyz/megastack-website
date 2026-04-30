@@ -727,7 +727,8 @@ body::after{content:'';position:fixed;inset:0;z-index:9998;pointer-events:none;o
   .nav-mobile-utils .lang-btn,.nav-mobile-utils .theme-toggle{font-size:var(--txs);padding:8px 10px}
 }
 /* ── Advisors grid ── */
-.team-grid--advisors{grid-template-columns:repeat(2,1fr)}
+.team-grid--advisors{grid-template-columns:repeat(3,1fr)}
+@media(max-width:900px){.team-grid--advisors{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:640px){.team-grid--advisors{grid-template-columns:1fr}}
 /* ── Package split ── */
 .package-split{display:grid;grid-template-columns:1fr 1fr}
@@ -735,6 +736,14 @@ body::after{content:'';position:fixed;inset:0;z-index:9998;pointer-events:none;o
 /* ── Media kit row ── */
 .media-kit-row{display:grid;grid-template-columns:1fr auto}
 @media(max-width:640px){.media-kit-row{grid-template-columns:1fr}.media-kit-row > *:last-child{width:100%}.media-kit-row .btn{width:100%;justify-content:center}}
+/* redacted name reveal */
+.team-name.redacted{cursor:default;user-select:none;transition:color 0.2s ease}
+.team-name.redacted.revealed{color:var(--acid);animation:redact-flash 0.35s ease}
+@keyframes redact-flash{
+  0%{opacity:0.3;filter:blur(4px)}
+  60%{opacity:1;filter:blur(0)}
+  100%{color:var(--acid)}
+}
 @media(hover:none){
   .approach-card:hover::before,.stack-card:hover::after,.for-card:hover{all:unset}
 }
@@ -1259,7 +1268,7 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
   <div class="wrap">
     <div style="text-align:center;margin-bottom:52px">
       <div class="lbl center">Ekip</div>
-      <h2 class="section-title">Bir kurucu.<br>Dört hacker.<br><span style="color:var(--acid)">Birden çok gri tonu.</span></h2>
+      <h2 class="section-title">Bir kurucu.<br>Altı hacker.<br><span style="color:var(--acid)">Birden çok gri tonu.</span></h2>
       <p class="section-body" style="max-width:500px;margin:0 auto">Her tarafta bulunduk. Bu yüzden gerçek bir saldırganın tam olarak ne aradığını — ve o kapıları nasıl kapatacağımızı — biliyoruz.</p>
     </div>
 
@@ -1287,11 +1296,11 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
 
     <!-- Advisors -->
     <div style="margin-bottom:32px">
-      <div style="font-family:var(--mono);font-size:var(--t2xs);font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-3);margin-bottom:14px;display:flex;align-items:center;gap:10px"><span style="display:block;width:16px;height:1px;background:var(--text-3)"></span>Ana danışmanlar</div>
+      <div style="font-family:var(--mono);font-size:var(--t2xs);font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-3);margin-bottom:14px;display:flex;align-items:center;gap:10px"><span style="display:block;width:16px;height:1px;background:var(--text-3)"></span>Ana Proje Yöneticileri</div>
       <div class="team-grid team-grid--advisors">
         <article class="team-card fade-in">
           <div class="team-av" style="color:var(--ice);border-color:rgba(0,200,255,0.2)">BM</div>
-          <div class="team-name">Bo*** M*****ov</div>
+          <div class="team-name redacted" data-full="Boian Mihailov" title="Double-click to reveal">Bo*** M*****ov</div>
           <div class="team-handle">b0ian</div>
           <div class="team-role">Şimdiye kadar inşa edilmiş en dayanıklı ağ güvenlik altyapılarından bazılarının mimarı — ve gerektiğinde sessizce sökülen. Sertleştirilmiş bir Linux stack'inin her köşesini, bir VPN mesh'inin her zayıflığını, bir saldırganın ilk baktığı her yeri bilir.</div>
           <div class="team-tags">
@@ -1302,7 +1311,7 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
         </article>
         <article class="team-card fade-in">
           <div class="team-av" style="color:#22C55E;border-color:rgba(34,197,94,0.2)">CD</div>
-          <div class="team-name">Cl****** D*****go</div>
+          <div class="team-name redacted" data-full="Clément Domingo" title="Double-click to reveal">Cl****** D*****go</div>
           <div class="team-handle">SaxX</div>
           <div class="team-role">Saldırgan güvenlik uzmanı. Yirmi yıldır kötü adamlardan önce delikleri buluyor. Pentest'leri yürütür, kimsenin okumak istemediği raporları okur — sonra bulduğunu düzeltir.</div>
           <div class="team-tags">
@@ -1313,7 +1322,7 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
         </article>
         <article class="team-card fade-in">
           <div class="team-av" style="color:var(--text-3);border-color:rgba(240,237,232,0.1)">SR</div>
-          <div class="team-name">S***** Ra****t</div>
+          <div class="team-name redacted" data-full="Sébastien Raoult" title="Double-click to reveal">S***** Ra****t</div>
           <div class="team-handle">ShinyHunters</div>
           <div class="team-role">İzinsiz giriş operasyonlarını içeriden ve dışarıdan anlayan bir ihlal istihbarat danışmanı. Getirdiği saldırgan içgüdüsü hiçbir sınıfta öğretilemez. Eğer bir giriş yolu varsa, o zaten biliyordur.</div>
           <div class="team-tags">
@@ -1324,7 +1333,7 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
         </article>
         <article class="team-card fade-in">
           <div class="team-av" style="color:var(--ice);border-color:rgba(0,200,255,0.2)">RC</div>
-          <div class="team-name">R***i Ca***a</div>
+          <div class="team-name redacted" data-full="Roni Carta" title="Double-click to reveal">R***i Ca***a</div>
           <div class="team-handle">Lupin</div>
           <div class="team-role">Dünya şampiyonu sızma testi uzmanı. Yarışmalarda kanıtlanmış, metodolojik açıdan hassas, bıkmadan titiz. İlk ihlalde durmuyor — bir saldırganın izleyebileceği her yolu haritaya döküyor, ardından hepsini kapatıyor.</div>
           <div class="team-tags">
@@ -1333,6 +1342,33 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
             <span class="tag b">White Hat</span>
           </div>
         </article>
+
+        <!-- Alexandre Triffault -->
+        <article class="team-card fade-in">
+          <div class="team-av" style="color:#F5A623;border-color:rgba(245,166,35,0.2)">AT</div>
+          <div class="team-name redacted" data-full="Alexandre Triffault" title="Double-click to reveal">Al****** Tr*****lt</div>
+          <div class="team-handle">MrJack</div>
+          <div class="team-role">Kilitli kapılardan geçen adam — gerçek anlamıyla. 15 yılı aşkın deneyimiyle dünya çapında tanınan fiziksel sızma test uzmanı, adli çilingir ve gizli giriş uzmanı; askeri birlikler, çilingirler ve istihbarat birimlerine eğitim vermiş. Gizli giriş teknikleri üzerine yazılmış tek Fransız referans kitabının ortak yazarı. Eğer kilit seni gerçekten ayırıyorsa, o zaten öte taraftadır.</div>
+          <div class="team-tags">
+            <span class="tag">Physical Security</span>
+            <span class="tag">Lock &amp; Entry</span>
+            <span class="tag b">White Hat</span>
+          </div>
+        </article>
+
+        <!-- Sylvain HAJRI -->
+        <article class="team-card fade-in">
+          <div class="team-av" style="color:#A78BFA;border-color:rgba(167,139,250,0.2)">SH</div>
+          <div class="team-name redacted" data-full="Sylvain HAJRI" title="Double-click to reveal">S****** H***i</div>
+          <div class="team-handle">navlys__</div>
+          <div class="team-role">Epieos'un kurucusu — Europol, Interpol, ABD ajansları ve dünya genelinde 5 milyondan fazla soruşturmacının güvendiği OSINT motoru. Dijital izleri tersine mühendislikle çözerek suçlular hakkında, takip edildiklerini fark etmeden önce 0days istihbaratı üretiyor. OSINT-FR'nin (18.000+ üye) kurucu ortağı ve leHack'teki OSINT Köyü'nün organizatörü.</div>
+          <div class="team-tags">
+            <span class="tag">OSINT</span>
+            <span class="tag">0days</span>
+            <span class="tag b">White Hat</span>
+          </div>
+        </article>
+
       </div>
     </div>
 
@@ -1846,6 +1882,37 @@ if(hw){
     runSequence(true);
   });
 }
+
+/* ── REDACTED NAME REVEAL ── */
+(function(){
+  var HOLD = 600;
+  document.querySelectorAll('.team-name.redacted').forEach(function(el){
+    var timer, revealed = false;
+    el.dataset.orig = el.textContent;
+    function reveal(){
+      if(revealed) return;
+      revealed = true;
+      el.textContent = el.dataset.full;
+      el.classList.add('revealed');
+      setTimeout(function(){
+        el.classList.remove('revealed');
+        el.style.transition = 'opacity 0.4s';
+        el.style.opacity = '0.3';
+        setTimeout(function(){
+          el.textContent = el.dataset.orig;
+          el.style.opacity = '';
+          el.style.transition = '';
+          revealed = false;
+        }, 400);
+      }, 4000);
+    }
+    el.addEventListener('dblclick', reveal);
+    el.addEventListener('touchstart', function(){ timer = setTimeout(reveal, HOLD); }, {passive:true});
+    el.addEventListener('touchend',   function(){ clearTimeout(timer); });
+    el.addEventListener('touchmove',  function(){ clearTimeout(timer); });
+    el.addEventListener('touchcancel',function(){ clearTimeout(timer); });
+  });
+})();
 
 /* ── 4. OMNIPRESENT CHAR FLICKER ── */
 const GC='01ABXZ#@!?░▒█╬═';

@@ -727,7 +727,8 @@ body::after{content:'';position:fixed;inset:0;z-index:9998;pointer-events:none;o
   .nav-mobile-utils .lang-btn,.nav-mobile-utils .theme-toggle{font-size:var(--txs);padding:8px 10px}
 }
 /* ── Advisors grid ── */
-.team-grid--advisors{grid-template-columns:repeat(2,1fr)}
+.team-grid--advisors{grid-template-columns:repeat(3,1fr)}
+@media(max-width:900px){.team-grid--advisors{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:640px){.team-grid--advisors{grid-template-columns:1fr}}
 /* ── Package split ── */
 .package-split{display:grid;grid-template-columns:1fr 1fr}
@@ -735,6 +736,14 @@ body::after{content:'';position:fixed;inset:0;z-index:9998;pointer-events:none;o
 /* ── Media kit row ── */
 .media-kit-row{display:grid;grid-template-columns:1fr auto}
 @media(max-width:640px){.media-kit-row{grid-template-columns:1fr}.media-kit-row > *:last-child{width:100%}.media-kit-row .btn{width:100%;justify-content:center}}
+/* redacted name reveal */
+.team-name.redacted{cursor:default;user-select:none;transition:color 0.2s ease}
+.team-name.redacted.revealed{color:var(--acid);animation:redact-flash 0.35s ease}
+@keyframes redact-flash{
+  0%{opacity:0.3;filter:blur(4px)}
+  60%{opacity:1;filter:blur(0)}
+  100%{color:var(--acid)}
+}
 @media(hover:none){
   .approach-card:hover::before,.stack-card:hover::after,.for-card:hover{all:unset}
 }
@@ -1259,7 +1268,7 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
   <div class="wrap">
     <div style="text-align:center;margin-bottom:52px">
       <div class="lbl center">Team</div>
-      <h2 class="section-title">Én founder.<br>Fire hackere.<br><span style="color:var(--acid)">Flere nuancer af gråt.</span></h2>
+      <h2 class="section-title">Én stifter.<br>Seks hackere.<br><span style="color:var(--acid)">Flere nuancer af gråt.</span></h2>
       <p class="section-body" style="max-width:500px;margin:0 auto">Vi har stået på alle sider. Det er derfor, vi ved præcis, hvad en rigtig angriber er ude efter — og hvordan man lukker de døre.</p>
     </div>
 
@@ -1287,11 +1296,11 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
 
     <!-- Advisors -->
     <div style="margin-bottom:32px">
-      <div style="font-family:var(--mono);font-size:var(--t2xs);font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-3);margin-bottom:14px;display:flex;align-items:center;gap:10px"><span style="display:block;width:16px;height:1px;background:var(--text-3)"></span>Hovedrådgivere</div>
+      <div style="font-family:var(--mono);font-size:var(--t2xs);font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-3);margin-bottom:14px;display:flex;align-items:center;gap:10px"><span style="display:block;width:16px;height:1px;background:var(--text-3)"></span>Hovedprojektledere</div>
       <div class="team-grid team-grid--advisors">
         <article class="team-card fade-in">
           <div class="team-av" style="color:var(--ice);border-color:rgba(0,200,255,0.2)">BM</div>
-          <div class="team-name">Bo*** M*****ov</div>
+          <div class="team-name redacted" data-full="Boian Mihailov" title="Double-click to reveal">Bo*** M*****ov</div>
           <div class="team-handle">b0ian</div>
           <div class="team-role">Arkitekten bag nogle af de mest modstandsdygtige netværkssikkerhedsinfrastrukturer nogensinde bygget — og stille afviklet da det skulle. Kender hvert hjørne af en hærdet Linux-stack, hver svaghed i et VPN-mesh, hvert sted en angriber kigger først.</div>
           <div class="team-tags">
@@ -1302,7 +1311,7 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
         </article>
         <article class="team-card fade-in">
           <div class="team-av" style="color:#22C55E;border-color:rgba(34,197,94,0.2)">CD</div>
-          <div class="team-name">Cl****** D*****go</div>
+          <div class="team-name redacted" data-full="Clément Domingo" title="Double-click to reveal">Cl****** D*****go</div>
           <div class="team-handle">SaxX</div>
           <div class="team-role">Offensive security-ekspert. To årtier med at finde huller, før de onde gør det. Kører pentestene, læser de rapporter, ingen andre vil læse — og fikser så det, han finder.</div>
           <div class="team-tags">
@@ -1313,7 +1322,7 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
         </article>
         <article class="team-card fade-in">
           <div class="team-av" style="color:var(--text-3);border-color:rgba(240,237,232,0.1)">SR</div>
-          <div class="team-name">S***** Ra****t</div>
+          <div class="team-name redacted" data-full="Sébastien Raoult" title="Double-click to reveal">S***** Ra****t</div>
           <div class="team-handle">ShinyHunters</div>
           <div class="team-role">Rådgiver inden for bruddintelligens, der forstår indtrængningsoperationer indefra og ud. Det angrebsinstinkt han besidder, kan ikke læres i et klasseværelse. Hvis der er en vej ind, kender han den allerede.</div>
           <div class="team-tags">
@@ -1324,7 +1333,7 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
         </article>
         <article class="team-card fade-in">
           <div class="team-av" style="color:var(--ice);border-color:rgba(0,200,255,0.2)">RC</div>
-          <div class="team-name">R***i Ca***a</div>
+          <div class="team-name redacted" data-full="Roni Carta" title="Double-click to reveal">R***i Ca***a</div>
           <div class="team-handle">Lupin</div>
           <div class="team-role">Verdensmester i penetrationstest. Konkurrencebevist, metodisk præcis og ubønhørligt grundig. Stopper ikke ved det første brud — kortlægger enhver vej en angriber kan tage og lukker dem alle.</div>
           <div class="team-tags">
@@ -1333,6 +1342,33 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
             <span class="tag b">White Hat</span>
           </div>
         </article>
+
+        <!-- Alexandre Triffault -->
+        <article class="team-card fade-in">
+          <div class="team-av" style="color:#F5A623;border-color:rgba(245,166,35,0.2)">AT</div>
+          <div class="team-name redacted" data-full="Alexandre Triffault" title="Double-click to reveal">Al****** Tr*****lt</div>
+          <div class="team-handle">MrJack</div>
+          <div class="team-role">Manden der bogstaveligt talt går gennem låste døre. Verdensklasse fysisk penetrationstester, retsmedicinsk låsesmed og specialist i skjult adgang med over 15 års erfaring med at træne militær, låsesmede og efterretningsenheder. Medforfatter til den eneste franske referencebog om teknikker til skjult adgang. Hvis en lås står mellem dig og sandheden, er han allerede på den anden side.</div>
+          <div class="team-tags">
+            <span class="tag">Physical Security</span>
+            <span class="tag">Lock &amp; Entry</span>
+            <span class="tag b">White Hat</span>
+          </div>
+        </article>
+
+        <!-- Sylvain HAJRI -->
+        <article class="team-card fade-in">
+          <div class="team-av" style="color:#A78BFA;border-color:rgba(167,139,250,0.2)">SH</div>
+          <div class="team-name redacted" data-full="Sylvain HAJRI" title="Double-click to reveal">S****** H***i</div>
+          <div class="team-handle">navlys__</div>
+          <div class="team-role">Stifter af Epieos — OSINT-motoren som er betroet af Europol, Interpol, amerikanske agenturer og over 5 millioner efterforskere verden over. Reverse-engineerer digitale fodspor for at levere efterretnings-0days om kriminelle, inden de ved, at de bliver sporet. Medstifter af OSINT-FR (18k+ medlemmer) og arrangør af OSINT Village på leHack.</div>
+          <div class="team-tags">
+            <span class="tag">OSINT</span>
+            <span class="tag">0days</span>
+            <span class="tag b">White Hat</span>
+          </div>
+        </article>
+
       </div>
     </div>
 
@@ -1846,6 +1882,37 @@ if(hw){
     runSequence(true);
   });
 }
+
+/* ── REDACTED NAME REVEAL ── */
+(function(){
+  var HOLD = 600;
+  document.querySelectorAll('.team-name.redacted').forEach(function(el){
+    var timer, revealed = false;
+    el.dataset.orig = el.textContent;
+    function reveal(){
+      if(revealed) return;
+      revealed = true;
+      el.textContent = el.dataset.full;
+      el.classList.add('revealed');
+      setTimeout(function(){
+        el.classList.remove('revealed');
+        el.style.transition = 'opacity 0.4s';
+        el.style.opacity = '0.3';
+        setTimeout(function(){
+          el.textContent = el.dataset.orig;
+          el.style.opacity = '';
+          el.style.transition = '';
+          revealed = false;
+        }, 400);
+      }, 4000);
+    }
+    el.addEventListener('dblclick', reveal);
+    el.addEventListener('touchstart', function(){ timer = setTimeout(reveal, HOLD); }, {passive:true});
+    el.addEventListener('touchend',   function(){ clearTimeout(timer); });
+    el.addEventListener('touchmove',  function(){ clearTimeout(timer); });
+    el.addEventListener('touchcancel',function(){ clearTimeout(timer); });
+  });
+})();
 
 /* ── 4. OMNIPRESENT CHAR FLICKER ── */
 const GC='01ABXZ#@!?░▒█╬═';

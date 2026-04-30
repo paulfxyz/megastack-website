@@ -727,7 +727,8 @@ body::after{content:'';position:fixed;inset:0;z-index:9998;pointer-events:none;o
   .nav-mobile-utils .lang-btn,.nav-mobile-utils .theme-toggle{font-size:var(--txs);padding:8px 10px}
 }
 /* ── Advisors grid ── */
-.team-grid--advisors{grid-template-columns:repeat(2,1fr)}
+.team-grid--advisors{grid-template-columns:repeat(3,1fr)}
+@media(max-width:900px){.team-grid--advisors{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:640px){.team-grid--advisors{grid-template-columns:1fr}}
 /* ── Package split ── */
 .package-split{display:grid;grid-template-columns:1fr 1fr}
@@ -735,6 +736,14 @@ body::after{content:'';position:fixed;inset:0;z-index:9998;pointer-events:none;o
 /* ── Media kit row ── */
 .media-kit-row{display:grid;grid-template-columns:1fr auto}
 @media(max-width:640px){.media-kit-row{grid-template-columns:1fr}.media-kit-row > *:last-child{width:100%}.media-kit-row .btn{width:100%;justify-content:center}}
+/* redacted name reveal */
+.team-name.redacted{cursor:default;user-select:none;transition:color 0.2s ease}
+.team-name.redacted.revealed{color:var(--acid);animation:redact-flash 0.35s ease}
+@keyframes redact-flash{
+  0%{opacity:0.3;filter:blur(4px)}
+  60%{opacity:1;filter:blur(0)}
+  100%{color:var(--acid)}
+}
 @media(hover:none){
   .approach-card:hover::before,.stack-card:hover::after,.for-card:hover{all:unset}
 }
@@ -1259,7 +1268,7 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
   <div class="wrap">
     <div style="text-align:center;margin-bottom:52px">
       <div class="lbl center">チーム</div>
-      <h2 class="section-title">創業者ひとり。<br>ハッカー4人。<br><span style="color:var(--acid)">幾通りものグレー。</span></h2>
+      <h2 class="section-title">創業者ひとり。ハッカー6人。<br><span style="color:var(--acid)">幾通りものグレー。</span></h2>
       <p class="section-body" style="max-width:500px;margin:0 auto">私たちはあらゆる側に立ったことがあります。だからこそ、本物の攻撃者が何を狙うか——そしてその扉をどう閉じるかを、正確に知っています。</p>
     </div>
 
@@ -1287,11 +1296,11 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
 
     <!-- Advisors -->
     <div style="margin-bottom:32px">
-      <div style="font-family:var(--mono);font-size:var(--t2xs);font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-3);margin-bottom:14px;display:flex;align-items:center;gap:10px"><span style="display:block;width:16px;height:1px;background:var(--text-3)"></span>主要アドバイザー</div>
+      <div style="font-family:var(--mono);font-size:var(--t2xs);font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-3);margin-bottom:14px;display:flex;align-items:center;gap:10px"><span style="display:block;width:16px;height:1px;background:var(--text-3)"></span>プロジェクト主要マネージャー</div>
       <div class="team-grid team-grid--advisors">
         <article class="team-card fade-in">
           <div class="team-av" style="color:var(--ice);border-color:rgba(0,200,255,0.2)">BM</div>
-          <div class="team-name">Bo*** M*****ov</div>
+          <div class="team-name redacted" data-full="Boian Mihailov" title="Double-click to reveal">Bo*** M*****ov</div>
           <div class="team-handle">b0ian</div>
           <div class="team-role">これまでに構築された中でも最も堅牢なネットワークセキュリティインフラの設計者——必要なときには静かに解体してきた人物でもある。堅牢化された Linux スタックの隅々、VPN メッシュの弱点、攻撃者が真っ先に覗き込む場所——どれも知り尽くしています。</div>
           <div class="team-tags">
@@ -1302,7 +1311,7 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
         </article>
         <article class="team-card fade-in">
           <div class="team-av" style="color:#22C55E;border-color:rgba(34,197,94,0.2)">CD</div>
-          <div class="team-name">Cl****** D*****go</div>
+          <div class="team-name redacted" data-full="Clément Domingo" title="Double-click to reveal">Cl****** D*****go</div>
           <div class="team-handle">SaxX</div>
           <div class="team-role">オフェンシブセキュリティの専門家。20 年にわたり、悪い連中より先に穴を見つけてきました。ペンテストを回し、誰も読みたがらないレポートを読み——そして見つけたものを直します。</div>
           <div class="team-tags">
@@ -1313,7 +1322,7 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
         </article>
         <article class="team-card fade-in">
           <div class="team-av" style="color:var(--text-3);border-color:rgba(240,237,232,0.1)">SR</div>
-          <div class="team-name">S***** Ra****t</div>
+          <div class="team-name redacted" data-full="Sébastien Raoult" title="Double-click to reveal">S***** Ra****t</div>
           <div class="team-handle">ShinyHunters</div>
           <div class="team-role">侵害インテリジェンスの顧問として、侵入オペレーションを内側から熟知している。彼が持つ攻撃者としての直感は、教室では教えられない。侵入経路があれば、彼はすでにそれを把握している。</div>
           <div class="team-tags">
@@ -1324,7 +1333,7 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
         </article>
         <article class="team-card fade-in">
           <div class="team-av" style="color:var(--ice);border-color:rgba(0,200,255,0.2)">RC</div>
-          <div class="team-name">R***i Ca***a</div>
+          <div class="team-name redacted" data-full="Roni Carta" title="Double-click to reveal">R***i Ca***a</div>
           <div class="team-handle">Lupin</div>
           <div class="team-role">ペネトレーションテストの世界チャンピオン。競技で実証された実力、方法論的な精度、そして妥協なき徹底さを兼ね備える。最初の侵害で止まらず——攻撃者が取りうるすべての経路をマッピングし、それをすべて封じる。</div>
           <div class="team-tags">
@@ -1333,6 +1342,33 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
             <span class="tag b">ホワイトハット</span>
           </div>
         </article>
+
+        <!-- Alexandre Triffault -->
+        <article class="team-card fade-in">
+          <div class="team-av" style="color:#F5A623;border-color:rgba(245,166,35,0.2)">AT</div>
+          <div class="team-name redacted" data-full="Alexandre Triffault" title="Double-click to reveal">Al****** Tr*****lt</div>
+          <div class="team-handle">MrJack</div>
+          <div class="team-role">施錠された扉を通り抜ける男——文字通りに。世界トップクラスの物理ペネトレーションテスター、法科学的錠前師、潜入侵入のスペシャリスト。軍、錠前師、情報機関に対し15年以上にわたるトレーニング実績を持つ。フランス唯一の潜入侵入技術参考書の共著者。錠があなたと真実の間に立ちはだかるなら、彼はすでにその向こう側にいる。</div>
+          <div class="team-tags">
+            <span class="tag">フィジカルセキュリティ</span>
+            <span class="tag">錠前・侵入</span>
+            <span class="tag b">White Hat</span>
+          </div>
+        </article>
+
+        <!-- Sylvain HAJRI -->
+        <article class="team-card fade-in">
+          <div class="team-av" style="color:#A78BFA;border-color:rgba(167,139,250,0.2)">SH</div>
+          <div class="team-name redacted" data-full="Sylvain HAJRI" title="Double-click to reveal">S****** H***i</div>
+          <div class="team-handle">navlys__</div>
+          <div class="team-role">Epieos創業者——Europol、Interpol、米国機関、そして世界500万人以上の調査員が信頼するOSINTエンジン。デジタル上の痕跡をリバースエンジニアリングし、犯罪者が追跡に気づく前にゼロデイ級の情報を獲得する。OSINT-FR共同創業者（会員18,000人超）、leHackのOSINTビレッジオーガナイザー。</div>
+          <div class="team-tags">
+            <span class="tag">OSINT</span>
+            <span class="tag">ゼロデイ</span>
+            <span class="tag b">White Hat</span>
+          </div>
+        </article>
+
       </div>
     </div>
 
@@ -1846,6 +1882,37 @@ if(hw){
     runSequence(true);
   });
 }
+
+/* ── REDACTED NAME REVEAL ── */
+(function(){
+  var HOLD = 600;
+  document.querySelectorAll('.team-name.redacted').forEach(function(el){
+    var timer, revealed = false;
+    el.dataset.orig = el.textContent;
+    function reveal(){
+      if(revealed) return;
+      revealed = true;
+      el.textContent = el.dataset.full;
+      el.classList.add('revealed');
+      setTimeout(function(){
+        el.classList.remove('revealed');
+        el.style.transition = 'opacity 0.4s';
+        el.style.opacity = '0.3';
+        setTimeout(function(){
+          el.textContent = el.dataset.orig;
+          el.style.opacity = '';
+          el.style.transition = '';
+          revealed = false;
+        }, 400);
+      }, 4000);
+    }
+    el.addEventListener('dblclick', reveal);
+    el.addEventListener('touchstart', function(){ timer = setTimeout(reveal, HOLD); }, {passive:true});
+    el.addEventListener('touchend',   function(){ clearTimeout(timer); });
+    el.addEventListener('touchmove',  function(){ clearTimeout(timer); });
+    el.addEventListener('touchcancel',function(){ clearTimeout(timer); });
+  });
+})();
 
 /* ── 4. OMNIPRESENT CHAR FLICKER ── */
 const GC='01ABXZ#@!?░▒█╬═';

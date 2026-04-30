@@ -727,7 +727,8 @@ body::after{content:'';position:fixed;inset:0;z-index:9998;pointer-events:none;o
   .nav-mobile-utils .lang-btn,.nav-mobile-utils .theme-toggle{font-size:var(--txs);padding:8px 10px}
 }
 /* ── Advisors grid ── */
-.team-grid--advisors{grid-template-columns:repeat(2,1fr)}
+.team-grid--advisors{grid-template-columns:repeat(3,1fr)}
+@media(max-width:900px){.team-grid--advisors{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:640px){.team-grid--advisors{grid-template-columns:1fr}}
 /* ── Package split ── */
 .package-split{display:grid;grid-template-columns:1fr 1fr}
@@ -735,6 +736,14 @@ body::after{content:'';position:fixed;inset:0;z-index:9998;pointer-events:none;o
 /* ── Media kit row ── */
 .media-kit-row{display:grid;grid-template-columns:1fr auto}
 @media(max-width:640px){.media-kit-row{grid-template-columns:1fr}.media-kit-row > *:last-child{width:100%}.media-kit-row .btn{width:100%;justify-content:center}}
+/* redacted name reveal */
+.team-name.redacted{cursor:default;user-select:none;transition:color 0.2s ease}
+.team-name.redacted.revealed{color:var(--acid);animation:redact-flash 0.35s ease}
+@keyframes redact-flash{
+  0%{opacity:0.3;filter:blur(4px)}
+  60%{opacity:1;filter:blur(0)}
+  100%{color:var(--acid)}
+}
 @media(hover:none){
   .approach-card:hover::before,.stack-card:hover::after,.for-card:hover{all:unset}
 }
@@ -1259,7 +1268,7 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
   <div class="wrap">
     <div style="text-align:center;margin-bottom:52px">
       <div class="lbl center">टीम</div>
-      <h2 class="section-title">एक founder।<br>चार hackers।<br><span style="color:var(--acid)">ग्रे के कई shades।</span></h2>
+      <h2 class="section-title">एक संस्थापक। छह हैकर्स।<br><span style="color:var(--acid)">ग्रे के कई shades।</span></h2>
       <p class="section-body" style="max-width:500px;margin:0 auto">हम हर तरफ़ रहे हैं। इसीलिए हमें ठीक-ठीक पता है कि असली attacker किसके पीछे जाता है — और वो दरवाज़े कैसे बंद करने हैं।</p>
     </div>
 
@@ -1287,11 +1296,11 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
 
     <!-- Advisors -->
     <div style="margin-bottom:32px">
-      <div style="font-family:var(--mono);font-size:var(--t2xs);font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-3);margin-bottom:14px;display:flex;align-items:center;gap:10px"><span style="display:block;width:16px;height:1px;background:var(--text-3)"></span>मेन एडवाइज़र्स</div>
+      <div style="font-family:var(--mono);font-size:var(--t2xs);font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-3);margin-bottom:14px;display:flex;align-items:center;gap:10px"><span style="display:block;width:16px;height:1px;background:var(--text-3)"></span>मुख्य प्रोजेक्ट मैनेजर</div>
       <div class="team-grid team-grid--advisors">
         <article class="team-card fade-in">
           <div class="team-av" style="color:var(--ice);border-color:rgba(0,200,255,0.2)">BM</div>
-          <div class="team-name">Bo*** M*****ov</div>
+          <div class="team-name redacted" data-full="Boian Mihailov" title="Double-click to reveal">Bo*** M*****ov</div>
           <div class="team-handle">b0ian</div>
           <div class="team-role">अब तक बनाई गई कुछ सबसे मज़बूत नेटवर्क सुरक्षा इन्फ्रास्ट्रक्चर के पीछे का architect — और जब ज़रूरत पड़ी, चुपचाप बंद भी कर दिया। एक hardened Linux stack का हर कोना जानते हैं, VPN mesh की हर कमज़ोरी, और हर वो जगह जहाँ attacker सबसे पहले देखता है।</div>
           <div class="team-tags">
@@ -1302,7 +1311,7 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
         </article>
         <article class="team-card fade-in">
           <div class="team-av" style="color:#22C55E;border-color:rgba(34,197,94,0.2)">CD</div>
-          <div class="team-name">Cl****** D*****go</div>
+          <div class="team-name redacted" data-full="Clément Domingo" title="Double-click to reveal">Cl****** D*****go</div>
           <div class="team-handle">SaxX</div>
           <div class="team-role">Offensive security expert। दो दशक से बुरे लोगों से पहले holes ढूँढ रहे हैं। Pentests चलाते हैं, वो reports पढ़ते हैं जो कोई और नहीं पढ़ना चाहता — और जो मिलता है उसे ठीक कर देते हैं।</div>
           <div class="team-tags">
@@ -1313,7 +1322,7 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
         </article>
         <article class="team-card fade-in">
           <div class="team-av" style="color:var(--text-3);border-color:rgba(240,237,232,0.1)">SR</div>
-          <div class="team-name">S***** Ra****t</div>
+          <div class="team-name redacted" data-full="Sébastien Raoult" title="Double-click to reveal">S***** Ra****t</div>
           <div class="team-handle">ShinyHunters</div>
           <div class="team-role">ब्रीच इंटेलिजेंस सलाहकार जो घुसपैठ की कार्रवाइयों को अंदर से बाहर तक समझता है। जो आक्रामक वृत्ति वह लाता है, वह किसी क्लासरूम में नहीं सिखाई जा सकती। अगर कोई रास्ता है — वह पहले से जानता है।</div>
           <div class="team-tags">
@@ -1324,7 +1333,7 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
         </article>
         <article class="team-card fade-in">
           <div class="team-av" style="color:var(--ice);border-color:rgba(0,200,255,0.2)">RC</div>
-          <div class="team-name">R***i Ca***a</div>
+          <div class="team-name redacted" data-full="Roni Carta" title="Double-click to reveal">R***i Ca***a</div>
           <div class="team-handle">Lupin</div>
           <div class="team-role">विश्व चैम्पियन पेनेट्रेशन टेस्टर। प्रतियोगिताओं में प्रमाणित, कार्यप्रणाली में सटीक, और अथक रूप से गहन। पहली सेंध पर नहीं रुकता — हर उस रास्ते को मैप करता है जो कोई हमलावर ले सकता है, फिर उन सभी को बंद कर देता है।</div>
           <div class="team-tags">
@@ -1333,6 +1342,33 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
             <span class="tag b">White Hat</span>
           </div>
         </article>
+
+        <!-- Alexandre Triffault -->
+        <article class="team-card fade-in">
+          <div class="team-av" style="color:#F5A623;border-color:rgba(245,166,35,0.2)">AT</div>
+          <div class="team-name redacted" data-full="Alexandre Triffault" title="Double-click to reveal">Al****** Tr*****lt</div>
+          <div class="team-handle">MrJack</div>
+          <div class="team-role">वो शख्स जो बंद दरवाज़ों से गुज़र जाता है — सचमुच। 15 से अधिक वर्षों के अनुभव के साथ विश्व स्तरीय फिजिकल पेनेट्रेशन टेस्टर, फोरेंसिक लॉकस्मिथ, और कोवर्ट एंट्री स्पेशलिस्ट — जिन्होंने मिलिट्री यूनिट्स, लॉकस्मिथ और इंटेलिजेंस एजेंसियों को ट्रेनिंग दी है। कोवर्ट एंट्री तकनीकों पर एकमात्र फ्रेंच संदर्भ पुस्तक के सह-लेखक। अगर ताला आपके और सच के बीच है, तो वो पहले से उस पार हैं।</div>
+          <div class="team-tags">
+            <span class="tag">Physical Security</span>
+            <span class="tag">Lock &amp; Entry</span>
+            <span class="tag b">White Hat</span>
+          </div>
+        </article>
+
+        <!-- Sylvain HAJRI -->
+        <article class="team-card fade-in">
+          <div class="team-av" style="color:#A78BFA;border-color:rgba(167,139,250,0.2)">SH</div>
+          <div class="team-name redacted" data-full="Sylvain HAJRI" title="Double-click to reveal">S****** H***i</div>
+          <div class="team-handle">navlys__</div>
+          <div class="team-role">Epieos के संस्थापक — वो OSINT इंजन जिस पर Europol, Interpol, अमेरिकी एजेंसियां और दुनिया भर के 50 लाख से अधिक जांचकर्ता भरोसा करते हैं। डिजिटल फुटप्रिंट्स को रिवर्स-इंजीनियर करके अपराधियों पर 0days इंटेलिजेंस निकालते हैं — इससे पहले कि उन्हें पता चले कि वे ट्रैक हो रहे हैं। OSINT-FR (18,000+ सदस्य) के सह-संस्थापक और leHack में OSINT Village के आयोजक।</div>
+          <div class="team-tags">
+            <span class="tag">OSINT</span>
+            <span class="tag">0days</span>
+            <span class="tag b">White Hat</span>
+          </div>
+        </article>
+
       </div>
     </div>
 
@@ -1846,6 +1882,37 @@ if(hw){
     runSequence(true);
   });
 }
+
+/* ── REDACTED NAME REVEAL ── */
+(function(){
+  var HOLD = 600;
+  document.querySelectorAll('.team-name.redacted').forEach(function(el){
+    var timer, revealed = false;
+    el.dataset.orig = el.textContent;
+    function reveal(){
+      if(revealed) return;
+      revealed = true;
+      el.textContent = el.dataset.full;
+      el.classList.add('revealed');
+      setTimeout(function(){
+        el.classList.remove('revealed');
+        el.style.transition = 'opacity 0.4s';
+        el.style.opacity = '0.3';
+        setTimeout(function(){
+          el.textContent = el.dataset.orig;
+          el.style.opacity = '';
+          el.style.transition = '';
+          revealed = false;
+        }, 400);
+      }, 4000);
+    }
+    el.addEventListener('dblclick', reveal);
+    el.addEventListener('touchstart', function(){ timer = setTimeout(reveal, HOLD); }, {passive:true});
+    el.addEventListener('touchend',   function(){ clearTimeout(timer); });
+    el.addEventListener('touchmove',  function(){ clearTimeout(timer); });
+    el.addEventListener('touchcancel',function(){ clearTimeout(timer); });
+  });
+})();
 
 /* ── 4. OMNIPRESENT CHAR FLICKER ── */
 const GC='01ABXZ#@!?░▒█╬═';

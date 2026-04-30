@@ -260,13 +260,15 @@ Contains: logos (black/white/transparent × 5 sizes), GitHub banner, OG image, T
 
 ## Team
 
-| Role | Name | Handle | LinkedIn |
-|------|------|--------|---------|
-| Founder & CEO | Paul Fleury | [paulfxyz](https://x.com/paulfxyz) | [/in/paulfleury](https://linkedin.com/in/paulfleury) |
-| Security Advisor | Boian Mihailov | b0ian | [/in/boianmihailov](https://linkedin.com/in/boianmihailov) |
-| Security Advisor | Clément Domingo | SaxX | [/in/clementdomingo](https://linkedin.com/in/clementdomingo) |
-| Security Advisor | Sébastien Raoult | ShinyHunters | [Wikipedia](https://en.wikipedia.org/wiki/ShinyHunters) |
-| Security Advisor | Roni Carta | Lupin | [/in/roni-carta](https://linkedin.com/in/roni-carta) |
+| Role | Name | Handle | Link |
+|------|------|--------|------|
+| Founder & CEO | Paul Fleury | [paulfxyz](https://github.com/paulfxyz) | [LinkedIn](https://linkedin.com/in/paulfxyz/) |
+| Project Manager | Bo\*\*\* M\*\*\*\*\*ov *(redacted)* | b0ian | — |
+| Project Manager | Cl\*\*\*\*\*\* D\*\*\*\*\*go *(redacted)* | SaxX | — |
+| Project Manager | S\*\*\*\*\* Ra\*\*\*\*t *(redacted)* | ShinyHunters | — |
+| Project Manager | R\*\*\*i Ca\*\*\*a *(redacted)* | Lupin | — |
+| Project Manager | Al\*\*\*\*\*\* Tr\*\*\*\*\*lt *(redacted)* | MrJack | [X](https://x.com/FrenchKey_fr) |
+| Project Manager | S\*\*\*\*\*\* H\*\*\*i *(redacted)* | navlys__ | [X](https://x.com/navlys__) |
 
 Plus a worldwide collective of ~12 vetted sysops and security researchers for on-site and remote deployments.
 

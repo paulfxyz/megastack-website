@@ -736,7 +736,8 @@ body::after{content:'';position:fixed;inset:0;z-index:9998;pointer-events:none;o
   .nav-mobile-utils .lang-btn,.nav-mobile-utils .theme-toggle{font-size:var(--txs);padding:8px 10px}
 }
 /* ── Advisors grid ── */
-.team-grid--advisors{grid-template-columns:repeat(2,1fr)}
+.team-grid--advisors{grid-template-columns:repeat(3,1fr)}
+@media(max-width:900px){.team-grid--advisors{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:640px){.team-grid--advisors{grid-template-columns:1fr}}
 /* ── Package split ── */
 .package-split{display:grid;grid-template-columns:1fr 1fr}
@@ -1270,7 +1271,7 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
   <div class="wrap">
     <div style="text-align:center;margin-bottom:52px">
       <div class="lbl center">Team</div>
-      <h2 class="section-title">One founder.<br>Four hackers.<br><span style="color:var(--acid)">Multiple shades of grey.</span></h2>
+      <h2 class="section-title">One founder.<br>Six hackers.<br><span style="color:var(--acid)">Multiple shades of grey.</span></h2>
       <p class="section-body" style="max-width:500px;margin:0 auto">We've been on every side. That's why we know exactly what a real attacker goes after — and how to close those doors.</p>
     </div>
 
@@ -1298,11 +1299,11 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
 
     <!-- Advisors -->
     <div style="margin-bottom:32px">
-      <div style="font-family:var(--mono);font-size:var(--t2xs);font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-3);margin-bottom:14px;display:flex;align-items:center;gap:10px"><span style="display:block;width:16px;height:1px;background:var(--text-3)"></span>Main Advisors</div>
+      <div style="font-family:var(--mono);font-size:var(--t2xs);font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-3);margin-bottom:14px;display:flex;align-items:center;gap:10px"><span style="display:block;width:16px;height:1px;background:var(--text-3)"></span>Main Project Managers</div>
       <div class="team-grid team-grid--advisors">
         <article class="team-card fade-in">
           <div class="team-av" style="color:var(--ice);border-color:rgba(0,200,255,0.2)">BM</div>
-          <div class="team-name">Bo*** M*****ov</div>
+          <div class="team-name redacted" data-full="Boian Mihailov" title="Double-click to reveal">Bo*** M*****ov</div>
           <div class="team-handle">b0ian</div>
           <div class="team-role">The architect behind some of the most resilient network security infrastructure ever built — and quietly dismantled when it had to be. Knows every corner of a hardened linux stack, every weakness in a vpn mesh, every place an attacker looks first.</div>
           <div class="team-tags">
@@ -1313,7 +1314,7 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
         </article>
         <article class="team-card fade-in">
           <div class="team-av" style="color:#22C55E;border-color:rgba(34,197,94,0.2)">CD</div>
-          <div class="team-name">Cl****** D*****go</div>
+          <div class="team-name redacted" data-full="Clément Domingo" title="Double-click to reveal">Cl****** D*****go</div>
           <div class="team-handle">SaxX</div>
           <div class="team-role">Offensive security expert. Two decades finding holes before the bad guys do. Runs the pentests, reads the reports nobody else wants to read — then fixes what he finds.</div>
           <div class="team-tags">
@@ -1324,7 +1325,7 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
         </article>
         <article class="team-card fade-in">
           <div class="team-av" style="color:var(--text-3);border-color:rgba(240,237,232,0.1)">SR</div>
-          <div class="team-name">S***** Ra****t</div>
+          <div class="team-name redacted" data-full="Sébastien Raoult" title="Double-click to reveal">S***** Ra****t</div>
           <div class="team-handle">ShinyHunters</div>
           <div class="team-role">Breach intelligence advisor who understands intrusion operations from the inside out. The adversarial instinct he brings cannot be taught in a classroom. If there’s a way in, he already knows it.</div>
           <div class="team-tags">
@@ -1335,7 +1336,7 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
         </article>
         <article class="team-card fade-in">
           <div class="team-av" style="color:var(--ice);border-color:rgba(0,200,255,0.2)">RC</div>
-          <div class="team-name">R***i Ca***a</div>
+          <div class="team-name redacted" data-full="Roni Carta" title="Double-click to reveal">R***i Ca***a</div>
           <div class="team-handle">Lupin</div>
           <div class="team-role">World champion penetration tester. Competition-proven, methodologically precise, relentlessly thorough. Doesn’t stop at the first breach — maps every path an attacker could take, then closes them all.</div>
           <div class="team-tags">
@@ -1344,6 +1345,33 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
             <span class="tag b">White Hat</span>
           </div>
         </article>
+
+        <!-- Alexandre Triffault -->
+        <article class="team-card fade-in">
+          <div class="team-av" style="color:#F5A623;border-color:rgba(245,166,35,0.2)">AT</div>
+          <div class="team-name redacted" data-full="Alexandre Triffault" title="Double-click to reveal">Al****** Tr*****lt</div>
+          <div class="team-handle">MrJack</div>
+          <div class="team-role">The man who walks through locked doors — literally. World-class physical penetration tester, forensic locksmith, and covert entry specialist with over 15 years training military, locksmiths and intelligence units. Co-authored the only French reference book on covert entry techniques. If the lock stands between you and the truth, he's already on the other side.</div>
+          <div class="team-tags">
+            <span class="tag">Physical Security</span>
+            <span class="tag">Lock & Entry</span>
+            <span class="tag b">White Hat</span>
+          </div>
+        </article>
+
+        <!-- Sylvain HAJRI -->
+        <article class="team-card fade-in">
+          <div class="team-av" style="color:#A78BFA;border-color:rgba(167,139,250,0.2)">SH</div>
+          <div class="team-name redacted" data-full="Sylvain HAJRI" title="Double-click to reveal">S****** H***i</div>
+          <div class="team-handle">navlys__</div>
+          <div class="team-role">Founder of Epieos — the OSINT engine trusted by Europol, Interpol, U.S. agencies and over 5 million investigators worldwide. Reverse-engineers digital footprints to deliver intelligence 0days on criminals before they know they're being tracked. Co-founder of OSINT-FR (18k+ members) and organiser of the OSINT Village at leHack.</div>
+          <div class="team-tags">
+            <span class="tag">OSINT</span>
+            <span class="tag">0days</span>
+            <span class="tag b">White Hat</span>
+          </div>
+        </article>
+
       </div>
     </div>
 
@@ -2248,6 +2276,51 @@ document.getElementById('modal-private').addEventListener('click', function(e){
   if(e.target===document.getElementById('modal-private')) closePrivateModal();
 });
 
+/* ── REDACTED NAME REVEAL ── */
+(function(){
+  var HOLD = 600; // ms for long-press
+  document.querySelectorAll('.team-name.redacted').forEach(function(el){
+    var timer, revealed = false;
+    function reveal(){
+      if(revealed) return;
+      revealed = true;
+      el.textContent = el.dataset.full;
+      el.classList.add('revealed');
+      // auto-redact after 4s
+      setTimeout(function(){
+        el.classList.remove('revealed');
+        // scramble back char by char
+        var full = el.dataset.full;
+        var redacted = el.dataset.redacted || el.getAttribute('data-redacted-orig');
+        // re-read original redacted from DOM attr we stash on first run
+        if(!el._redacted){ el._redacted = el.getAttribute('data-original') || null; }
+        // just fade back
+        el.style.transition = 'opacity 0.4s';
+        el.style.opacity = '0.3';
+        setTimeout(function(){
+          el.textContent = el.dataset.orig;
+          el.style.opacity = '';
+          el.style.transition = '';
+          revealed = false;
+        }, 400);
+      }, 4000);
+    }
+    // stash original redacted text
+    el.dataset.orig = el.textContent;
+    // desktop: double-click
+    el.addEventListener('dblclick', reveal);
+    // mobile: long-press
+    el.addEventListener('touchstart', function(e){
+      timer = setTimeout(function(){
+        reveal();
+        e.preventDefault();
+      }, HOLD);
+    }, {passive:true});
+    el.addEventListener('touchend',   function(){ clearTimeout(timer); });
+    el.addEventListener('touchmove',  function(){ clearTimeout(timer); });
+    el.addEventListener('touchcancel',function(){ clearTimeout(timer); });
+  });
+})();
 /* EASTER EGGS */
 (function(){
 
@@ -2263,7 +2336,7 @@ var art = [
   '   Responsible disclosure: hi@megastack.sh                   ',
   '   GitHub: github.com/paulfxyz/megastack-website             ',
   '                                                              ',
-  '   One founder. Four hackers.                                ',
+  '   One founder. Six hackers.                                ',
   '   Multiple shades of grey.                                  ',
   '                                                              ',
 ].join('\n');

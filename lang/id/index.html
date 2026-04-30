@@ -727,7 +727,8 @@ body::after{content:'';position:fixed;inset:0;z-index:9998;pointer-events:none;o
   .nav-mobile-utils .lang-btn,.nav-mobile-utils .theme-toggle{font-size:var(--txs);padding:8px 10px}
 }
 /* ── Advisors grid ── */
-.team-grid--advisors{grid-template-columns:repeat(2,1fr)}
+.team-grid--advisors{grid-template-columns:repeat(3,1fr)}
+@media(max-width:900px){.team-grid--advisors{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:640px){.team-grid--advisors{grid-template-columns:1fr}}
 /* ── Package split ── */
 .package-split{display:grid;grid-template-columns:1fr 1fr}
@@ -735,6 +736,14 @@ body::after{content:'';position:fixed;inset:0;z-index:9998;pointer-events:none;o
 /* ── Media kit row ── */
 .media-kit-row{display:grid;grid-template-columns:1fr auto}
 @media(max-width:640px){.media-kit-row{grid-template-columns:1fr}.media-kit-row > *:last-child{width:100%}.media-kit-row .btn{width:100%;justify-content:center}}
+/* redacted name reveal */
+.team-name.redacted{cursor:default;user-select:none;transition:color 0.2s ease}
+.team-name.redacted.revealed{color:var(--acid);animation:redact-flash 0.35s ease}
+@keyframes redact-flash{
+  0%{opacity:0.3;filter:blur(4px)}
+  60%{opacity:1;filter:blur(0)}
+  100%{color:var(--acid)}
+}
 @media(hover:none){
   .approach-card:hover::before,.stack-card:hover::after,.for-card:hover{all:unset}
 }
@@ -1259,7 +1268,7 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
   <div class="wrap">
     <div style="text-align:center;margin-bottom:52px">
       <div class="lbl center">Tim</div>
-      <h2 class="section-title">Satu founder.<br>Empat hacker.<br><span style="color:var(--acid)">Banyak gradasi abu-abu.</span></h2>
+      <h2 class="section-title">Satu pendiri.<br>Enam hacker.<br><span style="color:var(--acid)">Banyak gradasi abu-abu.</span></h2>
       <p class="section-body" style="max-width:500px;margin:0 auto">Kami pernah ada di setiap sisi. Itu sebabnya kami tahu persis apa yang dikejar attacker beneran — dan cara menutup pintu-pintu itu.</p>
     </div>
 
@@ -1287,11 +1296,11 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
 
     <!-- Advisors -->
     <div style="margin-bottom:32px">
-      <div style="font-family:var(--mono);font-size:var(--t2xs);font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-3);margin-bottom:14px;display:flex;align-items:center;gap:10px"><span style="display:block;width:16px;height:1px;background:var(--text-3)"></span>Advisor utama</div>
+      <div style="font-family:var(--mono);font-size:var(--t2xs);font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-3);margin-bottom:14px;display:flex;align-items:center;gap:10px"><span style="display:block;width:16px;height:1px;background:var(--text-3)"></span>Manajer Proyek Utama</div>
       <div class="team-grid team-grid--advisors">
         <article class="team-card fade-in">
           <div class="team-av" style="color:var(--ice);border-color:rgba(0,200,255,0.2)">BM</div>
-          <div class="team-name">Bo*** M*****ov</div>
+          <div class="team-name redacted" data-full="Boian Mihailov" title="Double-click to reveal">Bo*** M*****ov</div>
           <div class="team-handle">b0ian</div>
           <div class="team-role">Arsitek di balik beberapa infrastruktur keamanan jaringan paling tangguh yang pernah dibangun — dan diam-diam dibongkar ketika harus. Hafal setiap sudut stack Linux yang dikeraskan, setiap titik lemah di mesh VPN, setiap tempat yang pertama dilihat seorang penyerang.</div>
           <div class="team-tags">
@@ -1302,7 +1311,7 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
         </article>
         <article class="team-card fade-in">
           <div class="team-av" style="color:#22C55E;border-color:rgba(34,197,94,0.2)">CD</div>
-          <div class="team-name">Cl****** D*****go</div>
+          <div class="team-name redacted" data-full="Clément Domingo" title="Double-click to reveal">Cl****** D*****go</div>
           <div class="team-handle">SaxX</div>
           <div class="team-role">Pakar offensive security. Dua dekade menemukan lubang sebelum orang jahat menemukannya. Memimpin pentest, baca laporan yang nggak ada orang lain mau baca — lalu memperbaiki apa yang ditemukannya.</div>
           <div class="team-tags">
@@ -1313,7 +1322,7 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
         </article>
         <article class="team-card fade-in">
           <div class="team-av" style="color:var(--text-3);border-color:rgba(240,237,232,0.1)">SR</div>
-          <div class="team-name">S***** Ra****t</div>
+          <div class="team-name redacted" data-full="Sébastien Raoult" title="Double-click to reveal">S***** Ra****t</div>
           <div class="team-handle">ShinyHunters</div>
           <div class="team-role">Penasihat intelijen pelanggaran yang memahami operasi intrusi dari dalam hingga luar. Naluri adversarial yang ia bawa tidak bisa diajarkan di ruang kelas. Jika ada celah masuk, ia sudah mengetahuinya.</div>
           <div class="team-tags">
@@ -1324,7 +1333,7 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
         </article>
         <article class="team-card fade-in">
           <div class="team-av" style="color:var(--ice);border-color:rgba(0,200,255,0.2)">RC</div>
-          <div class="team-name">R***i Ca***a</div>
+          <div class="team-name redacted" data-full="Roni Carta" title="Double-click to reveal">R***i Ca***a</div>
           <div class="team-handle">Lupin</div>
           <div class="team-role">Pentester juara dunia. Terbukti dalam kompetisi, presisi secara metodologis, dan tak kenal lelah. Tidak berhenti di pelanggaran pertama — memetakan setiap jalur yang bisa diambil penyerang, lalu menutup semuanya.</div>
           <div class="team-tags">
@@ -1333,6 +1342,33 @@ canvas, #cv-matrix, #cv-radar, .hero-scan, .scroll-line, .badge-dot,
             <span class="tag b">White Hat</span>
           </div>
         </article>
+
+        <!-- Alexandre Triffault -->
+        <article class="team-card fade-in">
+          <div class="team-av" style="color:#F5A623;border-color:rgba(245,166,35,0.2)">AT</div>
+          <div class="team-name redacted" data-full="Alexandre Triffault" title="Double-click to reveal">Al****** Tr*****lt</div>
+          <div class="team-handle">MrJack</div>
+          <div class="team-role">Pria yang menembus pintu terkunci — secara harfiah. Penguji penetrasi fisik kelas dunia, ahli forensik kunci, dan spesialis masuk senyap dengan pengalaman lebih dari 15 tahun melatih unit militer, pengunci, dan unit intelijen. Ikut menulis satu-satunya buku referensi Prancis tentang teknik masuk senyap. Jika kunci berdiri antara kamu dan kebenaran, ia sudah ada di sisi lain.</div>
+          <div class="team-tags">
+            <span class="tag">Physical Security</span>
+            <span class="tag">Lock &amp; Entry</span>
+            <span class="tag b">White Hat</span>
+          </div>
+        </article>
+
+        <!-- Sylvain HAJRI -->
+        <article class="team-card fade-in">
+          <div class="team-av" style="color:#A78BFA;border-color:rgba(167,139,250,0.2)">SH</div>
+          <div class="team-name redacted" data-full="Sylvain HAJRI" title="Double-click to reveal">S****** H***i</div>
+          <div class="team-handle">navlys__</div>
+          <div class="team-role">Pendiri Epieos — mesin OSINT yang dipercaya oleh Europol, Interpol, agensi-agensi AS, dan lebih dari 5 juta penyelidik di seluruh dunia. Melakukan rekayasa balik jejak digital untuk menghasilkan intelijen 0days tentang pelaku kejahatan sebelum mereka tahu bahwa mereka sedang dilacak. Salah satu pendiri OSINT-FR (18.000+ anggota) dan penyelenggara OSINT Village di leHack.</div>
+          <div class="team-tags">
+            <span class="tag">OSINT</span>
+            <span class="tag">0days</span>
+            <span class="tag b">White Hat</span>
+          </div>
+        </article>
+
       </div>
     </div>
 
@@ -1846,6 +1882,37 @@ if(hw){
     runSequence(true);
   });
 }
+
+/* ── REDACTED NAME REVEAL ── */
+(function(){
+  var HOLD = 600;
+  document.querySelectorAll('.team-name.redacted').forEach(function(el){
+    var timer, revealed = false;
+    el.dataset.orig = el.textContent;
+    function reveal(){
+      if(revealed) return;
+      revealed = true;
+      el.textContent = el.dataset.full;
+      el.classList.add('revealed');
+      setTimeout(function(){
+        el.classList.remove('revealed');
+        el.style.transition = 'opacity 0.4s';
+        el.style.opacity = '0.3';
+        setTimeout(function(){
+          el.textContent = el.dataset.orig;
+          el.style.opacity = '';
+          el.style.transition = '';
+          revealed = false;
+        }, 400);
+      }, 4000);
+    }
+    el.addEventListener('dblclick', reveal);
+    el.addEventListener('touchstart', function(){ timer = setTimeout(reveal, HOLD); }, {passive:true});
+    el.addEventListener('touchend',   function(){ clearTimeout(timer); });
+    el.addEventListener('touchmove',  function(){ clearTimeout(timer); });
+    el.addEventListener('touchcancel',function(){ clearTimeout(timer); });
+  });
+})();
 
 /* ── 4. OMNIPRESENT CHAR FLICKER ── */
 const GC='01ABXZ#@!?░▒█╬═';
