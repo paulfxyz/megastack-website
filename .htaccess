@@ -1,10 +1,5 @@
 # megastack.sh — Apache config
 
-# Environment variables (never commit actual key values)
-# SetEnv RESEND_API_KEY your_key_here
-# Set this directly in SiteGround's File Manager or via SSH:
-#   echo "SetEnv RESEND_API_KEY re_your_new_key" >> /path/to/public_html/.htaccess
-
 # Security headers
 Header always set X-Frame-Options "SAMEORIGIN"
 Header always set X-Content-Type-Options "nosniff"
