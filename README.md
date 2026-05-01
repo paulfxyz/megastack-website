@@ -310,4 +310,4 @@ All referenced **open-source tools** remain under their respective licenses.
 
 ---
 
-*One founder. Four hackers. Multiple shades of grey.*
+*One founder. Six hackers. Multiple shades of grey.*
